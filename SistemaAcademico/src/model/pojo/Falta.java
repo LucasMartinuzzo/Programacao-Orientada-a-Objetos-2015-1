@@ -9,8 +9,8 @@ package model.pojo;
  *
  * @author Filipe
  */
-public class Nota {
-    private Double nota;
+public class Falta {
+    private Integer falta;
     private Aluno aluno;
-    private Atividade atividade;
+    private Turma turma;
 }
