@@ -17,6 +17,6 @@ public class Teste {
         System.out.println("mais um teste doido");
         System.out.println("Queria estar morta");
         System.out.println("E tudo começou a girar e girar e girar e girar");
-        System.out.println("E eu disse: Berenice, segura, nós vamos bater");
+
     }
 }
