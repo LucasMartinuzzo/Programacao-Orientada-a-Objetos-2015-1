@@ -12,6 +12,6 @@ package teste;
 public class Teste {
     public static void main(String args[]) {
         System.out.println("Sistema Mônicka blá blá blá");
-        System.out.println("Não Deu certo");
+        System.out.println("Deu certo");
     }
 }
