@@ -15,7 +15,7 @@ public class Disciplina {
     private String nome;
     private String ementa;
     private Integer cargaHoraria;
-    private List<Professor> professores;
-    private List<Turma> turmas;
+    private List<Professor> professor;
+    private List<Turma> turma;
     
 }
