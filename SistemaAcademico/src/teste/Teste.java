@@ -13,7 +13,7 @@ public class Teste {
     public static void main(String args[]) {
         System.out.println("Sabe o que ela quer?");
         System.out.println("Deu certo");
-        System.out.println("Vai dar certo");
+        System.out.println("Bicha, a senhora é destruidora mesmo, viu, viado.");
         System.out.println("mais um teste doido");
     }
 }
