@@ -4,15 +4,18 @@
  * and open the template in the editor.
  */
 package model.pojo;
+
 import java.util.List;
 
 /**
  *
- * @author Pedro
+ * @author Lucas
  */
-public class Professor {
+public class Disciplina {
     private String nome;
-    private String cpf;
-    private String departamento;
-    private List<Disciplina> disciplina;
+    private String ementa;
+    private Integer cargaHoraria;
+    private List<Professor> professor;
+    private List<Turma> turma;
+    
 }
