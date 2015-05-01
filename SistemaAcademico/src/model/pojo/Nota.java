@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.dao;
+package model.pojo;
 
 /**
  *
- * @author JeanPablo
+ * @author Filipe
  */
-public class AlunoDao {
-    
+public class Nota {
+    private Double nota;
 }

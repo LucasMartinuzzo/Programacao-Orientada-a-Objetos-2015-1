@@ -5,10 +5,15 @@
  */
 package model.pojo;
 
+import java.util.List;
 /**
  *
  * @author JeanPablo
  */
 public class Aluno {
-    
+    private String nome;
+    private String CPF;
+    private List<Turma> turma; 
+    private List<Falta> falta;
+    private List<Nota> nota;
 }
