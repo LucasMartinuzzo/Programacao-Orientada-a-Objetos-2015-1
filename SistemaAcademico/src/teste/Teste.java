@@ -15,5 +15,8 @@ public class Teste {
         System.out.println("Deu certo");
         System.out.println("Bicha, a senhora é destruidora mesmo, viu, viado.");
         System.out.println("mais um teste doido");
+        System.out.println("Queria estar morta");
+        System.out.println("E tudo começou a girar e girar e girar e girar");
+        System.out.println("E eu disse: Berenice, segura, nós vamos bater");
     }
 }
