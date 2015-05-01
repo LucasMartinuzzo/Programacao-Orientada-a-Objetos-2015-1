@@ -21,5 +21,5 @@ public class Turma {
     private Professor professor;
     private List<Aluno> aluno;
     private List<Atividade> atividade;
-    private List<Falta> faltas;
+    private List<Falta> falta;
 }
