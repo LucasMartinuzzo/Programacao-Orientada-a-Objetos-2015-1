@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model.pojo;
+
 import java.util.List;
 
 /**
