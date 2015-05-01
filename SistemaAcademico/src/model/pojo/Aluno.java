@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Aluno {
     private String nome;
-    private String CPF;
+    private String cpf;
     private List<Turma> turma; 
     private List<Falta> falta;
     private List<Nota> nota;

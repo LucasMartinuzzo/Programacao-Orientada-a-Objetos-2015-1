@@ -16,5 +16,5 @@ public class Atividade {
     private String tipo;
     private Calendar data;
     private Double valor;
-    private List<Nota> notas;
+    private List<Nota> nota;
   }
