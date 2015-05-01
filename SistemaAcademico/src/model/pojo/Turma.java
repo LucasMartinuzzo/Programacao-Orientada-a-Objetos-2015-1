@@ -5,6 +5,8 @@
  */
 package model.pojo;
 
+import java.util.List;
+
 /**
  *
  * @author JeanPablo
@@ -15,4 +17,9 @@ public class Turma {
     private String local;
     private String horario;
     private Integer numeroDeVagas;
+    private Disciplina disciplina;
+    private Professor professor;
+    private List<Aluno> aluno;
+    private List<Atividade> atividade;
+    private List<Falta> faltas;
 }
