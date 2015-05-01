@@ -14,5 +14,5 @@ public class Professor {
     private String nome;
     private String cpf;
     private String departamento;
-    private List<Disciplina>;
+    private List<Disciplina> disciplina;
 }
