@@ -16,4 +16,7 @@ public class Aluno {
     private List<Turma> turma; 
     private List<Falta> falta;
     private List<Nota> nota;
+    
+
+
 }

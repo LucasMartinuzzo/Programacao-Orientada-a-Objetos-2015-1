@@ -9,6 +9,10 @@ package model.dao;
  *
  * @author Filipe
  */
-public class AlunoDao{
-
+public interface AlunoDao {
+   /////qwdwdwefwefw();
+   ////
+   ////
+   ////
+   /////
 }

@@ -13,4 +13,21 @@ public class Falta {
     private Integer falta;
     private Aluno aluno;
     private Turma turma;
+
+    public Integer getFalta(){
+        return falta;
+    }
+    public void setFalta(Integer falta){
+        this.falta = falta;
+    }
+    public Aluno getAluno(){
+        return aluno;
+    }
+    public Turma getTurma(){
+        return turma;
+    }
+    public Falta (Integer falta, Aluno aluno, Turma turma){
+        this.falta = falta;
+        this.aluno = aluno;
+        this.turma = turma;
 }
