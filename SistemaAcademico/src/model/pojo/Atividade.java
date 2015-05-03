@@ -39,7 +39,7 @@ public class Atividade {
     }
     
     public void setValor(Double valor){
-        this.valor = valor;
+        this.valor = valor; 
     }
     
     public String getNome(){
