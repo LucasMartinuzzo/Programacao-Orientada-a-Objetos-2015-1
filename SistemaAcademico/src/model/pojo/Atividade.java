@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package model.pojo;
+
 import java.util.Calendar;
 import java.util.List;
-        
+
 /**
  *
- * @author Monicka
+ * @author Mônicka
  */
 public class Atividade {
     private String nome;
@@ -18,36 +19,42 @@ public class Atividade {
     private Double valor;
     private List<Nota> nota;
   
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    public void setTipo(String tipo){
-        this.tipo = tipo;
-    }
-    public void setData(Calendar data){
-        this.data = data;
-    }
-    public void setValor(Double valor){
-        this.valor = valor;
-    }
-    public String getNome(){
-        return nome;
-    }
-    public Double getValor(){
-        return valor;
-    }
-    public Calendar getData(){
-        return data;
-    }
-    public String getTipo(){
-        return tipo;
-    }
-
     public Atividade(String nome, String tipo, Calendar data, Double valor){
         this.data = data;
         this.nome = nome;
         this.tipo = tipo;
         this.valor = valor;
     }
-
+    
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+    
+    public void setTipo(String tipo){
+        this.tipo = tipo;
+    }
+    
+    public void setData(Calendar data){
+        this.data = data;
+    }
+    
+    public void setValor(Double valor){
+        this.valor = valor;
+    }
+    
+    public String getNome(){
+        return nome;
+    }
+    
+    public Double getValor(){
+        return valor;
+    }
+    
+    public Calendar getData(){
+        return data;
+    }
+    
+    public String getTipo(){
+        return tipo;
+    }
 }
