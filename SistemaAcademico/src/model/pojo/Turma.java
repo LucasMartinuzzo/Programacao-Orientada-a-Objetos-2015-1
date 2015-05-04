@@ -114,6 +114,7 @@ public class Turma {
     }
     
     public void removerAluno (Aluno aluno) {
+        aluno.getTurma().remove(this);
         this.aluno.remove(aluno);
     }
     
