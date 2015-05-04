@@ -4,16 +4,37 @@
  * and open the template in the editor.
  */
 package model.pojo;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 /**
  *
  * @author JeanPablo
  */
 public class Horario {
-    private Calendar diaEHora;
+    private String diaDaSemana;
+    private String hora;
     private String local;
-    
-    
+
+    public String getDiaDaSemana() {
+        return diaDaSemana;
+    }
+
+    public void setDiaDaSemana(String diaDaSemana) {
+        this.diaDaSemana = diaDaSemana;
+    }
+
+    public String getHorario() {
+        return hora;
+    }
+
+    public void setHorario(String hora) {
+        this.hora = hora;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
 }

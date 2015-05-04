@@ -21,9 +21,8 @@ public class Turma {
     private List<Aluno> aluno;
     private List<Atividade> atividade;
     
-    public Turma (Integer ano, Integer periodo, String local,
-            Integer numeroDeVagas, Disciplina disciplina, Professor professor,
-            List<Horario> horario) {
+    public Turma (Integer ano, Integer periodo, Integer numeroDeVagas,
+            Disciplina disciplina, Professor professor, List<Horario> horario) {
         this.ano = ano;
         this.periodo = periodo;
         this.numeroDeVagas = numeroDeVagas;
@@ -32,8 +31,15 @@ public class Turma {
         this.horario = horario;
     }
     
+    public Turma (Integer ano, Integer periodo, Integer numeroDeVagas,
+            Disciplina disciplina, Professor professor, List<Horario> horario,
+            List<Aluno> aluno) {
+        this(ano, periodo, numeroDeVagas, disciplina, professor, horario);
+        this.aluno = aluno;
+    }
+    
     public Integer getAno () {
-        return this.ano;
+        return ano;
     }
     
     public void setAno (Integer ano) {
@@ -41,7 +47,7 @@ public class Turma {
     }
     
     public Integer getPeriodo () {
-        return this.periodo;
+        return periodo;
     }
     
     public void setPeriodo (Integer periodo) {
@@ -49,7 +55,7 @@ public class Turma {
     }
     
     public Integer getNumeroDeVagas () {
-        return this.numeroDeVagas;
+        return numeroDeVagas;
     }
     
     public void setNumeroDeVagas (Integer numeroDeVagas) {
@@ -57,7 +63,7 @@ public class Turma {
     }
     
     public Disciplina getDisciplina () {
-        return this.disciplina;
+        return disciplina;
     }
     
     public void setDisciplina (Disciplina disciplina) {
@@ -65,18 +71,33 @@ public class Turma {
     }
     
     public Professor getProfessor () {
-        return this.professor;
+        return professor;
     }
     
     public void setProfessor (Professor professor) {
         this.professor = professor;
     }
     
-    //****FAZER OS MÉTODOS RELATIVOS AOS HORÁRIOS DE AULA**********
+    //***************** HORÁRIO ************************
+    public List<Horario> getHorario () {
+        return horario;
+    }
+    
+    public boolean contemHorario (Horario horario) {
+        return this.horario.contains(horario);
+    }
+    
+    public void adicionarHorario (Horario horario) {
+        this.horario.add(horario);
+    }
+    
+    public void removerHorario (Horario horario) {
+        this.horario.remove(horario);
+    }
     
     //***************** ALUNOS *************************
-    public List<Aluno> getListaDeAlunos () {
-        return this.aluno;
+    public List<Aluno> getAluno () {
+        return aluno;
     }
     
     public boolean contemAluno (Aluno aluno) {
@@ -88,6 +109,7 @@ public class Turma {
     }
     
     public void adicionarAluno (Aluno aluno) {
+        aluno.getTurma().add(this);
         this.aluno.add(aluno);
     }
     
@@ -96,8 +118,8 @@ public class Turma {
     }
     
     //**************** ATIVIDADES *********************
-    public List<Atividade> getListaDeAtividades () {
-        return this.atividade;
+    public List<Atividade> getAtividade () {
+        return atividade;
     }
     
     public boolean contemAtividade (Atividade atividade) {
