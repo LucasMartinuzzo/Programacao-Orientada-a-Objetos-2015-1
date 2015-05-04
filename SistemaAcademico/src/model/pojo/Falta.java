@@ -30,4 +30,5 @@ public class Falta {
         this.falta = falta;
         this.aluno = aluno;
         this.turma = turma;
+    }
 }
