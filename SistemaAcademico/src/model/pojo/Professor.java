@@ -23,6 +23,20 @@ public class Professor {
         this.departamento = departamento;
     }
     
+    public boolean contemDisciplina (Disciplina disciplina){
+        return this.disciplina.contains(disciplina);
+    }
+     
+    public void adicionarDisciplina (Disciplina disciplina){
+        this.disciplina.add(disciplina);
+        disciplina.getProfessor().add(this);
+    }
+    
+    public void removerDisciplina (Disciplina disciplina){
+        this.disciplina.remove(disciplina);
+        disciplina.getProfessor().remove(this);
+    }
+    
     public String getNome (){
         return nome;
     }
