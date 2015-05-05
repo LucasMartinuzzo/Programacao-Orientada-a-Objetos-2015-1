@@ -95,6 +95,15 @@ public class Turma {
         this.horario.remove(horario);
     }
     
+    public Horario retornaHorario (Horario horario) {
+        return this.horario.get(this.horario.indexOf(horario));
+    }
+    
+    /*public void setHorario (Horario horarioAntigo, Horario horarioNovo) {
+        Horario horarioNaLista = this.retornaHorario(horarioAntigo);
+        horarioNaLista = horarioNovo;
+    }*/
+    
     //***************** ALUNOS *************************
     public List<Aluno> getAluno () {
         return aluno;
@@ -133,5 +142,18 @@ public class Turma {
     
     public void removerAtividade (Atividade atividade) {
         this.atividade.remove(atividade);
+    }
+    
+    public Atividade retornaAtividade (Atividade atividade) {
+        return this.atividade.get(this.atividade.indexOf(atividade));
+    }
+    
+    /*public void setAtividade (Atividade atividadeAntiga, Atividade atividadeNova) {
+        Atividade atividadeNaLista = this.retornaAtividade(atividadeAntiga);
+        atividadeNaLista = atividadeNova;
+    }*/
+
+    public boolean ehIgual (Turma turma){
+        return (this == turma);
     }
 }

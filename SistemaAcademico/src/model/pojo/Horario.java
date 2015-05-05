@@ -14,6 +14,12 @@ public class Horario {
     private String hora;
     private String local;
 
+    public Horario (String diaDaSemana, String hora, String local) {
+        this.diaDaSemana = diaDaSemana;
+        this.hora = hora;
+        this.local = local;
+    }
+    
     public String getDiaDaSemana() {
         return diaDaSemana;
     }

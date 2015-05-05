@@ -45,8 +45,45 @@ public class Aluno {
     public List<Falta> getFalta() {
         return falta;
     }
+    
+    /*Pois o professor pode lançar duas faltas de valores diferentes para um
+    aluno na mesma turma*/
+    public boolean adicaoValida(Falta falta) {
+        for (Falta faltaConsultada: this.falta) {
+            if (faltaConsultada.getTurma().ehIgual(falta.getTurma()))
+                return false;
+        }
+        return true;
+    }
+    
+    public void adicionaFalta(Falta falta){
+        this.falta.add(falta);
+    }
 
     public List<Nota> getNota() {
         return nota;
     }
+    
+    /*Pois o professor pode lançar duas notas de valores diferentes para um
+    aluno para a mesma atividade*/
+    public boolean adicaoValida(Nota nota) {
+        for (Nota notaConsultada: this.nota) {
+            if (notaConsultada.getAtividade().ehIgual(nota.getAtividade()))
+                return false;
+        }
+        return true;
+    }
+    
+    public void adicionaNota(Nota nota){
+        this.nota.add(nota);
+    }
+    
+    public Nota retornaNota (Nota nota) {
+        return this.nota.get(this.nota.indexOf(nota));
+    }
+    
+    /*public void setNota (Nota notaAntiga, Nota notaNova) {
+        Nota notaNaLista = this.retornaNota(notaAntiga);
+        notaNaLista = notaNova;
+    }*/
 }

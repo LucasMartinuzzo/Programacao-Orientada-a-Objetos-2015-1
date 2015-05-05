@@ -17,6 +17,7 @@ public class Atividade {
     private String tipo;
     private Calendar data;
     private Double valor;
+    private Boolean notasLancadas;
     private List<Nota> nota;
   
     public Atividade(String nome, String tipo, Calendar data, Double valor){
@@ -56,5 +57,9 @@ public class Atividade {
     
     public String getTipo(){
         return tipo;
+    }
+
+    public boolean ehIgual(Atividade atividade) {
+        return (this == atividade);
     }
 }
