@@ -86,4 +86,20 @@ public class Aluno {
         Nota notaNaLista = this.retornaNota(notaAntiga);
         notaNaLista = notaNova;
     }*/
+    
+    public Double NotaFinal(Turma turma){
+        Double somaNotas = 0.0;
+        Integer contaNotas = 0;
+        for(Nota notaConsultada: this.nota){
+            if(notaConsultada.getAtividade().getTurma().ehIgual(turma)){
+                somaNotas += notaConsultada.getNota();
+                contaNotas++;
+            }
+        }
+        return (somaNotas/contaNotas);
+     }
+
+    public boolean ehIgual(Aluno aluno) {
+        return (this == aluno);
+    }
 }

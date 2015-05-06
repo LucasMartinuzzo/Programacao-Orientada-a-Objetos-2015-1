@@ -18,13 +18,16 @@ public class Atividade {
     private Calendar data;
     private Double valor;
     private Boolean notasLancadas;
+    private Turma turma;
     private List<Nota> nota;
   
-    public Atividade(String nome, String tipo, Calendar data, Double valor){
+    public Atividade(String nome, String tipo, Calendar data, Double valor, Turma turma){
         this.data = data;
         this.nome = nome;
         this.tipo = tipo;
         this.valor = valor;
+        this.notasLancadas = false;
+        this.turma = turma;
     }
     
     public void setNome(String nome){
@@ -43,6 +46,10 @@ public class Atividade {
         this.valor = valor;
     }
     
+    public void constarLancamentoDeNotas(){
+        this.notasLancadas = true;
+    }
+    
     public String getNome(){
         return nome;
     }
@@ -59,6 +66,36 @@ public class Atividade {
         return tipo;
     }
 
+    public Boolean getNotasLancadas(){
+        return notasLancadas;
+    }
+    
+    public Turma getTurma(){
+        return turma;
+    }
+    
+    public List<Nota> getNota(){
+        return nota;
+    }
+    
+    /*Pois o professor pode lançar duas notas de valores diferentes para uma
+    atividade para o mesmo aluno*/
+    public boolean adicaoValida(Nota nota) {
+        for (Nota notaConsultada: this.nota) {
+            if (notaConsultada.getAluno().ehIgual(nota.getAluno()))
+                return false;
+        }
+        return true;
+    }
+    
+    public void adicionaNota(Nota nota){
+        this.nota.add(nota);
+    }
+    
+    public Nota retornaNota (Nota nota) {
+        return this.nota.get(this.nota.indexOf(nota));
+    }
+    
     public boolean ehIgual(Atividade atividade) {
         return (this == atividade);
     }
