@@ -35,10 +35,6 @@ public class Disciplina {
         return professor;
     }
     
-    public List<Turma> getTurma(){
-        return turma;
-    }
-    
     public String getNome(){
         return nome;
     }
@@ -61,6 +57,28 @@ public class Disciplina {
     
     public void setCargaHoraria(Integer cargaHoraria){
         this.cargaHoraria = cargaHoraria;
+    }
+    //***************** Turma *************************
+    public List<Turma> getTurma () {
+        return turma;
+    }
+    
+    public boolean contemTurma (Turma turma) {
+        return this.turma.contains(turma);
+    }
+    
+    public boolean adicaoDeTurmaValida (Turma turma) {
+        return (this.contemTurma(turma));
+    }
+    
+    public void adicionarTurma (Turma turma) {
+        turma.getDisciplina().add(this);
+        this.turma.add(turma);
+    }
+    
+    public void removerTurma (Turma turma) {
+        turma.getDisciplina().remove(this);
+        this.turma.remove(turma);
     }
     
 }
