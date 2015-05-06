@@ -18,21 +18,10 @@ public class Disciplina {
     private List<Professor> professor;
     private List<Turma> turma;
     
-    //disciplina.getTurma().add(this)
-    //AINDA FALTA INSERIR A TURMA CRIADA(No turma.java) NA LISTA DE TURMAS DA DISCIPLINA
-    
     public Disciplina(String nome, String ementa, Integer cargaHoraria){
         this.nome = nome;
         this.ementa = ementa;
         this.cargaHoraria = cargaHoraria;
-    }
-    
-    public void consultarTurmas (String nome, Integer ano, Integer periodo){
-        
-    }
-    
-    public List<Professor> getProfessor(){
-        return professor;
     }
     
     public String getNome(){
@@ -58,6 +47,11 @@ public class Disciplina {
     public void setCargaHoraria(Integer cargaHoraria){
         this.cargaHoraria = cargaHoraria;
     }
+    
+    public List<Professor> getProfessor(){
+        return professor;
+    }
+    
     //***************** Turma *************************
     public List<Turma> getTurma () {
         return turma;
@@ -72,12 +66,10 @@ public class Disciplina {
     }
     
     public void adicionarTurma (Turma turma) {
-        turma.getDisciplina().add(this);
         this.turma.add(turma);
     }
     
     public void removerTurma (Turma turma) {
-        turma.getDisciplina().remove(this);
         this.turma.remove(turma);
     }
     
