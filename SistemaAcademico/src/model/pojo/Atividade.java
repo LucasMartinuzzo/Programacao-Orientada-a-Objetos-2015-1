@@ -46,9 +46,9 @@ public class Atividade {
         this.valor = valor;
     }
     
-    public void constarLancamentoDeNotas(){
+   /* public void constarLancamentoDeNotas(){
         this.notasLancadas = true;
-    }
+    }*/
     
     public String getNome(){
         return nome;
@@ -80,7 +80,7 @@ public class Atividade {
     
     /*Pois o professor pode lançar duas notas de valores diferentes para uma
     atividade para o mesmo aluno ou tentar lançar uma nota já lançada.*/
-    public Boolean adicaoValida(Nota nota) {
+    /*public Boolean adicaoValida(Nota nota) {
         if (this.notasLancadas)
             return false;
         for (Nota notaConsultada: this.nota) {
@@ -98,5 +98,5 @@ public class Atividade {
     
     public Nota retornaNota (Nota nota) {
         return this.nota.get(this.nota.indexOf(nota));
-    }
+    }*/
 }
