@@ -5,8 +5,6 @@
  */
 package model.dao;
 
-import java.util.List;
-import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Nota;
 
@@ -16,47 +14,39 @@ import model.pojo.Nota;
  */
 public class AtividadeDaoImpl implements AtividadeDao{
     
-    private List<Atividade> listaAtividade;
+    private Atividade atividade;
     
-    public void constarLancamentoDeNotas(Atividade atividade){
-         Boolean notasLancadas = this.listaAtividade.get(this.listaAtividade.indexOf(atividade)).notasLancadas();
-         notasLancadas = true;
+    @Override
+    public void constarLancamentoDeNotas(){
+        Boolean notasLancadas = this.atividade.notasLancadas();
+        notasLancadas = true;
     }
 
+    
+    /*Pois o professor pode lançar duas notas de valores diferentes para uma
+    atividade para o mesmo aluno ou tentar lançar uma nota já lançada.*/
+    @Override
     public Boolean adicaoValida(Nota nota) {
-        if (this.notasLancadas)
+        if (this.atividade.notasLancadas())
             return false;
-        for (Nota notaConsultada: this.nota) {
+        for (Nota notaConsultada: this.atividade.getNota()) {
             if (notaConsultada.getAluno().equals(nota.getAluno()))
                 return false;
         }
         return true;
     }
     
-    /*Pois o professor pode lançar duas notas de valores diferentes para uma
-    atividade para o mesmo aluno ou tentar lançar uma nota já lançada.*/   
-    public Boolean adicaoValida(Nota nota, Atividade atividade) {
-        if(!this.listaAtividade.contains(y)) 
-            return false;
-        if (this.listaAtividade.get(this.listaAtividade.indexOf(atividade)).notasLancadas())
-            return false;
-        Atividade atividadeConsultada = this.listaAtividade.get(this.listaAtividade.indexOf(atividade));
-        for (Nota notaConsultada: atividadeConsultada.getNota()) {
-            if (notaConsultada.getAluno().equals(nota.getAluno()))
-                return false;
-        }
-        return true;
-    }    
-    
-    //FALTA FAZER AS DUAS PROXIMAS
+       
+    @Override
     public Boolean adicionaNota(Nota nota){
         if (this.adicaoValida(nota))
-            return this.nota.add(nota);
+            return this.atividade.getNota().add(nota);
         return false;
     }
     
+    @Override
     public Nota retornaNota (Nota nota) {
-        return this.nota.get(this.nota.indexOf(nota));
+        return this.atividade.getNota().get(this.atividade.getNota().indexOf(nota));
     }
     
 }
