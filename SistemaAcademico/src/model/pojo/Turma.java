@@ -17,24 +17,24 @@ public class Turma {
     private Integer numeroDeVagas;
     private Disciplina disciplina;
     private Professor professor;
-    private List<Horario> horario;
+    private List<Aula> aula;
     private List<Aluno> aluno;
     private List<Atividade> atividade;
     
     public Turma (Integer ano, Integer periodo, Integer numeroDeVagas,
-            Disciplina disciplina, Professor professor, List<Horario> horario) {
+            Disciplina disciplina, Professor professor, List<Aula> aula) {
         this.ano = ano;
         this.periodo = periodo;
         this.numeroDeVagas = numeroDeVagas;
         this.disciplina = disciplina;
         this.professor = professor;
-        this.horario = horario;
+        this.aula = aula;
     }
     
     public Turma (Integer ano, Integer periodo, Integer numeroDeVagas,
-            Disciplina disciplina, Professor professor, List<Horario> horario,
+            Disciplina disciplina, Professor professor, List<Aula> aula,
             List<Aluno> aluno) {
-        this(ano, periodo, numeroDeVagas, disciplina, professor, horario);
+        this(ano, periodo, numeroDeVagas, disciplina, professor, aula);
         this.aluno = aluno;
     }
     
@@ -78,53 +78,47 @@ public class Turma {
         this.professor = professor;
     }
     
-    //***************** HORÁRIO ************************
-    public List<Horario> getHorario () {
-        return horario;
+    //***************** AULAS ************************
+    public List<Aula> getAula () {
+        return aula;
     }
     
-    public boolean contemHorario (Horario horario) {
-        return this.horario.contains(horario);
+    public Boolean adicionarAula (Aula aula) {
+        if (this.aula.contains(aula) == false)
+            return this.aula.add(aula);
+        return false;
     }
     
-    public void adicionarHorario (Horario horario) {
-        this.horario.add(horario);
+    public Boolean removerAula (Aula aula) {
+        return this.aula.remove(aula);
     }
     
-    public void removerHorario (Horario horario) {
-        this.horario.remove(horario);
+    public Aula retornaAula (Aula aula) {
+        return this.aula.get(this.aula.indexOf(aula));
     }
-    
-    public Horario retornaHorario (Horario horario) {
-        return this.horario.get(this.horario.indexOf(horario));
-    }
-    
-    /*public void setHorario (Horario horarioAntigo, Horario horarioNovo) {
-        Horario horarioNaLista = this.retornaHorario(horarioAntigo);
-        horarioNaLista = horarioNovo;
-    }*/
     
     //***************** ALUNOS *************************
     public List<Aluno> getAluno () {
         return aluno;
     }
     
-    public boolean contemAluno (Aluno aluno) {
-        return this.aluno.contains(aluno);
+    public Boolean adicaoDeAlunoValida (Aluno aluno) {
+        return (this.aluno.contains(aluno) == false || 
+                this.aluno.size() < this.numeroDeVagas);
     }
     
-    public boolean adicaoDeAlunoValida (Aluno aluno) {
-        return (this.contemAluno(aluno) || this.aluno.size() == this.numeroDeVagas);
+    public Boolean adicionarAluno (Aluno aluno) {
+        if (this.adicaoDeAlunoValida(aluno)) {
+            aluno.getTurma().add(this);
+            return this.aluno.add(aluno);
+        }
+        return false;
     }
     
-    public void adicionarAluno (Aluno aluno) {
-        aluno.getTurma().add(this);
-        this.aluno.add(aluno);
-    }
-    
-    public void removerAluno (Aluno aluno) {
-        aluno.getTurma().remove(this);
-        this.aluno.remove(aluno);
+    public Boolean removerAluno (Aluno aluno) {
+        if (this.aluno.remove(aluno))
+            return aluno.getTurma().remove(this);
+        return false;
     }
     
     //**************** ATIVIDADES *********************
@@ -132,28 +126,17 @@ public class Turma {
         return atividade;
     }
     
-    public boolean contemAtividade (Atividade atividade) {
-        return this.atividade.contains(atividade);
+    public Boolean adicionarAtividade (Atividade atividade) {
+        if (this.atividade.contains(atividade) == false)
+            return this.atividade.add(atividade);
+        return false;
     }
     
-    public void adicionarAtividade (Atividade atividade) {
-        this.atividade.add(atividade);
-    }
-    
-    public void removerAtividade (Atividade atividade) {
-        this.atividade.remove(atividade);
+    public Boolean removerAtividade (Atividade atividade) {
+        return this.atividade.remove(atividade);
     }
     
     public Atividade retornaAtividade (Atividade atividade) {
         return this.atividade.get(this.atividade.indexOf(atividade));
-    }
-    
-    /*public void setAtividade (Atividade atividadeAntiga, Atividade atividadeNova) {
-        Atividade atividadeNaLista = this.retornaAtividade(atividadeAntiga);
-        atividadeNaLista = atividadeNova;
-    }*/
-
-    public boolean ehIgual (Turma turma){
-        return (this == turma);
     }
 }

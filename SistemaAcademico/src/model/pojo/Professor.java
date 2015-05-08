@@ -52,18 +52,18 @@ public class Professor {
     public List<Disciplina> getDisciplina (){
         return disciplina;
     }
-    
-    public boolean contemDisciplina (Disciplina disciplina){
-        return this.disciplina.contains(disciplina);
-    }
      
-    public void adicionarDisciplina (Disciplina disciplina){
-        this.disciplina.add(disciplina);
-        disciplina.getProfessor().add(this);
+    public Boolean adicionarDisciplina (Disciplina disciplina){
+        if (this.disciplina.contains(disciplina) == false) {
+            disciplina.getProfessor().add(this);
+            return  this.disciplina.add(disciplina);
+        }
+        return false;
     }
     
-    public void removerDisciplina (Disciplina disciplina){
-        this.disciplina.remove(disciplina);
-        disciplina.getProfessor().remove(this);
+    public Boolean removerDisciplina (Disciplina disciplina){
+        if (this.disciplina.remove(disciplina))
+            return disciplina.getProfessor().remove(this);
+        return false;
     }
 }

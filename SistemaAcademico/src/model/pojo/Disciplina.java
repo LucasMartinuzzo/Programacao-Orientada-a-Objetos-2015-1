@@ -57,19 +57,13 @@ public class Disciplina {
         return turma;
     }
     
-    public boolean contemTurma (Turma turma) {
-        return this.turma.contains(turma);
+    public Boolean adicionarTurma (Turma turma) {
+        if (this.turma.contains(turma) == false)
+            return this.turma.add(turma);
+        return false;
     }
     
-    public boolean adicaoDeTurmaValida (Turma turma) {
-        return (this.contemTurma(turma));
-    }
-    
-    public void adicionarTurma (Turma turma) {
-        this.turma.add(turma);
-    }
-    
-    public void removerTurma (Turma turma) {
-        this.turma.remove(turma);
+    public Boolean removerTurma (Turma turma) {
+        return this.turma.remove(turma);
     }
 }

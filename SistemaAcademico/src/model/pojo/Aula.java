@@ -9,12 +9,12 @@ package model.pojo;
  *
  * @author JeanPablo
  */
-public class Horario {
+public class Aula {
     private String diaDaSemana;
     private String hora;
     private String local;
 
-    public Horario (String diaDaSemana, String hora, String local) {
+    public Aula (String diaDaSemana, String hora, String local) {
         this.diaDaSemana = diaDaSemana;
         this.hora = hora;
         this.local = local;
@@ -28,11 +28,11 @@ public class Horario {
         this.diaDaSemana = diaDaSemana;
     }
 
-    public String getHorario() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHorario(String hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

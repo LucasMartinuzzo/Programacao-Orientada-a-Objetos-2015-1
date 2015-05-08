@@ -65,10 +65,6 @@ public class Atividade {
     public String getTipo(){
         return tipo;
     }
-
-    public Boolean getNotasLancadas(){
-        return notasLancadas;
-    }
     
     public Turma getTurma(){
         return turma;
@@ -78,25 +74,29 @@ public class Atividade {
         return nota;
     }
     
+    public Boolean notasLancadas(){
+        return notasLancadas;
+    }
+    
     /*Pois o professor pode lançar duas notas de valores diferentes para uma
-    atividade para o mesmo aluno*/
-    public boolean adicaoValida(Nota nota) {
+    atividade para o mesmo aluno ou tentar lançar uma nota já lançada.*/
+    public Boolean adicaoValida(Nota nota) {
+        if (this.notasLancadas)
+            return false;
         for (Nota notaConsultada: this.nota) {
-            if (notaConsultada.getAluno().ehIgual(nota.getAluno()))
+            if (notaConsultada.getAluno().equals(nota.getAluno()))
                 return false;
         }
         return true;
     }
     
-    public void adicionaNota(Nota nota){
-        this.nota.add(nota);
+    public Boolean adicionaNota(Nota nota){
+        if (this.adicaoValida(nota))
+            return this.nota.add(nota);
+        return false;
     }
     
     public Nota retornaNota (Nota nota) {
         return this.nota.get(this.nota.indexOf(nota));
-    }
-    
-    public boolean ehIgual(Atividade atividade) {
-        return (this == atividade);
     }
 }
