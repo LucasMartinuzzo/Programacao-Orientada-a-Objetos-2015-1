@@ -13,7 +13,7 @@ import java.util.List;
 public class Aluno {
     private String nome;
     private String cpf;
-    private List<Turma> turma; 
+    private List<Turma> turma;  
     private List<Falta> falta;
     private List<Nota> nota;
 
@@ -46,9 +46,14 @@ public class Aluno {
         return falta;
     }
     
+    public List<Nota> getNota(){
+        return nota;
+    }
+    
     /*Pois o professor pode lançar duas faltas de valores diferentes para um
     aluno na mesma turma*/
-    public Boolean adicaoValida(Falta falta) {
+    /*
+    public boolean adicaoValida(Falta falta) {
         for (Falta faltaConsultada: this.falta) {
             if (faltaConsultada.getTurma().equals(falta.getTurma()))
                 return false;
@@ -64,16 +69,17 @@ public class Aluno {
 
     public List<Nota> getNota() {
         return nota;
-    }
+    }*/
     
     /*Pois o professor pode lançar duas notas de valores diferentes para um
     aluno para a mesma atividade*/
-    public Boolean adicaoValida(Nota nota) {
+   /*
+    public boolean adicaoValida(Nota nota) {
         for (Nota notaConsultada: this.nota) {
             if (notaConsultada.getAtividade().equals(nota.getAtividade()))
                 return false;
         }
-        return true;
+        return true; 
     }
     
     public Boolean adicionaNota(Nota nota){
@@ -84,13 +90,25 @@ public class Aluno {
     
     public Nota retornaNota (Nota nota) {
         return this.nota.get(this.nota.indexOf(nota));
-    }
+    }*/
     
+    /*public void setNota (Nota notaAntiga, Nota notaNova) {
+        Nota notaNaLista = this.retornaNota(notaAntiga);
+        notaNaLista = notaNova;
+    }*/
+    /*
     public Double NotaFinal(Turma turma){
         Double somaNotas = 0.0;
         for(Nota notaConsultada: this.nota)
             if(notaConsultada.getAtividade().getTurma().equals(turma))
                 somaNotas += notaConsultada.getNota();
-        return somaNotas;
+                contaNotas++;
+            }
+        }
+        return (somaNotas/contaNotas);
+     }
+*/
+    public boolean ehIgual(Aluno aluno) {
+        return (this == aluno);
     }
 }
