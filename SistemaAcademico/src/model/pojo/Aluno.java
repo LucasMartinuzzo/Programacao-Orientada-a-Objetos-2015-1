@@ -73,7 +73,7 @@ public class Aluno {
             if (notaConsultada.getAtividade().equals(nota.getAtividade()))
                 return false;
         }
-        return true;
+        return true; 
     }
     
     public Boolean adicionaNota(Nota nota){
