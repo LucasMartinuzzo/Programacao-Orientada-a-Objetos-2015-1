@@ -28,7 +28,7 @@ public class AlunoDaoImpl implements AlunoDao {
     
     @Override
     public Boolean salvar (Aluno aluno) {
-        if (!this.contemAluno(aluno.getCpf())){
+        if (this.indiceAluno(aluno.getCpf()) == -1 ){
            this.listaAluno.add(aluno);
            Collections.sort(this.listaAluno);
            return true;
@@ -42,15 +42,14 @@ public class AlunoDaoImpl implements AlunoDao {
     }
     
     @Override
-    public Boolean contemAluno (String cpf) {
-        //ORDENAR LISTA DE TURMAS PELO ID E APLICAR BUSCA BINÁRIA BASEADA NESTE.
-        return false;
+    public int indiceAluno (String cpf) {
+        return Collections.binarySearch(this.listaAluno, new Aluno(null, cpf));
     }
     
      @Override
-    public Turma obterAluno (String cpf) {
-        if (this.contemAluno(cpf))
-            return this.listaAluno.get(this.listaAluno.indexOf(/*?????*/));
+    public Aluno obterAluno (String cpf) {
+        if (this.indiceAluno(cpf) != -1)
+            return this.listaAluno.get(this.indiceAluno(cpf));
         return null;
     }
     
@@ -87,7 +86,4 @@ public class AlunoDaoImpl implements AlunoDao {
                 somaNotas += notaConsultada.getNota();
     return somaNotas;
     }
-    
-    
-    
 }

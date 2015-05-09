@@ -8,9 +8,9 @@ package model.pojo;
 import java.util.List;     
 /**
  *
- * @author JeanPablo
+ * @author Filipe
  */
-public class Aluno implements Comparable{
+public class Aluno implements Comparable<Aluno>{
     private String nome;
     private String cpf;
     private List<Turma> turma;  
@@ -51,69 +51,10 @@ public class Aluno implements Comparable{
     }
     
     @Override
-    public int compareTo (Object ObjAluno) {
-        Aluno aluno = (Aluno) ObjAluno;
+    public int compareTo (Aluno aluno) {
         return this.cpf.compareTo(aluno.cpf);
     }
     
-    /*Pois o professor pode lançar duas faltas de valores diferentes para um
-    aluno na mesma turma*/
-    /*
-    public boolean adicaoValida(Falta falta) {
-        for (Falta faltaConsultada: this.falta) {
-            if (faltaConsultada.getTurma().equals(falta.getTurma()))
-                return false;
-        }
-        return true;
-    }
-    
-    public Boolean adicionaFalta(Falta falta){
-        if (this.adicaoValida(falta))
-            return this.falta.add(falta);
-        return false;
-    }
-
-    public List<Nota> getNota() {
-        return nota;
-    }*/
-    
-    /*Pois o professor pode lançar duas notas de valores diferentes para um
-    aluno para a mesma atividade*/
-   /*
-    public boolean adicaoValida(Nota nota) {
-        for (Nota notaConsultada: this.nota) {
-            if (notaConsultada.getAtividade().equals(nota.getAtividade()))
-                return false;
-        }
-        return true; 
-    }
-    
-    public Boolean adicionaNota(Nota nota){
-        if (this.adicaoValida(nota))
-            return this.nota.add(nota);
-        return false;
-    }
-    
-    public Nota retornaNota (Nota nota) {
-        return this.nota.get(this.nota.indexOf(nota));
-    }*/
-    
-    /*public void setNota (Nota notaAntiga, Nota notaNova) {
-        Nota notaNaLista = this.retornaNota(notaAntiga);
-        notaNaLista = notaNova;
-    }*/
-    /*
-    public Double NotaFinal(Turma turma){
-        Double somaNotas = 0.0;
-        for(Nota notaConsultada: this.nota)
-            if(notaConsultada.getAtividade().getTurma().equals(turma))
-                somaNotas += notaConsultada.getNota();
-                contaNotas++;
-            }
-        }
-        return (somaNotas/contaNotas);
-     }
-*/
     public boolean ehIgual(Aluno aluno) {
         return (this == aluno);
     }

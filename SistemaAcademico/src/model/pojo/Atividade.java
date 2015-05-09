@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Mônicka
  */
-public class Atividade implements Comparable{
+public class Atividade implements Comparable<Atividade>{
     private String id;
     private String nome;
     private String tipo;
@@ -86,30 +86,7 @@ public class Atividade implements Comparable{
     }
     
     @Override
-    public int compareTo (Object ObjAtividade) {
-        Atividade atividade = (Atividade) ObjAtividade;
+    public int compareTo (Atividade atividade) {
         return this.id.compareTo(atividade.id);
     }
-    
-    /*Pois o professor pode lançar duas notas de valores diferentes para uma
-    atividade para o mesmo aluno ou tentar lançar uma nota já lançada.*/
-    /*public Boolean adicaoValida(Nota nota) {
-        if (this.notasLancadas)
-            return false;
-        for (Nota notaConsultada: this.nota) {
-            if (notaConsultada.getAluno().equals(nota.getAluno()))
-                return false;
-        }
-        return true;
-    }
-    
-    public Boolean adicionaNota(Nota nota){
-        if (this.adicaoValida(nota))
-            return this.nota.add(nota);
-        return false;
-    }
-    
-    public Nota retornaNota (Nota nota) {
-        return this.nota.get(this.nota.indexOf(nota));
-    }*/
 }
