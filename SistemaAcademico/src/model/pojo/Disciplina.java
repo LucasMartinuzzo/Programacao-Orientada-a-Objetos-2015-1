@@ -51,19 +51,7 @@ public class Disciplina {
     public List<Professor> getProfessor(){
         return professor;
     }
-    
-    //***************** Turma *************************
-    public List<Turma> getTurma () {
+    public List<Turma> getTurma(){
         return turma;
-    }
-    
-    public Boolean adicionarTurma (Turma turma) {
-        if (this.turma.contains(turma) == false)
-            return this.turma.add(turma);
-        return false;
-    }
-    
-    public Boolean removerTurma (Turma turma) {
-        return this.turma.remove(turma);
     }
 }
