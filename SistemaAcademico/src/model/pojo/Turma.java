@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author JeanPablo
  */
-public class Turma implements Comparable {
+public class Turma implements Comparable<Turma> {
     private String id;
     private Integer ano;
     private Integer periodo;
@@ -97,8 +97,7 @@ public class Turma implements Comparable {
     }
     
     @Override
-    public int compareTo (Object ObjTurma) {
-        Turma turma = (Turma) ObjTurma;
+    public int compareTo (Turma turma) {
         return this.id.compareTo(turma.id);
     }
 }

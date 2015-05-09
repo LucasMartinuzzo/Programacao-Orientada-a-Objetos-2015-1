@@ -24,7 +24,7 @@ public class TurmaDaoImpl implements TurmaDao {
     
     @Override
     public Boolean salvar (Turma turma) {
-        if (!this.contemTurma(turma.getId())) {
+        if (this.indiceTurma(turma.getId()) == -1) {
             this.listaTurma.add(turma);
             Collections.sort(this.listaTurma);
             return true;
@@ -38,15 +38,15 @@ public class TurmaDaoImpl implements TurmaDao {
     }
     
     @Override
-    public Boolean contemTurma (String id) {
-        //ORDENAR LISTA DE TURMAS PELO ID E APLICAR BUSCA BINÁRIA BASEADA NESTE.
-        return false;
+    public int indiceTurma (String id) {
+        return Collections.binarySearch(this.listaTurma, new Turma (id, null, 
+                null, null, null, null, null));
     }
     
     @Override
     public Turma obterTurma (String id) {
-        if (this.contemTurma(id))
-            return this.listaTurma.get(this.listaTurma.indexOf(/*?????*/));
+        if (this.indiceTurma(id) != -1)
+            return this.listaTurma.get(this.indiceTurma(id));
         return null;
     }
     
