@@ -5,7 +5,9 @@
  */
 package model.dao;
 
+import java.util.Collections;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import model.pojo.Atividade;
 import model.pojo.Nota;
@@ -26,17 +28,18 @@ public class AtividadeDaoImpl implements AtividadeDao{
     
     @Override
     public Boolean salvar(Atividade atividade) {
-        if (!this.contemAtividade(atividade.getId()))
-           return this.listaAtividade.add(atividade);
+        if (!this.contemAtividade(atividade.getId())){
+            this.listaAtividade.add(atividade);
+            Collections.sort(this.listaAtividade);
+            return true;
+        }
         return false;
     }
     
     
     @Override
     public Boolean remover(Atividade atividade){
-        if(!this.contemAtividade(atividade.getId()))
-            return this.listaAtividade.remove(atividade);
-        return false;
+        return this.listaAtividade.remove(atividade);
     }
     
     

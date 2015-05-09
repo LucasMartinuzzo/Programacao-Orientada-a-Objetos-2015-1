@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 import model.pojo.Aluno;
@@ -27,16 +28,17 @@ public class AlunoDaoImpl implements AlunoDao {
     
     @Override
     public Boolean salvar (Aluno aluno) {
-        if (!this.contemAluno(aluno.getCpf()))
-           return this.listaAluno.add(aluno);
+        if (!this.contemAluno(aluno.getCpf())){
+           this.listaAluno.add(aluno);
+           Collections.sort(this.listaAluno);
+           return true;
+        }
         return false;
     }
     
     @Override
     public Boolean remover(Aluno aluno){
-        if(this.contemAluno(aluno.getCpf())) 
-            return this.listaAluno.remove(aluno);
-        return false;
+        return this.listaAluno.remove(aluno);
     }
     
     @Override

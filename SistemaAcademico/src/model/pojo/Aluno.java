@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author JeanPablo
  */
-public class Aluno {
+public class Aluno implements Comparable{
     private String nome;
     private String cpf;
     private List<Turma> turma;  
@@ -48,6 +48,12 @@ public class Aluno {
     
     public List<Nota> getNota(){
         return nota;
+    }
+    
+    @Override
+    public int compareTo (Object ObjAluno) {
+        Aluno aluno = (Aluno) ObjAluno;
+        return this.cpf.compareTo(aluno.cpf);
     }
     
     /*Pois o professor pode lançar duas faltas de valores diferentes para um
