@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.pojo.Aluno;
 import model.pojo.Nota;
@@ -18,6 +19,11 @@ import model.pojo.Turma;
 public class AlunoDaoImpl implements AlunoDao {
     
     private List<Aluno> listaAluno;
+    
+    public AlunoDaoImpl(){
+        this.listaAluno = new ArrayList<>();
+    }
+    
     
     @Override
     public Boolean salvar (Aluno aluno) {
