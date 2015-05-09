@@ -47,23 +47,7 @@ public class Professor {
         this.departamento = departamento;
     }
     
-    //**********************DISCIPLINAS*********************
-    
     public List<Disciplina> getDisciplina (){
         return disciplina;
-    }
-     
-    public Boolean adicionarDisciplina (Disciplina disciplina){
-        if (this.disciplina.contains(disciplina) == false) {
-            disciplina.getProfessor().add(this);
-            return  this.disciplina.add(disciplina);
-        }
-        return false;
-    }
-    
-    public Boolean removerDisciplina (Disciplina disciplina){
-        if (this.disciplina.remove(disciplina))
-            return disciplina.getProfessor().remove(this);
-        return false;
     }
 }
