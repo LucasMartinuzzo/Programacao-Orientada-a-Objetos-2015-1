@@ -16,8 +16,10 @@ import model.pojo.Professor;
  */
 
 public interface ProfessorDao {
-    public Boolean adicionarDisciplina (Disciplina disciplina);
-    public Boolean removerDisciplina (Disciplina disciplina); 
-    public void carregar();
-    public void salvar();
+    Boolean salvar (Professor professor);
+    Boolean contemProfessor (String cpf);
+    Professor obterProfessor (String cpf);
+    List<Professor> obterTodos ();
+    Boolean adicionarDisciplina (Disciplina disciplina);
+    Boolean removerDisciplina (Disciplina disciplina); 
 }
