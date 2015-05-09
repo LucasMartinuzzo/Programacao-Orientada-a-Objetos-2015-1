@@ -6,7 +6,6 @@
 package model.dao;
 
 import java.util.List;
-//import javafx.collections.transformation.SortedList;
 import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Aula;
@@ -17,6 +16,8 @@ import model.pojo.Turma;
  * @author JeanPablo
  */
 public class TurmaDaoImpl implements TurmaDao {
+    
+    /*TRATAR ENTRADAS NULAS*/
     
     private List<Turma> listaTurma;
     
