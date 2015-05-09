@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Pedro
  */
-public class Professor implements Comparable{
+public class Professor implements Comparable<Professor>{
     private String nome;
     private String cpf;
     private String departamento;
@@ -52,8 +52,7 @@ public class Professor implements Comparable{
     }
     
     @Override
-    public int compareTo (Object ObjProfessor){
-        Professor professor = (Professor) ObjProfessor;
+    public int compareTo (Professor professor){
         return this.cpf.compareTo(professor.cpf);
     }
 }
