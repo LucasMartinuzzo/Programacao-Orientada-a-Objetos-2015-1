@@ -17,6 +17,7 @@ import model.pojo.Turma;
  */
 public interface TurmaDao {
     Boolean salvar (Turma turma);
+    Boolean remover (Turma turma);
     Boolean contemTurma (String id);
     Turma obterTurma (String id);
     List<Turma> obterTodas ();

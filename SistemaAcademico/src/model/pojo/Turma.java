@@ -11,14 +11,14 @@ import java.util.List;
  *
  * @author JeanPablo
  */
-public class Turma {
+public class Turma implements Comparable {
     private String id;
     private Integer ano;
     private Integer periodo;
     private Integer numeroDeVagas;
     private Disciplina disciplina;
     private Professor professor;
-    public List<Aula> aula;
+    private List<Aula> aula;
     private List<Aluno> aluno;
     private List<Atividade> atividade;
     
@@ -94,5 +94,11 @@ public class Turma {
     
     public List<Atividade> getAtividade () {
         return atividade;
+    }
+    
+    @Override
+    public int compareTo (Object ObjTurma) {
+        Turma turma = (Turma) ObjTurma;
+        return this.id.compareTo(turma.id);
     }
 }
