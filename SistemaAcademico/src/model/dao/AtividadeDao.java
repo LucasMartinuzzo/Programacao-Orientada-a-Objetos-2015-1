@@ -5,7 +5,10 @@
  */
 package model.dao;
 
+import java.util.List;
+import model.pojo.Atividade;
 import model.pojo.Nota;
+import model.pojo.Turma;
 
 /**
  *
@@ -13,8 +16,13 @@ import model.pojo.Nota;
  */
 public interface AtividadeDao {
     
-    void constarLancamentoDeNotas();
-    Boolean adicaoValida(Nota nota);
-    Boolean adicionaNota(Nota nota);
-    Nota retornaNota (Nota nota);
+    List<Atividade> obterTodas();
+    Turma obterAtividade(String id);
+    Boolean contemAtividade(String id);
+    Boolean remover(Atividade atividade);
+    Boolean salvar(Atividade atividade);
+    void constarLancamentoDeNotas(Atividade atividade);
+    Boolean adicaoValida(Atividade atividade, Nota nota);
+    Boolean adicionaNota(Atividade atividade, Nota nota);
+    Nota retornaNota (Atividade atividade, Nota nota);
 }

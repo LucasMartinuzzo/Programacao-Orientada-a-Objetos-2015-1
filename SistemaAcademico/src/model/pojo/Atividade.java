@@ -12,7 +12,8 @@ import java.util.List;
  *
  * @author Mônicka
  */
-public class Atividade {
+public class Atividade implements Comparable{
+    private String id;
     private String nome;
     private String tipo;
     private Calendar data;
@@ -20,14 +21,20 @@ public class Atividade {
     private Boolean notasLancadas;
     private Turma turma;
     private List<Nota> nota;
+    
   
-    public Atividade(String nome, String tipo, Calendar data, Double valor, Turma turma){
+    public Atividade(String id, String nome, String tipo, Calendar data, Double valor, Turma turma){
+        this.id = id;
         this.data = data;
         this.nome = nome;
         this.tipo = tipo;
         this.valor = valor;
         this.notasLancadas = false;
         this.turma = turma;
+    }
+    
+    public String getId () {
+        return id;
     }
     
     public void setNome(String nome){
@@ -76,6 +83,12 @@ public class Atividade {
     
     public Boolean notasLancadas(){
         return notasLancadas;
+    }
+    
+    @Override
+    public int compareTo (Object ObjAtividade) {
+        Atividade atividade = (Atividade) ObjAtividade;
+        return this.id.compareTo(atividade.id);
     }
     
     /*Pois o professor pode lançar duas notas de valores diferentes para uma
