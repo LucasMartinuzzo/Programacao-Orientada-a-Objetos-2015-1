@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.List;
 import model.pojo.Disciplina;
 import model.pojo.Professor;
 
@@ -13,10 +14,38 @@ import model.pojo.Professor;
  * @author Pedro
  */
 public class ProfessorDaoImpl implements ProfessorDao{
-    private Professor professor;
+    private List<Professor> listaProfessor;
     
     @Override
-    public Boolean adicionarDisciplina (Disciplina disciplina){
+    public Boolean salvar (Professor professor){
+        if(!(this.contemProfessor(professor.getCpf())))
+            return this.listaProfessor.add(professor);
+        return false;
+    }
+    
+    @Override
+    public Boolean remover (Professor professor){
+        return this.listaProfessor.remove(professor);
+    }
+    
+    @Override
+    public Boolean contemProfessor (String cpf){
+    //IMPLEMENTAR MAIS TARDE
+        return false;
+    }
+    
+    @Override
+    public Professor obterProfessor (String cpf){
+    //IMPLEMENTAR MAIS TARDE    
+    }
+    
+    @Override
+    public List<Professor> obterTodos (){
+        return listaProfessor;
+    }
+    
+    @Override
+    public Boolean adicionarDisciplina (Professor professor, Disciplina disciplina){
         if (!(professor.getDisciplina().contains(disciplina))) {
             disciplina.getProfessor().add(professor);
             return professor.getDisciplina().add(disciplina);
@@ -25,21 +54,8 @@ public class ProfessorDaoImpl implements ProfessorDao{
     }
     
     @Override
-    public Boolean removerDisciplina (Disciplina disciplina){
-        if (professor.getDisciplina().contains(disciplina)){
-            professor.getDisciplina().remove(disciplina);
-            return disciplina.getProfessor().remove(professor);
-        }
-        return false;
-    }
-        
-    @Override
-    public void carregar (){
-    //IMPLEMENTAR MAIS TARDE
-    }
-    
-    @Override
-    public void salvar (){
-    //IMPLEMENTAR MAIS TARDE
+    public Boolean removerDisciplina (Professor professor, Disciplina disciplina){
+        professor.getDisciplina().remove(disciplina);
+        return disciplina.getProfessor().remove(professor);
     }
 }
