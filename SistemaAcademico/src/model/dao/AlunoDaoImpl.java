@@ -14,7 +14,7 @@ import model.pojo.Turma;
  *
  * @author Filipe
  */
-public class AlunoDaoImple implements AlunoDao {
+public class AlunoDaoImpl implements AlunoDao {
     
     private Aluno aluno;
    // private List<Turma> turma; 
