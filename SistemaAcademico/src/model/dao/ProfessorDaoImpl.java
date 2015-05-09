@@ -19,7 +19,7 @@ public class ProfessorDaoImpl implements ProfessorDao{
     
     @Override
     public Boolean salvar (Professor professor){
-        if(!(this.contemProfessor(professor.getCpf()))){
+        if(this.indiceProfessor(professor.getCpf()) == -1){
             this.listaProfessor.add(professor);
             Collections.sort(this.listaProfessor);
             return true;
@@ -33,14 +33,15 @@ public class ProfessorDaoImpl implements ProfessorDao{
     }
     
     @Override
-    public Boolean contemProfessor (String cpf){
-    //IMPLEMENTAR MAIS TARDE
-        return false;
+    public int indiceProfessor (String cpf){
+        return Collections.binarySearch(listaProfessor, new Professor(null, cpf, null));
     }
     
     @Override
     public Professor obterProfessor (String cpf){
-    //IMPLEMENTAR MAIS TARDE    
+        if (this.indiceProfessor(cpf) != -1)
+            return this.listaProfessor.get(this.indiceProfessor(cpf));
+        return null;
     }
     
     @Override
@@ -63,3 +64,4 @@ public class ProfessorDaoImpl implements ProfessorDao{
         return disciplina.getProfessor().remove(professor);
     }
 }
+
