@@ -14,11 +14,11 @@ import model.pojo.Disciplina;
  * @author Lucas
  */
 public interface DisciplinaDao {
-    int indiceDisciplina (String nome);
+    Integer indiceDisciplina(String nome);
     Disciplina obterDisciplina(String nome);
+    List<Disciplina> obterTodos();
     Boolean salvar(Disciplina disciplina);
-    List<Disciplina> obterTodos ();
     Boolean remover(Disciplina disciplina);
-    Boolean adicionarTurma (Turma turma);
-    Boolean removerTurma (Turma turma);
+    Boolean adicionarTurma(Turma turma);
+    Boolean removerTurma(Turma turma);
 }
