@@ -17,9 +17,9 @@ import model.pojo.Turma;
 public interface AlunoDao {
 
   Boolean salvar (Aluno aluno);
-  Turma obterAluno (String cpf);
+  Aluno obterAluno (String cpf);
   Boolean remover(Aluno aluno);
-  Boolean contemAluno (String cpf);
+  int indiceAluno (String cpf);
   List<Aluno> obterTodos ();
   Boolean adicaoValida(Aluno aluno, Nota nota);
   void adicionaNota(Aluno aluno, Nota nota);

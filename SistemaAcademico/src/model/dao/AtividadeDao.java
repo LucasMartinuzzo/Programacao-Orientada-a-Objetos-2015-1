@@ -8,7 +8,6 @@ package model.dao;
 import java.util.List;
 import model.pojo.Atividade;
 import model.pojo.Nota;
-import model.pojo.Turma;
 
 /**
  *
@@ -17,8 +16,8 @@ import model.pojo.Turma;
 public interface AtividadeDao {
     
     List<Atividade> obterTodas();
-    Turma obterAtividade(String id);
-    Boolean contemAtividade(String id);
+    Atividade obterAtividade(String id);
+    int indiceAtividade(String id);
     Boolean remover(Atividade atividade);
     Boolean salvar(Atividade atividade);
     void constarLancamentoDeNotas(Atividade atividade);
