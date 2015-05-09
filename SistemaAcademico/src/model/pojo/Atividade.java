@@ -52,11 +52,7 @@ public class Atividade implements Comparable<Atividade>{
     public void setValor(Double valor){
         this.valor = valor;
     }
-    
-   /* public void constarLancamentoDeNotas(){
-        this.notasLancadas = true;
-    }*/
-    
+        
     public String getNome(){
         return nome;
     }
