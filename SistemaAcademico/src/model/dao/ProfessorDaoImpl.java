@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.Collections;
 import java.util.List;
 import model.pojo.Disciplina;
 import model.pojo.Professor;
@@ -18,8 +19,11 @@ public class ProfessorDaoImpl implements ProfessorDao{
     
     @Override
     public Boolean salvar (Professor professor){
-        if(!(this.contemProfessor(professor.getCpf())))
-            return this.listaProfessor.add(professor);
+        if(!(this.contemProfessor(professor.getCpf()))){
+            this.listaProfessor.add(professor);
+            Collections.sort(this.listaProfessor);
+            return true;
+        }
         return false;
     }
     
