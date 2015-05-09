@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.List;
 import model.pojo.Aluno;
 import model.pojo.Nota;
 import model.pojo.Turma;
@@ -16,73 +17,69 @@ import model.pojo.Turma;
  */
 public class AlunoDaoImpl implements AlunoDao {
     
-    private Aluno aluno;
-   // private List<Turma> turma; 
-   // private List<Falta> falta;
-    //private List<Nota> nota;
+    private List<Aluno> listaAluno;
+    
+    @Override
+    public Boolean salvar (Aluno aluno) {
+        if (!this.contemAluno(aluno.getCpf()))
+           return this.listaAluno.add(aluno);
+        return false;
+    }
+    
+    @Override
+    public Boolean remover(Aluno aluno){
+        if(this.contemAluno(aluno.getCpf())) 
+            return this.listaAluno.remove(aluno);
+        return false;
+    }
+    
+    @Override
+    public Boolean contemAluno (String cpf) {
+        //ORDENAR LISTA DE TURMAS PELO ID E APLICAR BUSCA BINÁRIA BASEADA NESTE.
+        return false;
+    }
+    
+     @Override
+    public Turma obterAluno (String cpf) {
+        if (this.contemAluno(cpf))
+            return this.listaAluno.get(this.listaAluno.indexOf(/*?????*/));
+        return null;
+    }
+    
+    @Override
+    public List<Aluno> obterTodos () {
+        return listaAluno;
+    }
     
     /*Pois o professor pode lançar duas notas de valores diferentes para um
     aluno para a mesma atividade*/
     @Override
-    public boolean adicaoValida(Nota nota) {
-        for (Nota notaConsultada: this.aluno.getNota()) {
-            if (notaConsultada.getAtividade().equals(nota.getAtividade()))
-                    return false;
-        }
-        return true; 
-    }
-//    @Override
-//    public boolean adicaoValida(Aluno aluno, Nota nota) {
-//        for (Aluno aluno1: this.listaAluno) {
-//                if (aluno1.getNota().equals(nota))
-//                    return false;
-//        }
-//        return true;
-//    }
-    @Override
-    public void adicionaNota(Nota nota){
-        this.aluno.getNota().add(nota);
-    }
-//    @Override
-//        public void adicionaNota(Aluno aluno, Nota nota){
-//            this.listaAluno.get(this.listaAluno.indexOf(aluno)).getNota().add(nota);
-//    }
-    
-    @Override
-    public Nota retornaNota (Nota nota) {
-        return this.aluno.getNota().get(this.aluno.getNota().indexOf(nota)); // elemento nota na lista de nota 
+    public Boolean adicaoValida(Aluno aluno, Nota nota) {
+        return (!aluno.getNota().contains(nota));
     }
     
-//    @Override
-//    public Nota retornaNota (Aluno aluno, Nota nota ) {
-//            if (this.listaAluno.get(this.listaAluno.indexOf(aluno)).getNota().contains(nota))
-//                return this.listaAluno.get(this.listaAluno.indexOf(aluno)).getNota()
-//                       .get(this.listaAluno.get(this.listaAluno.indexOf(aluno))
-//                       .getNota().indexOf(nota));       
-//            return null;
-//    }
-        
-//    public void setNota (Nota notaAntiga, Nota notaNova) {
-//        Nota notaNaLista = this.retornaNota(notaAntiga);
-//        notaNaLista = notaNova;
-//    }
     @Override
-    public Double NotaFinal(Turma turma){
+    public void adicionaNota(Aluno aluno, Nota nota){
+        aluno.getNota().add(nota);
+    }
+    
+    @Override
+    public Nota retornaNota (Aluno aluno, Nota nota) {
+       if(aluno.getNota().contains(nota))
+            return aluno.getNota().get(aluno.getNota().indexOf(nota)); // elemento nota na lista de nota 
+       else
+            return null; 
+    }
+
+    @Override
+    public Double NotaFinal(Aluno aluno, Turma turma){
         Double somaNotas = 0.0;
-        for(Nota notaConsultada: this.aluno.getNota())
+        for(Nota notaConsultada: aluno.getNota())
             if(notaConsultada.getAtividade().getTurma().equals(turma))
                 somaNotas += notaConsultada.getNota();
-                
-        
-        return somaNotas;
-     }
-//    @Override
-//    public Double NotaFinal(Aluno aluno, Turma turma){
-//        Double somaNotas = 0.0;
-//        if(this.listaAluno.contains(aluno))
-//            for(Nota notaConsultada: this.listaAluno.get(this.listaAluno.indexOf(aluno)).getNota())
-//                if(notaConsultada.getAtividade().getTurma().ehIgual(turma))
-//                    somaNotas += notaConsultada.getNota();
-//        return somaNotas;
-//     }
+    return somaNotas;
+    }
+    
+    
+    
 }

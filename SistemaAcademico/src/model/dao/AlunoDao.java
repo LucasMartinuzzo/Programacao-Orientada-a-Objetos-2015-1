@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.List;
 import model.pojo.Aluno;
 import model.pojo.Nota;
 import model.pojo.Turma;
@@ -14,8 +15,15 @@ import model.pojo.Turma;
  * @author Filipe
  */
 public interface AlunoDao {
-  public boolean adicaoValida(Nota nota);
-  public void adicionaNota(Nota nota);
-  public Nota retornaNota (Nota nota);
-  public Double NotaFinal(Turma turma);
- }
+
+  Boolean salvar (Aluno aluno);
+  Turma obterAluno (String cpf);
+  Boolean remover(Aluno aluno);
+  Boolean contemAluno (String cpf);
+  List<Aluno> obterTodos ();
+  Boolean adicaoValida(Aluno aluno, Nota nota);
+  void adicionaNota(Aluno aluno, Nota nota);
+  Nota retornaNota (Aluno aluno, Nota nota);
+  Double NotaFinal(Aluno aluno, Turma turma);
+ 
+}
