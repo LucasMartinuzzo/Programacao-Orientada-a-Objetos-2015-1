@@ -12,6 +12,7 @@ import java.util.List;
  * @author JeanPablo
  */
 public class Turma {
+    private String id;
     private Integer ano;
     private Integer periodo;
     private Integer numeroDeVagas;
@@ -21,8 +22,9 @@ public class Turma {
     private List<Aluno> aluno;
     private List<Atividade> atividade;
     
-    public Turma (Integer ano, Integer periodo, Integer numeroDeVagas,
+    public Turma (String id, Integer ano, Integer periodo, Integer numeroDeVagas,
             Disciplina disciplina, Professor professor, List<Aula> aula) {
+        this.id = id;
         this.ano = ano;
         this.periodo = periodo;
         this.numeroDeVagas = numeroDeVagas;
@@ -31,11 +33,15 @@ public class Turma {
         this.aula = aula;
     }
     
-    public Turma (Integer ano, Integer periodo, Integer numeroDeVagas,
+    public Turma (String id, Integer ano, Integer periodo, Integer numeroDeVagas,
             Disciplina disciplina, Professor professor, List<Aula> aula,
             List<Aluno> aluno) {
-        this(ano, periodo, numeroDeVagas, disciplina, professor, aula);
+        this(id, ano, periodo, numeroDeVagas, disciplina, professor, aula);
         this.aluno = aluno;
+    }
+    
+    public String getId () {
+        return id;
     }
     
     public Integer getAno () {

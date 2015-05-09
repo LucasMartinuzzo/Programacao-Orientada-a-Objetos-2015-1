@@ -5,22 +5,28 @@
  */
 package model.dao;
 
+import java.util.List;
 import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Aula;
+import model.pojo.Turma;
 
 /**
  *
  * @author JeanPablo
  */
 public interface TurmaDao {
-    Boolean adicionarAula (Aula aula);
-    Boolean removerAula (Aula aula);
-    Aula retornaAula (Aula aula);
-    Boolean adicaoDeAlunoValida (Aluno aluno);
-    Boolean adicionarAluno (Aluno aluno);
-    Boolean removerAluno (Aluno aluno);
-    Boolean adicionarAtividade (Atividade atividade);
-    Boolean removerAtividade (Atividade atividade);
-    Atividade retornaAtividade (Atividade atividade);
+    Boolean salvar (Turma turma);
+    Boolean contemTurma (String id);
+    Turma obterTurma (String id);
+    List<Turma> obterTodas ();
+    Boolean adicionarAula (Turma turma, Aula aula);
+    Boolean removerAula (Turma turma, Aula aula);
+    Aula retornaAula (Turma turma, Aula aula);
+    Boolean adicaoDeAlunoValida (Turma turma, Aluno aluno);
+    Boolean adicionarAluno (Turma turma, Aluno aluno);
+    Boolean removerAluno (Turma turma, Aluno aluno);
+    Boolean adicionarAtividade (Turma turma, Atividade atividade);
+    Boolean removerAtividade (Turma turma, Atividade atividade);
+    Atividade retornaAtividade (Turma turma, Atividade atividade);
 }
