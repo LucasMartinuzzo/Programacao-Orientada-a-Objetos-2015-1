@@ -18,7 +18,7 @@ public class DisciplinaDaoImpl implements DisciplinaDao{
     private List<Disciplina> listaDisciplina;
     
     @Override
-    public int indiceDisciplina (String nome){
+    public Integer indiceDisciplina (String nome){
         return Collections.binarySearch(listaDisciplina, new Disciplina(nome, null, null));
     }
     
@@ -27,6 +27,11 @@ public class DisciplinaDaoImpl implements DisciplinaDao{
         if (this.indiceDisciplina(nome) != -1)
             return this.listaDisciplina.get(this.indiceDisciplina(nome));
         return null;
+    }
+    
+    @Override
+    public List<Disciplina> obterTodos (){
+        return listaDisciplina;
     }
     
     @Override
@@ -42,11 +47,6 @@ public class DisciplinaDaoImpl implements DisciplinaDao{
     @Override
     public Boolean remover(Disciplina disciplina){
         return listaDisciplina.remove(disciplina);
-    }
-    
-    @Override
-    public List<Disciplina> obterTodos (){
-        return listaDisciplina;
     }
     
     @Override
