@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.List;
 import model.pojo.Atividade;
 import model.pojo.Nota;
 
@@ -14,11 +15,11 @@ import model.pojo.Nota;
  */
 public class AtividadeDaoImpl implements AtividadeDao{
     
-    private Atividade atividade;
+    private List<Atividade> atividade;
     
     @Override
-    public void constarLancamentoDeNotas(){
-        Boolean notasLancadas = this.atividade.notasLancadas();
+    public void constarLancamentoDeNotas(Atividade atividade){
+        Boolean notasLancadas = atividade.notasLancadas();
         notasLancadas = true;
     }
 
@@ -27,7 +28,7 @@ public class AtividadeDaoImpl implements AtividadeDao{
     atividade para o mesmo aluno ou tentar lançar uma nota já lançada.*/
     @Override
     public Boolean adicaoValida(Nota nota) {
-        if (this.atividade.notasLancadas())
+        if (atividade.notasLancadas())
             return false;
         for (Nota notaConsultada: this.atividade.getNota()) {
             if (notaConsultada.getAluno().equals(nota.getAluno()))
