@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.Collections;
 import java.util.List;
 import model.pojo.Aluno;
 import model.pojo.Atividade;
@@ -23,9 +24,17 @@ public class TurmaDaoImpl implements TurmaDao {
     
     @Override
     public Boolean salvar (Turma turma) {
-        if (this.contemTurma(turma.getId()) == false)
-           return this.listaTurma.add(turma);
+        if (!this.contemTurma(turma.getId())) {
+            this.listaTurma.add(turma);
+            Collections.sort(this.listaTurma);
+            return true;
+        }
         return false;
+    }
+    
+    @Override
+    public Boolean remover (Turma turma) {
+        return this.listaTurma.remove(turma);
     }
     
     @Override
@@ -48,20 +57,20 @@ public class TurmaDaoImpl implements TurmaDao {
     
     @Override
     public Boolean adicionarAula (Turma turma, Aula aula) {
-        if (turma.aula.contains(aula) == false)
-            return turma.aula.add(aula);
+        if (turma.getAula().contains(aula) == false)
+            return turma.getAula().add(aula);
         return false;
     }
     
     @Override
     public Boolean removerAula (Turma turma, Aula aula) {
-        return turma.aula.remove(aula);
+        return turma.getAula().remove(aula);
     }
     
     @Override
     public Aula retornaAula (Turma turma, Aula aula) {
-        if (turma.aula.contains(aula))
-            return turma.aula.get(turma.aula.indexOf(aula));
+        if (turma.getAula().contains(aula))
+            return turma.getAula().get(turma.getAula().indexOf(aula));
         else
             return null;
     }
