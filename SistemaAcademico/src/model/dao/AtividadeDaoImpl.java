@@ -18,11 +18,7 @@ import model.pojo.Nota;
 public class AtividadeDaoImpl implements AtividadeDao{
     
     private List<Atividade> listaAtividade;
-    
-    public AtividadeDaoImpl(){
-        this.listaAtividade = new ArrayList<>();
-    }
-    
+       
     
     @Override
     public Boolean salvar(Atividade atividade) {
@@ -64,9 +60,6 @@ public class AtividadeDaoImpl implements AtividadeDao{
         notasLancadas = true;
     }
 
-    
-    /*Pois o professor pode lançar duas notas de valores diferentes para uma
-    atividade para o mesmo aluno ou tentar lançar uma nota já lançada.*/
     @Override
     public Boolean adicaoValida(Atividade atividade, Nota nota) {
         if (atividade.notasLancadas())

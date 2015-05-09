@@ -20,12 +20,7 @@ import model.pojo.Turma;
 public class AlunoDaoImpl implements AlunoDao {
     
     private List<Aluno> listaAluno;
-    
-    public AlunoDaoImpl(){
-        this.listaAluno = new ArrayList<>();
-    }
-    
-    
+       
     @Override
     public Boolean salvar (Aluno aluno) {
         if (this.indiceAluno(aluno.getCpf()) == -1 ){
@@ -58,8 +53,6 @@ public class AlunoDaoImpl implements AlunoDao {
         return listaAluno;
     }
     
-    /*Pois o professor pode lançar duas notas de valores diferentes para um
-    aluno para a mesma atividade*/
     @Override
     public Boolean adicaoValida(Aluno aluno, Nota nota) {
         return (!aluno.getNota().contains(nota));
@@ -73,7 +66,7 @@ public class AlunoDaoImpl implements AlunoDao {
     @Override
     public Nota retornaNota (Aluno aluno, Nota nota) {
        if(aluno.getNota().contains(nota))
-            return aluno.getNota().get(aluno.getNota().indexOf(nota)); // elemento nota na lista de nota 
+            return aluno.getNota().get(aluno.getNota().indexOf(nota)); 
        else
             return null; 
     }
