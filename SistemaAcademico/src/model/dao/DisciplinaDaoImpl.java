@@ -27,6 +27,9 @@ public class DisciplinaDaoImpl implements DisciplinaDao{
             return this.listaDisciplina.get(this.listaDisciplina.indexOf(/**/));
         return null;
     }
+    public Disciplina obterDisciplina(Disciplina disciplina){
+        return listaDisciplina.get(indexOf(disciplina));
+    };
     
     @Override
     public Boolean salvarDisciplina(Disciplina disciplina){
@@ -42,7 +45,7 @@ public class DisciplinaDaoImpl implements DisciplinaDao{
             
     @Override
     public Boolean adicionarTurma (Turma turma) {
-        Disciplina disciplina = obterDisciplina(turma.getDisciplina().getNome());
+        Disciplina disciplina = obterDisciplina(turma.getDisciplina());
         if (disciplina.getTurma().contains(turma) == false)
             return disciplina.getTurma().add(turma);
         return false;
@@ -50,7 +53,7 @@ public class DisciplinaDaoImpl implements DisciplinaDao{
 
     @Override
     public Boolean removerTurma (Turma turma) {
-        Disciplina disciplina = obterDisciplina(turma.getDisciplina().getNome());
+        Disciplina disciplina = obterDisciplina(turma.getDisciplina());
         return disciplina.getTurma().remove(turma);
     }
 }
