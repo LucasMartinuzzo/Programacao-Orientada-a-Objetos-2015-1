@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.Collections;
 import java.util.List;
 import model.pojo.Disciplina;
 import model.pojo.Turma;
@@ -15,45 +16,50 @@ import model.pojo.Turma;
  */
 public class DisciplinaDaoImpl implements DisciplinaDao{
     private List<Disciplina> listaDisciplina;
-    //private Disciplina disciplina;
+    
     @Override
-    public Boolean contemDisciplina (String nome) {
-        /*Implementar*/
+    public Integer indiceDisciplina (String nome){
+        return Collections.binarySearch(listaDisciplina, new Disciplina(nome, null, null));
     }
     
     @Override
-    public Disciplina obterDisciplina (String nome) {
-        if (this.contemDisciplina(nome))
-            return this.listaDisciplina.get(this.listaDisciplina.indexOf(/**/));
+    public Disciplina obterDisciplina (String nome){
+        if (this.indiceDisciplina(nome) != -1)
+            return this.listaDisciplina.get(this.indiceDisciplina(nome));
         return null;
     }
-    public Disciplina obterDisciplina(Disciplina disciplina){
-        return listaDisciplina.get(indexOf(disciplina));
-    };
     
     @Override
-    public Boolean salvarDisciplina(Disciplina disciplina){
-        if(!listaDisciplina.contains(disciplina))
-            return listaDisciplina.add(disciplina);
+    public List<Disciplina> obterTodos (){
+        return listaDisciplina;
+    }
+    
+    @Override
+    public Boolean salvar(Disciplina disciplina){
+        if(!listaDisciplina.contains(disciplina)){
+            listaDisciplina.add(disciplina);
+            Collections.sort(this.listaDisciplina);
+            return true;
+        }
         return false;
     }
     
     @Override
-    public Boolean removeDisciplina(Disciplina disciplina){
+    public Boolean remover(Disciplina disciplina){
         return listaDisciplina.remove(disciplina);
     }
-            
+    
     @Override
     public Boolean adicionarTurma (Turma turma) {
-        Disciplina disciplina = obterDisciplina(turma.getDisciplina());
-        if (disciplina.getTurma().contains(turma) == false)
+        Disciplina disciplina = turma.getDisciplina();
+        if (!disciplina.getTurma().contains(turma))
             return disciplina.getTurma().add(turma);
         return false;
     }
 
     @Override
     public Boolean removerTurma (Turma turma) {
-        Disciplina disciplina = obterDisciplina(turma.getDisciplina());
+        Disciplina disciplina = turma.getDisciplina();
         return disciplina.getTurma().remove(turma);
     }
 }
