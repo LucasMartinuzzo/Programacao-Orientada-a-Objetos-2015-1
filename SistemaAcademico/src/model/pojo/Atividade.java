@@ -11,14 +11,14 @@ public class Atividade implements Comparable<Atividade>{
     private String id;
     private String nome;
     private String tipo;
-    private Calendar data;
+    private String data;
     private Double valor;
     private Boolean notasLancadas;
     private Turma turma;
     private List<Nota> nota;
     
   
-    public Atividade(String id, String nome, String tipo, Calendar data, Double valor, Turma turma){
+    public Atividade(String id, String nome, String tipo, String data, Double valor, Turma turma){
         this.id = id;
         this.data = data;
         this.nome = nome;
@@ -40,7 +40,7 @@ public class Atividade implements Comparable<Atividade>{
         this.tipo = tipo;
     }
     
-    public void setData(Calendar data){
+    public void setData(String data){
         this.data = data;
     }
     
@@ -56,7 +56,7 @@ public class Atividade implements Comparable<Atividade>{
         return valor;
     }
     
-    public Calendar getData(){
+    public String getData(){
         return data;
     }
     
