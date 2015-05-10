@@ -55,8 +55,9 @@ public class ProfessorDaoImpl implements ProfessorDao{
     
     @Override
     public Boolean removerDisciplina (Professor professor, Disciplina disciplina){
-        professor.getDisciplina().remove(disciplina);
-        return disciplina.getProfessor().remove(professor);
+        if (professor.getDisciplina().remove(disciplina))
+            return disciplina.getProfessor().remove(professor);
+        return false;
     }
 }
 

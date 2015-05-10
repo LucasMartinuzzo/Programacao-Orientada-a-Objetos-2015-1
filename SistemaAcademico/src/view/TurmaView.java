@@ -1,7 +1,12 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
+import model.dao.DisciplinaDao;
+import model.dao.ProfessorDao;
 import model.dao.TurmaDao;
+import model.pojo.Disciplina;
+import model.pojo.Professor;
 import model.pojo.Turma;
 
 /**
@@ -11,10 +16,12 @@ import model.pojo.Turma;
 public class TurmaView {
     
     private TurmaDao turmaDao;
+    private DisciplinaDao disciplinaDao;
+    private ProfessorDao professorDao;
+    private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE TURMAS\nCadastre uma nova turma:\n");
-        Scanner scanner = new Scanner(System.in);
         System.out.println("ID: ");
         String id = scanner.nextLine();
         System.out.println("Ano: ");
@@ -23,8 +30,13 @@ public class TurmaView {
         Integer periodo = scanner.nextInt();
         System.out.println("Número de vagas: ");
         Integer numeroDeVagas = scanner.nextInt();
-        //COMO FAZER PARA OS ATRIBUTOS QUE SÃO NOSSOS OBJETOS (por exemplo, disciplina)?
-        Turma turma = new Turma (id, ano, periodo, numeroDeVagas, /*RESTO*/);
+        Disciplina disciplina = this.obterCadastrada();
+        if (disciplina == null)
+            return false;
+        Professor professor = this.obterCadastrado();
+        if (professor == null)
+            return false;
+        Turma turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, /*aula*/);
         return this.turmaDao.salvar(turma);
     }
 }
