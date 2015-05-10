@@ -57,7 +57,7 @@ public class TurmaDaoImpl implements TurmaDao {
     
     @Override
     public Boolean adicionarAula (Turma turma, Aula aula) {
-        if (turma.getAula().contains(aula) == false)
+        if (!turma.getAula().contains(aula))
             return turma.getAula().add(aula);
         return false;
     }

@@ -9,15 +9,21 @@ package model.pojo;
  *
  * @author JeanPablo
  */
-public class Aula {
+public class Aula implements Comparable<Aula> {
+    private String id;
     private String diaDaSemana;
     private String hora;
     private String local;
 
-    public Aula (String diaDaSemana, String hora, String local) {
+    public Aula (String id, String diaDaSemana, String hora, String local) {
+        this.id = id;
         this.diaDaSemana = diaDaSemana;
         this.hora = hora;
         this.local = local;
+    }
+    
+    public String getId() {
+        return id;
     }
     
     public String getDiaDaSemana() {
@@ -42,5 +48,10 @@ public class Aula {
 
     public void setLocal(String local) {
         this.local = local;
+    }
+    
+    @Override
+    public int compareTo (Aula aula) {
+        return this.id.compareTo(aula.id);
     }
 }
