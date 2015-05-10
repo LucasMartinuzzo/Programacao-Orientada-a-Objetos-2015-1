@@ -17,9 +17,10 @@ import model.pojo.Nota;
 public class NotaView {
     private NotaDao notaDao;
     
+    private static Scanner scanner = new Scanner (System.in);
+    
         public Boolean cadastrar () {
             System.out.println("CADASTRO DE NOTAS\nCadastre uma nova nota:\n");
-            Scanner scanner = new Scanner(System.in);
             System.out.println("ID: ");
             String id = scanner.nextLine();
             System.out.println("Nota: ");
@@ -30,15 +31,29 @@ public class NotaView {
             return this.notaDao.salvar(nota);
         }
         
-        public void pesquisar (String id) {
-           //Nota print = notaDao.obterNota (id);
-           
+       public void pesquisar () {
+           System.out.println("PESQUISAR NOTA \nEntre com o ID da Nota: ");
+            String id = scanner.nextLine();
+            if (this.notaDao.indiceNota(id) != -1)
+                System.out.println(this.notaDao.obterNota(id).toString());
+            else
+                System.out.println("NOTA NÃO ENCONTRADA!"); 
+        }
+        
+        public void remover(){
+            System.out.println("REMOVER NOTA\nEntre com o ID da Nota: ");
+            String id = scanner.nextLine();
+            if (notaDao.remover(notaDao.obterNota(id)))
+                System.out.println("NOTA REMOVIDA COM SUCESSO!");                
+            else
+                System.out.println("NOTA NÃO ENCONTRADA!");
         }
         
         public void listar () {
-            List<Nota> listaNota = notaDao.obterTodos();
-            for (Nota aula: listaNota) {
-                aula.toString();
+            System.out.println("LISTA DE NOTAS DISPONÍVEIS\n");
+            List<Nota> listaAluno = notaDao.obterTodos();
+            for (Nota nota: listaAluno) {
+                System.out.println(nota.toString() + "\n");
             }
         }
 }

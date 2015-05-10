@@ -20,7 +20,7 @@ import model.pojo.Atividade;
  */
 public class AtividadeView {
         private AtividadeDao atividadeDao;
-        private static final Scanner scanner = new Scanner (System.in);
+        private static Scanner scanner = new Scanner (System.in);
     
         public Boolean cadastrar () {
             System.out.println("CADASTRO DE ATIVIDADES\nCadastre uma nova atividade:\n");

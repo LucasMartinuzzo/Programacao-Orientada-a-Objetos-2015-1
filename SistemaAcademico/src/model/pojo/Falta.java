@@ -38,4 +38,8 @@ public class Falta implements Comparable<Falta>{
     public int compareTo (Falta falta) {
         return this.id.compareTo(falta.id);
     }
+    @Override
+    public String toString () {
+        return ("ID: " + this.id + "\nfalta: " + this.falta );
+    }    
 }

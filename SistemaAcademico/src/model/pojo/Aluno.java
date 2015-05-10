@@ -51,7 +51,8 @@ public class Aluno implements Comparable<Aluno>{
         return this.cpf.compareTo(aluno.cpf);
     }
     
-    public boolean ehIgual(Aluno aluno) {
-        return (this == aluno);
+    @Override
+    public String toString () {
+        return ("Nome: " + this.nome + "\nCPF: " + this.cpf );
     }
 }
