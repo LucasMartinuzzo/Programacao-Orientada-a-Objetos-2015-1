@@ -16,6 +16,10 @@ public class Nota implements Comparable<Nota>{
         this.aluno = aluno;
         this.atividade = atividade;
     }
+
+    public Nota(String id, Nota nota) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public String getId (){
         return id;
