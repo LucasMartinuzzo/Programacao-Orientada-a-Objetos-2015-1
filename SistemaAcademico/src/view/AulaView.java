@@ -12,10 +12,10 @@ import model.pojo.Aula;
 public class AulaView {
     
         private AulaDao aulaDao;
+        private static Scanner scanner = new Scanner (System.in);
     
         public Boolean cadastrar () {
             System.out.println("CADASTRO DE AULAS\nCadastre uma nova aula:\n");
-            Scanner scanner = new Scanner(System.in);
             System.out.println("ID: ");
             String id = scanner.nextLine();
             System.out.println("Dia da semana: ");
@@ -29,13 +29,19 @@ public class AulaView {
         }
         
         public void pesquisar () {
-            
+            System.out.println("PESQUISA DE AULAS\nEntre com o ID da aula: ");
+            String id = scanner.nextLine();
+            if (this.aulaDao.indiceAula(id) != -1)
+                System.out.println(this.aulaDao.obterAula(id).toString());
+            else
+                System.out.println("AULA NÃO ENCONTRADA!");
         }
         
         public void listar () {
+            System.out.println("LISTA DE AULAS DISPONÍVEIS\n");
             List<Aula> listaAula = aulaDao.obterTodas();
             for (Aula aula: listaAula) {
-                aula.toString();
+                System.out.println(aula.toString() + "\n");
             }
         }
 }
