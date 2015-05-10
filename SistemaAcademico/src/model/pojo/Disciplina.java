@@ -5,13 +5,14 @@
  */
 package model.pojo;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
  *
  * @author Lucas
  */
-public class Disciplina {
+public class Disciplina implements Comparable<Disciplina>{
     private String nome;
     private String ementa;
     private Integer cargaHoraria;
@@ -53,5 +54,10 @@ public class Disciplina {
     }
     public List<Turma> getTurma(){
         return turma;
+    }
+
+    @Override
+    public int compareTo(Disciplina disciplina) {
+        return this.nome.compareTo(disciplina.getNome());
     }
 }

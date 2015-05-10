@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.List;
 import model.pojo.Turma;
 import model.pojo.Disciplina;
 
@@ -13,10 +14,11 @@ import model.pojo.Disciplina;
  * @author Lucas
  */
 public interface DisciplinaDao {
-    public Boolean contemDisciplina (String nome);
-    public Disciplina obterDisciplina(String nome);
-    public Boolean salvarDisciplina(Disciplina disciplina);
-    public Boolean removeDisciplina(Disciplina disciplina);
-    public Boolean adicionarTurma (Turma turma);
-    public Boolean removerTurma (Turma turma);
+    Integer indiceDisciplina(String nome);
+    Disciplina obterDisciplina(String nome);
+    List<Disciplina> obterTodos();
+    Boolean salvar(Disciplina disciplina);
+    Boolean remover(Disciplina disciplina);
+    Boolean adicionarTurma(Turma turma);
+    Boolean removerTurma(Turma turma);
 }

@@ -9,13 +9,19 @@ package model.pojo;
  *
  * @author Filipe
  */
-public class Falta {
+public class Falta implements Comparable<Falta>{
+    private String id;
     private Integer falta;
     private Turma turma;
 
-    public Falta (Integer falta, Turma turma){
+    public Falta (String id, Integer falta, Turma turma){
+        this.id = id;
         this.falta = falta;
         this.turma = turma;
+    }
+    
+    public String getId(){
+        return id;
     }
     
     public Integer getFalta(){
@@ -32,5 +38,9 @@ public class Falta {
     
     public void setTurma(Turma turma){
         this.turma = turma;
+    }
+    @Override
+    public int compareTo (Falta falta) {
+        return this.id.compareTo(falta.id);
     }
 }

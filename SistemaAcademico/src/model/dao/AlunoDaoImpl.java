@@ -20,15 +20,10 @@ import model.pojo.Turma;
 public class AlunoDaoImpl implements AlunoDao {
     
     private List<Aluno> listaAluno;
-    
-    public AlunoDaoImpl(){
-        this.listaAluno = new ArrayList<>();
-    }
-    
-    
+       
     @Override
     public Boolean salvar (Aluno aluno) {
-        if (!this.contemAluno(aluno.getCpf())){
+        if (this.indiceAluno(aluno.getCpf()) == -1 ){
            this.listaAluno.add(aluno);
            Collections.sort(this.listaAluno);
            return true;
@@ -42,15 +37,14 @@ public class AlunoDaoImpl implements AlunoDao {
     }
     
     @Override
-    public Boolean contemAluno (String cpf) {
-        //ORDENAR LISTA DE TURMAS PELO ID E APLICAR BUSCA BINÁRIA BASEADA NESTE.
-        return false;
+    public int indiceAluno (String cpf) {
+        return Collections.binarySearch(this.listaAluno, new Aluno(null, cpf));
     }
     
      @Override
-    public Turma obterAluno (String cpf) {
-        if (this.contemAluno(cpf))
-            return this.listaAluno.get(this.listaAluno.indexOf(/*?????*/));
+    public Aluno obterAluno (String cpf) {
+        if (this.indiceAluno(cpf) != -1)
+            return this.listaAluno.get(this.indiceAluno(cpf));
         return null;
     }
     
@@ -59,8 +53,6 @@ public class AlunoDaoImpl implements AlunoDao {
         return listaAluno;
     }
     
-    /*Pois o professor pode lançar duas notas de valores diferentes para um
-    aluno para a mesma atividade*/
     @Override
     public Boolean adicaoValida(Aluno aluno, Nota nota) {
         return (!aluno.getNota().contains(nota));
@@ -74,7 +66,7 @@ public class AlunoDaoImpl implements AlunoDao {
     @Override
     public Nota retornaNota (Aluno aluno, Nota nota) {
        if(aluno.getNota().contains(nota))
-            return aluno.getNota().get(aluno.getNota().indexOf(nota)); // elemento nota na lista de nota 
+            return aluno.getNota().get(aluno.getNota().indexOf(nota)); 
        else
             return null; 
     }
@@ -87,7 +79,4 @@ public class AlunoDaoImpl implements AlunoDao {
                 somaNotas += notaConsultada.getNota();
     return somaNotas;
     }
-    
-    
-    
 }

@@ -5,13 +5,11 @@
  */
 package model.dao;
 
-import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Atividade;
 import model.pojo.Nota;
-import model.pojo.Turma;
 
 /**
  *
@@ -20,15 +18,11 @@ import model.pojo.Turma;
 public class AtividadeDaoImpl implements AtividadeDao{
     
     private List<Atividade> listaAtividade;
-    
-    public AtividadeDaoImpl(){
-        this.listaAtividade = new ArrayList<>();
-    }
-    
+       
     
     @Override
     public Boolean salvar(Atividade atividade) {
-        if (!this.contemAtividade(atividade.getId())){
+        if (this.indiceAtividade(atividade.getId()) == -1){
             this.listaAtividade.add(atividade);
             Collections.sort(this.listaAtividade);
             return true;
@@ -44,15 +38,14 @@ public class AtividadeDaoImpl implements AtividadeDao{
     
     
     @Override
-    public Boolean contemAtividade(String id) {
-        //ORDENAR LISTA DE TURMAS PELO ID E APLICAR BUSCA BINÁRIA BASEADA NESTE.
-        return false;
+    public int indiceAtividade(String id) {
+        return Collections.binarySearch(this.listaAtividade, new Atividade(id, null, null, null, null, null));
     }
     
     @Override
-    public Turma obterAtividade(String id) {
-        if (this.contemAtividade(id))
-            return this.listaAtividade.get(this.listaAtividade.indexOf(/*?????*/));
+    public Atividade obterAtividade(String id) {
+        if (this.indiceAtividade(id) != -1)
+            return this.listaAtividade.get(this.listaAtividade.indexOf(this.indiceAtividade(id)));
         return null;
     }
     
@@ -67,9 +60,6 @@ public class AtividadeDaoImpl implements AtividadeDao{
         notasLancadas = true;
     }
 
-    
-    /*Pois o professor pode lançar duas notas de valores diferentes para uma
-    atividade para o mesmo aluno ou tentar lançar uma nota já lançada.*/
     @Override
     public Boolean adicaoValida(Atividade atividade, Nota nota) {
         if (atividade.notasLancadas())
