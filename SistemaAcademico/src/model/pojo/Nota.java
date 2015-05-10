@@ -53,4 +53,10 @@ public class Nota implements Comparable<Nota>{
     public int compareTo (Nota nota){
         return this.id.compareTo(nota.id);
     }
+    @Override
+    public String toString () {
+        return ("ID: " + this.id + "\nNotas: " + this.nota + "\nAluno: " 
+                + this.aluno.getNome() + "\nAtividade: " + atividade.getNome() 
+                + "("+atividade.getTipo()+")");
+    }    
 }

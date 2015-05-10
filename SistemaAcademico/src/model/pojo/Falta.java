@@ -40,6 +40,7 @@ public class Falta implements Comparable<Falta>{
     }
     @Override
     public String toString () {
-        return ("ID: " + this.id + "\nfalta: " + this.falta );
+        return ("ID: " + this.id + "\nFaltas: " + this.falta + "\nDisciplina: " 
+                + this.turma.getDisciplina().getNome());
     }    
 }
