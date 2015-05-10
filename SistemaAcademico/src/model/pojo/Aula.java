@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.pojo;
 
 /**
@@ -53,5 +48,11 @@ public class Aula implements Comparable<Aula> {
     @Override
     public int compareTo (Aula aula) {
         return this.id.compareTo(aula.id);
+    }
+    
+    @Override
+    public String toString () {
+        return ("ID: " + this.id + "\nDia da semana: " + this.diaDaSemana +
+                "Hora: " + this.hora + "\nLocal: " + this.local + "\n");
     }
 }
