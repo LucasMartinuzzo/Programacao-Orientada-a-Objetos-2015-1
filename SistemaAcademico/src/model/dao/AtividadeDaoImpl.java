@@ -76,6 +76,5 @@ public class AtividadeDaoImpl implements AtividadeDao{
     @Override
     public Nota retornaNota (Atividade atividade, Nota nota) {
         return atividade.getNota().get(atividade.getNota().indexOf(nota));
-    }
-    
+    }   
 }

@@ -1,6 +1,5 @@
 package model.pojo;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -79,5 +78,12 @@ public class Atividade implements Comparable<Atividade>{
     @Override
     public int compareTo (Atividade atividade) {
         return this.id.compareTo(atividade.id);
+    }
+    
+    @Override
+    public String toString () {
+        return ("ID: " + this.id + "\nNome: " + this.nome +
+                "Tipo: " + this.tipo + "\nValor: " + this.valor +
+                "Turma: " + this.turma.getDisciplina() + "\n");
     }
 }

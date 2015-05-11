@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-//// MUDAR TIPO DE DATA DE CALENDAR PARA STRING
 
 package view;
 
 import java.util.List;
 import java.util.Scanner;
 import model.dao.AtividadeDao;
+import model.dao.TurmaDao;
 import model.pojo.Atividade;
+import model.pojo.Turma;
 
 
 /**
@@ -21,6 +16,8 @@ import model.pojo.Atividade;
 public class AtividadeView {
         private AtividadeDao atividadeDao;
         private static Scanner scanner = new Scanner (System.in);
+        private TurmaDao turmaDao;
+ 
     
         public Boolean cadastrar () {
             System.out.println("CADASTRO DE ATIVIDADES\nCadastre uma nova atividade:\n");
@@ -34,11 +31,10 @@ public class AtividadeView {
             String data = scanner.nextLine();
             System.out.println("Valor: ");
             Double valor = scanner.nextDouble();
-//            System.out.println("ID da Turma: ");
-//            String idTurma = scanner.nextLine();
-           
-                       
-            Atividade atividade = new Atividade (id, nome, tipo, data, valor,  );
+            Turma turma = this.obterCadastrada();
+            if(turma == null)
+                return false;
+            Atividade atividade = new Atividade (id, nome, tipo, data, valor, turma);
             return this.atividadeDao.salvar(atividade);
         }
         
@@ -50,6 +46,26 @@ public class AtividadeView {
             else
                 System.out.println("ATIVIDADE NÃO ENCONTRADA!");
         }
+        
+        
+        public Turma obterCadastrada () {
+        while (true) {
+            System.out.println("Turma: ");
+            String entrada = scanner.nextLine();
+            if (entrada.equals("cancelar"))
+                break;
+            Turma turma = this.turmaDao.obterTurma(entrada);
+            if (turma != null)
+                return turma;
+            else {
+                System.out.println("ESTA TURMA NÃO ESTÁ CADASTRADA!");
+                System.out.println("Digite novamente (''cancelar'' para cancelar): ");
+            }
+        }
+        return null;
+    }
+        
+        
         
         public void remover(){
             System.out.println("REMOÇÃO DE ATIVIDADE\nEntre com o ID da atividade: ");
