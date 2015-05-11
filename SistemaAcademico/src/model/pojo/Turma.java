@@ -101,6 +101,6 @@ public class Turma implements Comparable<Turma> {
         return ("ID: " + this.id + "\nAno: " + this.ano +
                 "Período: " + this.periodo + "\nNúmero de vagas: " + this.numeroDeVagas +
                 "Disciplina: " + this.disciplina.getNome() +
-                "Professor: " + this.professor.getNome() + "\n");
+                "Professor: " + this.professor.getNome());
     }
 }

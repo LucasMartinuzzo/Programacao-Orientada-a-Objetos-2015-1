@@ -1,7 +1,6 @@
 package model.dao;
 
 import java.util.Collections;
-import java.util.ArrayList;
 import java.util.List;
 import model.pojo.Aluno;
 import model.pojo.Nota;
@@ -36,7 +35,7 @@ public class AlunoDaoImpl implements AlunoDao {
         return Collections.binarySearch(this.listaAluno, new Aluno(null, cpf));
     }
     
-     @Override
+    @Override
     public Aluno obterAluno (String cpf) {
         if (this.indiceAluno(cpf) != -1)
             return this.listaAluno.get(this.indiceAluno(cpf));

@@ -92,7 +92,7 @@ public class TurmaDaoImpl implements TurmaDao {
     
     @Override
     public Boolean adicionarAtividade (Turma turma, Atividade atividade) {
-        if (turma.getAtividade().contains(atividade) == false)
+        if (!turma.getAtividade().contains(atividade))
             return turma.getAtividade().add(atividade);
         return false;
     }

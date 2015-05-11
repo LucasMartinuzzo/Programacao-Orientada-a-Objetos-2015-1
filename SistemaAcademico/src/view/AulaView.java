@@ -37,6 +37,15 @@ public class AulaView {
                 System.out.println("AULA NÃO ENCONTRADA!");
         }
         
+        public void remover () {
+            System.out.println("REMOÇÃO DE AULA\nEntre com o ID da aula: ");
+            String id = scanner.nextLine();
+            if (this.aulaDao.remover(this.aulaDao.obterAula(id)))
+                System.out.println(this.aulaDao.obterAula(id).toString());
+            else
+                System.out.println("AULA NÃO ENCONTRADA!");
+        }
+        
         public void listar () {
             System.out.println("LISTA DE AULAS DISPONÍVEIS\n");
             List<Aula> listaAula = aulaDao.obterTodas();

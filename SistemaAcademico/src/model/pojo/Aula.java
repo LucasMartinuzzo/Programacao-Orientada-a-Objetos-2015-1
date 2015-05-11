@@ -53,6 +53,6 @@ public class Aula implements Comparable<Aula> {
     @Override
     public String toString () {
         return ("ID: " + this.id + "\nDia da semana: " + this.diaDaSemana +
-                "Hora: " + this.hora + "\nLocal: " + this.local + "\n");
+                "Hora: " + this.hora + "\nLocal: " + this.local);
     }
 }
