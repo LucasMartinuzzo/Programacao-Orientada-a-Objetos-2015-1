@@ -55,21 +55,19 @@ public class Aluno implements Comparable<Aluno>{
     public String toString () {
         return ("Nome: " + this.nome + "\nCPF: " + this.cpf);
     }
-
-    public Boolean adicaoValida(Nota nota) {
-        return (!this.getNota().contains(nota));
+    
+    public Boolean adicionaNota(Nota nota){
+        if(!this.getNota().contains(nota))
+            return this.getNota().add(nota);
+        return false;
     }
     
-    public void adicionaNota(Nota nota){
-        this.getNota().add(nota);
-    }
-    
-    public Nota retornaNota (Nota nota) {
-       if(this.getNota().contains(nota))
-            return this.getNota().get(this.getNota().indexOf(nota)); 
-       else
-            return null; 
-    }
+//    public Nota retornaNota (Nota nota) {
+//       if(this.getNota().contains(nota))
+//            return this.getNota().get(this.getNota().indexOf(nota)); 
+//       else
+//            return null; 
+//    }
 
     public Double NotaFinal(Turma turma){
         Double somaNotas = 0.0;
