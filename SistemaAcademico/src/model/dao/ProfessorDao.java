@@ -1,7 +1,6 @@
 package model.dao;
 
 import java.util.List;
-import model.pojo.Disciplina;
 import model.pojo.Professor;
         
 /**
@@ -14,6 +13,4 @@ public interface ProfessorDao {
     int indiceProfessor (String cpf);
     Professor obterProfessor (String cpf);
     List<Professor> obterTodos ();
-    Boolean adicionarDisciplina (Professor professor, Disciplina disciplina);
-    Boolean removerDisciplina (Professor professor, Disciplina disciplina); 
 }

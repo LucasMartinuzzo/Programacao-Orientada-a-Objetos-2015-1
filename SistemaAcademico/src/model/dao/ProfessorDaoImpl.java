@@ -2,7 +2,6 @@ package model.dao;
 
 import java.util.Collections;
 import java.util.List;
-import model.pojo.Disciplina;
 import model.pojo.Professor;
 
 /**
@@ -42,22 +41,6 @@ public class ProfessorDaoImpl implements ProfessorDao{
     @Override
     public List<Professor> obterTodos (){
         return listaProfessor;
-    }
-    
-    @Override
-    public Boolean adicionarDisciplina (Professor professor, Disciplina disciplina){
-        if (!(professor.getDisciplina().contains(disciplina))) {
-            disciplina.getProfessor().add(professor);
-            return professor.getDisciplina().add(disciplina);
-        }
-        return false;
-    }
-    
-    @Override
-    public Boolean removerDisciplina (Professor professor, Disciplina disciplina){
-        if (professor.getDisciplina().remove(disciplina))
-            return disciplina.getProfessor().remove(professor);
-        return false;
     }
 }
 
