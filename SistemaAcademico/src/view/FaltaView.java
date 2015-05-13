@@ -22,7 +22,7 @@ public class FaltaView {
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
-        System.out.println("CADASTRO DE AULAS\nCadastre uma nova falta:\n");
+        System.out.println("CADASTRO DE FALTA\nCadastre uma nova falta:\n");
         Scanner scanner = new Scanner(System.in);
         System.out.println("ID: ");
         String id = scanner.nextLine();
@@ -46,7 +46,7 @@ public class FaltaView {
     }
 
     public void remover(){
-        System.out.println("REMOVER REGISTRO DE NOTA\nEntre com o ID da Falta: ");
+        System.out.println("REMOVER REGISTRO DE FALTA\nEntre com o ID da Falta: ");
         String id = scanner.nextLine();
         if (faltaDao.remover(faltaDao.obterFalta(id)))
             System.out.println("FALTA REMOVIDA COM SUCESSO!");                
@@ -55,7 +55,7 @@ public class FaltaView {
     }
 
     public void listar () {
-        System.out.println("LISTA DE NOTAS DISPONÍVEIS\n");
+        System.out.println("LISTA DE FALTAS DISPONÍVEIS\n");
         List<Falta> listaAluno = faltaDao.obterTodas();
         for (Falta falta: listaAluno) {
             System.out.println(falta.toString() + "\n");
@@ -71,7 +71,7 @@ public class FaltaView {
             if (turma != null)
                 return turma;
             else {
-                System.out.println("ESTA TURMA NÃO ESTÁ CADASTRADO!");
+                System.out.println("ESTA TURMA NÃO ESTÁ CADASTRADA!");
                 System.out.println("Digite novamente (''cancelar'' para cancelar): ");
             }
         }
