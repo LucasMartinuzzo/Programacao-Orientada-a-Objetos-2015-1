@@ -50,4 +50,9 @@ public class Professor implements Comparable<Professor>{
     public int compareTo (Professor professor){
         return this.cpf.compareTo(professor.cpf);
     }
+    
+    @Override
+    public String toString () {
+        return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nDepartamento: " + this.departamento);
+    }
 }

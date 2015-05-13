@@ -6,9 +6,9 @@ import model.dao.AlunoDao;
 import model.pojo.Aluno;
 
 public class AlunoView {
-    private AlunoDao alunoDao;
+   private AlunoDao alunoDao;
    private static final Scanner scanner = new Scanner (System.in);
-    private Object aluno;
+   private Object aluno;
     
         public Boolean cadastrar () {
             System.out.println("CADASTRO DE Alunos\nCadastre um novo aluno:\n");
@@ -41,11 +41,10 @@ public class AlunoView {
         }
         
         public void listar () {
-            System.out.println("LISTA DE ATIVIDADES DISPONÍVEIS\n");
+            System.out.println("LISTA DE ALUNOS DISPONÍVEIS\n");
             List<Aluno> listaAluno = alunoDao.obterTodos();
-            for (Aluno atividade: listaAluno) {
+            for (Aluno aluno: listaAluno) {
                 System.out.println(aluno.toString() + "\n");
             }
         }
-    
 }
