@@ -86,4 +86,20 @@ public class Atividade implements Comparable<Atividade>{
                 "Tipo: " + this.tipo + "\nValor: " + this.valor +
                 "Turma: " + this.turma.getDisciplina() + "\n");
     }
+        
+       
+    public Boolean adicionaNota(Nota nota){
+        if (this.notasLancadas())
+            return false;
+        for (Nota notaConsultada: this.getNota()) {
+            if (notaConsultada.getAluno().equals(nota.getAluno()))
+                return false;
+        }
+        return this.getNota().add(nota);
+    }
+    
+    public Nota retornaNota (Nota nota) {
+        return this.getNota().get(this.getNota().indexOf(nota));
+    }
+    
 }

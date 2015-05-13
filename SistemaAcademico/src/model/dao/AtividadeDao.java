@@ -2,7 +2,6 @@ package model.dao;
 
 import java.util.List;
 import model.pojo.Atividade;
-import model.pojo.Nota;
 
 /**
  *
@@ -16,7 +15,4 @@ public interface AtividadeDao {
     Boolean remover(Atividade atividade);
     Boolean salvar(Atividade atividade);
     void constarLancamentoDeNotas(Atividade atividade);
-    Boolean adicaoValida(Atividade atividade, Nota nota);
-    Boolean adicionaNota(Atividade atividade, Nota nota);
-    Nota retornaNota (Atividade atividade, Nota nota);
 }

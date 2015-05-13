@@ -3,7 +3,6 @@ package model.dao;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Atividade;
-import model.pojo.Nota;
 
 /**
  *
@@ -52,30 +51,6 @@ public class AtividadeDaoImpl implements AtividadeDao{
     public void constarLancamentoDeNotas(Atividade atividade){
         Boolean notasLancadas = atividade.notasLancadas();
         notasLancadas = true;
-    }
-
-    @Override
-    public Boolean adicaoValida(Atividade atividade, Nota nota) {
-        if (atividade.notasLancadas())
-            return false;
-        for (Nota notaConsultada: atividade.getNota()) {
-            if (notaConsultada.getAluno().equals(nota.getAluno()))
-                return false;
-        }
-        return true;
-    }
-    
-       
-    @Override
-    public Boolean adicionaNota(Atividade atividade, Nota nota){
-        if (this.adicaoValida(atividade, nota))
-            return atividade.getNota().add(nota);
-        return false;
-    }
-    
-    @Override
-    public Nota retornaNota (Atividade atividade, Nota nota) {
-        return atividade.getNota().get(atividade.getNota().indexOf(nota));
     }
     
 }
