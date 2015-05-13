@@ -2,111 +2,48 @@ package model.dao;
 
 import java.util.Collections;
 import java.util.List;
-import model.pojo.Aluno;
-import model.pojo.Atividade;
-import model.pojo.Aula;
 import model.pojo.Turma;
 
 /**
  *
  * @author JeanPablo
  */
-public class TurmaDaoImpl implements TurmaDao {
+public class TurmaDaoImpl implements Dao {
     
-    private List<Turma> listaTurma;
+    private static List<Turma> listaTurma;
     
     @Override
-    public Boolean salvar (Turma turma) {
-        if (this.indiceTurma(turma.getId()) == -1) {
-            this.listaTurma.add(turma);
-            Collections.sort(this.listaTurma);
+    public Boolean salvar (Object objeto) {
+        Turma turma = (Turma) objeto;
+        if (this.indice(turma.getId()) == -1) {
+            listaTurma.add(turma);
+            Collections.sort(listaTurma);
             return true;
         }
         return false;
     }
     
     @Override
-    public Boolean remover (Turma turma) {
-        return this.listaTurma.remove(turma);
+    public Boolean remover (Object objeto) {
+        Turma turma = (Turma) objeto;
+        return listaTurma.remove(turma);
     }
     
     @Override
-    public int indiceTurma (String id) {
-        return Collections.binarySearch(this.listaTurma, new Turma (id, null, 
+    public int indice (String id) {
+        return Collections.binarySearch(listaTurma, new Turma (id, null, 
                 null, null, null, null, null));
     }
     
     @Override
-    public Turma obterTurma (String id) {
-        if (this.indiceTurma(id) != -1)
-            return this.listaTurma.get(this.indiceTurma(id));
+    public Object obter (String id) {
+        if (this.indice(id) != -1)
+            return listaTurma.get(this.indice(id));
         return null;
     }
     
     @Override
-    public List<Turma> obterTodas () {
-        return listaTurma;
-    }
-    
-    @Override
-    public Boolean adicionarAula (Turma turma, Aula aula) {
-        if (!turma.getAula().contains(aula))
-            return turma.getAula().add(aula);
-        return false;
-    }
-    
-    @Override
-    public Boolean removerAula (Turma turma, Aula aula) {
-        return turma.getAula().remove(aula);
-    }
-    
-    @Override
-    public Aula retornaAula (Turma turma, Aula aula) {
-        if (turma.getAula().contains(aula))
-            return turma.getAula().get(turma.getAula().indexOf(aula));
-        else
-            return null;
-    }
-    
-    @Override
-    public Boolean adicaoDeAlunoValida (Turma turma, Aluno aluno) {
-        return (turma.getAluno().contains(aluno) == false || 
-                turma.getAluno().size() < turma.getNumeroDeVagas());
-    }
-    
-    @Override
-    public Boolean adicionarAluno (Turma turma, Aluno aluno) {
-        if (this.adicaoDeAlunoValida(turma, aluno)) {
-            aluno.getTurma().add(turma);
-            return turma.getAluno().add(aluno);
-        }
-        return false;
-    }
-    
-    @Override
-    public Boolean removerAluno (Turma turma, Aluno aluno) {
-        if (turma.getAluno().remove(aluno))
-            return aluno.getTurma().remove(turma);
-        return false;
-    }
-    
-    @Override
-    public Boolean adicionarAtividade (Turma turma, Atividade atividade) {
-        if (!turma.getAtividade().contains(atividade))
-            return turma.getAtividade().add(atividade);
-        return false;
-    }
-    
-    @Override
-    public Boolean removerAtividade (Turma turma, Atividade atividade) {
-        return turma.getAtividade().remove(atividade);
-    }
-    
-    @Override
-    public Atividade retornaAtividade (Turma turma, Atividade atividade) {
-        if (turma.getAtividade().contains(atividade))
-            return turma.getAtividade().get(turma.getAtividade().indexOf(atividade));
-        else
-            return null;
+    public List<Object> obterTodos () {
+        return (List<Object>) (Object) listaTurma;
     }
 }

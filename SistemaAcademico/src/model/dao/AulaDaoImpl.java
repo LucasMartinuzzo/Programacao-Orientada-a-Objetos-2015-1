@@ -8,40 +8,42 @@ import model.pojo.Aula;
  *
  * @author JeanPablo
  */
-public class AulaDaoImpl implements AulaDao {
+public class AulaDaoImpl implements Dao {
     
-    private List<Aula> listaAula;
+    private static List<Aula> listaAula;
     
     @Override
-    public Boolean salvar(Aula aula) {
-        if (this.indiceAula(aula.getId()) == -1) {
-            this.listaAula.add(aula);
-            Collections.sort(this.listaAula);
+    public Boolean salvar(Object objeto) {
+        Aula aula = (Aula) objeto;
+        if (this.indice(aula.getId()) == -1) {
+            listaAula.add(aula);
+            Collections.sort(listaAula);
             return true;
         }
         return false;
     }
 
     @Override
-    public Boolean remover(Aula aula) {
-        return this.listaAula.remove(aula);
+    public Boolean remover(Object objeto) {
+        Aula aula = (Aula) objeto;
+        return listaAula.remove(aula);
     }
 
     @Override
-    public int indiceAula(String id) {
-        return Collections.binarySearch(this.listaAula, new Aula (id, null, 
+    public int indice(String id) {
+        return Collections.binarySearch(listaAula, new Aula (id, null, 
                 null, null));
     }
 
     @Override
-    public Aula obterAula(String id) {
-        if (this.indiceAula(id) != -1)
-            return this.listaAula.get(this.indiceAula(id));
+    public Object obter(String id) {
+        if (this.indice(id) != -1)
+            return listaAula.get(this.indice(id));
         return null;
     }
 
     @Override
-    public List<Aula> obterTodas() {
-        return listaAula;
+    public List<Object> obterTodos() {
+        return (List<Object>) (Object) listaAula;
     }
 }

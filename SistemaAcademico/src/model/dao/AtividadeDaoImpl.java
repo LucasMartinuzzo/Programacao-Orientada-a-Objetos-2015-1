@@ -8,49 +8,42 @@ import model.pojo.Atividade;
  *
  * @author Mônicka
  */
-public class AtividadeDaoImpl implements AtividadeDao{
+public class AtividadeDaoImpl implements Dao {
     
-    private List<Atividade> listaAtividade;
-       
+    private static List<Atividade> listaAtividade;
     
     @Override
-    public Boolean salvar(Atividade atividade) {
-        if (this.indiceAtividade(atividade.getId()) == -1){
-            this.listaAtividade.add(atividade);
-            Collections.sort(this.listaAtividade);
+    public Boolean salvar (Object objeto) {
+        Atividade atividade = (Atividade) objeto;
+        if (this.indice(atividade.getId()) == -1) {
+            listaAtividade.add(atividade);
+            Collections.sort(listaAtividade);
             return true;
         }
         return false;
     }
     
-    
     @Override
-    public Boolean remover(Atividade atividade){
-        return this.listaAtividade.remove(atividade);
-    }
-    
-    
-    @Override
-    public int indiceAtividade(String id) {
-        return Collections.binarySearch(this.listaAtividade, new Atividade(id, null, null, null, null, null));
+    public Boolean remover (Object objeto) {
+        Atividade atividade = (Atividade) objeto;
+        return listaAtividade.remove(atividade);
     }
     
     @Override
-    public Atividade obterAtividade(String id) {
-        if (this.indiceAtividade(id) != -1)
-            return this.listaAtividade.get(this.listaAtividade.indexOf(this.indiceAtividade(id)));
+    public int indice (String id) {
+        return Collections.binarySearch(listaAtividade, new Atividade (id, null, 
+                null, null, null, null));
+    }
+    
+    @Override
+    public Object obter (String id) {
+        if (this.indice(id) != -1)
+            return listaAtividade.get(this.indice(id));
         return null;
     }
     
     @Override
-    public List<Atividade> obterTodas () {
-        return listaAtividade;
+    public List<Object> obterTodos () {
+        return (List<Object>) (Object) listaAtividade;
     }
-    
-    @Override
-    public void constarLancamentoDeNotas(Atividade atividade){
-        Boolean notasLancadas = atividade.notasLancadas();
-        notasLancadas = true;
-    }
-    
 }

@@ -16,7 +16,7 @@ import model.pojo.Professor;
  */
 public class ProfessorView {
     private ProfessorDao professorDao;
-    private static final Scanner scanner = new Scanner (System.in);
+    private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE PROFESSORES\nCadastre um novo professor:\n");

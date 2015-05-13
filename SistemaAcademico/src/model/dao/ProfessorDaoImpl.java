@@ -8,39 +8,41 @@ import model.pojo.Professor;
  *
  * @author Pedro
  */
-public class ProfessorDaoImpl implements ProfessorDao{
-    private List<Professor> listaProfessor;
+public class ProfessorDaoImpl implements Dao {
+    
+    private static List<Professor> listaProfessor;
     
     @Override
-    public Boolean salvar (Professor professor){
-        if(this.indiceProfessor(professor.getCpf()) == -1){
-            this.listaProfessor.add(professor);
-            Collections.sort(this.listaProfessor);
+    public Boolean salvar (Object objeto) {
+        Professor professor = (Professor) objeto;
+        if (this.indice(professor.getCpf()) == -1) {
+            listaProfessor.add(professor);
+            Collections.sort(listaProfessor);
             return true;
         }
         return false;
     }
     
     @Override
-    public Boolean remover (Professor professor){
-        return this.listaProfessor.remove(professor);
+    public Boolean remover (Object objeto) {
+        Professor professor = (Professor) objeto;
+        return listaProfessor.remove(professor);
     }
     
     @Override
-    public int indiceProfessor (String cpf){
-        return Collections.binarySearch(listaProfessor, new Professor(null, cpf, null));
+    public int indice (String cpf) {
+        return Collections.binarySearch(listaProfessor, new Professor (null, cpf, null));
     }
     
     @Override
-    public Professor obterProfessor (String cpf){
-        if (this.indiceProfessor(cpf) != -1)
-            return this.listaProfessor.get(this.indiceProfessor(cpf));
+    public Object obter (String cpf) {
+        if (this.indice(cpf) != -1)
+            return listaProfessor.get(this.indice(cpf));
         return null;
     }
     
     @Override
-    public List<Professor> obterTodos (){
-        return listaProfessor;
+    public List<Object> obterTodos () {
+        return (List<Object>) (Object) listaProfessor;
     }
 }
-

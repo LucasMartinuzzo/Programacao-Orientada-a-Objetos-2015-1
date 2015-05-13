@@ -8,38 +8,41 @@ import model.pojo.Nota;
  *
  * @author Pedro
  */
-public class NotaDaoImpl implements NotaDao{
-    private List<Nota> listaNota;
+public class NotaDaoImpl implements Dao {
+    
+    private static List<Nota> listaNota;
     
     @Override
-    public Boolean salvar (Nota nota){
-        if(this.indiceNota(nota.getId()) == -1){
-            this.listaNota.add(nota);
-            Collections.sort(this.listaNota);
+    public Boolean salvar (Object objeto) {
+        Nota nota = (Nota) objeto;
+        if (this.indice(nota.getId()) == -1) {
+            listaNota.add(nota);
+            Collections.sort(listaNota);
             return true;
         }
         return false;
     }
     
     @Override
-    public Boolean remover (Nota nota){
-        return this.listaNota.remove(nota);
+    public Boolean remover (Object objeto) {
+        Nota nota = (Nota) objeto;
+        return listaNota.remove(nota);
     }
     
     @Override
-    public int indiceNota (String id){
-        return Collections.binarySearch(listaNota, new Nota(id, null, null, null));
+    public int indice (String id) {
+        return Collections.binarySearch(listaNota, new Nota (id, null, null, null));
     }
     
     @Override
-    public Nota obterNota (String id){
-        if (this.indiceNota(id) != -1)
-            return this.listaNota.get(this.indiceNota(id));
+    public Object obter (String id) {
+        if (this.indice(id) != -1)
+            return listaNota.get(this.indice(id));
         return null;
     }
     
     @Override
-    public List<Nota> obterTodos (){
-        return listaNota;
+    public List<Object> obterTodos () {
+        return (List<Object>) (Object) listaNota;
     }
 }
