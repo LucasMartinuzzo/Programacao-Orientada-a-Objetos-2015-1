@@ -1,7 +1,6 @@
 package model.pojo;
 
 import java.util.List;
-
 /**
  *
  * @author Lucas
@@ -51,6 +50,17 @@ public class Disciplina implements Comparable<Disciplina>{
         return turma;
     }
 
+    public Boolean adicionarTurma (Turma turma) {
+        Disciplina disciplina = turma.getDisciplina();
+        if (!disciplina.getTurma().contains(turma))
+            return disciplina.getTurma().add(turma);
+        return false;
+    }
+
+    public Boolean removerTurma (Turma turma) {
+        Disciplina disciplina = turma.getDisciplina();
+        return disciplina.getTurma().remove(turma);
+    }
     @Override
     public int compareTo(Disciplina disciplina) {
         return this.nome.compareTo(disciplina.getNome());

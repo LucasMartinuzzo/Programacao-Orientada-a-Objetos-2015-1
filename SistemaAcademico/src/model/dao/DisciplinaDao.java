@@ -1,7 +1,6 @@
 package model.dao;
 
 import java.util.List;
-import model.pojo.Turma;
 import model.pojo.Disciplina;
 
 /**
@@ -14,6 +13,4 @@ public interface DisciplinaDao {
     List<Disciplina> obterTodos();
     Boolean salvar(Disciplina disciplina);
     Boolean remover(Disciplina disciplina);
-    Boolean adicionarTurma(Turma turma);
-    Boolean removerTurma(Turma turma);
 }

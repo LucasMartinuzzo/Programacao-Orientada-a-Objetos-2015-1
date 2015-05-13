@@ -3,7 +3,6 @@ package model.dao;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Disciplina;
-import model.pojo.Turma;
 
 /**
  *
@@ -42,19 +41,5 @@ public class DisciplinaDaoImpl implements DisciplinaDao{
     @Override
     public Boolean remover(Disciplina disciplina){
         return listaDisciplina.remove(disciplina);
-    }
-    
-    @Override
-    public Boolean adicionarTurma (Turma turma) {
-        Disciplina disciplina = turma.getDisciplina();
-        if (!disciplina.getTurma().contains(turma))
-            return disciplina.getTurma().add(turma);
-        return false;
-    }
-
-    @Override
-    public Boolean removerTurma (Turma turma) {
-        Disciplina disciplina = turma.getDisciplina();
-        return disciplina.getTurma().remove(turma);
     }
 }
