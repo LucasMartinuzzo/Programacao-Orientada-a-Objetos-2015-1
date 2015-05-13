@@ -15,7 +15,7 @@ import model.pojo.Disciplina;
  */
 public class DisciplinaView {
     private DisciplinaDao disciplinaDao;
-    private static final Scanner scanner = new Scanner (System.in);
+    private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar(){
         System.out.println("CADASTRO DE DISCIPLINAS\nCadastre uma nova disciplina:\n");

@@ -9,40 +9,41 @@ import model.pojo.Aluno;
  *
  * @author Filipe
  */
-public class AlunoDaoImpl implements AlunoDao {
+public class AlunoDaoImpl implements Dao {
     
-    private List<Aluno> listaAluno;
-       
+    private static List<Aluno> listaAluno;
+    
     @Override
-    public Boolean salvar (Aluno aluno) {
-        if (this.indiceAluno(aluno.getCpf()) == -1 ){
-           this.listaAluno.add(aluno);
-           Collections.sort(this.listaAluno);
-           return true;
+    public Boolean salvar (Object objeto) {
+        Aluno aluno = (Aluno) objeto;
+        if (this.indice(aluno.getCpf()) == -1) {
+            listaAluno.add(aluno);
+            Collections.sort(listaAluno);
+            return true;
         }
         return false;
     }
     
     @Override
-    public Boolean remover(Aluno aluno){
-        return this.listaAluno.remove(aluno);
+    public Boolean remover (Object objeto) {
+        Aluno aluno = (Aluno) objeto;
+        return listaAluno.remove(aluno);
     }
     
     @Override
-    public int indiceAluno (String cpf) {
-        return Collections.binarySearch(this.listaAluno, new Aluno(null, cpf));
+    public int indice (String cpf) {
+        return Collections.binarySearch(listaAluno, new Aluno (null, cpf));
     }
     
     @Override
-    public Aluno obterAluno (String cpf) {
-        if (this.indiceAluno(cpf) != -1)
-            return this.listaAluno.get(this.indiceAluno(cpf));
+    public Object obter (String cpf) {
+        if (this.indice(cpf) != -1)
+            return listaAluno.get(this.indice(cpf));
         return null;
     }
     
     @Override
-    public List<Aluno> obterTodos () {
-        return listaAluno;
+    public List<Object> obterTodos () {
+        return (List<Object>) (Object) listaAluno;
     }
-    
 }

@@ -8,39 +8,41 @@ import model.pojo.Falta;
  *
  * @author Filipe
  */
-public class FaltaDaoImpl implements FaltaDao{
-
-    private List<Falta> listaFalta;
-       
+public class FaltaDaoImpl implements Dao {
+    
+    private static List<Falta> listaFalta;
+    
     @Override
-    public Boolean salvar (Falta falta) {
-        if (this.indiceFalta(falta.getId()) == -1 ){
-           this.listaFalta.add(falta);
-           Collections.sort(this.listaFalta);
-           return true;
+    public Boolean salvar (Object objeto) {
+        Falta falta = (Falta) objeto;
+        if (this.indice(falta.getId()) == -1) {
+            listaFalta.add(falta);
+            Collections.sort(listaFalta);
+            return true;
         }
         return false;
     }
     
-    @Override
-    public Boolean remover(Falta falta){
-        return this.listaFalta.remove(falta);
+    @Override 
+    public Boolean remover (Object objeto) {
+        Falta falta = (Falta) objeto;
+        return listaFalta.remove(falta);
     }
     
     @Override
-    public int indiceFalta (String id) {
-        return Collections.binarySearch(this.listaFalta, new Falta(id, null, null));
+    public int indice (String id) {
+        return Collections.binarySearch(listaFalta, new Falta (id, null, null));
     }
     
-     @Override
-    public Falta obterFalta (String id) {
-        if (this.indiceFalta(id) != -1)
-            return this.listaFalta.get(this.indiceFalta(id));
+    @Override
+    public Object obter (String id) {
+        if (this.indice(id) != -1)
+            return listaFalta.get(this.indice(id));
         return null;
     }
     
     @Override
-    public List<Falta> obterTodas () {
-        return listaFalta;
-    }    
+    public List<Object> obterTodos () {
+        return (List<Object>) (Object) listaFalta;
+    }
 }

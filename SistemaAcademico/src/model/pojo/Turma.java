@@ -91,6 +91,55 @@ public class Turma implements Comparable<Turma> {
         return atividade;
     }
     
+    public Boolean adicionarAula (Aula aula) {
+        if (!this.getAula().contains(aula))
+            return this.getAula().add(aula);
+        return false;
+    }
+    
+    public Boolean removerAula (Aula aula) {
+        return this.getAula().remove(aula);
+    }
+    
+    /*public Aula retornaAula (Turma this, Aula aula) {
+        if (this.getAula().contains(aula))
+            return this.getAula().get(this.getAula().indexOf(aula));
+        else
+            return null;
+    }*/
+    
+    public Boolean adicionarAluno (Aluno aluno) {
+        if (!this.getAluno().contains(aluno) || 
+                this.getAluno().size() < this.getNumeroDeVagas()) {
+            aluno.getTurma().add(this);
+            return this.getAluno().add(aluno);
+        }
+        return false;
+    }
+    
+    public Boolean removerAluno (Aluno aluno) {
+        if (this.getAluno().remove(aluno))
+            return aluno.getTurma().remove(this);
+        return false;
+    }
+    
+    public Boolean adicionarAtividade (Atividade atividade) {
+        if (!this.getAtividade().contains(atividade))
+            return this.getAtividade().add(atividade);
+        return false;
+    }
+    
+    public Boolean removerAtividade (Atividade atividade) {
+        return this.getAtividade().remove(atividade);
+    }
+    
+    /*public Atividade retornaAtividade (Turma this, Atividade atividade) {
+        if (this.getAtividade().contains(atividade))
+            return this.getAtividade().get(this.getAtividade().indexOf(atividade));
+        else
+            return null;
+    }*/
+    
     @Override
     public int compareTo (Turma turma) {
         return this.id.compareTo(turma.id);

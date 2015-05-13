@@ -8,38 +8,41 @@ import model.pojo.Disciplina;
  *
  * @author Lucas
  */
-public class DisciplinaDaoImpl implements DisciplinaDao{
-    private List<Disciplina> listaDisciplina;
+public class DisciplinaDaoImpl implements Dao {
+    
+    private static List<Disciplina> listaDisciplina;
     
     @Override
-    public Integer indiceDisciplina (String nome){
-        return Collections.binarySearch(listaDisciplina, new Disciplina(nome, null, null));
-    }
-    
-    @Override
-    public Disciplina obterDisciplina (String nome){
-        if (this.indiceDisciplina(nome) != -1)
-            return this.listaDisciplina.get(this.indiceDisciplina(nome));
-        return null;
-    }
-    
-    @Override
-    public List<Disciplina> obterTodos (){
-        return listaDisciplina;
-    }
-    
-    @Override
-    public Boolean salvar(Disciplina disciplina){
-        if(!listaDisciplina.contains(disciplina)){
+    public Boolean salvar (Object objeto) {
+        Disciplina disciplina = (Disciplina) objeto;
+        if (this.indice(disciplina.getNome()) == -1) {
             listaDisciplina.add(disciplina);
-            Collections.sort(this.listaDisciplina);
+            Collections.sort(listaDisciplina);
             return true;
         }
         return false;
     }
     
     @Override
-    public Boolean remover(Disciplina disciplina){
+    public Boolean remover (Object objeto) {
+        Disciplina disciplina = (Disciplina) objeto;
         return listaDisciplina.remove(disciplina);
+    }
+    
+    @Override
+    public int indice (String nome) {
+        return Collections.binarySearch(listaDisciplina, new Disciplina (nome, null, null));
+    }
+    
+    @Override
+    public Object obter (String nome) {
+        if (this.indice(nome) != -1)
+            return listaDisciplina.get(this.indice(nome));
+        return null;
+    }
+    
+    @Override
+    public List<Object> obterTodos () {
+        return (List<Object>) (Object) listaDisciplina;
     }
 }
