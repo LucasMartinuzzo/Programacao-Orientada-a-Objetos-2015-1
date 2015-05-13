@@ -29,7 +29,7 @@ public class DisciplinaView {
         return this.disciplinaDao.salvar(disciplina);
     }
     public void pesquisar () {
-           System.out.println("PESQUISA DE DISCIPLINAS\nEntre com o nome da disciplina: ");
+        System.out.println("PESQUISA DE DISCIPLINAS\nEntre com o nome da disciplina: ");
             String nome = scanner.nextLine();
             if (this.disciplinaDao.indiceDisciplina(nome) != -1)
                 System.out.println(this.disciplinaDao.obterDisciplina(nome).toString());
@@ -37,17 +37,17 @@ public class DisciplinaView {
                 System.out.println("DISCIPLINA NÃO ENCONTRADA!");
         }
     public void remover(){
-            System.out.println("REMOÇÃO DE DISCIPLINA\nEntre com o nome da Disciplina: ");
-            String nome = scanner.nextLine();
-            if (disciplinaDao.remover(disciplinaDao.obterDisciplina(nome)))
-                System.out.println("DISCIPLINA REMOVIDA COM SUCESSO!");                
-            else
-                System.out.println("DISCIPLINA NÃO ENCONTRADA!");
-        }
+        System.out.println("REMOÇÃO DE DISCIPLINA\nEntre com o nome da Disciplina: ");
+        String nome = scanner.nextLine();
+        if (disciplinaDao.remover(disciplinaDao.obterDisciplina(nome)))
+            System.out.println("DISCIPLINA REMOVIDA COM SUCESSO!");                
+        else
+            System.out.println("DISCIPLINA NÃO ENCONTRADA!");
+    }
     public void listar () {
         System.out.println("LISTA DE DISCIPLINAS DISPONÍVEIS\n");
         List<Disciplina> listaDisciplina = disciplinaDao.obterTodos();
-        for (Disciplina disc: listaDisciplina) {
+        for(Disciplina disc: listaDisciplina) {
             System.out.println(disc.toString() + "\n");
         }
     }
