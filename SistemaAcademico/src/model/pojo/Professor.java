@@ -46,8 +46,27 @@ public class Professor implements Comparable<Professor>{
         return disciplina;
     }
     
+    public Boolean adicionarDisciplina (Disciplina disciplina){
+        if (!(this.getDisciplina().contains(disciplina))) {
+            disciplina.getProfessor().add(this);
+            return this.getDisciplina().add(disciplina);
+        }
+        return false;
+    }
+    
+    public Boolean removerDisciplina (Disciplina disciplina){
+        if (this.getDisciplina().remove(disciplina))
+            return disciplina.getProfessor().remove(this);
+        return false;
+    }
+    
     @Override
     public int compareTo (Professor professor){
         return this.cpf.compareTo(professor.cpf);
+    }
+    
+    @Override
+    public String toString () {
+        return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nDepartamento: " + this.departamento);
     }
 }
