@@ -46,6 +46,7 @@ public class Disciplina implements Comparable<Disciplina>{
     public List<Professor> getProfessor(){
         return professor;
     }
+    
     public List<Turma> getTurma(){
         return turma;
     }
@@ -53,5 +54,10 @@ public class Disciplina implements Comparable<Disciplina>{
     @Override
     public int compareTo(Disciplina disciplina) {
         return this.nome.compareTo(disciplina.getNome());
+    }
+    
+    @Override
+    public String toString () {
+        return ("Nome: " + this.nome + "\nEmenta: " + this.ementa + "\nCarga Horária: " + this.ementa);
     }
 }
