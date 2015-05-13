@@ -3,8 +3,6 @@ package model.dao;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Aluno;
-import model.pojo.Nota;
-import model.pojo.Turma;
 
 
 /**
@@ -47,30 +45,4 @@ public class AlunoDaoImpl implements AlunoDao {
         return listaAluno;
     }
     
-    @Override
-    public Boolean adicaoValida(Aluno aluno, Nota nota) {
-        return (!aluno.getNota().contains(nota));
-    }
-    
-    @Override
-    public void adicionaNota(Aluno aluno, Nota nota){
-        aluno.getNota().add(nota);
-    }
-    
-    @Override
-    public Nota retornaNota (Aluno aluno, Nota nota) {
-       if(aluno.getNota().contains(nota))
-            return aluno.getNota().get(aluno.getNota().indexOf(nota)); 
-       else
-            return null; 
-    }
-
-    @Override
-    public Double NotaFinal(Aluno aluno, Turma turma){
-        Double somaNotas = 0.0;
-        for(Nota notaConsultada: aluno.getNota())
-            if(notaConsultada.getAtividade().getTurma().equals(turma))
-                somaNotas += notaConsultada.getNota();
-    return somaNotas;
-    }
 }
