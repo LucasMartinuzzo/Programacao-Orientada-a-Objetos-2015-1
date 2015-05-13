@@ -23,7 +23,7 @@ public class FaltaDaoImpl implements Dao {
         return false;
     }
     
-    @Override
+    @Override 
     public Boolean remover (Object objeto) {
         Falta falta = (Falta) objeto;
         return listaFalta.remove(falta);
