@@ -46,16 +46,6 @@ public class Aluno implements Comparable<Aluno>{
         return nota;
     }
     
-    @Override
-    public int compareTo (Aluno aluno) {
-        return this.cpf.compareTo(aluno.cpf);
-    }
-    
-    @Override
-    public String toString () {
-        return ("Nome: " + this.nome + "\nCPF: " + this.cpf);
-    }
-    
     public Boolean adicionaNota(Nota nota){
         if(!this.getNota().contains(nota))
             return this.getNota().add(nota);
@@ -74,6 +64,16 @@ public class Aluno implements Comparable<Aluno>{
         for(Nota notaConsultada: this.getNota())
             if(notaConsultada.getAtividade().getTurma().equals(turma))
                 somaNotas += notaConsultada.getNota();
-    return somaNotas;
+        return somaNotas;
+    }
+    
+    @Override
+    public int compareTo (Aluno aluno) {
+        return this.cpf.compareTo(aluno.cpf);
+    }
+    
+    @Override
+    public String toString () {
+        return ("Nome: " + this.nome + "\nCPF: " + this.cpf);
     }
 }

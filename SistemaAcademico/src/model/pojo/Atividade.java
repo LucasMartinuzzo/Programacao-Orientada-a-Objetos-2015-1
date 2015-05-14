@@ -73,20 +73,7 @@ public class Atividade implements Comparable<Atividade>{
     
     public Boolean notasLancadas(){
         return notasLancadas;
-    }
-    
-    @Override
-    public int compareTo (Atividade atividade) {
-        return this.id.compareTo(atividade.id);
-    }
-    
-    @Override
-    public String toString () {
-        return ("ID: " + this.id + "\nNome: " + this.nome +
-                "Tipo: " + this.tipo + "\nValor: " + this.valor +
-                "Turma: " + this.turma.getDisciplina() + "\n");
-    }
-        
+    }   
        
     public Boolean adicionaNota(Nota nota){
         if (this.notasLancadas())
@@ -102,4 +89,15 @@ public class Atividade implements Comparable<Atividade>{
 //        return this.getNota().get(this.getNota().indexOf(nota));
 //    }
     
+    @Override
+    public int compareTo (Atividade atividade) {
+        return this.id.compareTo(atividade.id);
+    }
+    
+    @Override
+    public String toString () {
+        return ("ID: " + this.id + "\nNome: " + this.nome +
+                "\nTipo: " + this.tipo + "\nValor: " + this.valor +
+                "\nDisciplina: " + this.turma.getDisciplina() + "\n");
+    }
 }

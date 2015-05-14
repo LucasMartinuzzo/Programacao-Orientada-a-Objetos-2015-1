@@ -51,15 +51,13 @@ public class Disciplina implements Comparable<Disciplina>{
     }
 
     public Boolean adicionarTurma (Turma turma) {
-        Disciplina disciplina = turma.getDisciplina();
-        if (!disciplina.getTurma().contains(turma))
-            return disciplina.getTurma().add(turma);
+        if (!this.getTurma().contains(turma))
+            return this.getTurma().add(turma);
         return false;
     }
 
     public Boolean removerTurma (Turma turma) {
-        Disciplina disciplina = turma.getDisciplina();
-        return disciplina.getTurma().remove(turma);
+        return this.getTurma().remove(turma);
     }
     @Override
     public int compareTo(Disciplina disciplina) {
@@ -68,6 +66,7 @@ public class Disciplina implements Comparable<Disciplina>{
     
     @Override
     public String toString () {
-        return ("Nome: " + this.nome + "\nEmenta: " + this.ementa + "\nCarga Horária: " + this.ementa);
+        return ("Nome: " + this.nome + "\nEmenta: " + this.ementa + 
+                "\nCarga Horária: " + this.cargaHoraria);
     }
 }
