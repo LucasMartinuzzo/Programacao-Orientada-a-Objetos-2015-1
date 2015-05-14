@@ -2,7 +2,7 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
-import model.dao.AulaDao;
+import model.dao.Dao;
 import model.pojo.Aula;
 
 /**
@@ -11,7 +11,7 @@ import model.pojo.Aula;
  */
 public class AulaView {
     
-    private AulaDao aulaDao;
+    private Dao aulaDao;
     private static Scanner scanner = new Scanner (System.in);
 
     public Boolean cadastrar () {
@@ -31,8 +31,8 @@ public class AulaView {
     public void pesquisar () {
         System.out.println("PESQUISA DE AULAS\nEntre com o ID da aula: ");
         String id = scanner.nextLine();
-        if (this.aulaDao.indiceAula(id) != -1)
-            System.out.println(this.aulaDao.obterAula(id).toString());
+        if (this.aulaDao.indice(id) != -1)
+            System.out.println(this.aulaDao.obter(id).toString());
         else
             System.out.println("AULA NÃO ENCONTRADA!");
     }
@@ -40,15 +40,15 @@ public class AulaView {
     public void remover () {
         System.out.println("REMOÇÃO DE AULA\nEntre com o ID da aula: ");
         String id = scanner.nextLine();
-        if (this.aulaDao.remover(this.aulaDao.obterAula(id)))
-            System.out.println(this.aulaDao.obterAula(id).toString());
+        if (this.aulaDao.remover(this.aulaDao.obter(id)))
+            System.out.println(this.aulaDao.obter(id).toString());
         else
             System.out.println("AULA NÃO ENCONTRADA!");
     }
 
     public void listar () {
         System.out.println("LISTA DE AULAS DISPONÍVEIS\n");
-        List<Aula> listaAula = aulaDao.obterTodas();
+        List<Aula> listaAula = (List<Aula>) (Aula) aulaDao.obterTodos();
         for (Aula aula: listaAula) {
             System.out.println(aula.toString() + "\n");
         }

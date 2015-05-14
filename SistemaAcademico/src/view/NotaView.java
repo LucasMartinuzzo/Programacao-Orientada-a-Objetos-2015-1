@@ -7,9 +7,7 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
-import model.dao.AlunoDao;
-import model.dao.AtividadeDao;
-import model.dao.NotaDao;
+import model.dao.Dao;
 import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Nota;
@@ -19,9 +17,9 @@ import model.pojo.Nota;
  * @author Filipe
  */
 public class NotaView {
-    private NotaDao notaDao;
-    private AlunoDao alunoDao;
-    private AtividadeDao atividadeDao;
+    private Dao notaDao;
+    private Dao alunoDao;
+    private Dao atividadeDao;
     
     private static Scanner scanner = new Scanner (System.in);
             
@@ -30,23 +28,25 @@ public class NotaView {
         System.out.println("ID: ");
         String id = scanner.nextLine();
         System.out.println("Nota: ");
-        Double ValorDaNota = scanner.nextDouble();
-        Aluno aluno = this.obterCadastrado();
+        Double valorDaNota = scanner.nextDouble();
+        System.out.println("Aluno (ID: CPF):");
+        Aluno aluno = (Aluno) this.obterCadastrado(this.alunoDao);
         if (aluno == null)
             return false;
-        Atividade atividade = this.obterCadastrada();
+        System.out.println("Atividade:");
+        Atividade atividade = (Atividade) this.obterCadastrado(this.atividadeDao);
         if (atividade == null)
             return false;
 
-        Nota nota = new Nota (id, ValorDaNota, aluno, atividade );
+        Nota nota = new Nota (id, valorDaNota, aluno, atividade );
         return this.notaDao.salvar(nota);
     }
 
    public void pesquisar () {
        System.out.println("PESQUISAR NOTA \nEntre com o ID da Nota: ");
         String id = scanner.nextLine();
-        if (this.notaDao.indiceNota(id) != -1)
-            System.out.println(this.notaDao.obterNota(id).toString());
+        if (this.notaDao.indice(id) != -1)
+            System.out.println(this.notaDao.obter(id).toString());
         else
             System.out.println("NOTA NÃO ENCONTRADA!"); 
     }
@@ -54,7 +54,7 @@ public class NotaView {
     public void remover(){
         System.out.println("REMOVER NOTA\nEntre com o ID da Nota: ");
         String id = scanner.nextLine();
-        if (notaDao.remover(notaDao.obterNota(id)))
+        if (notaDao.remover(notaDao.obter(id)))
             System.out.println("NOTA REMOVIDA COM SUCESSO!");                
         else
             System.out.println("NOTA NÃO ENCONTRADA!");
@@ -62,41 +62,23 @@ public class NotaView {
 
     public void listar () {
         System.out.println("LISTA DE NOTAS DISPONÍVEIS\n");
-        List<Nota> listaAluno = notaDao.obterTodos();
+        List<Nota> listaAluno = (List<Nota>) (Nota) notaDao.obterTodos();
         for (Nota nota: listaAluno) {
             System.out.println(nota.toString() + "\n");
         }
     }
-    public Atividade obterCadastrada () {
-    while (true) {
-        System.out.println("Atividade: ");
-        String entrada = scanner.nextLine();
-        if (entrada.equals("cancelar"))
-            break;
-        Atividade atividade = this.atividadeDao.obterAtividade(entrada);
-        if (atividade != null)
-            return atividade;
-        else {
-            System.out.println("ESTA ATIVIDADE NÃO ESTÁ CADASTRADA!");
-            System.out.println("Digite novamente (''cancelar'' para cancelar): ");
-        }
-    }
-    return null;
-    }
     
-    public Aluno obterCadastrado () {
+    public Object obterCadastrado (Dao dao) {    
         while (true) {
-            System.out.println("Aluno: ");
+            System.out.println("ID (''cancelar'' para cancelar): ");
             String entrada = scanner.nextLine();
             if (entrada.equals("cancelar"))
                 break;
-            Aluno aluno = this.alunoDao.obterAluno(entrada);
-            if (aluno != null)
-                return aluno;
-            else {
-                System.out.println("ESTE ALUNO NÃO ESTÁ CADASTRADO!");
-                System.out.println("Digite novamente (''cancelar'' para cancelar): ");
-            }
+            Object objeto = dao.obter(entrada);
+            if (objeto != null)
+                return objeto;
+            else
+                System.out.println("ITEM NÃO CADASTRADO! TENTE NOVAMENTE.\n");
         }
         return null;
     }
