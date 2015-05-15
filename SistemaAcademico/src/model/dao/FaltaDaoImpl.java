@@ -14,9 +14,15 @@ import java.io.IOException;
  *
  * @author Filipe
  */
-public class FaltaDaoImpl implements Dao {
-    
+public class FaltaDaoImpl implements Dao {    
     private static List<Falta> listaFalta;
+    private static FaltaDaoImpl instancia = null;
+    
+    public static FaltaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+        if(FaltaDaoImpl.instancia == null)
+            instancia = new FaltaDaoImpl();
+        return instancia;
+    }
     
     @Override
     public Boolean inserir (Object objeto) {

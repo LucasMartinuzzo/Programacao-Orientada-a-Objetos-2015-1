@@ -15,8 +15,14 @@ import model.pojo.Nota;
  * @author Pedro
  */
 public class NotaDaoImpl implements Dao {
-    
     private static List<Nota> listaNota;
+    private static NotaDaoImpl instancia = null;
+    
+    public static NotaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+        if(NotaDaoImpl.instancia == null)
+            instancia = new NotaDaoImpl();
+        return instancia;
+    }
     
     @Override
     public Boolean inserir (Object objeto) {

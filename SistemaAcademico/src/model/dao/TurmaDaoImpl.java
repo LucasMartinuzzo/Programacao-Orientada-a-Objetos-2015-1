@@ -15,8 +15,14 @@ import java.io.IOException;
  * @author JeanPablo
  */
 public class TurmaDaoImpl implements Dao {
-    
     private static List<Turma> listaTurma;
+    private static TurmaDaoImpl instancia = null;
+    
+    public static TurmaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+        if(TurmaDaoImpl.instancia == null)
+            instancia = new TurmaDaoImpl();
+        return instancia;
+    }
     
     @Override
     public Boolean inserir (Object objeto) {
