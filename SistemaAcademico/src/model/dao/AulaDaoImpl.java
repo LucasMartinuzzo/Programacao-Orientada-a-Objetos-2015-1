@@ -1,5 +1,11 @@
 package model.dao;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Aula;
@@ -47,9 +53,25 @@ public class AulaDaoImpl implements Dao {
         return (List<Object>) (Object) listaAula;
     }
     
-    @Override
-    public void salvar (){
-    //*Implementar*//
+@Override
+    public void salvar () throws IOException{
+        File file = new File ("Aula.txt");
+        if (!(file.exists()))
+            file.createNewFile();
+        FileWriter fw = new FileWriter (file);
+        BufferedWriter bw = new BufferedWriter (fw);
+        for (Aula aula: this.listaAula){
+            bw.write (aula.getId());
+            bw.newLine ();
+            bw.write (aula.getDiaDaSemana());
+            bw.newLine ();
+            bw.write (aula.getHora());
+            bw.newLine ();
+            bw.write (aula.getLocal());
+            bw.newLine ();
+        }
+        bw.close();
+        fw.close();
     }
     
     @Override
