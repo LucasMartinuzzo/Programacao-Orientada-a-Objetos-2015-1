@@ -46,7 +46,8 @@ public class Professor implements Comparable<Professor>{
         return disciplina;
     }
     
-    public Boolean adicionarDisciplina (Disciplina disciplina){
+    public Boolean adicionarDisciplina (Object objeto){
+        Disciplina disciplina = (Disciplina) objeto;
         if (!(this.getDisciplina().contains(disciplina))) {
             disciplina.getProfessor().add(this);
             return this.getDisciplina().add(disciplina);

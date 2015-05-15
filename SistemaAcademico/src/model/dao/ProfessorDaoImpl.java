@@ -78,6 +78,21 @@ public class ProfessorDaoImpl implements Dao {
     
     @Override
     public void carregar () throws IOException{
-    //*Implementar*//
+        File file = new File ("Professor.txt");
+        FileReader fr = new FileReader (file);
+        BufferedReader br = new BufferedReader (fr);
+        while (br.ready()){
+            String nome = br.readLine();
+            String cpf = br.readLine();
+            String departamento = br.readLine();
+            Professor professor = new Professor(nome,cpf,departamento);
+            this.inserir(professor);
+            String[] disciplina = br.readLine().split(",");
+            for(String d: disciplina)
+                if(!(d.equals("NULL")))
+                    professor.adicionarDisciplina(DisciplinaDaoImpl.getInstancia().obter(d));
+        }
+        br.close();
+        fr.close();
     }
 }

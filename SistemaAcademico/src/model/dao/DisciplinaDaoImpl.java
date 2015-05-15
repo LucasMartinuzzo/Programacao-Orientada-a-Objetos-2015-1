@@ -16,8 +16,14 @@ import model.pojo.Disciplina;
  * @author Lucas
  */
 public class DisciplinaDaoImpl implements Dao {
-    
     private static List<Disciplina> listaDisciplina;
+    private static DisciplinaDaoImpl instancia = null;
+    
+    public static DisciplinaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+        if(DisciplinaDaoImpl.instancia == null)
+            instancia = new DisciplinaDaoImpl();
+        return instancia;
+    }
     
     @Override
     public Boolean inserir (Object objeto) {
