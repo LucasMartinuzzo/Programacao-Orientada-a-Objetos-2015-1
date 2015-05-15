@@ -34,7 +34,7 @@ public class AlunoView {
         if (alunoDao.remover(alunoDao.obter(cpf)))
             System.out.println("ALUNO REMOVIDO COM SUCESSO!");                
         else
-            System.out.println("ALUNO NÃO ENCONTRADO, A REMOÇÃO NÃO SERÁ EFETUADA!");
+            System.out.println("ALUNO NÃO ENCONTRADO, REMOÇÃO NÃO EFETUADA!");
     }
 
     public void listar () {

@@ -45,7 +45,7 @@ public class AulaView {
             System.out.println("AULA REMOVIDA COM SUCESSO!");
             //System.out.println(this.aulaDao.obter(id).toString());
         else
-            System.out.println("AULA NÃO ENCONTRADA, A REMOÇÃO NÃO SERÁ EFETUADA!");
+            System.out.println("AULA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!");
     }
  
     
