@@ -89,25 +89,52 @@ public class Main {
     }
     
     private void imprimirMenuRemover(){
-        System.out.println("REMOVER ALUNOS - 1");
-        System.out.println("REMOVER TURMAS - 2");
-        System.out.println("REMOVER PROFESSOR - 3");
-        System.out.println("REMOVER ATIVIDADE - 4");
-        System.out.println("REMOVER FALTA - 5");
-        System.out.println("REMOVER NOTA - 6 ");
-        System.out.println("REMOVER DISCIPLINA - 7");
-        
-        Scanner entrada = new Scanner(System.in);
-        Integer i = entrada.nextInt();
-        switch(i){
-            case 1:{}
-            case 2:{}
-            case 3:{}
-            case 4:{}
-            case 5:{}
-            case 6:{}
-            case 7:{}
+        while(true){
+            
+            System.out.println("1 - REMOVER ALUNOS");
+            System.out.println("2 - REMOVER TURMAS");
+            System.out.println("3 - REMOVER PROFESSOR");
+            System.out.println("4 - REMOVER ATIVIDADE");
+            System.out.println("5 - REMOVER FALTA");
+            System.out.println("6 - REMOVER NOTA");
+            System.out.println("7 - REMOVER DISCIPLINA");
+            System.out.println("OUTRO - VOLTAR");
 
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            switch(opcao){
+                case 1:{
+                    this.alunoView.remover();
+                    break;
+                }
+                case 2:{
+                    this.turmaView.remover();
+                    break;
+                }
+                case 3:{
+                    this.professorView.remover();
+                    break;
+                }
+                case 4:{
+                    this.atividadeView.remover();
+                    break;
+                }
+                case 5:{
+                    this.faltaView.remover();
+                    break;
+                }
+                case 6:{
+                    this.notaView.remover();
+                    break;
+                }
+                case 7:{
+                    this.disciplinaView.remover();
+                    break;
+                }
+                default:{}
+            }
+            if (opcao < 1 || opcao > 7)
+                break;
         }
         
     }
@@ -122,8 +149,8 @@ public class Main {
         System.out.println("MODIFICAR DISCIPLINA - 7");
     
         Scanner entrada = new Scanner(System.in);
-        Integer i = entrada.nextInt();
-        switch(i){
+        Integer opcao = entrada.nextInt();
+        switch(opcao){
             case 1:{}
             case 2:{}
             case 3:{}

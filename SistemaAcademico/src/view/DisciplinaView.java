@@ -38,7 +38,7 @@ public class DisciplinaView {
         if (disciplinaDao.remover(disciplinaDao.obter(nome)))
             System.out.println("DISCIPLINA REMOVIDA COM SUCESSO!");                
         else
-            System.out.println("DISCIPLINA NÃO ENCONTRADA!");
+            System.out.println("DISCIPLINA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!");
     }
     public void listar () {
         System.out.println("LISTA DE DISCIPLINAS DISPONÍVEIS\n");

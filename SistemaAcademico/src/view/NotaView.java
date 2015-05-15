@@ -57,7 +57,7 @@ public class NotaView {
         if (notaDao.remover(notaDao.obter(id)))
             System.out.println("NOTA REMOVIDA COM SUCESSO!");                
         else
-            System.out.println("NOTA NÃO ENCONTRADA!");
+            System.out.println("NOTA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!");
     }
 
     public void listar () {

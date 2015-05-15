@@ -51,7 +51,7 @@ public class AtividadeView {
         if (atividadeDao.remover(atividadeDao.obter(id)))
             System.out.println("ATIVIDADE REMOVIDA COM SUCESSO!");                
         else
-            System.out.println("ATIVIDADE NÃO ENCONTRADA!");
+            System.out.println("ATIVIDADE NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!");
     }
 
     public void listar () {

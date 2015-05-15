@@ -74,7 +74,16 @@ public class TurmaView {
         else
             System.out.println("TURMA NÃO ENCONTRADA!");
     }
-        
+    
+    public void remover(){
+        System.out.println("REMOÇÃO DE TURMA\nEntre com o ID da turma: ");
+        String cpf = scanner.nextLine();
+        if (professorDao.remover(professorDao.obter(cpf)))
+            System.out.println("TURMA REMOVIDA COM SUCESSO!");                
+        else
+            System.out.println("TURMA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!");
+    }
+    
     public void listar () {
         System.out.println("LISTA DE TURMAS DISPONÍVEIS\n");
         List<Turma> listaTurma = (List<Turma>) (Turma) turmaDao.obterTodos();
