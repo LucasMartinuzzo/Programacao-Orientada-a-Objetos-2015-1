@@ -85,9 +85,9 @@ public class Atividade implements Comparable<Atividade>{
         return this.getNota().add(nota);
     }
     
-//    public Nota retornaNota (Nota nota) {
-//        return this.getNota().get(this.getNota().indexOf(nota));
-//    }
+    public Nota retornaNota (Aluno aluno) {
+        return this.getNota().get(this.getNota().indexOf(nota));
+    }
     
     @Override
     public int compareTo (Atividade atividade) {

@@ -1,6 +1,10 @@
 package view;
 
 import java.util.Scanner;
+import model.dao.Dao;
+import model.pojo.Aluno;
+import model.pojo.Atividade;
+import model.pojo.Turma;
 
 /**
  *
@@ -15,6 +19,15 @@ public class Main {
     private FaltaView faltaView;
     private NotaView notaView;
     private DisciplinaView disciplinaView;
+    private AulaView aulaView;
+    private Dao turmaDao;
+    private Dao alunoDao;
+    private Dao professorDao;
+    private Dao atividadeDao;
+    private Dao faltaDao;
+    private Dao notaDao;
+    private Dao disciplinaDao;
+    private Dao aulaDao;
     
     private void imprimirMenuCadastro(){
         while (true) {
@@ -72,18 +85,43 @@ public class Main {
     }
     
     private void imprimirMenuConsultar(){
-        System.out.println("CONSULTAR OS ALUNOS DE UMA TURMA COM SUAS RESPECTIVAS NOTAS E FALTAS - 1");
-        System.out.println("CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA - 2");
-        System.out.println("CONSULTAR A QUANTIDADE DE TURMAS OFERECIDAS DE UMA DISCIPLINA - 3");
-        System.out.println("CONSULTAR O NÚMERO DE DISCIPLINAS JÁ LECIONADAS POR UM PROFESSOR - 4");
-    
+        System.out.println("1 - CONSULTAR OS ALUNOS DE UMA TURMA COM SUAS RESPECTIVAS NOTAS E FALTAS");
+        System.out.println("2 - CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA");
+        System.out.println("3 - CONSULTAR A QUANTIDADE DE TURMAS OFERECIDAS DE UMA DISCIPLINA");
+        System.out.println("4 - CONSULTAR O NÚMERO DE DISCIPLINAS JÁ LECIONADAS POR UM PROFESSOR");
+        System.out.println("OUTRO - VOLTAR");
+        
+        System.out.println("\nOpção: ");
         Scanner entrada = new Scanner(System.in);
-        Integer i = entrada.nextInt();
-        switch(i){
-            case 1:{}
-            case 2:{}
-            case 3:{}
-            case 4:{}
+        Integer opcao = entrada.nextInt();
+        Boolean consultaEfetuada = false;
+        switch(opcao){
+            case 1:{
+                System.out.println("\nInforme o ID da turma: ");
+                //VERIFICAR SE PODE SER O ID EM VEZ DE DISCIPLINA, ANO E PERÍODO!
+                Turma turma = (Turma) this.turmaDao.obter(entrada.nextLine());
+                if (turma != null) {
+                    for (Aluno aluno: turma.getAluno()) {
+                        System.out.println("\nAluno: " + aluno.getNome());
+                        System.out.println("Notas:");
+                        for (Atividade atividade: turma.getAtividade())
+                            //System.out.println(" *" + atividade.getNome() + ": " + );
+                        System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
+                        //System.out.println("\nFaltas: " + aluno);
+                        consultaEfetuada = true;
+                    }
+                }
+                break;
+            }
+            case 2:{
+            
+            }
+            case 3:{
+            
+            }
+            case 4:{
+            
+            }
 
         }
     }

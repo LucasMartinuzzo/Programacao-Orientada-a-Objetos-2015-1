@@ -26,7 +26,7 @@ public class DisciplinaDaoImpl implements Dao {
     @Override
     public Boolean remover (Object objeto) {
         Disciplina disciplina = (Disciplina) objeto;
-        return listaDisciplina.remove(disciplina);
+        return listaDisciplina.remove(disciplina);h
     }
     
     @Override
