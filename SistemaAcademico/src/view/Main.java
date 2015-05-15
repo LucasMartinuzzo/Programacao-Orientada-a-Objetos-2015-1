@@ -1,6 +1,12 @@
 package view;
 
 import java.util.Scanner;
+import model.dao.Dao;
+import model.pojo.Aluno;
+import model.pojo.Atividade;
+import model.pojo.Disciplina;
+import model.pojo.Falta;
+import model.pojo.Turma;
 
 /**
  *
@@ -15,6 +21,8 @@ public class Main {
     private FaltaView faltaView;
     private NotaView notaView;
     private DisciplinaView disciplinaView;
+    private Dao disciplinaDao;
+    private Dao alunoDao;
     
     private void imprimirMenuCadastro(){
         while (true) {
@@ -78,10 +86,46 @@ public class Main {
         System.out.println("CONSULTAR O NÚMERO DE DISCIPLINAS JÁ LECIONADAS POR UM PROFESSOR - 4");
     
         Scanner entrada = new Scanner(System.in);
-        Integer i = entrada.nextInt();
-        switch(i){
+        Integer opcao = entrada.nextInt();
+  
+        String nome;
+        String cpf;
+        switch(opcao){
             case 1:{}
-            case 2:{}
+            case 2:{
+                //Consultar a situação de um aluno em uma disciplina - exibir nota e faltas, e se foi aprovado ou nâo, sabendo
+//que e necessario ter nota maior ou igual a 6,0, alem de 75% de frequencia para aprovação;
+                System.out.println("INFORME O CPF DO ALUNO: ");
+                cpf = entrada.nextLine();
+                Aluno aluno = (Aluno)this.alunoDao.obter(cpf);
+                if(aluno == null)
+                    return;
+                System.out.println("INFORME O NOME DA DISCIPLINA: ");
+                nome = entrada.nextLine();
+                Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(nome);
+                if(disciplina == null)
+                    return;
+                for(Turma turma : disciplina.getTurma()){
+                    for(Aluno alunoConsultado : turma.getAluno()){
+                        if(alunoConsultado == aluno){
+                            //for(Atividade atividade : turma.getAtividade()){
+                            //    
+                            //}
+                            aluno.toString();
+                            for(Falta faltaConsultada : aluno.getFalta()){
+                                if(faltaConsultada.getTurma() == turma){
+                                    System.out.println("Falta: " + faltaConsultada.getFalta());
+                                    break;
+                                }
+                            }
+                            System.out.println("Nota: " + aluno.NotaFinal(turma));
+                            break;
+                        }
+                    }
+                    break;
+                }
+                
+            }
             case 3:{}
             case 4:{}
 
