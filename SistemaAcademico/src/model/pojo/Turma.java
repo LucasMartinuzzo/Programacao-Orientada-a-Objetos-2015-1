@@ -103,7 +103,7 @@ public class Turma implements Comparable<Turma> {
     
     /*public Aula retornaAula (Turma this, Aula aula) {
         if (this.getAula().contains(aula))
-            return this.getAula().get(this.getAula().indexOf(aula));
+            //return this.getAula().get(this.getAula().indexOf(aula));
         else
             return null;
     }*/
