@@ -1,5 +1,11 @@
 package model.dao;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Nota;
@@ -47,8 +53,24 @@ public class NotaDaoImpl implements Dao {
     }
     
     @Override
-    public void salvar (){
-    //*Implementar*//
+    public void salvar () throws IOException{
+        File file = new File ("Nota.txt");
+        if (!(file.exists()))
+            file.createNewFile();
+        FileWriter fw = new FileWriter (file);
+        BufferedWriter bw = new BufferedWriter (fw);
+        for (Nota nota: this.listaNota){
+            bw.write (nota.getId());
+            bw.newLine ();
+            bw.write (nota.getNota().toString());
+            bw.newLine ();
+            bw.write (nota.getAluno().getCpf());
+            bw.newLine ();
+            bw.write (nota.getAtividade().getId());
+            bw.newLine ();
+        }
+        bw.close();
+        fw.close();
     }
     
     @Override
