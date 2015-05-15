@@ -3,6 +3,7 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 import model.dao.Dao;
+import model.pojo.Aluno;
 import model.pojo.Falta;
 import model.pojo.Turma;
 
@@ -13,21 +14,33 @@ import model.pojo.Turma;
 public class FaltaView {
     private Dao faltaDao;
     private Dao turmaDao;
+    private Dao alunoDao;
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
-        System.out.println("CADASTRO DE FALTA\nCadastre uma nova falta:\n");
-        System.out.println("ID: ");
-        String id = scanner.nextLine();
-        System.out.println("Falta: ");
-        Integer numeroDeFalta = scanner.nextInt();
-        System.out.println("Turma:");
-        Turma turma = (Turma) this.obterCadastrado(this.turmaDao);
-        if (turma == null)
-            return false;
+        System.out.println("CADASTRO DE FALTA");
+        while (true) {
+            System.out.println("Aluno:");
+            Aluno aluno = (Aluno) this.obterCadastrado(this.alunoDao);
+            if (aluno == null)
+                return false;
+            System.out.println("Turma:");
+            Turma turma = (Turma) this.obterCadastrado(this.turmaDao);
+            if (turma == null)
+                return false;
+            if (turma.getAluno().contains(aluno)) {
+                System.out.println("\nAtualize o registro de faltas do aluno:\n");
+                System.out.println("ID: ");
+                String id = scanner.nextLine();
+                System.out.println("Número de faltas: ");
+                Integer numeroDeFalta = scanner.nextInt();
 
-        Falta falta = new Falta (id, numeroDeFalta,turma);
-        return this.faltaDao.salvar(falta);
+                Falta falta = new Falta (id, numeroDeFalta,turma);
+                return this.faltaDao.salvar(falta);
+            }
+            else
+                System.out.println("ESTE ALUNO NÃO ESTÁ MATRICULADO NA TURMA INFORMADA! TENTE NOVAMENTE\n");
+        }
     }
 
     public void pesquisar () {
@@ -50,8 +63,8 @@ public class FaltaView {
 
     public void listar () {
         System.out.println("LISTA DE FALTAS DISPONÍVEIS\n");
-        List<Falta> listaAluno = (List<Falta>) (Falta) faltaDao.obterTodos();
-        for (Falta falta: listaAluno) {
+        List<Falta> listaFalta = (List<Falta>) (Falta) faltaDao.obterTodos();
+        for (Falta falta: listaFalta) {
             System.out.println(falta.toString() + "\n");
         }
     }

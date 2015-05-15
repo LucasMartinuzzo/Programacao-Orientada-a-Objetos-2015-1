@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.util.Scanner;
@@ -12,33 +7,68 @@ import java.util.Scanner;
  * @author Filipe
  */
 public class Main {
-
-    /*private void imprimirMenu(){
-        System.out.println("CADASTROS - 1");
-        System.out.println("CONSULTAS - 2");
-        System.out.println("REMOÇÕES - 3");
-        System.out.println("MODIFICAÇÕES - 4");
-       
-    }*/
+    
+    private TurmaView turmaView;
+    private AlunoView alunoView;
+    private ProfessorView professorView;
+    private AtividadeView atividadeView;
+    private FaltaView faltaView;
+    private NotaView notaView;
+    private DisciplinaView disciplinaView;
     
     private void imprimirMenuCadastro(){
-        System.out.println("CADASTRAR ALUNOS - 1");
-        System.out.println("CADASTRAR TURMAS - 2");
-        System.out.println("CADASTRAR PROFESSOR - 3");
-        System.out.println("CADASTRAR ATIVIDADE - 4");
-        System.out.println("CADASTRAR FALTA - 5");
-        System.out.println("CADASTAR NOTA - 6 ");
-        System.out.println("CADASTRAR DISCIPLINA - 7");
-        
-        Scanner entrada = new Scanner(System.in);
-        Integer i = entrada.nextInt();
-            switch(i){
-                case 1:{}
-                case 2:{}
-                case 3:{}
-                case 4:{}
-                case 5:{}
+        while (true) {
+            System.out.println("1 - CADASTRAR ALUNOS");
+            System.out.println("2 - CADASTRAR TURMAS");
+            System.out.println("3 - CADASTRAR PROFESSOR");
+            System.out.println("4 - CADASTRAR ATIVIDADE");
+            System.out.println("5 - CADASTRAR FALTA");
+            System.out.println("6 - CADASTRAR NOTA");
+            System.out.println("7 - CADASTRAR DISCIPLINA");
+            System.out.println("OUTRO - VOLTAR");
+
+            System.out.println("\nOpção: ");
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            Boolean cadastroEfetuado = false;
+            switch(opcao) {
+                case 1:{
+                    cadastroEfetuado = this.alunoView.cadastrar();
+                    break;
+                }
+                case 2:{
+                    cadastroEfetuado = this.turmaView.cadastrar();
+                    break;
+                }
+                case 3:{
+                    cadastroEfetuado = this.professorView.cadastrar();
+                    break;
+                }
+                case 4:{
+                    cadastroEfetuado = this.atividadeView.cadastrar();
+                    break;
+                }
+                case 5:{
+                    cadastroEfetuado = this.faltaView.cadastrar();
+                    break;
+                }
+                case 6:{
+                    cadastroEfetuado = this.notaView.cadastrar();
+                    break;
+                }
+                case 7:{
+                    cadastroEfetuado = this.disciplinaView.cadastrar();
+                    break;
+                }
+                default:{}
             }
+            if (opcao < 1 || opcao > 7)
+                break;
+            if (cadastroEfetuado)
+                System.out.println("\nCADASTRO EFETUADO COM SUCESSO!\n");
+            else
+                System.out.println("\nCADASTRO NÃO EFETUADO!\n");
+        }
     }
     
     private void imprimirMenuConsultar(){
@@ -49,13 +79,13 @@ public class Main {
     
         Scanner entrada = new Scanner(System.in);
         Integer i = entrada.nextInt();
-            switch(i){
-                case 1:{}
-                case 2:{}
-                case 3:{}
-                case 4:{}
-   
-            }
+        switch(i){
+            case 1:{}
+            case 2:{}
+            case 3:{}
+            case 4:{}
+
+        }
     }
     
     private void imprimirMenuRemover(){
@@ -69,16 +99,16 @@ public class Main {
         
         Scanner entrada = new Scanner(System.in);
         Integer i = entrada.nextInt();
-            switch(i){
-                case 1:{}
-                case 2:{}
-                case 3:{}
-                case 4:{}
-                case 5:{}
-                case 6:{}
-                case 7:{}
-   
-            }
+        switch(i){
+            case 1:{}
+            case 2:{}
+            case 3:{}
+            case 4:{}
+            case 5:{}
+            case 6:{}
+            case 7:{}
+
+        }
         
     }
     
@@ -93,16 +123,16 @@ public class Main {
     
         Scanner entrada = new Scanner(System.in);
         Integer i = entrada.nextInt();
-            switch(i){
-                case 1:{}
-                case 2:{}
-                case 3:{}
-                case 4:{}
-                case 5:{}
-                case 6:{}
-                case 7:{}
-   
-            }
+        switch(i){
+            case 1:{}
+            case 2:{}
+            case 3:{}
+            case 4:{}
+            case 5:{}
+            case 6:{}
+            case 7:{}
+
+        }
     }
 
     public static void main(String[] args){
@@ -110,7 +140,6 @@ public class Main {
         Main main = new Main();    
         Scanner entrada = new Scanner(System.in);
         while(true){
-            // main.imprimirMenu();
             System.out.println("CADASTROS - 1");
             System.out.println("CONSULTAS - 2");
             System.out.println("REMOÇÕES - 3");

@@ -59,7 +59,7 @@ public class TurmaView {
             List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(this.alunoDao);
             turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor,
                     listaAula, listaAluno);
-            System.out.println("******************************************************************\n");
+            System.out.println("******************************************************************");
         }
         else
             turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula);
