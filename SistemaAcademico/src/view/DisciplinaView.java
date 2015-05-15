@@ -22,7 +22,7 @@ public class DisciplinaView {
         System.out.println("Carga Horária: ");
         Integer cargaHoraria = scanner.nextInt();
         Disciplina disciplina = new Disciplina(nome, ementa, cargaHoraria);
-        return this.disciplinaDao.salvar(disciplina);
+        return this.disciplinaDao.inserir(disciplina);
     }
     public void pesquisar () {
         System.out.println("PESQUISA DE DISCIPLINAS\nEntre com o nome da disciplina: ");

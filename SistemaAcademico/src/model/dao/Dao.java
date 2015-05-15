@@ -14,5 +14,4 @@ public interface Dao {
     List<Object> obterTodos ();
     void salvar ();
     void carregar ();
-    
 }
