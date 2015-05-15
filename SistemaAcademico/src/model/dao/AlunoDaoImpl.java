@@ -18,6 +18,13 @@ import model.pojo.Turma;
 public class AlunoDaoImpl implements Dao {
     
     private static List<Aluno> listaAluno;
+    private static AlunoDaoImpl instancia = null;
+    
+    public static AlunoDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+        if(AlunoDaoImpl.instancia == null)
+            instancia = new AlunoDaoImpl();
+        return instancia;
+    }
     
     @Override
     public Boolean inserir (Object objeto) {

@@ -17,6 +17,13 @@ import model.pojo.Atividade;
 public class AtividadeDaoImpl implements Dao {
     
     private static List<Atividade> listaAtividade;
+    private static AtividadeDaoImpl instancia = null;
+    
+    public static AtividadeDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+        if(AtividadeDaoImpl.instancia == null)
+            instancia = new AtividadeDaoImpl();
+        return instancia;
+    }
     
     @Override
     public Boolean inserir (Object objeto) {
