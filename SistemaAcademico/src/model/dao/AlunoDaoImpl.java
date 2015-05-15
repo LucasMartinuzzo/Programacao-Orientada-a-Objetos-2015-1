@@ -46,4 +46,14 @@ public class AlunoDaoImpl implements Dao {
     public List<Object> obterTodos () {
         return (List<Object>) (Object) listaAluno;
     }
+    
+    @Override
+    public void salvar (){
+    //*Implementar*//
+    }
+    
+    @Override
+    public void carregar (){
+    //*Implementar*//
+    }
 }

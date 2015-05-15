@@ -45,4 +45,14 @@ public class ProfessorDaoImpl implements Dao {
     public List<Object> obterTodos () {
         return (List<Object>) (Object) listaProfessor;
     }
+    
+    @Override
+    public void salvar (){
+    //*Implementar*//
+    }
+    
+    @Override
+    public void carregar (){
+    //*Implementar*//
+    }
 }

@@ -45,4 +45,14 @@ public class FaltaDaoImpl implements Dao {
     public List<Object> obterTodos () {
         return (List<Object>) (Object) listaFalta;
     }
+    
+    @Override
+    public void salvar (){
+    //*Implementar*//
+    }
+    
+    @Override
+    public void carregar (){
+    //*Implementar*//
+    }
 }

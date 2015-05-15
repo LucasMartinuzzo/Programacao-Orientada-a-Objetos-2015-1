@@ -45,4 +45,14 @@ public class DisciplinaDaoImpl implements Dao {
     public List<Object> obterTodos () {
         return (List<Object>) (Object) listaDisciplina;
     }
+    
+    @Override
+    public void salvar (){
+    //*Implementar*//
+    }
+    
+    @Override
+    public void carregar (){
+    //*Implementar*//
+    }
 }

@@ -46,4 +46,14 @@ public class AtividadeDaoImpl implements Dao {
     public List<Object> obterTodos () {
         return (List<Object>) (Object) listaAtividade;
     }
+    
+    @Override
+    public void salvar (){
+    //*Implementar*//
+    }
+    
+    @Override
+    public void carregar (){
+    //*Implementar*//
+    }
 }
