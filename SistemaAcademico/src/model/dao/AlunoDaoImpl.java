@@ -1,9 +1,12 @@
 package model.dao;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Aluno;
-
 
 /**
  *
@@ -48,8 +51,35 @@ public class AlunoDaoImpl implements Dao {
     }
     
     @Override
-    public void salvar (){
-    //*Implementar*//
+    public void salvar () throws IOException{
+        File file = new File("Aluno.txt");
+        if(!file.exists())
+            file.createNewFile();
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+        for(Aluno aluno: this.listaAluno){
+            bw.write(aluno.getNome());
+            bw.newLine();
+            bw.write(aluno.getCpf());
+            bw.newLine();
+            for(int i = 0; i< aluno.getTurma().size(); i++){
+                bw.write(aluno.getTurma().get(i).getId());
+                bw.write(",");
+            }
+            bw.newLine();
+            for(int i = 0; i< aluno.getFalta().size(); i++){
+                bw.write(aluno.getFalta().get(i).getId());
+                bw.write(",");
+            }
+            bw.newLine();
+            for(int i = 0; i< aluno.getNota().size(); i++){
+                bw.write(aluno.getNota().get(i).getId());
+                bw.write(",");
+            }
+            bw.newLine();
+        }
+        bw.close();
+        fw.close();
     }
     
     @Override

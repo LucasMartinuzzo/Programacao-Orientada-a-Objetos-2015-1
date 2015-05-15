@@ -3,6 +3,12 @@ package model.dao;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Professor;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 /**
  *
@@ -47,12 +53,31 @@ public class ProfessorDaoImpl implements Dao {
     }
     
     @Override
-    public void salvar (){
-    //*Implementar*//
+    public void salvar () throws IOException{
+        File file = new File("Professor.txt");
+        if(!file.exists())
+            file.createNewFile();
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+        for(Professor professor: this.listaProfessor){
+            bw.write(professor.getNome());
+            bw.newLine();
+            bw.write(professor.getCpf());
+            bw.newLine();
+            bw.write(professor.getDepartamento());
+            bw.newLine();
+            for(int i = 0; i< professor.getDisciplina().size(); i++){
+                bw.write(professor.getDisciplina().get(i).getNome());
+                bw.write(",");
+            }
+            bw.newLine();
+        }
+        bw.close();
+        fw.close();
     }
     
     @Override
-    public void carregar (){
+    public void carregar () throws IOException{
     //*Implementar*//
     }
 }
