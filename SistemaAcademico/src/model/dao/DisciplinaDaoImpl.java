@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Disciplina;
@@ -66,16 +67,6 @@ public class DisciplinaDaoImpl implements Dao {
             bw.newLine ();
             bw.write (disciplina.getCargaHoraria().toString());
             bw.newLine ();
-            for (int i = 0; i < disciplina.getProfessor().size(); i++){
-                bw.write (disciplina.getProfessor().get(i).getCpf());
-                bw.write (",");
-            }
-            bw.newLine();
-            for (int i = 0; i < disciplina.getTurma().size(); i++){
-                bw.write (disciplina.getTurma().get(i).getId());
-                bw.write (",");
-            }
-            bw.newLine();
         }
         bw.close();
         fw.close();
@@ -83,6 +74,14 @@ public class DisciplinaDaoImpl implements Dao {
     
     @Override
     public void carregar () throws IOException{
-    //*Implementar*//
+        File file = new File ("Disciplina.txt");
+        FileReader fr = new FileReader (file);
+        BufferedReader br = new BufferedReader (fr);
+        while (br.ready()){
+            String nome = br.readLine();
+            String ementa = br.readLine();
+            Integer cargaHoraria = Integer.parseInt(br.readLine());
+            this.inserir(new Disciplina(nome, ementa, cargaHoraria));
+        }
     }
 }
