@@ -219,7 +219,7 @@ public class Main {
                         main.imprimirMenuConsultar();
                     }
                     case 3: {
-                        main.imprimirMenuRemover();
+                        main.imprimirMenuRemover(); 
                     }
                     case 4: {
                         main.imprimirMenuModificar();
