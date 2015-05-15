@@ -16,7 +16,7 @@ public class AlunoView {
         System.out.println("CPF: ");
         String cpf = scanner.nextLine();
         Aluno aluno = new Aluno (nome, cpf);
-        return this.alunoDao.salvar(aluno);
+        return this.alunoDao.inserir(aluno);
     }
 
     public void pesquisar () {

@@ -14,7 +14,7 @@ public class AlunoDaoImpl implements Dao {
     private static List<Aluno> listaAluno;
     
     @Override
-    public Boolean salvar (Object objeto) {
+    public Boolean inserir (Object objeto) {
         Aluno aluno = (Aluno) objeto;
         if (this.indice(aluno.getCpf()) == -1) {
             listaAluno.add(aluno);
@@ -45,5 +45,15 @@ public class AlunoDaoImpl implements Dao {
     @Override
     public List<Object> obterTodos () {
         return (List<Object>) (Object) listaAluno;
+    }
+    
+    @Override
+    public void salvar (){
+    //*Implementar*//
+    }
+    
+    @Override
+    public void carregar (){
+    //*Implementar*//
     }
 }

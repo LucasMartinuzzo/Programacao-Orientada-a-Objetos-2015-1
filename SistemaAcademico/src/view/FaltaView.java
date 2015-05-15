@@ -36,7 +36,7 @@ public class FaltaView {
                 Integer numeroDeFalta = scanner.nextInt();
 
                 Falta falta = new Falta (id, numeroDeFalta,turma);
-                return this.faltaDao.salvar(falta);
+                return this.faltaDao.inserir(falta);
             }
             else
                 System.out.println("ESTE ALUNO NÃO ESTÁ MATRICULADO NA TURMA INFORMADA! TENTE NOVAMENTE\n");

@@ -39,7 +39,7 @@ public class NotaView {
             return false;
 
         Nota nota = new Nota (id, valorDaNota, aluno, atividade );
-        return this.notaDao.salvar(nota);
+        return this.notaDao.inserir(nota);
     }
 
    public void pesquisar () {

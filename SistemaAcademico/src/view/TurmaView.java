@@ -63,7 +63,7 @@ public class TurmaView {
         }
         else
             turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula);
-        return this.turmaDao.salvar(turma);
+        return this.turmaDao.inserir(turma);
     }
     
     public void pesquisar () {

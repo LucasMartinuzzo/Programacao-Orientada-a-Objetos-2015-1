@@ -13,7 +13,7 @@ public class FaltaDaoImpl implements Dao {
     private static List<Falta> listaFalta;
     
     @Override
-    public Boolean salvar (Object objeto) {
+    public Boolean inserir (Object objeto) {
         Falta falta = (Falta) objeto;
         if (this.indice(falta.getId()) == -1) {
             listaFalta.add(falta);
@@ -44,5 +44,15 @@ public class FaltaDaoImpl implements Dao {
     @Override
     public List<Object> obterTodos () {
         return (List<Object>) (Object) listaFalta;
+    }
+    
+    @Override
+    public void salvar (){
+    //*Implementar*//
+    }
+    
+    @Override
+    public void carregar (){
+    //*Implementar*//
     }
 }
