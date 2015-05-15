@@ -13,7 +13,7 @@ public class ProfessorDaoImpl implements Dao {
     private static List<Professor> listaProfessor;
     
     @Override
-    public Boolean salvar (Object objeto) {
+    public Boolean inserir (Object objeto) {
         Professor professor = (Professor) objeto;
         if (this.indice(professor.getCpf()) == -1) {
             listaProfessor.add(professor);

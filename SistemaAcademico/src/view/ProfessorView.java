@@ -27,7 +27,7 @@ public class ProfessorView {
         System.out.println("Departamento: ");
         String departamento = scanner.nextLine();
         Professor professor = new Professor (nome, cpf, departamento);
-        return this.professorDao.salvar(professor);
+        return this.professorDao.inserir(professor);
     }
     
     public void pesquisar () {

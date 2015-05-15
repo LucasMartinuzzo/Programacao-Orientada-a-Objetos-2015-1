@@ -13,7 +13,7 @@ public class TurmaDaoImpl implements Dao {
     private static List<Turma> listaTurma;
     
     @Override
-    public Boolean salvar (Object objeto) {
+    public Boolean inserir (Object objeto) {
         Turma turma = (Turma) objeto;
         if (this.indice(turma.getId()) == -1) {
             listaTurma.add(turma);

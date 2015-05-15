@@ -33,7 +33,7 @@ public class AtividadeView {
         if(turma == null)
             return false;
         Atividade atividade = new Atividade (id, nome, tipo, data, valor, turma);
-        return this.atividadeDao.salvar(atividade);
+        return this.atividadeDao.inserir(atividade);
     }
 
     public void pesquisar () {

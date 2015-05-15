@@ -13,7 +13,7 @@ public class NotaDaoImpl implements Dao {
     private static List<Nota> listaNota;
     
     @Override
-    public Boolean salvar (Object objeto) {
+    public Boolean inserir (Object objeto) {
         Nota nota = (Nota) objeto;
         if (this.indice(nota.getId()) == -1) {
             listaNota.add(nota);

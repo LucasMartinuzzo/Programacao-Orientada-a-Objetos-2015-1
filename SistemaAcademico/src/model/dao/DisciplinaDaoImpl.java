@@ -13,7 +13,7 @@ public class DisciplinaDaoImpl implements Dao {
     private static List<Disciplina> listaDisciplina;
     
     @Override
-    public Boolean salvar (Object objeto) {
+    public Boolean inserir (Object objeto) {
         Disciplina disciplina = (Disciplina) objeto;
         if (this.indice(disciplina.getNome()) == -1) {
             listaDisciplina.add(disciplina);

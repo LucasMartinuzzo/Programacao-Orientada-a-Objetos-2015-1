@@ -13,7 +13,7 @@ public class AulaDaoImpl implements Dao {
     private static List<Aula> listaAula;
     
     @Override
-    public Boolean salvar(Object objeto) {
+    public Boolean inserir (Object objeto) {
         Aula aula = (Aula) objeto;
         if (this.indice(aula.getId()) == -1) {
             listaAula.add(aula);

@@ -25,7 +25,7 @@ public class AulaView {
         System.out.println("Local: ");
         String local = scanner.nextLine();
         Aula aula = new Aula (id, diaDaSemana, hora, local);
-        return this.aulaDao.salvar(aula);
+        return this.aulaDao.inserir(aula);
     }
 
     public void pesquisar () {

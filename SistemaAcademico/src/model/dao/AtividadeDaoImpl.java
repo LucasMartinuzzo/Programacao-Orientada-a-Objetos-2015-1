@@ -13,7 +13,7 @@ public class AtividadeDaoImpl implements Dao {
     private static List<Atividade> listaAtividade;
     
     @Override
-    public Boolean salvar (Object objeto) {
+    public Boolean inserir (Object objeto) {
         Atividade atividade = (Atividade) objeto;
         if (this.indice(atividade.getId()) == -1) {
             listaAtividade.add(atividade);
