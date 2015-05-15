@@ -1,5 +1,11 @@
 package model.dao;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Atividade;
@@ -48,8 +54,35 @@ public class AtividadeDaoImpl implements Dao {
     }
     
     @Override
-    public void salvar (){
-    //*Implementar*//
+    public void salvar () throws IOException{
+        File file = new File ("Atividade.txt");
+        if (!(file.exists()))
+            file.createNewFile();
+        FileWriter fw = new FileWriter (file);
+        BufferedWriter bw = new BufferedWriter (fw);
+        for (Atividade atividade: this.listaAtividade){
+            bw.write (atividade.getId());
+            bw.newLine ();
+            bw.write (atividade.getNome());
+            bw.newLine ();
+            bw.write (atividade.getTipo());
+            bw.newLine ();
+            bw.write (atividade.getData());
+            bw.newLine ();
+            bw.write (atividade.getValor().toString());
+            bw.newLine ();
+            bw.write (atividade.notasLancadas().toString());
+            bw.newLine ();
+            bw.write (atividade.getTurma().getId());
+            bw.newLine ();
+            for (int i = 0; i < atividade.getNota().size(); i++){
+                bw.write (atividade.getNota().get(i).getId());
+                bw.write (",");
+            }
+            bw.newLine();
+        }
+        bw.close();
+        fw.close();
     }
     
     @Override

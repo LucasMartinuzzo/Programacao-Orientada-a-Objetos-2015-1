@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.util.List;
+import java.io.IOException;
 
 /**
  *
@@ -12,6 +13,6 @@ public interface Dao {
     int indice (String id);
     Object obter (String id);
     List<Object> obterTodos ();
-    void salvar ();
-    void carregar ();
+    void salvar () throws IOException;
+    void carregar () throws IOException;
 }
