@@ -14,9 +14,15 @@ import model.pojo.Aula;
  *
  * @author JeanPablo
  */
-public class AulaDaoImpl implements Dao {
-    
+public class AulaDaoImpl implements Dao {    
     private static List<Aula> listaAula;
+    private static AulaDaoImpl instancia = null;
+    
+    public static AulaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+        if(AulaDaoImpl.instancia == null)
+            instancia = new AulaDaoImpl();
+        return instancia;
+    }
     
     @Override
     public Boolean inserir (Object objeto) {

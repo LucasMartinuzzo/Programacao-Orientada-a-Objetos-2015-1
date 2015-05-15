@@ -15,9 +15,14 @@ import java.io.IOException;
  * @author Pedro
  */
 public class ProfessorDaoImpl implements Dao {
-    
     private static List<Professor> listaProfessor;
+    private static ProfessorDaoImpl instancia = null;
     
+    public static ProfessorDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+        if(ProfessorDaoImpl.instancia == null)
+            instancia = new ProfessorDaoImpl();
+        return instancia;
+    }
     @Override
     public Boolean inserir (Object objeto) {
         Professor professor = (Professor) objeto;
