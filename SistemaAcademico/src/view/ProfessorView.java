@@ -45,7 +45,7 @@ public class ProfessorView {
         if (professorDao.remover(professorDao.obter(cpf)))
             System.out.println("PROFESSSOR REMOVIDO COM SUCESSO!");                
         else
-            System.out.println("PROFESSOR NÃO ENCONTRADO!");
+            System.out.println("PROFESSOR NÃO ENCONTRADO, A REMOÇÃO NÃO SERÁ EFETUADA!");
     }
     
         public void listar () {

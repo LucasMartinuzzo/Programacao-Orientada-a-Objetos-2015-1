@@ -1,5 +1,5 @@
 package model.pojo;
-
+//CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA 
 import java.util.List;     
 
 /**

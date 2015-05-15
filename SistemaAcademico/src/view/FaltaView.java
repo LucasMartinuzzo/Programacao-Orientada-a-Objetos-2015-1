@@ -58,7 +58,7 @@ public class FaltaView {
         if (faltaDao.remover(faltaDao.obter(id)))
             System.out.println("FALTA REMOVIDA COM SUCESSO!");                
         else
-            System.out.println("FALTA NÃO ENCONTRADA!");
+            System.out.println("FALTA NÃO ENCONTRADA, A REMOÇÃO NÃO SERÁ EFETUADA!");
     }
 
     public void listar () {
