@@ -71,10 +71,13 @@ public class ProfessorDaoImpl implements Dao {
             bw.newLine();
             bw.write(professor.getDepartamento());
             bw.newLine();
-            for(int i = 0; i< professor.getDisciplina().size(); i++){
-                bw.write(professor.getDisciplina().get(i).getNome());
-                bw.write(",");
-            }
+            if (professor.getDisciplina().isEmpty())
+                bw.write("NULL");
+            else
+                for(int i = 0; i< professor.getDisciplina().size(); i++){
+                    bw.write(professor.getDisciplina().get(i).getNome());
+                    bw.write(",");
+                }
             bw.newLine();
         }
         bw.close();
