@@ -46,6 +46,15 @@ public class Atividade implements Comparable<Atividade>{
     public void setValor(Double valor){
         this.valor = valor;
     }
+    
+    public void setNotasLancadas(Boolean notasLancadas){
+        this.notasLancadas = notasLancadas;
+    }
+    
+    public void setTurma(Object obj){
+        Turma turma = (Turma) obj;
+        this.turma = turma;
+    }
         
     public String getNome(){
         return nome;
