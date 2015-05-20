@@ -31,7 +31,8 @@ public class Falta implements Comparable<Falta>{
         return turma;
     }
     
-    public void setTurma(Turma turma){
+    public void setTurma(Object objeto){
+        Turma turma = (Turma) objeto;
         this.turma = turma;
     }
     @Override
