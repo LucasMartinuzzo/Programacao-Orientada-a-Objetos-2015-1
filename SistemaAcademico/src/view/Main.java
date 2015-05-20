@@ -1,12 +1,13 @@
 package view;
 
+import java.util.Collections;
 import java.util.Scanner;
 import model.dao.Dao;
 import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Disciplina;
 import model.pojo.Falta;
-import model.pojo.Professor;
+import model.pojo.Nota;
 import model.pojo.Turma;
 
 /**
@@ -100,20 +101,7 @@ public class Main {
         Boolean consultaEfetuada = false;
         switch(opcao){
             case 1:{
-                System.out.println("\nInforme o ID da turma: ");
-                //VERIFICAR SE PODE SER O ID EM VEZ DE DISCIPLINA, ANO E PERÍODO!
-                Turma turma = (Turma) this.turmaDao.obter(entrada.nextLine());
-                if (turma != null) {
-                    for (Aluno aluno: turma.getAluno()) {
-                        System.out.println("\nAluno: " + aluno.getNome());
-                        System.out.println("Notas:");
-                        for (Atividade atividade: turma.getAtividade())
-                            //System.out.println(" *" + atividade.getNome() + ": " + );
-                            System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
-                        //System.out.println("\nFaltas: " + aluno);
-                        consultaEfetuada = true;
-                    }
-                }
+                consultaEfetuada = this.turmaView.listarAlunos();
                 break;
             }
             case 2:{

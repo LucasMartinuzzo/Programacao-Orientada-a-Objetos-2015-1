@@ -1,12 +1,14 @@
 package model.pojo;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  *
  * @author Mônicka
  */
-public class Atividade implements Comparable<Atividade>{
+public class Atividade implements Comparable<Atividade> {
     private String id;
     private String nome;
     private String tipo;
@@ -45,6 +47,15 @@ public class Atividade implements Comparable<Atividade>{
     
     public void setValor(Double valor){
         this.valor = valor;
+    }
+    
+    public void setNotasLancadas(Boolean notasLancadas){
+        this.notasLancadas = notasLancadas;
+    }
+    
+    public void setTurma(Object obj){
+        Turma turma = (Turma) obj;
+        this.turma = turma;
     }
     
     public void setNotasLancadas(Boolean notasLancadas){
