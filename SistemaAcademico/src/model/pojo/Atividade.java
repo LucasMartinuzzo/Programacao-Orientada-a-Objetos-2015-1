@@ -1,6 +1,5 @@
 package model.pojo;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -8,7 +7,7 @@ import java.util.List;
  *
  * @author Mônicka
  */
-public class Atividade implements Comparable<Atividade> {
+public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
     private String id;
     private String nome;
     private String tipo;
@@ -27,6 +26,9 @@ public class Atividade implements Comparable<Atividade> {
         this.valor = valor;
         this.notasLancadas = false;
         this.turma = turma;
+    }
+
+    public Atividade() {
     }
     
     public String getId () {
@@ -86,7 +88,7 @@ public class Atividade implements Comparable<Atividade> {
         return notasLancadas;
     }   
        
-    public Boolean adicionarNota(Nota nota){
+    public Boolean adicionaNota(Nota nota){
         if (this.notasLancadas())
             return false;
         for (Nota notaConsultada: this.getNota()) {
@@ -103,6 +105,11 @@ public class Atividade implements Comparable<Atividade> {
     @Override
     public int compareTo (Atividade atividade) {
         return this.id.compareTo(atividade.id);
+    }
+    
+    @Override
+    public int compare (Nota nota1, Nota nota2) {
+        return nota1.compareTo(nota2);
     }
     
     @Override
