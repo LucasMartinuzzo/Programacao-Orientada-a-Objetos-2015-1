@@ -6,6 +6,7 @@ import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Disciplina;
 import model.pojo.Falta;
+import model.pojo.Professor;
 import model.pojo.Turma;
 
 /**
@@ -108,7 +109,7 @@ public class Main {
                         System.out.println("Notas:");
                         for (Atividade atividade: turma.getAtividade())
                             //System.out.println(" *" + atividade.getNome() + ": " + );
-                        System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
+                            System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
                         //System.out.println("\nFaltas: " + aluno);
                         consultaEfetuada = true;
                     }
@@ -133,31 +134,53 @@ public class Main {
                 for(Turma turma : disciplina.getTurma()){
                     for(Aluno alunoConsultado : turma.getAluno()){
                         if(alunoConsultado == aluno){
-                            //for(Atividade atividade : turma.getAtividade()){
-                            //    
-                            //}
                             aluno.toString();
                             for(Falta faltaConsultada : aluno.getFalta()){
                                 if(faltaConsultada.getTurma() == turma){
                                     System.out.println("Falta: " + faltaConsultada.getFalta());
+                                    System.out.println("Nota: " + aluno.NotaFinal(turma));
+                                    if(((faltaConsultada.getFalta()/disciplina.getCargaHoraria())<=0.25) && (aluno.NotaFinal(turma)<6))
+                                        System.out.println("Aluno aprovado!");
+                                    else
+                                        System.out.println("Aluno não aprovado!");
                                     break;
                                 }
                             }
-                            System.out.println("Nota: " + aluno.NotaFinal(turma));
-                            break;
+                            
                         }
                     }
+                    break;
                 }
+                break;
             }
             case 3:{
-            
-            }
+            // Consultar o numero de turmas ja oferecidas (historicamente) para uma determinada disciplina
+                String nome;
+                System.out.println("INFORME O NOME DA DISCIPLINA");
+                nome =  entrada.nextLine();
+                Disciplina disciplina=(Disciplina)this.disciplinaDao.obter(nome);
+                if(disciplina == null)
+                    return;
+                System.out.println("A quantidade de turmas da disciplina " + 
+                        nome+" já oferecidas é "+disciplina.getTurma().size()
+                        + ".");
+                }
             case 4:{
-            
+                //Consultar o numero de disciplinas ja lecionadas por um determinado professor.
+                String nome;
+                System.out.println("INFORME O NOME DO PROFESSOR");
+                nome =  entrada.nextLine();
+                Professor professor = (Professor) this.professorDao.obter(nome);
+                if(professor == null)
+                    return;
+                System.out.println("A quantidade de disciplinas já lecionadas "
+                        + "pelo(a) professsor(a) " + nome + " é " + 
+                        professor.getDisciplina().size() + ".");
+                
+            }
+    }
             }
 
-        }
-    }
     
     private void imprimirMenuRemover(){
         while(true){
@@ -207,31 +230,7 @@ public class Main {
             if (opcao < 1 || opcao > 7)
                 break;
         }
-        
-    }
-    
-    private void imprimirMenuModificar(){
-        System.out.println("MODIFICAR ALUNOS - 1");
-        System.out.println("MODIFICAR TURMAS - 2");
-        System.out.println("MODIFICAR PROFESSOR - 3");
-        System.out.println("MODIFICAR ATIVIDADE - 4");
-        System.out.println("MODIFICAR FALTA - 5");
-        System.out.println("MODIFICAR NOTA - 6 ");
-        System.out.println("MODIFICAR DISCIPLINA - 7");
-    
-        Scanner entrada = new Scanner(System.in);
-        Integer opcao = entrada.nextInt();
-        switch(opcao){
-            case 1:{}
-            case 2:{}
-            case 3:{}
-            case 4:{}
-            case 5:{}
-            case 6:{}
-            case 7:{}
-
-        }
-    }
+    }     
 
     public static void main(String[] args){
         Integer i;
@@ -254,17 +253,8 @@ public class Main {
                     case 3: {
                         main.imprimirMenuRemover(); 
                     }
-                    case 4: {
-                        main.imprimirMenuModificar();
-                    }
-
-
-
+                    
             }
-    }
-    
-        
-    
-    
+        }    
     }
 }
