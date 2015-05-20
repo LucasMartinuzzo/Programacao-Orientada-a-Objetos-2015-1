@@ -100,8 +100,6 @@ public class TurmaDaoImpl implements Dao {
         fw.close();
     }
     
-    
-    
     @Override
     public void carregar () throws IOException{
         File file = new File ("Turma.txt");
