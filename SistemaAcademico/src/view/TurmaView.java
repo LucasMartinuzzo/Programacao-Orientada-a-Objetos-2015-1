@@ -1,12 +1,16 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import model.dao.Dao;
 import model.pojo.Aluno;
+import model.pojo.Atividade;
 import model.pojo.Aula;
 import model.pojo.Disciplina;
+import model.pojo.Falta;
+import model.pojo.Nota;
 import model.pojo.Professor;
 import model.pojo.Turma;
 
@@ -90,6 +94,32 @@ public class TurmaView {
         for (Turma turma: listaTurma) {
             System.out.println(turma.toString() + "\n");
         }
+    }
+    
+    public Boolean listarAlunos () {
+        System.out.println("\nInforme o ID da turma: ");
+        //VERIFICAR SE PODE SER O ID EM VEZ DE DISCIPLINA, ANO E PERÍODO!
+        Turma turma = (Turma) this.turmaDao.obter(scanner.nextLine());
+        if (turma != null) {
+            for (Aluno aluno: turma.getAluno()) {
+                System.out.println("\nAluno: " + aluno.getNome());
+                System.out.println("Notas:");
+                Collections.sort(aluno.getNota(), new Atividade());
+                for (Atividade atividade: turma.getAtividade()) {
+                    Integer indiceNota = Collections.binarySearch(atividade.getNota(),
+                            new Nota (null, null, aluno, null));
+                    System.out.println(" *" + atividade.getNome() + ": " + 
+                            atividade.getNota().get(indiceNota).getNota());
+                    System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
+                }
+                Collections.sort(aluno.getFalta(), new Aluno());
+                Integer indiceFalta = Collections.binarySearch(aluno.getFalta(),
+                            new Falta (null, null, turma));
+                System.out.println("Faltas: " + aluno.getFalta().get(indiceFalta));
+                return true;
+            }
+        }
+        return false;
     }
 
     public Object obterCadastrado (Dao dao) {    

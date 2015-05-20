@@ -1,12 +1,13 @@
 package model.pojo;
 //CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA 
+import java.util.Comparator;
 import java.util.List;     
 
 /**
  *
  * @author Filipe
  */
-public class Aluno implements Comparable<Aluno>{
+public class Aluno implements Comparable<Aluno>, Comparator<Falta> {
     private String nome;
     private String cpf;
     private List<Turma> turma;  
@@ -16,6 +17,9 @@ public class Aluno implements Comparable<Aluno>{
     public Aluno (String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
+    }
+
+    public Aluno() {
     }
     
     public String getNome() {
@@ -70,6 +74,11 @@ public class Aluno implements Comparable<Aluno>{
     @Override
     public int compareTo (Aluno aluno) {
         return this.cpf.compareTo(aluno.cpf);
+    }
+    
+    @Override
+    public int compare (Falta falta1, Falta falta2) {
+        return falta1.compareTo(falta2);
     }
     
     @Override
