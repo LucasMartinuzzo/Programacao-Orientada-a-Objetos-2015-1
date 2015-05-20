@@ -46,6 +46,15 @@ public class Aluno implements Comparable<Aluno>{
         return nota;
     }
     
+    public Boolean adicionarTurma (Object objeto) {
+        Turma turma = (Turma) objeto;
+        if (!this.getTurma().contains(turma) || 
+                turma.getAluno().size() < turma.getNumeroDeVagas()) {
+            turma.getAluno().add(this);
+            return this.getTurma().add(turma);
+        }
+        return false;
+    }
     public Boolean adicionaNota(Nota nota){
         if(!this.getNota().contains(nota))
             return this.getNota().add(nota);

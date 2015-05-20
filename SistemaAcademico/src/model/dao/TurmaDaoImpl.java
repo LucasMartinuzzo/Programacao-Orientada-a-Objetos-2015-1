@@ -85,16 +85,6 @@ public class TurmaDaoImpl implements Dao {
                 bw.write(",");
             }
             bw.newLine();
-            for(int i = 0; i< turma.getAluno().size(); i++){
-                bw.write(turma.getAluno().get(i).getCpf());
-                bw.write(",");
-            }
-            bw.newLine();
-            for(int i = 0; i< turma.getAtividade().size(); i++){
-                bw.write(turma.getAtividade().get(i).getId());
-                bw.write(",");
-            }
-            bw.newLine();
         }
         bw.close();
         fw.close();
