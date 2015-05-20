@@ -253,9 +253,7 @@ public class Main {
                     case 3: {
                         main.imprimirMenuRemover(); 
                     }
-                    case 4: {
-                        main.imprimirMenuModificar();
-                    }
+                    
             }
         }    
     }
