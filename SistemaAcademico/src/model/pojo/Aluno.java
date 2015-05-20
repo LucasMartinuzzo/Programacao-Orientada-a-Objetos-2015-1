@@ -61,7 +61,7 @@ public class Aluno implements Comparable<Aluno>{
         }
         return false;
     }
-    public Boolean adicionaNota(Nota nota){
+    public Boolean adicionarNota(Nota nota){
         if(!this.getNota().contains(nota))
             return this.getNota().add(nota);
         return false;

@@ -79,8 +79,23 @@ public class NotaDaoImpl implements Dao {
         fw.close();
     }
     
-    @Override
-    public void carregar (){
-    //*Implementar*//
+  @Override
+    public void carregar () throws IOException{
+        File file = new File ("Professor.txt");
+        FileReader fr = new FileReader (file);
+        BufferedReader br = new BufferedReader (fr);
+        while (br.ready()){
+            String id = br.readLine();
+            Double valor = Double.parseDouble (br.readLine());
+            String aluno = br.readLine();
+            String atividade = br.readLine();
+            Nota nota = new Nota(id, valor, null, null);
+            nota.setAluno(AlunoDaoImpl.getInstancia().obter(aluno));
+            nota.getAluno().adicionarNota(nota);
+            nota.setAtividade(AtividadeDaoImpl.getInstancia().obter(atividade));
+            nota.getAtividade().adicionarNota(nota);
+        }
+        br.close();
+        fr.close();
     }
 }
