@@ -73,10 +73,21 @@ public class AlunoDaoImpl implements Dao {
             bw.newLine();
             bw.write(aluno.getCpf());
             bw.newLine();
-            for(int i = 0; i< aluno.getTurma().size(); i++){
-                bw.write(aluno.getTurma().get(i).getId());
-                bw.write(",");
-            }
+            if (aluno.getTurma().isEmpty())
+                bw.write("NULL");
+            else
+                for(int i = 0; i< aluno.getTurma().size(); i++){
+                    bw.write(aluno.getTurma().get(i).getId());
+                    bw.write(",");
+                }
+            bw.newLine();
+            if (aluno.getFalta().isEmpty())
+                bw.write("NULL");
+            else
+                for(int i = 0; i< aluno.getFalta().size(); i++){
+                    bw.write(aluno.getFalta().get(i).getId());
+                    bw.write(",");
+                }
             bw.newLine();
         }
         bw.close();
@@ -97,6 +108,10 @@ public class AlunoDaoImpl implements Dao {
             for(String t: turma)
                 if(!(t.equals("NULL")))
                     aluno.adicionarTurma(TurmaDaoImpl.getInstancia().obter(t));
+            String[] falta = br.readLine().split(",");
+            for(String f: falta)
+                if(!(f.equals("NULL")))
+                    aluno.adicionarFalta(FaltaDaoImpl.getInstancia().obter(f));
         }
         br.close();
         fr.close();

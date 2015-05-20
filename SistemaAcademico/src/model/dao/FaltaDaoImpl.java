@@ -78,7 +78,19 @@ public class FaltaDaoImpl implements Dao {
     }
     
     @Override
-    public void carregar (){
-    //*Implementar*//
+    public void carregar () throws IOException{
+        File file = new File ("Falta.txt");
+        FileReader fr = new FileReader (file);
+        BufferedReader br = new BufferedReader (fr);
+        while (br.ready()){
+            String id = br.readLine();
+            Integer numFalta = Integer.parseInt(br.readLine());
+            String turma = br.readLine();
+            Falta falta = new Falta(id, numFalta, null);
+            this.inserir(falta);
+            falta.setTurma(TurmaDaoImpl.getInstancia().obter(id));
+        }
+        br.close();
+        fr.close();
     }
 }
