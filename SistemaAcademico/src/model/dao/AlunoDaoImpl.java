@@ -78,23 +78,27 @@ public class AlunoDaoImpl implements Dao {
                 bw.write(",");
             }
             bw.newLine();
-            for(int i = 0; i< aluno.getFalta().size(); i++){
-                bw.write(aluno.getFalta().get(i).getId());
-                bw.write(",");
-            }
-            bw.newLine();
-            for(int i = 0; i< aluno.getNota().size(); i++){
-                bw.write(aluno.getNota().get(i).getId());
-                bw.write(",");
-            }
-            bw.newLine();
         }
         bw.close();
         fw.close();
     }
     
     @Override
-    public void carregar (){
-    //*Implementar*//
+    public void carregar () throws IOException{
+        File file = new File ("Aluno.txt");
+        FileReader fr = new FileReader (file);
+        BufferedReader br = new BufferedReader (fr);
+        while (br.ready()){
+            String nome = br.readLine();
+            String cpf = br.readLine();
+            Aluno aluno = new Aluno(nome, cpf);
+            this.inserir(aluno);
+            String[] turma = br.readLine().split(",");
+            for(String t: turma)
+                if(!(t.equals("NULL")))
+                    aluno.adicionarTurma(TurmaDaoImpl.getInstancia().obter(t));
+        }
+        br.close();
+        fr.close();
     }
 }

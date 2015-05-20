@@ -81,11 +81,6 @@ public class AtividadeDaoImpl implements Dao {
             bw.write (atividade.notasLancadas().toString());
             bw.newLine ();
             bw.write (atividade.getTurma().getId());
-            bw.newLine ();
-            for (int i = 0; i < atividade.getNota().size(); i++){
-                bw.write (atividade.getNota().get(i).getId());
-                bw.write (",");
-            }
             bw.newLine();
         }
         bw.close();
@@ -93,7 +88,25 @@ public class AtividadeDaoImpl implements Dao {
     }
     
     @Override
-    public void carregar (){
-    //*Implementar*//
+    public void carregar () throws IOException{
+        File file = new File ("Atividade.txt");
+        FileReader fr = new FileReader (file);
+        BufferedReader br = new BufferedReader (fr);
+        while (br.ready()){
+            String id = br.readLine();
+            String nome = br.readLine();
+            String tipo = br.readLine();
+            String data = br.readLine();
+            Double valor = Double.parseDouble(br.readLine());
+            Boolean notasLancadas = Boolean.parseBoolean(br.readLine());
+            String turma = br.readLine();
+            Atividade atividade = new Atividade (id, nome, tipo, data, valor, null);
+            atividade.setNotasLancadas(notasLancadas);
+            this.inserir(atividade);
+            atividade.setTurma(TurmaDaoImpl.getInstancia().obter(turma));
+            atividade.getTurma().adicionarAtividade(atividade);
+        }
+        br.close();
+        fr.close();
     }
 }

@@ -89,5 +89,7 @@ public class DisciplinaDaoImpl implements Dao {
             Integer cargaHoraria = Integer.parseInt(br.readLine());
             this.inserir(new Disciplina(nome, ementa, cargaHoraria));
         }
+        br.close();
+        fr.close();
     }
 }

@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import model.pojo.Disciplina;
 
 /**
  *
@@ -84,23 +85,33 @@ public class TurmaDaoImpl implements Dao {
                 bw.write(",");
             }
             bw.newLine();
-            for(int i = 0; i< turma.getAluno().size(); i++){
-                bw.write(turma.getAluno().get(i).getCpf());
-                bw.write(",");
-            }
-            bw.newLine();
-            for(int i = 0; i< turma.getAtividade().size(); i++){
-                bw.write(turma.getAtividade().get(i).getId());
-                bw.write(",");
-            }
-            bw.newLine();
         }
         bw.close();
         fw.close();
     }
     
     @Override
-    public void carregar (){
-    //*Implementar*//
+    public void carregar () throws IOException{
+        File file = new File ("Turma.txt");
+        FileReader fr = new FileReader (file);
+        BufferedReader br = new BufferedReader (fr);
+        while (br.ready()){
+            String id = br.readLine();
+            Integer ano = Integer.parseInt(br.readLine());
+            Integer periodo = Integer.parseInt(br.readLine());
+            Integer numeroDeVagas = Integer.parseInt(br.readLine());
+            String disciplina = br.readLine();
+            Turma turma = new Turma (id, ano, periodo, numeroDeVagas, null, null, null);
+            turma.setDisciplina(DisciplinaDaoImpl.getInstancia().obter(disciplina));
+            turma.getDisciplina().adicionarTurma(turma);
+            String professor = br.readLine();
+            turma.setProfessor(ProfessorDaoImpl.getInstancia().obter(professor));
+            String[] aula = br.readLine().split(",");
+            for (String a: aula)
+                turma.adicionarAula(AulaDaoImpl.getInstancia().obter(a));
+            this.inserir(turma);
+        }
+        br.close();
+        fr.close();
     }
 }

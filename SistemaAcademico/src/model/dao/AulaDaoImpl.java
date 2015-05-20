@@ -81,7 +81,18 @@ public class AulaDaoImpl implements Dao {
     }
     
     @Override
-    public void carregar (){
-    //*Implementar*//
+    public void carregar () throws IOException{
+        File file = new File ("Aula.txt");
+        FileReader fr = new FileReader (file);
+        BufferedReader br = new BufferedReader (fr);
+        while (br.ready()){
+            String id = br.readLine();
+            String diaDaSemana = br.readLine();
+            String hora = br.readLine();
+            String local = br.readLine();
+            this.inserir(new Aula(id, diaDaSemana, hora, local));
+        }
+        br.close();
+        fr.close();
     }
 }
