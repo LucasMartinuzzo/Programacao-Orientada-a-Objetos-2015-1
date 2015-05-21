@@ -90,6 +90,7 @@ public class TurmaView {
             System.out.println("TURMA NÃO ENCONTRADA!\n");
     }
     
+    
     public void remover(){
         System.out.println("REMOÇÃO DE TURMAS\nEntre com o ID da turma: ");
         String cpf = scanner.nextLine();
