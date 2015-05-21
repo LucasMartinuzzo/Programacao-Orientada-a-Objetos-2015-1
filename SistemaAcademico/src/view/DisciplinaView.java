@@ -3,6 +3,7 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 import model.dao.Dao;
+import model.dao.DisciplinaDaoImpl;
 import model.pojo.Disciplina;
 
 /**
@@ -10,7 +11,7 @@ import model.pojo.Disciplina;
  * @author Lucas
  */
 public class DisciplinaView {
-    private Dao disciplinaDao;
+    //private Dao disciplinaDao;
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar(){
@@ -22,27 +23,32 @@ public class DisciplinaView {
         System.out.println("Carga Horária: ");
         Integer cargaHoraria = scanner.nextInt();
         Disciplina disciplina = new Disciplina(nome, ementa, cargaHoraria);
-        return this.disciplinaDao.inserir(disciplina);
+        return DisciplinaDaoImpl.getInstancia().inserir(disciplina);
+        //return this.disciplinaDao.inserir(disciplina);
     }
     public void pesquisar () {
         System.out.println("PESQUISA DE DISCIPLINAS\nEntre com o nome da disciplina: ");
             String nome = scanner.nextLine();
-            if (this.disciplinaDao.indice(nome) != -1)
-                System.out.println(this.disciplinaDao.obter(nome).toString());
+            if(DisciplinaDaoImpl.getInstancia().indice(nome) !=-1)
+                System.out.println(DisciplinaDaoImpl.getInstancia().obter(nome).toString());
+            //if (this.disciplinaDao.indice(nome) != -1)
+            //    System.out.println(this.disciplinaDao.obter(nome).toString());
             else
                 System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
         }
     public void remover(){
         System.out.println("REMOÇÃO DE DISCIPLINAS\nEntre com o nome da Disciplina: ");
         String nome = scanner.nextLine();
-        if (disciplinaDao.remover(disciplinaDao.obter(nome)))
-            System.out.println("DISCIPLINA REMOVIDA COM SUCESSO!\n");                
+        if(DisciplinaDaoImpl.getInstancia().remover(DisciplinaDaoImpl.getInstancia().obter(nome)))
+        //if (disciplinaDao.remover(disciplinaDao.obter(nome)))
+            System.out.println("DISCIPLINA REMOVIDA COM SUCESSO!");                
         else
             System.out.println("DISCIPLINA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
     }
     public void listar () {
         System.out.println("LISTA DE DISCIPLINAS DISPONÍVEIS\n");
-        List<Disciplina> listaDisciplina = (List<Disciplina>) (Disciplina) disciplinaDao.obterTodos();
+        List<Disciplina> listaDisciplina = (List<Disciplina>) (Disciplina) DisciplinaDaoImpl.getInstancia().obterTodos();
+        //List<Disciplina> listaDisciplina = (List<Disciplina>) (Disciplina) disciplinaDao.obterTodos();
         for(Disciplina disc: listaDisciplina) {
             System.out.println(disc.toString() + "\n");
         }

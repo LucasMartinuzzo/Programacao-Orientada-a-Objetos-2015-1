@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import model.dao.Dao;
+import model.dao.ProfessorDaoImpl;
+import model.dao.TurmaDaoImpl;
 import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Aula;
@@ -18,11 +20,10 @@ import model.pojo.Turma;
  *
  * @author JeanPablo
  */
-public class TurmaView {
-    
-    private Dao turmaDao;
-    private Dao disciplinaDao;
-    private Dao professorDao;
+public class TurmaView {    
+    //private Dao turmaDao;
+    //private Dao disciplinaDao;
+    //private Dao professorDao;
     private Dao aulaDao;
     private Dao alunoDao;
     
@@ -44,11 +45,12 @@ public class TurmaView {
                 + "entre com o código identificador (ID) do item procurado.");
         
         System.out.println("Disciplina (ID: nome):");
-        Disciplina disciplina = (Disciplina) this.obterCadastrado(this.disciplinaDao);
+        Disciplina disciplina = (Disciplina) this.obterCadastrado(TurmaDaoImpl.getInstancia());
+        //Disciplina disciplina = (Disciplina) this.obterCadastrado(this.disciplinaDao);
         if (disciplina == null)
             return false;
         System.out.println("Professor (ID: CPF):");
-        Professor professor = (Professor) this.obterCadastrado(this.professorDao);
+        Professor professor = (Professor) this.obterCadastrado(ProfessorDaoImpl.getInstancia());
         if (professor == null)
             return false;
         
@@ -67,14 +69,17 @@ public class TurmaView {
         }
         else
             turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula);
-        return this.turmaDao.inserir(turma);
+        return TurmaDaoImpl.getInstancia().inserir(turma);
+        //return this.turmaDao.inserir(turma);
     }
     
     public void pesquisar () {
         System.out.println("PESQUISA DE TURMAS\nEntre com o ID da turma: ");
         String id = scanner.nextLine();
-        if (this.turmaDao.indice(id) != -1)
-            System.out.println(this.turmaDao.obter(id).toString());
+        if(TurmaDaoImpl.getInstancia().indice(id) != -1)
+            System.out.println(TurmaDaoImpl.getInstancia().obter(id).toString());
+        //if (this.turmaDao.indice(id) != -1)
+        //    System.out.println(this.turmaDao.obter(id).toString());
         else
             System.out.println("TURMA NÃO ENCONTRADA!\n");
     }
@@ -82,15 +87,17 @@ public class TurmaView {
     public void remover(){
         System.out.println("REMOÇÃO DE TURMAS\nEntre com o ID da turma: ");
         String cpf = scanner.nextLine();
-        if (professorDao.remover(professorDao.obter(cpf)))
-            System.out.println("TURMA REMOVIDA COM SUCESSO!\n");                
+        if(ProfessorDaoImpl.getInstancia().remover(ProfessorDaoImpl.getInstancia().obter(cpf)))
+        //if (professorDao.remover(professorDao.obter(cpf)))
+            System.out.println("TURMA REMOVIDA COM SUCESSO!");                
         else
             System.out.println("TURMA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
     }
     
     public void listar () {
         System.out.println("LISTA DE TURMAS DISPONÍVEIS\n");
-        List<Turma> listaTurma = (List<Turma>) (Turma) turmaDao.obterTodos();
+        List<Turma> listaTurma = (List<Turma>) (Turma) TurmaDaoImpl.getInstancia().obterTodos();
+        //List<Turma> listaTurma = (List<Turma>) (Turma) turmaDao.obterTodos();
         for (Turma turma: listaTurma) {
             System.out.println(turma.toString() + "\n");
         }
@@ -99,7 +106,8 @@ public class TurmaView {
     public Boolean listarAlunos () {
         System.out.println("\nInforme o ID da turma: ");
         //VERIFICAR SE PODE SER O ID EM VEZ DE DISCIPLINA, ANO E PERÍODO!
-        Turma turma = (Turma) this.turmaDao.obter(scanner.nextLine());
+        Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
+        //Turma turma = (Turma) this.turmaDao.obter(scanner.nextLine());
         if (turma != null) {
             for (Aluno aluno: turma.getAluno()) {
                 System.out.println("\nAluno: " + aluno.getNome());
