@@ -26,13 +26,13 @@ import model.pojo.Turma;
  */
 public class Main {
     
-    private TurmaView turmaView;
-    private AlunoView alunoView;
-    private ProfessorView professorView;
-    private AtividadeView atividadeView;
-    private FaltaView faltaView;
-    private NotaView notaView;
-    private DisciplinaView disciplinaView;
+    private TurmaView turmaView = new TurmaView();
+    private AlunoView alunoView = new AlunoView();
+    private ProfessorView professorView = new ProfessorView();
+    private AtividadeView atividadeView = new AtividadeView();
+    private FaltaView faltaView = new FaltaView();
+    private NotaView notaView = new NotaView();
+    private DisciplinaView disciplinaView = new DisciplinaView();
     //private AulaView aulaView;
     //private Dao turmaDao;
     //private Dao alunoDao;
@@ -102,7 +102,6 @@ public class Main {
                     break;
                 }
                 case 6:{
-                    notaView = new NotaView();
                     cadastroEfetuado = this.notaView.cadastrar();
                     break;
                 }
