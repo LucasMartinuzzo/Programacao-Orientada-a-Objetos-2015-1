@@ -40,7 +40,6 @@ public class AlunoDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Aluno aluno = (Aluno) objeto;
-        System.out.println(aluno.getCpf());
         if (this.indice(aluno.getCpf()) <= -1) {
             listaAluno.add(aluno);
             Collections.sort(listaAluno);
