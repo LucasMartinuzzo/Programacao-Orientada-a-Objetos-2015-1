@@ -34,6 +34,28 @@ public class Main {
     private Dao disciplinaDao;
     private Dao aulaDao;
     
+    private void carregarArquivo(){
+        DisciplinaDaoImpl.getInstancia().carregar();
+        ProfessorDaoImpl.getInstancia().carregar();
+        AulaDaoImpl.getInstancia().carregar();
+        TurmaDaoImpl.getInstancia().carregar();
+        FaltaDaoImpl.getInstancia().carregar();
+        AlunoDaoImpl.getInstancia().carregar();
+        AtividadeDaoImpl.getInstancia().carregar();
+        NotaDaoImpl.getInstancia().carregar();
+    }
+    
+    private void salvarArquivo(){
+        DisciplinaDaoImpl.getInstancia().salvar();
+        ProfessorDaoImpl.getInstancia().salvar();
+        AulaDaoImpl.getInstancia().salvar();
+        TurmaDaoImpl.getInstancia().salvar();
+        FaltaDaoImpl.getInstancia().salvar();
+        AlunoDaoImpl.getInstancia().salvar();
+        AtividadeDaoImpl.getInstancia().salvar();
+        NotaDaoImpl.getInstancia().salvar();
+    }
+    
     private void imprimirMenuCadastro(){
         while (true) {
             System.out.println("1 - CADASTRAR ALUNO");
@@ -225,6 +247,7 @@ public class Main {
         Integer i;
         Main main = new Main();    
         Scanner entrada = new Scanner(System.in);
+        main.carregarArquivo();
         while(true){
             System.out.println("CADASTROS - 1");
             System.out.println("CONSULTAS - 2");
@@ -232,7 +255,6 @@ public class Main {
             System.out.println("MODIFICAÇÕES - 4");
             i = entrada.nextInt();
             switch(i){
-                    
                     case 1: {
                         main.imprimirMenuCadastro();
                     }
@@ -242,7 +264,7 @@ public class Main {
                     case 3: {
                         main.imprimirMenuRemover(); 
                     }
-                    
+                    //Opção "sair" com main.salvarArquivo()
             }
         }    
     }
