@@ -88,7 +88,7 @@ public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
         return notasLancadas;
     }   
        
-    public Boolean adicionaNota(Nota nota){
+    public Boolean adicionarNota(Nota nota){
         if (this.notasLancadas())
             return false;
         for (Nota notaConsultada: this.getNota()) {

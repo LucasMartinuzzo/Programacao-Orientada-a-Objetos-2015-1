@@ -93,7 +93,7 @@ public class NotaDaoImpl implements Dao {
             nota.setAluno(AlunoDaoImpl.getInstancia().obter(aluno));
             nota.getAluno().adicionarNota(nota);
             nota.setAtividade(AtividadeDaoImpl.getInstancia().obter(atividade));
-            nota.getAtividade().adicionaNota(nota);
+            nota.getAtividade().adicionarNota(nota);
         }
         br.close();
         fr.close();
