@@ -48,10 +48,21 @@ public class ProfessorView {
             System.out.println("PROFESSOR NÃO ENCONTRADO, REMOÇÃO NÃO EFETUADA!\n");
     }
     
-        public void listar () {
-            System.out.println("LISTA DE PROFESSORES DISPONÍVEIS\n");
-            List<Professor> listaProfessor = (List<Professor>) (Professor) professorDao.obterTodos();
-            for (Professor professor: listaProfessor)
-                System.out.println(professor.toString() + "\n");
+    public void listar () {
+        System.out.println("LISTA DE PROFESSORES DISPONÍVEIS\n");
+        List<Professor> listaProfessor = (List<Professor>) (Professor) professorDao.obterTodos();
+        for (Professor professor: listaProfessor)
+            System.out.println(professor.toString() + "\n");
+    }
+
+    public Boolean quantidadeDisciplina(){
+        System.out.println("Informe o nome do professor: ");
+        Professor professor = (Professor) this.professorDao.obter(scanner.nextLine());
+        if(professor != null){
+            System.out.println("A quantidade de disciplinas já lecionadas pelo(a) professsor(a) " + professor.getNome()
+                    + " é " + professor.getDisciplina().size() + ".");
+        return true;
         }
+        return false;
+    }    
 }

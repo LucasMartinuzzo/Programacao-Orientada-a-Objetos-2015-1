@@ -4,11 +4,16 @@ import java.util.List;
 import java.util.Scanner;
 import model.dao.Dao;
 import model.pojo.Aluno;
+import model.pojo.Disciplina;
+import model.pojo.Falta;
+import model.pojo.Turma;
+
 
 public class AlunoView {
     private Dao alunoDao;
     private static Scanner scanner = new Scanner (System.in);
-    
+    private Dao disciplinaDao;
+        
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE ALUNOS\nCadastre um novo aluno:\n");
         System.out.println("Nome: ");
@@ -44,4 +49,36 @@ public class AlunoView {
             System.out.println(aluno.toString() + "\n");
         }
     }
+    
+    public Boolean consultarSituacaoAluno(){
+        System.out.println("Informe o cpf do aluno: ");
+        Aluno aluno = (Aluno)this.alunoDao.obter(scanner.nextLine());
+        System.out.println("Informe o nome da disciplina: ");
+        Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(scanner.nextLine());
+        if(disciplina != null && aluno != null){
+            for(Turma turma : disciplina.getTurma()){
+                for(Aluno alunoConsultado : turma.getAluno()){
+                    if(alunoConsultado.equals(aluno)){
+                        aluno.toString();
+                        for(Falta faltaConsultada : aluno.getFalta()){
+                            if(faltaConsultada.getTurma().equals(turma)){
+                                System.out.println("Falta: " + faltaConsultada.getFalta());
+                                System.out.println("Nota: " + aluno.NotaFinal(turma));
+                                if(((faltaConsultada.getFalta()/disciplina.getCargaHoraria())<=0.25)
+                                        && (aluno.NotaFinal(turma)<6))
+                                    System.out.println("Aluno aprovado!");
+                                else
+                                    System.out.println("Aluno não aprovado!");
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
 }
+
+

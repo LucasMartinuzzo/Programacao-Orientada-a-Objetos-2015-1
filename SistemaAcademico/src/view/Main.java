@@ -90,86 +90,42 @@ public class Main {
     }
     
     private void imprimirMenuConsultar(){
-        System.out.println("1 - CONSULTAR OS ALUNOS DE UMA TURMA COM SUAS RESPECTIVAS NOTAS E FALTAS");
-        System.out.println("2 - CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA");
-        System.out.println("3 - CONSULTAR A QUANTIDADE DE TURMAS OFERECIDAS DE UMA DISCIPLINA");
-        System.out.println("4 - CONSULTAR O NÚMERO DE DISCIPLINAS JÁ LECIONADAS POR UM PROFESSOR");
-        System.out.println("OUTRO - VOLTAR");
-        
-        System.out.println("\nOpção: ");
-        Scanner entrada = new Scanner(System.in);
-        Integer opcao = entrada.nextInt();
-        Boolean consultaEfetuada = false;
-        switch(opcao){
-            case 1:{
-                consultaEfetuada = this.turmaView.listarAlunos();
-                break;
-            }
-            case 2:{
-            //Consultar a situação de um aluno em uma disciplina - exibir nota e faltas, e se foi aprovado ou nâo, sabendo
-//que e necessario ter nota maior ou igual a 6,0, alem de 75% de frequencia para aprovação;
-                String cpf;
-                System.out.println("INFORME O CPF DO ALUNO: ");
-                cpf = entrada.nextLine();
-                Aluno aluno = (Aluno)this.alunoDao.obter(cpf);
-                if(aluno == null)
-                    return;
-                System.out.println("INFORME O NOME DA DISCIPLINA: ");
-                String nome;
-                nome = entrada.nextLine();
-                Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(nome);
-                if(disciplina == null)
-                    return;
-                for(Turma turma : disciplina.getTurma()){
-                    for(Aluno alunoConsultado : turma.getAluno()){
-                        if(alunoConsultado == aluno){
-                            aluno.toString();
-                            for(Falta faltaConsultada : aluno.getFalta()){
-                                if(faltaConsultada.getTurma() == turma){
-                                    System.out.println("Falta: " + faltaConsultada.getFalta());
-                                    System.out.println("Nota: " + aluno.NotaFinal(turma));
-                                    if(((faltaConsultada.getFalta()/disciplina.getCargaHoraria())<=0.25) && (aluno.NotaFinal(turma)<6))
-                                        System.out.println("Aluno aprovado!");
-                                    else
-                                        System.out.println("Aluno não aprovado!");
-                                    break;
-                                }
-                            }
-                            
-                        }
-                    }
+        while(true){
+            System.out.println("1 - CONSULTAR OS ALUNOS DE UMA TURMA COM SUAS RESPECTIVAS NOTAS E FALTAS");
+            System.out.println("2 - CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA");
+            System.out.println("3 - CONSULTAR A QUANTIDADE DE TURMAS OFERECIDAS DE UMA DISCIPLINA");
+            System.out.println("4 - CONSULTAR O NÚMERO DE DISCIPLINAS JÁ LECIONADAS POR UM PROFESSOR");
+            System.out.println("OUTRO - VOLTAR");
+
+            System.out.println("\nOpção: ");
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            Boolean consultaEfetuada = false;
+            switch(opcao){
+                case 1:{
+                    consultaEfetuada = this.turmaView.listarAlunos();
                     break;
                 }
-                break;
-            }
-            case 3:{
-            // Consultar o numero de turmas ja oferecidas (historicamente) para uma determinada disciplina
-                String nome;
-                System.out.println("INFORME O NOME DA DISCIPLINA");
-                nome =  entrada.nextLine();
-                Disciplina disciplina=(Disciplina)this.disciplinaDao.obter(nome);
-                if(disciplina == null)
-                    return;
-                System.out.println("A quantidade de turmas da disciplina " + 
-                        nome+" já oferecidas é "+disciplina.getTurma().size()
-                        + ".");
+                case 2:{
+                    consultaEfetuada = this.alunoView.consultarSituacaoAluno();
+                    break;
                 }
-            case 4:{
-                //Consultar o numero de disciplinas ja lecionadas por um determinado professor.
-                String nome;
-                System.out.println("INFORME O NOME DO PROFESSOR");
-                nome =  entrada.nextLine();
-                Professor professor = (Professor) this.professorDao.obter(nome);
-                if(professor == null)
-                    return;
-                System.out.println("A quantidade de disciplinas já lecionadas "
-                        + "pelo(a) professsor(a) " + nome + " é " + 
-                        professor.getDisciplina().size() + ".");
-                
+                case 3:{
+                    consultaEfetuada = this.disciplinaView.quantidadeTurmas();
+                    break;
+                }
+                case 4:{
+                    consultaEfetuada = this.professorView.quantidadeDisciplina();
+                    break;
+                }
             }
+            if (opcao < 1 || opcao > 4)
+                break;
+            if (!consultaEfetuada)
+                System.out.println("\nINFORMAÇÕES INVÁLIDAS PARA CONSULTA!\n");
+        
+        }
     }
-            }
-
     
     private void imprimirMenuRemover(){
         while(true){

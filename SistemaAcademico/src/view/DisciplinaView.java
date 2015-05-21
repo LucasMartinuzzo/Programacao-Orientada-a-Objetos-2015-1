@@ -47,4 +47,16 @@ public class DisciplinaView {
             System.out.println(disc.toString() + "\n");
         }
     }
+    
+    public Boolean quantidadeTurmas(){
+        System.out.println("Informe o nome da disciplina: ");
+        Disciplina disciplina=(Disciplina)this.disciplinaDao.obter(scanner.nextLine());
+        if(disciplina != null){
+            System.out.println("A quantidade de turmas da disciplina " + disciplina.getNome() +
+                    " já oferecidas é "+disciplina.getTurma().size() + ".");
+            return true;
+        }
+        return false;
+    }
+   
 }
