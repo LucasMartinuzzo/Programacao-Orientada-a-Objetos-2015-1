@@ -93,7 +93,7 @@ public class TurmaView {
     public void remover(){
         System.out.println("REMOÇÃO DE TURMAS\nEntre com o ID da turma: ");
         String cpf = scanner.nextLine();
-        if(TurmaDaoImpl.getInstancia().remover(TurmaDaoImpl.getInstancia().obter(cpf)))
+        if(ProfessorDaoImpl.getInstancia().remover(ProfessorDaoImpl.getInstancia().obter(cpf)))
         //if (professorDao.remover(professorDao.obter(cpf)))
             System.out.println("TURMA REMOVIDA COM SUCESSO!");                
         else
