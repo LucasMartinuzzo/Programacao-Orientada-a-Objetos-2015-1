@@ -33,18 +33,18 @@ public class ProfessorView {
     }
     
     public void pesquisar () {
-        System.out.println("PESQUISA DE PROFESSOR\nEntre com o CPF do professor: ");
+        System.out.println("PESQUISA DE PROFESSORES\nEntre com o CPF do professor: ");
         String cpf = scanner.nextLine();
         if(ProfessorDaoImpl.getInstancia().indice(cpf) != -1)
             System.out.println(ProfessorDaoImpl.getInstancia().obter(cpf).toString());
         //if (this.professorDao.indice(cpf) != -1)
         //    System.out.println(this.professorDao.obter(cpf).toString());
         else
-            System.out.println("PROFESSOR NÃO ENCONTRADO!"); 
+            System.out.println("PROFESSOR NÃO ENCONTRADO!\n"); 
     }
     
     public void remover(){
-        System.out.println("REMOÇÃO DE PROFESSOR\nEntre com o CPF do Professor: ");
+        System.out.println("REMOÇÃO DE PROFESSORES\nEntre com o CPF do Professor: ");
         String cpf = scanner.nextLine();
         if(ProfessorDaoImpl.getInstancia().remover(ProfessorDaoImpl.getInstancia().obter(cpf)))
         //if (professorDao.remover(professorDao.obter(cpf)))

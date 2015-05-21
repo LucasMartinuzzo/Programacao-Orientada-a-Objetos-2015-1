@@ -37,11 +37,11 @@ public class AulaView {
             System.out.println(AulaDaoImpl.getInstancia().obter(id).toString());
             //System.out.println(this.aulaDao.obter(id).toString());
         else
-            System.out.println("AULA NÃO ENCONTRADA!");
+            System.out.println("AULA NÃO ENCONTRADA!\n");
     }
 
     public void remover () {
-        System.out.println("REMOÇÃO DE AULA\nEntre com o ID da aula: ");
+        System.out.println("REMOÇÃO DE AULAS\nEntre com o ID da aula: ");
         String id = scanner.nextLine();
         if(AulaDaoImpl.getInstancia().remover(AulaDaoImpl.getInstancia().obter(id)))
         //if (this.aulaDao.remover(this.aulaDao.obter(id)))

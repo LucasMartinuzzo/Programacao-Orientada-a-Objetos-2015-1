@@ -21,7 +21,7 @@ public class FaltaView {
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
-        System.out.println("CADASTRO DE FALTA");
+        System.out.println("CADASTRO DE FALTAS");
         while (true) {
             System.out.println("Aluno:");
             Aluno aluno = (Aluno) this.obterCadastrado(AlunoDaoImpl.getInstancia());
@@ -47,18 +47,18 @@ public class FaltaView {
     }
 
     public void pesquisar () {
-        System.out.println("PESQUISAR REGISTROS DE FALTA \nEntre com o ID da Falta: ");
+        System.out.println("PESQUISA DE REGISTROS DE FALTA \nEntre com o ID da Falta: ");
         String id = scanner.nextLine();
         if(FaltaDaoImpl.getInstancia().indice(id) != -1)
             System.out.println(FaltaDaoImpl.getInstancia().obter(id).toString());
         //if (this.faltaDao.indice(id) != -1)
         //    System.out.println(this.faltaDao.obter(id).toString());
         else
-            System.out.println("FALTA NÃO ENCONTRADA!"); 
+            System.out.println("FALTA NÃO ENCONTRADA!\n"); 
     }
 
     public void remover(){
-        System.out.println("REMOVER REGISTRO DE FALTA\nEntre com o ID da Falta: ");
+        System.out.println("REMOÇÃO DE REGISTROS DE FALTA\nEntre com o ID da Falta: ");
         String id = scanner.nextLine();
         if(FaltaDaoImpl.getInstancia().remover(FaltaDaoImpl.getInstancia().obter(id)))
         //if (faltaDao.remover(faltaDao.obter(id)))
