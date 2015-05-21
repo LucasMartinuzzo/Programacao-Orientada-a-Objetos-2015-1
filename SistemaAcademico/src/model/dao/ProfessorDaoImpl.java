@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Professor;
@@ -15,7 +16,7 @@ import java.io.IOException;
  * @author Pedro
  */
 public class ProfessorDaoImpl implements Dao {
-    private static List<Professor> listaProfessor;
+    private static List<Professor> listaProfessor = new ArrayList<>();
     private static ProfessorDaoImpl instancia = null;
     
     public static ProfessorDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO

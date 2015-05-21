@@ -82,22 +82,27 @@ public class Main {
             Boolean cadastroEfetuado = false;
             switch(opcao) {
                 case 1:{
+                    alunoView = new AlunoView();
                     cadastroEfetuado = this.alunoView.cadastrar();
                     break;
                 }
                 case 2:{
+                    turmaView = new TurmaView();
                     cadastroEfetuado = this.turmaView.cadastrar();
                     break;
                 }
                 case 3:{
+                    professorView = new ProfessorView();
                     cadastroEfetuado = this.professorView.cadastrar();
                     break;
                 }
                 case 4:{
+                    atividadeView = new AtividadeView();
                     cadastroEfetuado = this.atividadeView.cadastrar();
                     break;
                 }
                 case 5:{
+                    faltaView = new FaltaView();
                     cadastroEfetuado = this.faltaView.cadastrar();
                     break;
                 }
@@ -107,6 +112,7 @@ public class Main {
                     break;
                 }
                 case 7:{
+                    disciplinaView = new DisciplinaView();
                     cadastroEfetuado = this.disciplinaView.cadastrar();
                     break;
                 }
