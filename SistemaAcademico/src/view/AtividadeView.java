@@ -2,6 +2,7 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
+import model.dao.AtividadeDaoImpl;
 import model.dao.Dao;
 import model.pojo.Atividade;
 import model.pojo.Turma;
@@ -12,8 +13,8 @@ import model.pojo.Turma;
  * @author Mônicka
  */
 public class AtividadeView {
-    private Dao atividadeDao;
-    private Dao turmaDao;
+    //private Dao atividadeDao;
+    //private Dao turmaDao;
     private static Scanner scanner = new Scanner (System.in);
 
     public Boolean cadastrar () {
@@ -29,18 +30,21 @@ public class AtividadeView {
         System.out.println("Valor: ");
         Double valor = scanner.nextDouble();
         System.out.println("Turma:");
-        Turma turma = (Turma) this.obterCadastrado(this.turmaDao);
+        Turma turma = (Turma) this.obterCadastrado(AtividadeDaoImpl.getInstancia());
         if(turma == null)
             return false;
         Atividade atividade = new Atividade (id, nome, tipo, data, valor, turma);
-        return this.atividadeDao.inserir(atividade);
+        return AtividadeDaoImpl.getInstancia().inserir(atividade);
+        //return this.atividadeDao.inserir(atividade);
     }
 
     public void pesquisar () {
         System.out.println("PESQUISA DE ATIVIDADES\nEntre com o ID da atividade: ");
         String id = scanner.nextLine();
-        if (this.atividadeDao.indice(id) != -1)
-            System.out.println(this.atividadeDao.obter(id).toString());
+        if(AtividadeDaoImpl.getInstancia().indice(id) != -1)
+            System.out.println(AtividadeDaoImpl.getInstancia().obter(id).toString());
+        //if (this.atividadeDao.indice(id) != -1)
+        //    System.out.println(this.atividadeDao.obter(id).toString());
         else
             System.out.println("ATIVIDADE NÃO ENCONTRADA!");
     }
@@ -48,7 +52,8 @@ public class AtividadeView {
     public void remover(){
         System.out.println("REMOÇÃO DE ATIVIDADE\nEntre com o ID da atividade: ");
         String id = scanner.nextLine();
-        if (atividadeDao.remover(atividadeDao.obter(id)))
+        if(AtividadeDaoImpl.getInstancia().remover(AtividadeDaoImpl.getInstancia().obter(id)))
+        //if (atividadeDao.remover(atividadeDao.obter(id)))
             System.out.println("ATIVIDADE REMOVIDA COM SUCESSO!");                
         else
             System.out.println("ATIVIDADE NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
@@ -56,13 +61,14 @@ public class AtividadeView {
 
     public void listar () {
         System.out.println("LISTA DE ATIVIDADES DISPONÍVEIS\n");
-        List<Atividade> listaAtividade = (List<Atividade>) (Atividade) atividadeDao.obterTodos();
+        List<Atividade> listaAtividade = (List<Atividade>) (Atividade) AtividadeDaoImpl.getInstancia().obterTodos();
+        //List<Atividade> listaAtividade = (List<Atividade>) (Atividade) atividadeDao.obterTodos();
         for (Atividade atividade: listaAtividade) {
             System.out.println(atividade.toString() + "\n");
         }
     }
     
-    public Object obterCadastrado (Dao dao) {    
+    public Object obterCadastrado (Dao dao) {
         while (true) {
             System.out.println("ID (''cancelar'' para cancelar): ");
             String entrada = scanner.nextLine();

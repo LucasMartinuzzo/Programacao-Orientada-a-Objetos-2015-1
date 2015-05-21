@@ -2,11 +2,12 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
+import model.dao.AlunoDaoImpl;
 import model.dao.Dao;
 import model.pojo.Aluno;
 
 public class AlunoView {
-    private Dao alunoDao;
+    //private Dao alunoDao;
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
@@ -16,14 +17,17 @@ public class AlunoView {
         System.out.println("CPF: ");
         String cpf = scanner.nextLine();
         Aluno aluno = new Aluno (nome, cpf);
-        return this.alunoDao.inserir(aluno);
+        return AlunoDaoImpl.getInstancia().inserir(aluno);
+        //return this.alunoDao.inserir(aluno);
     }
 
     public void pesquisar () {
        System.out.println("PESQUISA DE ALUNO\nEntre com o CPF do aluno: ");
         String cpf = scanner.nextLine();
-        if (this.alunoDao.indice(cpf) != -1)
-            System.out.println(this.alunoDao.obter(cpf).toString());
+        if(AlunoDaoImpl.getInstancia().indice(cpf) != -1)
+            System.out.println(AlunoDaoImpl.getInstancia().obter(cpf).toString());
+        //if (this.alunoDao.indice(cpf) != -1)
+            //System.out.println(this.alunoDao.obter(cpf).toString());
         else
             System.out.println("ALUNO NÃO ENCONTRADO!"); 
     }
@@ -31,7 +35,8 @@ public class AlunoView {
     public void remover(){
         System.out.println("REMOÇÃO DE ALUNO\nEntre com o CPF do aluno: ");
         String cpf = scanner.nextLine();
-        if (alunoDao.remover(alunoDao.obter(cpf)))
+        if(AlunoDaoImpl.getInstancia().remover(AlunoDaoImpl.getInstancia().obter(cpf)))
+        //if (alunoDao.remover(alunoDao.obter(cpf)))
             System.out.println("ALUNO REMOVIDO COM SUCESSO!");                
         else
             System.out.println("ALUNO NÃO ENCONTRADO, REMOÇÃO NÃO EFETUADA!\n");
@@ -39,7 +44,8 @@ public class AlunoView {
 
     public void listar () {
         System.out.println("LISTA DE ALUNOS DISPONÍVEIS\n");
-        List<Aluno> listaAluno = (List<Aluno>) (Aluno) alunoDao.obterTodos();
+        List<Aluno> listaAluno = (List<Aluno>) (Aluno) AlunoDaoImpl.getInstancia().obterTodos();
+        //List<Aluno> listaAluno = (List<Aluno>) (Aluno) alunoDao.obterTodos();
         for (Aluno aluno: listaAluno) {
             System.out.println(aluno.toString() + "\n");
         }
