@@ -212,12 +212,12 @@ public class Main {
         Integer i;
         Main main = new Main();    
         Scanner entrada = new Scanner(System.in);
-        main.carregarArquivo();
+        //main.carregarArquivo();
         while(true){
-            System.out.println("CADASTROS - 1");
-            System.out.println("CONSULTAS - 2");
-            System.out.println("REMOÇÕES - 3");
-            System.out.println("MODIFICAÇÕES - 4");
+            System.out.println("1 - CADASTROS");
+            System.out.println("2 - CONSULTAS");
+            System.out.println("3- REMOÇÕES");
+            System.out.println("4 - SAIR");
             i = entrada.nextInt();
             switch(i){
                     case 1: {
@@ -229,7 +229,10 @@ public class Main {
                     case 3: {
                         main.imprimirMenuRemover(); 
                     }
-                    //Opção "sair" com main.salvarArquivo()
+                    case 4:{
+                    //Opção "sair" com main.salvarArquivo()    
+                    }
+                    
             }
         }    
     }
