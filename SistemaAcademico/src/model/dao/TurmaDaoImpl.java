@@ -9,14 +9,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-import model.pojo.Disciplina;
+import java.util.ArrayList;
 
 /**
  *
  * @author JeanPablo
  */
 public class TurmaDaoImpl implements Dao {
-    private static List<Turma> listaTurma;
+    private static List<Turma> listaTurma = new ArrayList<Turma>();
     private static TurmaDaoImpl instancia = null;
     
     public static TurmaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO

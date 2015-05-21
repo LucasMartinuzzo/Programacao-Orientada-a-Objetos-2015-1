@@ -38,11 +38,13 @@ public class TurmaView {
         String id = scanner.nextLine();
         System.out.println("Ano: ");
         Integer ano = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Período: ");
         Integer periodo = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Número de vagas: ");
         Integer numeroDeVagas = scanner.nextInt();
-        
+        scanner.nextLine();
         System.out.println("\nPara as próximas etapas do cadastro, "
                 + "entre com o código identificador (ID) do item procurado.");
         
@@ -114,8 +116,10 @@ public class TurmaView {
         String disciplina = scanner.nextLine();
         System.out.println("* Ano: ");
         Integer ano = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("* Período: ");
         Integer periodo = scanner.nextInt();
+        scanner.nextLine();
         for (Turma turmaConsultada: (List<Turma>) (Turma) TurmaDaoImpl.getInstancia().obterTodos()) {
             if (turmaConsultada.getDisciplina().getNome().equals(disciplina))
                 if (turmaConsultada.getAno().equals(ano))

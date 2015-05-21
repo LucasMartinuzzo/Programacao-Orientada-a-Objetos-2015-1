@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Aula;
@@ -15,7 +16,7 @@ import model.pojo.Aula;
  * @author JeanPablo
  */
 public class AulaDaoImpl implements Dao {    
-    private static List<Aula> listaAula;
+    private static List<Aula> listaAula = new ArrayList<Aula>();
     private static AulaDaoImpl instancia = null;
     
     public static AulaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO

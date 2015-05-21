@@ -22,6 +22,7 @@ public class DisciplinaView {
         String ementa = scanner.nextLine();
         System.out.println("Carga Horária: ");
         Integer cargaHoraria = scanner.nextInt();
+        scanner.nextLine();
         Disciplina disciplina = new Disciplina(nome, ementa, cargaHoraria);
         return DisciplinaDaoImpl.getInstancia().inserir(disciplina);
         //return this.disciplinaDao.inserir(disciplina);
