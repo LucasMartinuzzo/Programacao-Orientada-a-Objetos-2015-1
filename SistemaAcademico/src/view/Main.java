@@ -83,10 +83,12 @@ public class Main {
             switch(opcao) {
                 case 1:{
                     cadastroEfetuado = this.alunoView.cadastrar();
+                    AlunoDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 2:{
                     cadastroEfetuado = this.turmaView.cadastrar();
+                    TurmaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 3:{
@@ -175,10 +177,12 @@ public class Main {
             switch(opcao){
                 case 1:{
                     this.alunoView.remover();
+                    AlunoDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 2:{
                     this.turmaView.remover();
+                    TurmaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 3:{

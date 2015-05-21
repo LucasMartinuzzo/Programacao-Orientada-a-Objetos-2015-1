@@ -30,7 +30,6 @@ public class AlunoDaoImpl implements Dao {
     @Override
     public void imprimir (){
         Aluno aluno;
-        System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
             aluno = (Aluno) a;
             System.out.println(aluno.toString());
@@ -61,7 +60,7 @@ public class AlunoDaoImpl implements Dao {
     
     @Override
     public Object obter (String cpf) {
-        if (this.indice(cpf) != -1)
+        if (this.indice(cpf) >= 0)
             return listaAluno.get(this.indice(cpf));
         return null;
     }

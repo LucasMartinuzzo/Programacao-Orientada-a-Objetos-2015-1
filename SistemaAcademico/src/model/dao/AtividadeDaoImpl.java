@@ -29,7 +29,6 @@ public class AtividadeDaoImpl implements Dao {
     @Override
     public void imprimir (){
         Atividade atividade;
-        System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
             atividade = (Atividade) a;
             System.out.println(atividade.toString());
@@ -61,7 +60,7 @@ public class AtividadeDaoImpl implements Dao {
     
     @Override
     public Object obter (String id) {
-        if (this.indice(id) != -1)
+        if (this.indice(id) >= 0)
             return listaAtividade.get(this.indice(id));
         return null;
     }

@@ -28,7 +28,6 @@ public class NotaDaoImpl implements Dao {
     @Override
     public void imprimir (){
         Nota nota;
-        System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
             nota = (Nota) a;
             System.out.println(nota.toString());
@@ -38,7 +37,7 @@ public class NotaDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Nota nota = (Nota) objeto;
-        if (this.indice(nota.getId()) <= -1) {
+        if (this.indice(nota.getId()) >= 0) {
             listaNota.add(nota);
             Collections.sort(listaNota);
             return true;

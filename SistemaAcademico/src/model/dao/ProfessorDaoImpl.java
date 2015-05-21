@@ -28,7 +28,6 @@ public class ProfessorDaoImpl implements Dao {
     @Override
     public void imprimir (){
         Professor professor;
-        System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
             professor = (Professor) a;
             System.out.println(professor.toString());
@@ -59,7 +58,7 @@ public class ProfessorDaoImpl implements Dao {
     
     @Override
     public Object obter (String cpf) {
-        if (this.indice(cpf) != -1)
+        if (this.indice(cpf) >= 0)
             return listaProfessor.get(this.indice(cpf));
         return null;
     }

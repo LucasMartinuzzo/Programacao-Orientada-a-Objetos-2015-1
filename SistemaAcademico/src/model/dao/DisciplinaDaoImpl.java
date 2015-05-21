@@ -28,7 +28,6 @@ public class DisciplinaDaoImpl implements Dao {
     @Override
     public void imprimir (){
         Disciplina disciplina;
-        System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
             disciplina = (Disciplina) a;
             System.out.println(disciplina.toString());
@@ -59,7 +58,7 @@ public class DisciplinaDaoImpl implements Dao {
     
     @Override
     public Object obter (String nome) {
-        if (this.indice(nome) != -1)
+        if (this.indice(nome) >= 0)
             return listaDisciplina.get(this.indice(nome));
         return null;
     }
