@@ -60,7 +60,7 @@ public class TurmaDaoImpl implements Dao {
     
     @Override
     public Object obter (String id) {
-        if (this.indice(id) != -1)
+        if (this.indice(id) >= 0)
             return listaTurma.get(this.indice(id));
         return null;
     }

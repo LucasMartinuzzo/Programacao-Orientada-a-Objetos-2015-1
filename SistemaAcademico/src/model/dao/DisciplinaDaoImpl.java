@@ -59,7 +59,7 @@ public class DisciplinaDaoImpl implements Dao {
     
     @Override
     public Object obter (String nome) {
-        if (this.indice(nome) != -1)
+        if (this.indice(nome) >= 0)
             return listaDisciplina.get(this.indice(nome));
         return null;
     }

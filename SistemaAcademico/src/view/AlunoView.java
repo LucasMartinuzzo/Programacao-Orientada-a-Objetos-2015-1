@@ -24,6 +24,7 @@ public class AlunoView {
         String cpf = scanner.nextLine();
         Aluno aluno = new Aluno (nome, cpf);
         return AlunoDaoImpl.getInstancia().inserir(aluno);
+       
         //return this.alunoDao.inserir(aluno);
     }
 

@@ -61,7 +61,7 @@ public class AtividadeDaoImpl implements Dao {
     
     @Override
     public Object obter (String id) {
-        if (this.indice(id) != -1)
+        if (this.indice(id) >= 0)
             return listaAtividade.get(this.indice(id));
         return null;
     }
