@@ -1,6 +1,5 @@
 package view;
 
-//Apareceu Jean ?
 
 import java.io.IOException;
 import java.util.Collections;
@@ -23,7 +22,7 @@ import model.pojo.Professor;
 import model.pojo.Turma;
 
 /**
- *TESTAAAANDO
+ *
  * @author Filipe
  */
 public class Main {
