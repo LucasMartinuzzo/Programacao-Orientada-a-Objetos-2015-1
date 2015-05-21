@@ -1,8 +1,17 @@
 package view;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Scanner;
+import model.dao.AlunoDaoImpl;
+import model.dao.AtividadeDaoImpl;
+import model.dao.AulaDaoImpl;
 import model.dao.Dao;
+import model.dao.DisciplinaDaoImpl;
+import model.dao.FaltaDaoImpl;
+import model.dao.NotaDaoImpl;
+import model.dao.ProfessorDaoImpl;
+import model.dao.TurmaDaoImpl;
 import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Disciplina;
@@ -24,17 +33,17 @@ public class Main {
     private FaltaView faltaView;
     private NotaView notaView;
     private DisciplinaView disciplinaView;
-    private AulaView aulaView;
-    private Dao turmaDao;
-    private Dao alunoDao;
-    private Dao professorDao;
-    private Dao atividadeDao;
-    private Dao faltaDao;
-    private Dao notaDao;
-    private Dao disciplinaDao;
-    private Dao aulaDao;
+    //private AulaView aulaView;
+    //private Dao turmaDao;
+    //private Dao alunoDao;
+    //private Dao professorDao;
+    //private Dao atividadeDao;
+    //private Dao faltaDao;
+    //private Dao notaDao;
+    //private Dao disciplinaDao;
+    //private Dao aulaDao;
     
-    private void carregarArquivo(){
+    private void carregarArquivo() throws IOException{
         DisciplinaDaoImpl.getInstancia().carregar();
         ProfessorDaoImpl.getInstancia().carregar();
         AulaDaoImpl.getInstancia().carregar();
@@ -45,7 +54,7 @@ public class Main {
         NotaDaoImpl.getInstancia().carregar();
     }
     
-    private void salvarArquivo(){
+    private void salvarArquivo() throws IOException{
         DisciplinaDaoImpl.getInstancia().salvar();
         ProfessorDaoImpl.getInstancia().salvar();
         AulaDaoImpl.getInstancia().salvar();
@@ -199,7 +208,7 @@ public class Main {
         }
     }     
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         Integer i;
         Main main = new Main();    
         Scanner entrada = new Scanner(System.in);

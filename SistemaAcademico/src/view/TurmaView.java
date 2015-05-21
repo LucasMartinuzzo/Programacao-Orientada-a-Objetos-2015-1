@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import model.dao.AlunoDaoImpl;
+import model.dao.AulaDaoImpl;
 import model.dao.Dao;
 import model.dao.ProfessorDaoImpl;
 import model.dao.TurmaDaoImpl;
@@ -24,8 +26,8 @@ public class TurmaView {
     //private Dao turmaDao;
     //private Dao disciplinaDao;
     //private Dao professorDao;
-    private Dao aulaDao;
-    private Dao alunoDao;
+    //private Dao aulaDao;
+    //private Dao alunoDao;
     
     private static Scanner scanner = new Scanner (System.in);
     
@@ -55,14 +57,16 @@ public class TurmaView {
             return false;
         
         System.out.println("***** PARA CONTINUAR, DETERMINE AS AULAS A SEREM ADICIONADAS *****");
-        List<Aula> listaAula = (List<Aula>) (Aula) this.montarListaDeCadastrados(this.aulaDao);
+        List<Aula> listaAula = (List<Aula>) (Aula) this.montarListaDeCadastrados(AulaDaoImpl.getInstancia());
+        //List<Aula> listaAula = (List<Aula>) (Aula) this.montarListaDeCadastrados(this.aulaDao);
         System.out.println("******************************************************************\n");
         
         System.out.println("***** DESEJA ADICIONAR UMA LISTA DE ALUNOS AGORA? (ID: CPF) *****");
         System.out.println("Digite ''sim'' para adicionar ou qualquer outro para não: ");
         if (scanner.nextLine().equals("sim")) {
             System.out.println("\n");
-            List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(this.alunoDao);
+            List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(AlunoDaoImpl.getInstancia());
+            //List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(this.alunoDao);
             turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor,
                     listaAula, listaAluno);
             System.out.println("******************************************************************");
