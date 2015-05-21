@@ -28,7 +28,6 @@ public class AlunoDaoImpl implements Dao {
     }
     
     public void imprimir (){
-        System.out.println("DISTRUIDORA IMPRESSAO\n");
         Aluno al;
         System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
