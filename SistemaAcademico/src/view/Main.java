@@ -102,6 +102,7 @@ public class Main {
                     break;
                 }
                 case 6:{
+                    notaView = new NotaView();
                     cadastroEfetuado = this.notaView.cadastrar();
                     break;
                 }

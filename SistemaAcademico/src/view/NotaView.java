@@ -32,6 +32,7 @@ public class NotaView {
         String id = scanner.nextLine();
         System.out.println("Nota: ");
         Double valorDaNota = scanner.nextDouble();
+        scanner.nextLine();
         System.out.println("Aluno (ID: CPF):");
         Aluno aluno = (Aluno) this.obterCadastrado(AlunoDaoImpl.getInstancia());
         if (aluno == null)
@@ -79,7 +80,7 @@ public class NotaView {
     public Object obterCadastrado (Dao dao) {    
         while (true) {
             System.out.println("ID (''cancelar'' para cancelar): ");
-            String entrada = scanner.nextLine();
+            String entrada = scanner.nextLine();            
             if (entrada.equals("cancelar"))
                 break;
             Object objeto = dao.obter(entrada);
