@@ -58,7 +58,7 @@ public class AlunoView {
     
     public Boolean consultarSituacaoAluno(){
         System.out.println("Informe o cpf do aluno: ");
-        Aluno aluno = (Aluno)this.alunoDao.obter(scanner.nextLine());
+        Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
         System.out.println("Informe o nome da disciplina: ");
         Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(scanner.nextLine());
         if(disciplina != null && aluno != null){

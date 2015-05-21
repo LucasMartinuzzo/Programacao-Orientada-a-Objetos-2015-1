@@ -56,7 +56,7 @@ public class DisciplinaView {
     
     public Boolean quantidadeTurmas(){
         System.out.println("Informe o nome da disciplina: ");
-        Disciplina disciplina=(Disciplina)this.disciplinaDao.obter(scanner.nextLine());
+        Disciplina disciplina=(Disciplina)DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
         if(disciplina != null){
             System.out.println("A quantidade de turmas da disciplina " + disciplina.getNome() +
                     " já oferecidas é "+disciplina.getTurma().size() + ".");

@@ -16,7 +16,7 @@ import model.pojo.Professor;
  * @author Pedro
  */
 public class ProfessorView {
-    private Dao professorDao;
+    //private Dao professorDao;
     private static Scanner scanner = new Scanner (System.in);
  
     
@@ -65,12 +65,12 @@ public class ProfessorView {
 
     public Boolean quantidadeDisciplina(){
         System.out.println("Informe o nome do professor: ");
-        Professor professor = (Professor) this.professorDao.obter(scanner.nextLine());
+        Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(scanner.nextLine());
         if(professor != null){
             System.out.println("A quantidade de disciplinas já lecionadas pelo(a) professsor(a) " + professor.getNome()
                     + " é " + professor.getDisciplina().size() + ".");
             return true;
         }
-    return false;
+        return false;
     }    
 }
