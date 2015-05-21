@@ -27,10 +27,21 @@ public class AlunoDaoImpl implements Dao {
         return instancia;
     }
     
+    public void imprimir (){
+        System.out.println("DISTRUIDORA IMPRESSAO\n");
+        Aluno al;
+        System.out.println(this.obterTodos().size());
+        for(Object a: this.obterTodos()){
+            al = (Aluno) a;
+            System.out.println(al.toString());
+        }
+    }
+    
     @Override
     public Boolean inserir (Object objeto) {
         Aluno aluno = (Aluno) objeto;
-        if (this.indice(aluno.getCpf()) == -1) {
+        System.out.println(aluno.getCpf());
+        if (this.indice(aluno.getCpf()) <= -1) {
             listaAluno.add(aluno);
             Collections.sort(listaAluno);
             return true;
