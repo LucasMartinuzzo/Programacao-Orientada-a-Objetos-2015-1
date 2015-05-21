@@ -34,14 +34,14 @@ public class AulaView {
         if (this.aulaDao.indice(id) != -1)
             System.out.println(this.aulaDao.obter(id).toString());
         else
-            System.out.println("AULA NÃO ENCONTRADA!");
+            System.out.println("AULA NÃO ENCONTRADA!\n");
     }
 
     public void remover () {
-        System.out.println("REMOÇÃO DE AULA\nEntre com o ID da aula: ");
+        System.out.println("REMOÇÃO DE AULAS\nEntre com o ID da aula: ");
         String id = scanner.nextLine();
         if (this.aulaDao.remover(this.aulaDao.obter(id)))
-            System.out.println("AULA REMOVIDA COM SUCESSO!");
+            System.out.println("AULA REMOVIDA COM SUCESSO!\n");
         else
             System.out.println("AULA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
     }

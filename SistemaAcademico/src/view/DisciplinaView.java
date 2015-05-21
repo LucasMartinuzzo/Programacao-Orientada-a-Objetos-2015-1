@@ -30,13 +30,13 @@ public class DisciplinaView {
             if (this.disciplinaDao.indice(nome) != -1)
                 System.out.println(this.disciplinaDao.obter(nome).toString());
             else
-                System.out.println("DISCIPLINA NÃO ENCONTRADA!");
+                System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
         }
     public void remover(){
-        System.out.println("REMOÇÃO DE DISCIPLINA\nEntre com o nome da Disciplina: ");
+        System.out.println("REMOÇÃO DE DISCIPLINAS\nEntre com o nome da Disciplina: ");
         String nome = scanner.nextLine();
         if (disciplinaDao.remover(disciplinaDao.obter(nome)))
-            System.out.println("DISCIPLINA REMOVIDA COM SUCESSO!");                
+            System.out.println("DISCIPLINA REMOVIDA COM SUCESSO!\n");                
         else
             System.out.println("DISCIPLINA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
     }

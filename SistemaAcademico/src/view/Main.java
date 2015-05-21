@@ -35,8 +35,8 @@ public class Main {
     
     private void imprimirMenuCadastro(){
         while (true) {
-            System.out.println("1 - CADASTRAR ALUNOS");
-            System.out.println("2 - CADASTRAR TURMAS");
+            System.out.println("1 - CADASTRAR ALUNO");
+            System.out.println("2 - CADASTRAR TURMA");
             System.out.println("3 - CADASTRAR PROFESSOR");
             System.out.println("4 - CADASTRAR ATIVIDADE");
             System.out.println("5 - CADASTRAR FALTA");

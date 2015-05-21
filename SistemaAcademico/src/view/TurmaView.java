@@ -76,14 +76,14 @@ public class TurmaView {
         if (this.turmaDao.indice(id) != -1)
             System.out.println(this.turmaDao.obter(id).toString());
         else
-            System.out.println("TURMA NÃO ENCONTRADA!");
+            System.out.println("TURMA NÃO ENCONTRADA!\n");
     }
     
     public void remover(){
-        System.out.println("REMOÇÃO DE TURMA\nEntre com o ID da turma: ");
+        System.out.println("REMOÇÃO DE TURMAS\nEntre com o ID da turma: ");
         String cpf = scanner.nextLine();
         if (professorDao.remover(professorDao.obter(cpf)))
-            System.out.println("TURMA REMOVIDA COM SUCESSO!");                
+            System.out.println("TURMA REMOVIDA COM SUCESSO!\n");                
         else
             System.out.println("TURMA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
     }
@@ -140,7 +140,7 @@ public class TurmaView {
     public List<Object> montarListaDeCadastrados (Dao dao) {
         List<Object> listaObjeto = new ArrayList<>();
         while (true) {
-            System.out.println("Continuar?");
+            System.out.println("Continuar? ");
             System.out.println("Digite ''sim'' para continuar ou qualquer outro para não: ");
             if (scanner.nextLine().equals("sim")) {
                 Object objeto = this.obterCadastrado(dao);

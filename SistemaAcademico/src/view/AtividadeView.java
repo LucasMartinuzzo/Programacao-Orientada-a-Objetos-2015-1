@@ -42,14 +42,14 @@ public class AtividadeView {
         if (this.atividadeDao.indice(id) != -1)
             System.out.println(this.atividadeDao.obter(id).toString());
         else
-            System.out.println("ATIVIDADE NÃO ENCONTRADA!");
+            System.out.println("ATIVIDADE NÃO ENCONTRADA!\n");
     }
 
     public void remover(){
-        System.out.println("REMOÇÃO DE ATIVIDADE\nEntre com o ID da atividade: ");
+        System.out.println("REMOÇÃO DE ATIVIDADES\nEntre com o ID da atividade: ");
         String id = scanner.nextLine();
         if (atividadeDao.remover(atividadeDao.obter(id)))
-            System.out.println("ATIVIDADE REMOVIDA COM SUCESSO!");                
+            System.out.println("ATIVIDADE REMOVIDA COM SUCESSO!\n");                
         else
             System.out.println("ATIVIDADE NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
     }

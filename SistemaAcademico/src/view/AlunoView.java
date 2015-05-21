@@ -20,19 +20,19 @@ public class AlunoView {
     }
 
     public void pesquisar () {
-       System.out.println("PESQUISA DE ALUNO\nEntre com o CPF do aluno: ");
+       System.out.println("PESQUISA DE ALUNOS\nEntre com o CPF do aluno: ");
         String cpf = scanner.nextLine();
         if (this.alunoDao.indice(cpf) != -1)
             System.out.println(this.alunoDao.obter(cpf).toString());
         else
-            System.out.println("ALUNO NÃO ENCONTRADO!"); 
+            System.out.println("ALUNO NÃO ENCONTRADO!\n"); 
     }
 
     public void remover(){
-        System.out.println("REMOÇÃO DE ALUNO\nEntre com o CPF do aluno: ");
+        System.out.println("REMOÇÃO DE ALUNOS\nEntre com o CPF do aluno: ");
         String cpf = scanner.nextLine();
         if (alunoDao.remover(alunoDao.obter(cpf)))
-            System.out.println("ALUNO REMOVIDO COM SUCESSO!");                
+            System.out.println("ALUNO REMOVIDO COM SUCESSO!\n");                
         else
             System.out.println("ALUNO NÃO ENCONTRADO, REMOÇÃO NÃO EFETUADA!\n");
     }

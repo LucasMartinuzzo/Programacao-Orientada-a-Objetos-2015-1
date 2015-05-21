@@ -43,19 +43,19 @@ public class NotaView {
     }
 
    public void pesquisar () {
-       System.out.println("PESQUISAR NOTA \nEntre com o ID da Nota: ");
+       System.out.println("PESQUISA DE NOTAS \nEntre com o ID da Nota: ");
         String id = scanner.nextLine();
         if (this.notaDao.indice(id) != -1)
             System.out.println(this.notaDao.obter(id).toString());
         else
-            System.out.println("NOTA NÃO ENCONTRADA!"); 
+            System.out.println("NOTA NÃO ENCONTRADA!\n"); 
     }
 
     public void remover(){
-        System.out.println("REMOVER NOTA\nEntre com o ID da Nota: ");
+        System.out.println("REMOÇÃO DE NOTAS\nEntre com o ID da Nota: ");
         String id = scanner.nextLine();
         if (notaDao.remover(notaDao.obter(id)))
-            System.out.println("NOTA REMOVIDA COM SUCESSO!");                
+            System.out.println("NOTA REMOVIDA COM SUCESSO!\n");                
         else
             System.out.println("NOTA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
     }
