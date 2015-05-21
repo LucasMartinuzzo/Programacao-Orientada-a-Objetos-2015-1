@@ -1,5 +1,7 @@
 package model.pojo;
-//CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA 
+//CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA
+
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;     
 
@@ -10,9 +12,9 @@ import java.util.List;
 public class Aluno implements Comparable<Aluno>, Comparator<Falta> {
     private String nome;
     private String cpf;
-    private List<Turma> turma;  
-    private List<Falta> falta;
-    private List<Nota> nota;
+    private List<Turma> turma = new ArrayList<>();  
+    private List<Falta> falta = new ArrayList<>();
+    private List<Nota> nota = new ArrayList<>();
 
     public Aluno (String nome, String cpf) {
         this.nome = nome;

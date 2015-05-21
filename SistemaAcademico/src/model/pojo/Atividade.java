@@ -1,5 +1,6 @@
 package model.pojo;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
     private Double valor;
     private Boolean notasLancadas;
     private Turma turma;
-    private List<Nota> nota;
+    private List<Nota> nota = new ArrayList<>();
     
   
     public Atividade(String id, String nome, String tipo, String data, Double valor, Turma turma){

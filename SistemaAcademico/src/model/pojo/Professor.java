@@ -1,5 +1,6 @@
 package model.pojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ public class Professor implements Comparable<Professor>{
     private String nome;
     private String cpf;
     private String departamento;
-    private List<Disciplina> disciplina;
+    private List<Disciplina> disciplina = new ArrayList<>();
     
     public Professor (String nome, String cpf, String departamento){
         this.nome = nome;
