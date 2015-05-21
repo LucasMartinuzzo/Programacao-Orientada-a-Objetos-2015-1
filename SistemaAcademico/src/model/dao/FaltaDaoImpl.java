@@ -26,6 +26,16 @@ public class FaltaDaoImpl implements Dao {
     }
     
     @Override
+    public void imprimir (){
+        Falta falta;
+        System.out.println(this.obterTodos().size());
+        for(Object a: this.obterTodos()){
+            falta = (Falta) a;
+            System.out.println(falta.toString());
+        }
+    }
+    
+    @Override
     public Boolean inserir (Object objeto) {
         Falta falta = (Falta) objeto;
         if (this.indice(falta.getId()) <= -1) {

@@ -26,6 +26,16 @@ public class NotaDaoImpl implements Dao {
     }
     
     @Override
+    public void imprimir (){
+        Nota nota;
+        System.out.println(this.obterTodos().size());
+        for(Object a: this.obterTodos()){
+            nota = (Nota) a;
+            System.out.println(nota.toString());
+        }
+    }
+    
+    @Override
     public Boolean inserir (Object objeto) {
         Nota nota = (Nota) objeto;
         if (this.indice(nota.getId()) <= -1) {

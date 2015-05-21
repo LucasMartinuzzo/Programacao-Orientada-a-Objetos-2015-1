@@ -26,6 +26,16 @@ public class DisciplinaDaoImpl implements Dao {
     }
     
     @Override
+    public void imprimir (){
+        Disciplina disciplina;
+        System.out.println(this.obterTodos().size());
+        for(Object a: this.obterTodos()){
+            disciplina = (Disciplina) a;
+            System.out.println(disciplina.toString());
+        }
+    }
+    
+    @Override
     public Boolean inserir (Object objeto) {
         Disciplina disciplina = (Disciplina) objeto;
         if (this.indice(disciplina.getNome()) <= -1) {

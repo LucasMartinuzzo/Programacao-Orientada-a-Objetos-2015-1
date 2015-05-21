@@ -26,6 +26,16 @@ public class AulaDaoImpl implements Dao {
     }
     
     @Override
+    public void imprimir (){
+        Aula aula;
+        System.out.println(this.obterTodos().size());
+        for(Object a: this.obterTodos()){
+            aula = (Aula) a;
+            System.out.println(aula.toString());
+        }
+    }
+    
+    @Override
     public Boolean inserir (Object objeto) {
         Aula aula = (Aula) objeto;
         if (this.indice(aula.getId()) <= -1) {

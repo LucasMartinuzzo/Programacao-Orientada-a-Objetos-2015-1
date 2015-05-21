@@ -27,12 +27,13 @@ public class AlunoDaoImpl implements Dao {
         return instancia;
     }
     
+    @Override
     public void imprimir (){
-        Aluno al;
+        Aluno aluno;
         System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
-            al = (Aluno) a;
-            System.out.println(al.toString());
+            aluno = (Aluno) a;
+            System.out.println(aluno.toString());
         }
     }
     

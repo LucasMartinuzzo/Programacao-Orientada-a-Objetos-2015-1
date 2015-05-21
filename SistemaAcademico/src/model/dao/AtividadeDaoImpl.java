@@ -27,6 +27,16 @@ public class AtividadeDaoImpl implements Dao {
     }
     
     @Override
+    public void imprimir (){
+        Atividade atividade;
+        System.out.println(this.obterTodos().size());
+        for(Object a: this.obterTodos()){
+            atividade = (Atividade) a;
+            System.out.println(atividade.toString());
+        }
+    }
+    
+    @Override
     public Boolean inserir (Object objeto) {
         Atividade atividade = (Atividade) objeto;
         if (this.indice(atividade.getId()) <= -1) {

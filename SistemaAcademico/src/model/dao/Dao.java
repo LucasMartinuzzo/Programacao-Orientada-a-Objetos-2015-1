@@ -15,4 +15,5 @@ public interface Dao {
     List<Object> obterTodos ();
     void salvar () throws IOException;
     void carregar () throws IOException;
+    void imprimir ();
 }
