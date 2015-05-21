@@ -29,6 +29,7 @@ public class AtividadeView {
         String data = scanner.nextLine();
         System.out.println("Valor: ");
         Double valor = scanner.nextDouble();
+        scanner.nextLine();
         System.out.println("Turma:");
         Turma turma = (Turma) this.obterCadastrado(AtividadeDaoImpl.getInstancia());
         if(turma == null)

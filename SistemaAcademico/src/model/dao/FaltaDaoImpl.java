@@ -9,13 +9,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Filipe
  */
 public class FaltaDaoImpl implements Dao {    
-    private static List<Falta> listaFalta;
+    private static List<Falta> listaFalta = new ArrayList<>();
     private static FaltaDaoImpl instancia = null;
     
     public static FaltaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO

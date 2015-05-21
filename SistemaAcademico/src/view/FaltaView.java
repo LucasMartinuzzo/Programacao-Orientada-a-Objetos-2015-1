@@ -37,6 +37,7 @@ public class FaltaView {
                 String id = scanner.nextLine();
                 System.out.println("Número de faltas: ");
                 Integer numeroDeFalta = scanner.nextInt();
+                scanner.nextLine();
                 Falta falta = new Falta (id, numeroDeFalta,turma);
                 return FaltaDaoImpl.getInstancia().inserir(falta);
                 //return this.faltaDao.inserir(falta);

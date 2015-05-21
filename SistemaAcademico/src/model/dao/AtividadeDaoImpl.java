@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import model.pojo.Atividade;
@@ -16,7 +17,7 @@ import model.pojo.Atividade;
  */
 public class AtividadeDaoImpl implements Dao {
     
-    private static List<Atividade> listaAtividade;
+    private static List<Atividade> listaAtividade = new ArrayList<>();
     private static AtividadeDaoImpl instancia = null;
     
     public static AtividadeDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
