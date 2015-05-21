@@ -26,13 +26,13 @@ import model.pojo.Turma;
  */
 public class Main {
     
-    private TurmaView turmaView;
-    private AlunoView alunoView;
-    private ProfessorView professorView;
-    private AtividadeView atividadeView;
-    private FaltaView faltaView;
-    private NotaView notaView;
-    private DisciplinaView disciplinaView;
+    private TurmaView turmaView = new TurmaView();
+    private AlunoView alunoView = new AlunoView();
+    private ProfessorView professorView = new ProfessorView();
+    private AtividadeView atividadeView = new AtividadeView();
+    private FaltaView faltaView = new FaltaView();
+    private NotaView notaView = new NotaView();
+    private DisciplinaView disciplinaView = new DisciplinaView();
     //private AulaView aulaView;
     //private Dao turmaDao;
     //private Dao alunoDao;
@@ -82,37 +82,30 @@ public class Main {
             Boolean cadastroEfetuado = false;
             switch(opcao) {
                 case 1:{
-                    alunoView = new AlunoView();
                     cadastroEfetuado = this.alunoView.cadastrar();
                     break;
                 }
                 case 2:{
-                    turmaView = new TurmaView();
                     cadastroEfetuado = this.turmaView.cadastrar();
                     break;
                 }
                 case 3:{
-                    professorView = new ProfessorView();
                     cadastroEfetuado = this.professorView.cadastrar();
                     break;
                 }
                 case 4:{
-                    atividadeView = new AtividadeView();
                     cadastroEfetuado = this.atividadeView.cadastrar();
                     break;
                 }
                 case 5:{
-                    faltaView = new FaltaView();
                     cadastroEfetuado = this.faltaView.cadastrar();
                     break;
                 }
                 case 6:{
-                    notaView = new NotaView();
                     cadastroEfetuado = this.notaView.cadastrar();
                     break;
                 }
                 case 7:{
-                    disciplinaView = new DisciplinaView();
                     cadastroEfetuado = this.disciplinaView.cadastrar();
                     break;
                 }
