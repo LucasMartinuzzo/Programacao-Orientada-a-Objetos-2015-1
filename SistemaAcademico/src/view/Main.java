@@ -1,5 +1,6 @@
 package view;
 
+
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Scanner;
@@ -21,7 +22,7 @@ import model.pojo.Professor;
 import model.pojo.Turma;
 
 /**
- *TESTAAAANDO
+ *
  * @author Filipe
  */
 public class Main {

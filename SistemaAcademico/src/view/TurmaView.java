@@ -7,6 +7,7 @@ import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
 import model.dao.AulaDaoImpl;
 import model.dao.Dao;
+import model.dao.DisciplinaDaoImpl;
 import model.dao.ProfessorDaoImpl;
 import model.dao.TurmaDaoImpl;
 import model.pojo.Aluno;
@@ -75,6 +76,8 @@ public class TurmaView {
         }
         else
             turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula);
+        disciplina.getTurma().add(turma);
+        //disciplina.adicionarTurma(turma);
         return TurmaDaoImpl.getInstancia().inserir(turma);
         //return this.turmaDao.inserir(turma);
     }
@@ -89,6 +92,7 @@ public class TurmaView {
         else
             System.out.println("TURMA NÃO ENCONTRADA!\n");
     }
+    
     
     public void remover(){
         System.out.println("REMOÇÃO DE TURMAS\nEntre com o ID da turma: ");
