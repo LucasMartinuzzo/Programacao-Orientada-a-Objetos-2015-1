@@ -27,7 +27,7 @@ public class ProfessorDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Professor professor = (Professor) objeto;
-        if (this.indice(professor.getCpf()) == -1) {
+        if (this.indice(professor.getCpf()) <= -1) {
             listaProfessor.add(professor);
             Collections.sort(listaProfessor);
             return true;

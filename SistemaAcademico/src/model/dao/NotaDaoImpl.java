@@ -28,7 +28,7 @@ public class NotaDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Nota nota = (Nota) objeto;
-        if (this.indice(nota.getId()) == -1) {
+        if (this.indice(nota.getId()) <= -1) {
             listaNota.add(nota);
             Collections.sort(listaNota);
             return true;

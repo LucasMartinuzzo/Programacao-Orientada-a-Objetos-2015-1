@@ -28,7 +28,7 @@ public class FaltaDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Falta falta = (Falta) objeto;
-        if (this.indice(falta.getId()) == -1) {
+        if (this.indice(falta.getId()) <= -1) {
             listaFalta.add(falta);
             Collections.sort(listaFalta);
             return true;

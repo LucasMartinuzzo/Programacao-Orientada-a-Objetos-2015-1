@@ -28,7 +28,7 @@ public class TurmaDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Turma turma = (Turma) objeto;
-        if (this.indice(turma.getId()) == -1) {
+        if (this.indice(turma.getId()) <= -1) {
             listaTurma.add(turma);
             Collections.sort(listaTurma);
             return true;

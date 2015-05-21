@@ -28,7 +28,7 @@ public class AulaDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Aula aula = (Aula) objeto;
-        if (this.indice(aula.getId()) == -1) {
+        if (this.indice(aula.getId()) <= -1) {
             listaAula.add(aula);
             Collections.sort(listaAula);
             return true;
