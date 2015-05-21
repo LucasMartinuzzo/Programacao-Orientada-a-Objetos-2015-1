@@ -8,6 +8,7 @@ import model.pojo.Atividade;
 import model.pojo.Disciplina;
 import model.pojo.Falta;
 import model.pojo.Nota;
+import model.pojo.Professor;
 import model.pojo.Turma;
 
 /**
