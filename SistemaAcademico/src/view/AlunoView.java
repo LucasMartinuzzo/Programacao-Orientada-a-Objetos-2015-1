@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
 import model.dao.Dao;
+import model.dao.DisciplinaDaoImpl;
 import model.pojo.Aluno;
 import model.pojo.Disciplina;
 import model.pojo.Falta;
@@ -13,7 +14,7 @@ import model.pojo.Turma;
 public class AlunoView {
     //private Dao alunoDao;
     private static Scanner scanner = new Scanner (System.in);
-    private Dao disciplinaDao;
+    //private Dao disciplinaDao;
         
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE ALUNOS\nCadastre um novo aluno:\n");
@@ -60,7 +61,8 @@ public class AlunoView {
         System.out.println("Informe o cpf do aluno: ");
         Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
         System.out.println("Informe o nome da disciplina: ");
-        Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(scanner.nextLine());
+        Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
+        //Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(scanner.nextLine());
         if(disciplina != null && aluno != null){
             for(Turma turma : disciplina.getTurma()){
                 for(Aluno alunoConsultado : turma.getAluno()){
