@@ -24,10 +24,18 @@ public class AlunoDaoImplTest {
     @Before
     public void setUp() {
        m = new AlunoDaoImpl();
-       aluno = new Aluno("filipe","123.634.727-63");
+       Mockery mockery = Mockery();
+       //aluno = new Aluno("filipe","123.634.727-63");
        
        m.listaAluno.add(aluno)     
     }
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * Test of getInstancia method, of class AlunoDaoImpl.
