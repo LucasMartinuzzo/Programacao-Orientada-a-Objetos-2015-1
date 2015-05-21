@@ -29,7 +29,6 @@ public class AtividadeDaoImpl implements Dao {
     @Override
     public void imprimir (){
         Atividade atividade;
-        System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
             atividade = (Atividade) a;
             System.out.println(atividade.toString());

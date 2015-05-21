@@ -28,7 +28,6 @@ public class TurmaDaoImpl implements Dao {
     @Override
     public void imprimir (){
         Turma turma;
-        System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
             turma = (Turma) a;
             System.out.println(turma.toString());

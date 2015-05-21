@@ -28,7 +28,6 @@ public class ProfessorDaoImpl implements Dao {
     @Override
     public void imprimir (){
         Professor professor;
-        System.out.println(this.obterTodos().size());
         for(Object a: this.obterTodos()){
             professor = (Professor) a;
             System.out.println(professor.toString());
