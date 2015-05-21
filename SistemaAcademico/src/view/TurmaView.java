@@ -108,10 +108,20 @@ public class TurmaView {
     }
     
     public Boolean listarAlunos () {
-        System.out.println("\nInforme o ID da turma: ");
-        //VERIFICAR SE PODE SER O ID EM VEZ DE DISCIPLINA, ANO E PERÍODO!
-        Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
-        //Turma turma = (Turma) this.turmaDao.obter(scanner.nextLine());
+        Turma turma = null;
+        System.out.println("\nIdentifique a turma procurada: ");
+        System.out.println("* Disciplina: ");
+        String disciplina = scanner.nextLine();
+        System.out.println("* Ano: ");
+        Integer ano = scanner.nextInt();
+        System.out.println("* Período: ");
+        Integer periodo = scanner.nextInt();
+        for (Turma turmaConsultada: (List<Turma>) (Turma) TurmaDaoImpl.getInstancia().obterTodos()) {
+            if (turmaConsultada.getDisciplina().getNome().equals(disciplina))
+                if (turmaConsultada.getAno().equals(ano))
+                    if (turmaConsultada.getPeriodo().equals(periodo))
+                        turma = turmaConsultada;
+        }
         if (turma != null) {
             for (Aluno aluno: turma.getAluno()) {
                 System.out.println("\nAluno: " + aluno.getNome());

@@ -217,18 +217,23 @@ public class Main {
         while(true){
             System.out.println("1 - CADASTROS");
             System.out.println("2 - CONSULTAS");
-            System.out.println("3- REMOÇÕES");
+            System.out.println("3 - REMOÇÕES");
             System.out.println("4 - SAIR");
+            
+            System.out.println("\nOpção:");
             i = entrada.nextInt();
             switch(i){
                     case 1: {
                         main.imprimirMenuCadastro();
+                        break;
                     }
                     case 2: {
                         main.imprimirMenuConsultar();
+                        break;
                     }
                     case 3: {
-                        main.imprimirMenuRemover(); 
+                        main.imprimirMenuRemover();
+                        break;
                     }
                     case 4:{
                     //Opção "sair" com main.salvarArquivo()    
