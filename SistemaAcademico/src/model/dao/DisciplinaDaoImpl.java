@@ -28,7 +28,7 @@ public class DisciplinaDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Disciplina disciplina = (Disciplina) objeto;
-        if (this.indice(disciplina.getNome()) == -1) {
+        if (this.indice(disciplina.getNome()) <= -1) {
             listaDisciplina.add(disciplina);
             Collections.sort(listaDisciplina);
             return true;
