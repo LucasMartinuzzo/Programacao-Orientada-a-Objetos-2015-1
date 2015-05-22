@@ -308,6 +308,7 @@ public class Main {
                 case 7:{
                     Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(entrada.nextLine());
                     professor.imprimirListaDisciplinas();
+                    
                     break;
                 }
                 case 8:{
