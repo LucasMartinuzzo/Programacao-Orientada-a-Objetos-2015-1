@@ -98,7 +98,6 @@ public class Turma implements Comparable<Turma> {
     
     public Boolean adicionarAula (Object obj) {
         Aula aula = (Aula) obj;
-        aula.toString();
         if (!this.getAula().contains(aula))
             return this.getAula().add(aula);
         return false;
