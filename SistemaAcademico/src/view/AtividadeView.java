@@ -35,6 +35,8 @@ public class AtividadeView {
         if(turma == null)
             return false;
         Atividade atividade = new Atividade (id, nome, tipo, data, valor, turma);
+        turma.getAtividade().add(atividade);
+        //turma.adicionarAtividade(atividade);
         return AtividadeDaoImpl.getInstancia().inserir(atividade);
         //return this.atividadeDao.inserir(atividade);
     }
