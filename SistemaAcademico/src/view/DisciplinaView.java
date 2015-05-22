@@ -78,9 +78,8 @@ public class DisciplinaView {
                 disciplina.getProfessor().add(professor);
                 professor.getDisciplina().add(disciplina);
                 System.out.println("PROFESSOR ATRIBUÍDO!\n");
+                return true;
             }
-            else
-                return false;
         }
         return false;
     }
