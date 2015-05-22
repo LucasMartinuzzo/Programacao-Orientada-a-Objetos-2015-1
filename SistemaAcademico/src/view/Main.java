@@ -1,6 +1,5 @@
 package view;
 
-//Apareceu Jean ?
 
 import java.io.IOException;
 import java.util.Collections;
@@ -23,7 +22,7 @@ import model.pojo.Professor;
 import model.pojo.Turma;
 
 /**
- *TESTAAAANDO
+ *
  * @author Filipe
  */
 public class Main {
@@ -214,7 +213,7 @@ public class Main {
         Integer i;
         Main main = new Main();    
         Scanner entrada = new Scanner(System.in);
-        //main.carregarArquivo();
+        main.carregarArquivo();
         while(true){
             System.out.println("1 - CADASTROS");
             System.out.println("2 - CONSULTAS");

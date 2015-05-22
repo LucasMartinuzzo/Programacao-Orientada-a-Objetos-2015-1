@@ -43,6 +43,10 @@ public class NotaView {
             return false;
 
         Nota nota = new Nota (id, valorDaNota, aluno, atividade );
+        aluno.getNota().add(nota);
+        //aluno.adicionarNota(nota);
+        atividade.getNota().add(nota);
+        //atividade.adicionarNota(nota);
         return NotaDaoImpl.getInstancia().inserir(nota);
         //return this.notaDao.inserir(nota);
     }

@@ -1,5 +1,6 @@
 package model.pojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,9 +14,9 @@ public class Turma implements Comparable<Turma> {
     private Integer numeroDeVagas;
     private Disciplina disciplina;
     private Professor professor;
-    private List<Aula> aula;
-    private List<Aluno> aluno;
-    private List<Atividade> atividade;
+    private List<Aula> aula = new ArrayList<>();
+    private List<Aluno> aluno = new ArrayList<>();
+    private List<Atividade> atividade = new ArrayList<>();
     
     public Turma (String id, Integer ano, Integer periodo, Integer numeroDeVagas,
             Disciplina disciplina, Professor professor, List<Aula> aula) {
