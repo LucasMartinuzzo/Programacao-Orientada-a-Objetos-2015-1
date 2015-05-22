@@ -84,30 +84,37 @@ public class Main {
             switch(opcao) {
                 case 1:{
                     cadastroEfetuado = this.alunoView.cadastrar();
+                    AlunoDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 2:{
                     cadastroEfetuado = this.turmaView.cadastrar();
+                    TurmaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 3:{
                     cadastroEfetuado = this.professorView.cadastrar();
+                    ProfessorDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 4:{
                     cadastroEfetuado = this.atividadeView.cadastrar();
+                    AtividadeDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 5:{
                     cadastroEfetuado = this.faltaView.cadastrar();
+                    FaltaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 6:{
                     cadastroEfetuado = this.notaView.cadastrar();
+                   NotaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 7:{
                     cadastroEfetuado = this.disciplinaView.cadastrar();
+                    DisciplinaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 default:{}
@@ -206,30 +213,37 @@ public class Main {
             switch(opcao){
                 case 1:{
                     this.alunoView.remover();
+                    AlunoDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 2:{
                     this.turmaView.remover();
+                    TurmaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 3:{
                     this.professorView.remover();
+                    ProfessorDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 4:{
                     this.atividadeView.remover();
+                    AtividadeDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 5:{
                     this.faltaView.remover();
+                    FaltaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 6:{
                     this.notaView.remover();
+                    NotaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 7:{
                     this.disciplinaView.remover();
+                    DisciplinaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 default:{}
@@ -243,7 +257,7 @@ public class Main {
         Integer i;
         Main main = new Main();    
         Scanner entrada = new Scanner(System.in);
-        main.carregarArquivo();
+        //// main.carregarArquivo();
         while(true){
             System.out.println("1 - CADASTROS");
             System.out.println("2 - CONSULTAS");
