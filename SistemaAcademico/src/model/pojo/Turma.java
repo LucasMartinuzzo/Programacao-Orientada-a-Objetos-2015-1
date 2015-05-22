@@ -14,7 +14,7 @@ public class Turma implements Comparable<Turma> {
     private Integer numeroDeVagas;
     private Disciplina disciplina;
     private Professor professor;
-    private List<Aula> aula = new ArrayList<>();
+    private List<Aula> aula;
     private List<Aluno> aluno = new ArrayList<>();
     private List<Atividade> atividade = new ArrayList<>();
     
@@ -26,6 +26,8 @@ public class Turma implements Comparable<Turma> {
         this.numeroDeVagas = numeroDeVagas;
         this.disciplina = disciplina;
         this.professor = professor;
+        if (aula == null)
+            aula = new ArrayList<>();
         this.aula = aula;
     }
     
