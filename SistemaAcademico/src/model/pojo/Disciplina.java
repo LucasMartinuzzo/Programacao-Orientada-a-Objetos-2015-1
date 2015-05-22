@@ -69,7 +69,7 @@ public class Disciplina implements Comparable<Disciplina>{
     @Override
     public String toString () {
         return ("Nome: " + this.nome + "\nEmenta: " + this.ementa + 
-                "\nCarga Horária: " + this.cargaHoraria);
+                "\nCarga Horária: " + this.cargaHoraria + "\n");
     }
     
     //LEMBRAR DE APAGAR

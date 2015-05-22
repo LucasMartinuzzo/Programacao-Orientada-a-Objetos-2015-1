@@ -100,7 +100,7 @@ public class Aluno implements Comparable<Aluno>, Comparator<Falta> {
     
     @Override
     public String toString () {
-        return ("Nome: " + this.nome + "\nCPF: " + this.cpf);
+        return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\n");
     }
     
     //LEMBRAR DE APAGAR

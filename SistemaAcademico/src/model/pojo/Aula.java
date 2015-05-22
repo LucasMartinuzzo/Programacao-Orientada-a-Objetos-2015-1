@@ -36,7 +36,7 @@ public class Aula implements Comparable<Aula> {
     public void setHora(String hora) {
         this.hora = hora;
     }
-
+    
     public String getLocal() {
         return local;
     }
@@ -53,6 +53,6 @@ public class Aula implements Comparable<Aula> {
     @Override
     public String toString () {
         return ("ID: " + this.id + "\nDia da semana: " + this.diaDaSemana +
-                "Hora: " + this.hora + "\nLocal: " + this.local);
+                "\nHora: " + this.hora + "\nLocal: " + this.local + "\n");
     }
 }

@@ -69,7 +69,7 @@ public class Professor implements Comparable<Professor>{
     
     @Override
     public String toString () {
-        return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nDepartamento: " + this.departamento);
+        return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nDepartamento: " + this.departamento + "\n");
     }
     
     //LEMBRAR DE APAGAR
