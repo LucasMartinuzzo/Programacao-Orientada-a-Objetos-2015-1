@@ -60,7 +60,7 @@ public class TurmaView {
             return false;
         
         System.out.println("***** PARA CONTINUAR, DETERMINE AS AULAS A SEREM ADICIONADAS *****");
-        List<Aula> listaAula = (List<Aula>) (Aula) this.montarListaDeCadastrados(AulaDaoImpl.getInstancia());
+        List<Aula> listaAula = this.montarListaDeAulas();
         //List<Aula> listaAula = (List<Aula>) (Aula) this.montarListaDeCadastrados(this.aulaDao);
         System.out.println("******************************************************************\n");
         
@@ -134,15 +134,15 @@ public class TurmaView {
             for (Aluno aluno: turma.getAluno()) {
                 System.out.println("\nAluno: " + aluno.getNome());
                 System.out.println("Notas:");
-                Collections.sort(aluno.getNota(), new Atividade());
                 for (Atividade atividade: turma.getAtividade()) {
+                    Collections.sort(atividade.getNota(), new Nota());
                     Integer indiceNota = Collections.binarySearch(atividade.getNota(),
                             new Nota (null, null, aluno, null));
                     System.out.println(" *" + atividade.getNome() + ": " + 
                             atividade.getNota().get(indiceNota).getNota());
                     System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
                 }
-                Collections.sort(aluno.getFalta(), new Aluno());
+                Collections.sort(aluno.getFalta(), new Falta());
                 Integer indiceFalta = Collections.binarySearch(aluno.getFalta(),
                             new Falta (null, null, turma));
                 System.out.println("Faltas: " + aluno.getFalta().get(indiceFalta));
@@ -165,6 +165,10 @@ public class TurmaView {
                 System.out.println("ITEM NÃO CADASTRADO! TENTE NOVAMENTE.\n");
         }
         return null;
+    }
+    
+    public List<Aula> montarListaDeAulas () {
+        
     }
     
     public List<Object> montarListaDeCadastrados (Dao dao) {

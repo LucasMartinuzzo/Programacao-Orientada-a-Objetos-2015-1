@@ -1,10 +1,12 @@
 package model.pojo;
 
+import java.util.Comparator;
+
 /**
  *
  * @author Filipe
  */
-public class Falta implements Comparable<Falta>{
+public class Falta implements Comparable<Falta>, Comparator<Turma> {
     private String id;
     private Integer falta;
     private Turma turma;
@@ -13,6 +15,9 @@ public class Falta implements Comparable<Falta>{
         this.id = id;
         this.falta = falta;
         this.turma = turma;
+    }
+    
+    public Falta () {
     }
     
     public String getId(){
@@ -35,10 +40,17 @@ public class Falta implements Comparable<Falta>{
         Turma turma = (Turma) objeto;
         this.turma = turma;
     }
+    
     @Override
     public int compareTo (Falta falta) {
         return this.id.compareTo(falta.id);
     }
+    
+    @Override
+    public int compare (Turma turma1, Turma turma2) {
+        return turma1.compareTo(turma2);
+    }
+    
     @Override
     public String toString () {
         return ("ID: " + this.id + "\nFaltas: " + this.falta + "\nDisciplina: " 

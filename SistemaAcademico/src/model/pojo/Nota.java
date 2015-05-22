@@ -1,10 +1,12 @@
 package model.pojo;
 
+import java.util.Comparator;
+
 /**
  *
  * @author Filipe
  */
-public class Nota implements Comparable<Nota>{
+public class Nota implements Comparable<Nota>, Comparator<Aluno> {
     private String id;
     private Double nota;
     private Aluno aluno;
@@ -15,6 +17,9 @@ public class Nota implements Comparable<Nota>{
         this.nota = nota;
         this.aluno = aluno;
         this.atividade = atividade;
+    }
+    
+    public Nota () {
     }
     
     public String getId (){
@@ -51,6 +56,12 @@ public class Nota implements Comparable<Nota>{
     public int compareTo (Nota nota){
         return this.id.compareTo(nota.id);
     }
+    
+    @Override
+    public int compare (Aluno aluno1, Aluno aluno2) {
+        return aluno1.compareTo(aluno2);
+    }
+    
     @Override
     public String toString () {
         return ("ID: " + this.id + "\nNotas: " + this.nota + "\nAluno: " 
