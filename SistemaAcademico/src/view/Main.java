@@ -159,7 +159,7 @@ public class Main {
                     break;
                 }
                 case 3:{
-                    relacionamentoEfetuado = this.turmaView.atribuirAula();
+                    //relacionamentoEfetuado = this.turmaView.atribuirAula();
                     break;
                 }
                 default:{}

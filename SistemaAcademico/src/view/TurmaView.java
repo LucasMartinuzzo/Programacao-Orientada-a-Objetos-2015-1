@@ -2,6 +2,7 @@ package view;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
@@ -60,8 +61,8 @@ public class TurmaView {
             return false;
         
         System.out.println("***** PARA CONTINUAR, DETERMINE AS AULAS A SEREM ADICIONADAS *****");
-        List<Aula> listaAula = this.montarListaDeAulas();
-        //List<Aula> listaAula = (List<Aula>) (Aula) this.montarListaDeCadastrados(this.aulaDao);
+        //List<Aula> listaAula = this.montarListaDeAulas();
+        List<Aula> listaAula = (List<Aula>) (Aula) this.montarListaDeCadastrados(AulaDaoImpl.getInstancia());
         System.out.println("******************************************************************\n");
         
         System.out.println("***** DESEJA ADICIONAR UMA LISTA DE ALUNOS AGORA? (ID: CPF) *****");
@@ -167,9 +168,9 @@ public class TurmaView {
         return null;
     }
     
-    public List<Aula> montarListaDeAulas () {
+    /*public List<Aula> montarListaDeAulas () {
         
-    }
+    }*/
     
     public List<Object> montarListaDeCadastrados (Dao dao) {
         List<Object> listaObjeto = new ArrayList<>();

@@ -6,7 +6,7 @@ import java.util.Comparator;
  *
  * @author Filipe
  */
-public class Falta implements Comparable<Falta>, Comparator<Turma> {
+public class Falta implements Comparable<Falta>, Comparator<Falta> {
     private String id;
     private Integer falta;
     private Turma turma;
@@ -47,8 +47,8 @@ public class Falta implements Comparable<Falta>, Comparator<Turma> {
     }
     
     @Override
-    public int compare (Turma turma1, Turma turma2) {
-        return turma1.compareTo(turma2);
+    public int compare (Falta falta1, Falta falta2) {
+        return falta1.turma.compareTo(falta2.turma);
     }
     
     @Override

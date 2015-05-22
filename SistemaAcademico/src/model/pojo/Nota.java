@@ -6,7 +6,7 @@ import java.util.Comparator;
  *
  * @author Filipe
  */
-public class Nota implements Comparable<Nota>, Comparator<Aluno> {
+public class Nota implements Comparable<Nota>, Comparator<Nota> {
     private String id;
     private Double nota;
     private Aluno aluno;
@@ -18,8 +18,8 @@ public class Nota implements Comparable<Nota>, Comparator<Aluno> {
         this.aluno = aluno;
         this.atividade = atividade;
     }
-    
-    public Nota () {
+
+    public Nota() {
     }
     
     public String getId (){
@@ -58,8 +58,8 @@ public class Nota implements Comparable<Nota>, Comparator<Aluno> {
     }
     
     @Override
-    public int compare (Aluno aluno1, Aluno aluno2) {
-        return aluno1.compareTo(aluno2);
+    public int compare (Nota nota1, Nota nota2) {
+        return nota1.aluno.compareTo(nota2.aluno);
     }
     
     @Override
