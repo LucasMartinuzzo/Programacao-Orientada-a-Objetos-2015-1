@@ -50,7 +50,7 @@ public class TurmaView {
                 + "entre com o código identificador (ID) do item procurado.");
         
         System.out.println("Disciplina (ID: nome):");
-        Disciplina disciplina = (Disciplina) this.obterCadastrado(TurmaDaoImpl.getInstancia());
+        Disciplina disciplina = (Disciplina) this.obterCadastrado(DisciplinaDaoImpl.getInstancia());
         //Disciplina disciplina = (Disciplina) this.obterCadastrado(this.disciplinaDao);
         if (disciplina == null)
             return false;
