@@ -55,6 +55,6 @@ public class Nota implements Comparable<Nota>{
     public String toString () {
         return ("ID: " + this.id + "\nNotas: " + this.nota + "\nAluno: " 
                 + this.aluno.getNome() + "\nAtividade: " + atividade.getNome() 
-                + "("+atividade.getTipo()+")");
+                + "("+atividade.getTipo()+")" + "\n");
     }    
 }

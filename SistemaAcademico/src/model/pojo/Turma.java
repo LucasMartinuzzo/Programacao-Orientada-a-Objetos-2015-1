@@ -154,9 +154,9 @@ public class Turma implements Comparable<Turma> {
     @Override
     public String toString () {
         return ("ID: " + this.id + "\nAno: " + this.ano +
-                "Período: " + this.periodo + "\nNúmero de vagas: " + this.numeroDeVagas +
-                "Disciplina: " + this.disciplina.getNome() +
-                "Professor: " + this.professor.getNome());
+                "\nPeríodo: " + this.periodo + "\nNúmero de vagas: " + this.numeroDeVagas +
+                "\nDisciplina: " + this.disciplina.getNome() +
+                "\nProfessor: " + this.professor.getNome() + "\n");
     }
     
     //LEMBRAR DE APAGAR

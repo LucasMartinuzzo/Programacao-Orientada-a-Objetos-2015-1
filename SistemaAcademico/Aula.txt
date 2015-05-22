@@ -1,0 +1,20 @@
+1
+Segunda-feira
+1:00 - 2:00
+CEUMES
+2
+Terça-feira
+2:00 - 3:00
+Sao Mateus
+3
+Quarta-feira
+3:00 - 4:00
+CEUMES
+4
+Quarta-feira
+4:00 - 5:00
+Lugar Nenhum
+5
+Quinta-feira
+5:00 - 6:00
+Aqui
