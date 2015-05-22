@@ -137,6 +137,7 @@ public class Main {
             System.out.println("\nOpção: ");
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
+            entrada.nextLine();
             Boolean relacionamentoEfetuado = false;
             switch(opcao){
                 case 1:{
@@ -208,6 +209,7 @@ public class Main {
             System.out.println("7 - REMOVER DISCIPLINA");
             System.out.println("OUTRO - VOLTAR");
 
+            System.out.println("\nOpção: ");
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             switch(opcao){
@@ -271,6 +273,7 @@ public class Main {
 
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
+            entrada.nextLine();
             switch(opcao){
                 case 1:{
                     Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(entrada.nextLine());
