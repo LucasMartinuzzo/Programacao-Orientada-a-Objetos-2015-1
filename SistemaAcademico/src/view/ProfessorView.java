@@ -73,22 +73,4 @@ public class ProfessorView {
         else
             System.out.println("PROFESSOR NÃO ENCONTRADO!\n");
     }    
-    
-    public void atribuirDisciplina () {
-        System.out.println("Informe o CPF do professor: ");
-        Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(scanner.nextLine());
-        if(professor != null) {
-            System.out.println("Informe a disciplina a ser atribuída ao professor(a):");
-            Disciplina disciplina = (Disciplina) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
-            if (disciplina != null) {
-                professor.getDisciplina().add(disciplina);
-                disciplina.getProfessor().add(professor);
-                System.out.println("DISCIPLINA ATRIBUÍDA!\n");
-            }
-            else
-                System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
-        }
-        else
-            System.out.println("PROFESSOR NÃO ENCONTRADO!\n");
-    }
 }

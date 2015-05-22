@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 import model.dao.Dao;
 import model.dao.DisciplinaDaoImpl;
+import model.dao.ProfessorDaoImpl;
 import model.pojo.Disciplina;
+import model.pojo.Professor;
 
 /**
  *
@@ -64,5 +66,22 @@ public class DisciplinaView {
         else
             System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
     }
-   
+    
+    public void atribuirProfessor () {
+        System.out.println("Informe o nome da disciplina: ");
+        Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
+        if(disciplina != null) {
+            System.out.println("Informe o CPF do(a) professor(a) a ser atribuído à disciplina: ");
+            Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(scanner.nextLine());
+            if (professor != null) {
+                disciplina.getProfessor().add(professor);
+                professor.getDisciplina().add(disciplina);
+                System.out.println("PROFESSOR ATRIBUÍDO!\n");
+            }
+            else
+                System.out.println("PROFESSOR NÃO ENCONTRADO!\n");
+        }
+        else
+            System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
+    }
 }
