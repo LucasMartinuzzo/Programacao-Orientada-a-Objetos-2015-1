@@ -36,7 +36,7 @@ public class Aula implements Comparable<Aula> {
     public void setHora(String hora) {
         this.hora = hora;
     }
-
+    
     public String getLocal() {
         return local;
     }
