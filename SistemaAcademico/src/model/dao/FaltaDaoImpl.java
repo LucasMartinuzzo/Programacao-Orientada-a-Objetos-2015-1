@@ -98,7 +98,8 @@ public class FaltaDaoImpl implements Dao {
             String turma = br.readLine();
             Falta falta = new Falta(id, numFalta, null);
             this.inserir(falta);
-            falta.setTurma(TurmaDaoImpl.getInstancia().obter(turma));
+            if (TurmaDaoImpl.getInstancia().obter(turma) != null)
+                falta.setTurma(TurmaDaoImpl.getInstancia().obter(turma));
             }
         br.close();
         fr.close();

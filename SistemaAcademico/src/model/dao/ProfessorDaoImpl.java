@@ -108,7 +108,7 @@ public class ProfessorDaoImpl implements Dao {
             this.inserir(professor);
             String[] disciplina = br.readLine().split(",");
             for(String d: disciplina)
-                if(!(d.equals("NULL")))
+                if((!(d.equals("NULL"))) && (DisciplinaDaoImpl.getInstancia().obter(d) != null))
                     professor.adicionarDisciplina(DisciplinaDaoImpl.getInstancia().obter(d));
         }
         br.close();
