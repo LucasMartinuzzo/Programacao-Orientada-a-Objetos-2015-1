@@ -28,7 +28,7 @@ public class Disciplina implements Comparable<Disciplina>{
     }
     
     public String getEmenta(){
-        return nome;
+        return ementa;
     }
     
     public void setEmenta(String ementa){

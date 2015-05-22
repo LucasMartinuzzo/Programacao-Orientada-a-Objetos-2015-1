@@ -341,7 +341,7 @@ public class Main {
         Integer i;
         Main main = new Main();    
         Scanner entrada = new Scanner(System.in);
-        //// main.carregarArquivo();
+        main.carregarArquivo();
         while(true){
             System.out.println("1 - CADASTROS");
             System.out.println("2 - CONSULTAS");
@@ -371,6 +371,7 @@ public class Main {
                         break;
                     }
                     case 5:{
+                    main.salvarArquivo();
                     //Opção "sair" com main.salvarArquivo()    
                     }
                     case 6:{ //APAGAR!
