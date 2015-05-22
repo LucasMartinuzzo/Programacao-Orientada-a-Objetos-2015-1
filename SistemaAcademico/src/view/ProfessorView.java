@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 import model.dao.Dao;
 import model.dao.ProfessorDaoImpl;
+import model.dao.TurmaDaoImpl;
+import model.pojo.Disciplina;
 import model.pojo.Professor;
 
 /**
@@ -36,7 +38,7 @@ public class ProfessorView {
     public void pesquisar () {
         System.out.println("PESQUISA DE PROFESSORES\nEntre com o CPF do professor: ");
         String cpf = scanner.nextLine();
-        if(ProfessorDaoImpl.getInstancia().indice(cpf) != -1)
+        if(ProfessorDaoImpl.getInstancia().indice(cpf) >= 0)
             System.out.println(ProfessorDaoImpl.getInstancia().obter(cpf).toString());
         //if (this.professorDao.indice(cpf) != -1)
         //    System.out.println(this.professorDao.obter(cpf).toString());
@@ -54,7 +56,6 @@ public class ProfessorView {
             System.out.println("PROFESSOR NÃO ENCONTRADO, REMOÇÃO NÃO EFETUADA!\n");
     }
     
-
     public void listar () {
             System.out.println("LISTA DE PROFESSORES DISPONÍVEIS\n");
             List<Professor> listaProfessor = (List<Professor>) (Professor) ProfessorDaoImpl.getInstancia().obterTodos();
@@ -64,13 +65,13 @@ public class ProfessorView {
     }
 
     public Boolean quantidadeDisciplina(){
-        System.out.println("Informe o nome do professor: ");
+        System.out.println("Informe o CPF do professor: ");
         Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(scanner.nextLine());
         if(professor != null){
             System.out.println("A quantidade de disciplinas já lecionadas pelo(a) professsor(a) " + professor.getNome()
-                    + " é " + professor.getDisciplina().size() + ".");
+                       + " é " + professor.getDisciplina().size() + ".");
             return true;
         }
-        return false;
+        return true;
     }    
 }

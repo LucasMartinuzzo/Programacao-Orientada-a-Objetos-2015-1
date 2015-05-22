@@ -5,6 +5,7 @@ import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
 import model.dao.Dao;
 import model.dao.DisciplinaDaoImpl;
+import model.dao.TurmaDaoImpl;
 import model.pojo.Aluno;
 import model.pojo.Disciplina;
 import model.pojo.Falta;
@@ -27,9 +28,24 @@ public class AlunoView {
        
         //return this.alunoDao.inserir(aluno);
     }
+    
+    
+    public Boolean matricularAluno(){
+        System.out.println("MATRÍCULA DE ALUNOS\nMatricule um aluno:\n");
+        System.out.println("Informe o CPF do aluno: ");
+        Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
+        System.out.println("Informe a turma na qual será efetuada a matrícula: ");
+        Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
+        if(turma!=null && aluno!=null){ 
+            turma.getAluno().add(aluno);
+            aluno.getTurma().add(turma);
+            return true;
+        }
+        return false;
+    }
 
     public void pesquisar () {
-       System.out.println("PESQUISA DE ALUNOS\nEntre com o CPF do aluno: ");
+        System.out.println("PESQUISA DE ALUNOS\nEntre com o CPF do aluno: ");
         String cpf = scanner.nextLine();
         if(AlunoDaoImpl.getInstancia().indice(cpf) != -1)
             System.out.println(AlunoDaoImpl.getInstancia().obter(cpf).toString());

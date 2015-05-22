@@ -85,7 +85,7 @@ public class TurmaView {
     public void pesquisar () {
         System.out.println("PESQUISA DE TURMAS\nEntre com o ID da turma: ");
         String id = scanner.nextLine();
-        if(TurmaDaoImpl.getInstancia().indice(id) != -1)
+        if(TurmaDaoImpl.getInstancia().indice(id) >= 0)
             System.out.println(TurmaDaoImpl.getInstancia().obter(id).toString());
         //if (this.turmaDao.indice(id) != -1)
         //    System.out.println(this.turmaDao.obter(id).toString());
@@ -97,7 +97,7 @@ public class TurmaView {
     public void remover(){
         System.out.println("REMOÇÃO DE TURMAS\nEntre com o ID da turma: ");
         String cpf = scanner.nextLine();
-        if(TurmaDaoImpl.getInstancia().remover(TurmaDaoImpl.getInstancia().obter(cpf)))
+        if(ProfessorDaoImpl.getInstancia().remover(ProfessorDaoImpl.getInstancia().obter(cpf)))
         //if (professorDao.remover(professorDao.obter(cpf)))
             System.out.println("TURMA REMOVIDA COM SUCESSO!");                
         else

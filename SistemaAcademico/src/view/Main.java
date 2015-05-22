@@ -121,6 +121,35 @@ public class Main {
         }
     }
     
+    private void imprimirMenuRelacionamentos(){
+        while(true){
+            System.out.println("1 - MATRICULAR ALUNO");
+            System.out.println("2 - ATRIBUIR PROFESSOR À DISCIPLINA");
+            System.out.println("OUTRO - VOLTAR");
+
+            System.out.println("\nOpção: ");
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            Boolean relacionamentoEfetuado = false;
+            switch(opcao){
+                case 1:{
+                    relacionamentoEfetuado = this.alunoView.matricularAluno();
+                    break;
+                }
+                case 2:{
+                    relacionamentoEfetuado = this.disciplinaView.atribuirProfessor();
+                    break;
+                }
+                default:{}
+            }
+            if (opcao < 1 || opcao > 2)
+                break;
+            if (!relacionamentoEfetuado)
+                System.out.println("\nINFORMAÇÕES INVÁLIDAS!\n");
+        
+        }
+    }
+    
     private void imprimirMenuConsultar(){
         while(true){
             System.out.println("1 - CONSULTAR OS ALUNOS DE UMA TURMA COM SUAS RESPECTIVAS NOTAS E FALTAS");
@@ -150,6 +179,7 @@ public class Main {
                     consultaEfetuada = this.professorView.quantidadeDisciplina();
                     break;
                 }
+                default:{}
             }
             if (opcao < 1 || opcao > 4)
                 break;
@@ -218,7 +248,8 @@ public class Main {
             System.out.println("1 - CADASTROS");
             System.out.println("2 - CONSULTAS");
             System.out.println("3 - REMOÇÕES");
-            System.out.println("4 - SAIR");
+            System.out.println("4 - RELACIONAMENTOS");
+            System.out.println("5 - SAIR");
             
             System.out.println("\nOpção:");
             i = entrada.nextInt();
@@ -236,6 +267,10 @@ public class Main {
                         break;
                     }
                     case 4:{
+                        main.imprimirMenuRelacionamentos();
+                        break;
+                    }
+                    case 5:{
                     //Opção "sair" com main.salvarArquivo()    
                     }
                     

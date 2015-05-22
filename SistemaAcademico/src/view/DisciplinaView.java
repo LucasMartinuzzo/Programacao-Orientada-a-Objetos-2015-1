@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 import model.dao.Dao;
 import model.dao.DisciplinaDaoImpl;
+import model.dao.ProfessorDaoImpl;
 import model.pojo.Disciplina;
+import model.pojo.Professor;
 
 /**
  *
@@ -30,7 +32,7 @@ public class DisciplinaView {
     public void pesquisar () {
         System.out.println("PESQUISA DE DISCIPLINAS\nEntre com o nome da disciplina: ");
             String nome = scanner.nextLine();
-            if(DisciplinaDaoImpl.getInstancia().indice(nome) !=-1)
+            if(DisciplinaDaoImpl.getInstancia().indice(nome) >= 0)
                 System.out.println(DisciplinaDaoImpl.getInstancia().obter(nome).toString());
             //if (this.disciplinaDao.indice(nome) != -1)
             //    System.out.println(this.disciplinaDao.obter(nome).toString());
@@ -60,10 +62,26 @@ public class DisciplinaView {
         Disciplina disciplina=(Disciplina)DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
         if(disciplina != null){
             System.out.println("A quantidade de turmas da disciplina " + disciplina.getNome() +
-                    " já oferecidas é "+disciplina.getTurma().size() + ".");
+                    " já oferecidas é " + disciplina.getTurma().size() + ".");
             return true;
         }
         return false;
     }
-   
+    
+    public Boolean atribuirProfessor () {
+        System.out.println("Informe o nome da disciplina: ");
+        Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
+        if(disciplina != null) {
+            System.out.println("Informe o CPF do(a) professor(a) a ser atribuído à disciplina: ");
+            Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(scanner.nextLine());
+            if (professor != null) {
+                disciplina.getProfessor().add(professor);
+                professor.getDisciplina().add(disciplina);
+                System.out.println("PROFESSOR ATRIBUÍDO!\n");
+            }
+            else
+                return false;
+        }
+        return false;
+    }
 }

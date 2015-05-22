@@ -43,6 +43,10 @@ public class NotaView {
             return false;
 
         Nota nota = new Nota (id, valorDaNota, aluno, atividade );
+        aluno.getNota().add(nota);
+        //aluno.adicionarNota(nota);
+        atividade.getNota().add(nota);
+        //atividade.adicionarNota(nota);
         return NotaDaoImpl.getInstancia().inserir(nota);
         //return this.notaDao.inserir(nota);
     }
@@ -50,7 +54,7 @@ public class NotaView {
    public void pesquisar () {
        System.out.println("PESQUISA DE NOTAS \nEntre com o ID da Nota: ");
         String id = scanner.nextLine();
-        if(NotaDaoImpl.getInstancia().indice(id) != -1)
+        if(NotaDaoImpl.getInstancia().indice(id) >= 0)
             System.out.println(NotaDaoImpl.getInstancia().obter(id).toString());
         //if (this.notaDao.indice(id) != -1)
         //    System.out.println(this.notaDao.obter(id).toString());
