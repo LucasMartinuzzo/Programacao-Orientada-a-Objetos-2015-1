@@ -80,6 +80,7 @@ public class Main {
             System.out.println("\nOpção: ");
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
+            entrada.nextLine();
             Boolean cadastroEfetuado = false;
             switch(opcao) {
                 case 1:{
@@ -169,6 +170,7 @@ public class Main {
             System.out.println("\nOpção: ");
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
+            entrada.nextLine();
             Boolean consultaEfetuada = false;
             switch(opcao){
                 case 1:{
@@ -212,6 +214,7 @@ public class Main {
             System.out.println("\nOpção: ");
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
+            entrada.nextLine();
             switch(opcao){
                 case 1:{
                     this.alunoView.remover();
@@ -276,6 +279,7 @@ public class Main {
             entrada.nextLine();
             switch(opcao){
                 case 1:{
+                    System.out.println("");
                     Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(entrada.nextLine());
                     aluno.imprimirListaTurmas();
                     break;
@@ -348,6 +352,7 @@ public class Main {
             
             System.out.println("\nOpção:");
             i = entrada.nextInt();
+            entrada.nextLine();
             switch(i){
                     case 1: {
                         main.imprimirMenuCadastro();
