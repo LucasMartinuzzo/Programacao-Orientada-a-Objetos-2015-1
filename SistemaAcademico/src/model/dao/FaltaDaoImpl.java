@@ -99,10 +99,7 @@ public class FaltaDaoImpl implements Dao {
             Falta falta = new Falta(id, numFalta, null);
             this.inserir(falta);
             falta.setTurma(TurmaDaoImpl.getInstancia().obter(turma));
-            //System.out.println("Id: " + id);
-            //System.out.println("Proc:\n" + TurmaDaoImpl.getInstancia().obter(turma));
-            //System.out.println("Set: " + falta.getTurma().getId() + "\n");
-        }
+            }
         br.close();
         fr.close();
     }
