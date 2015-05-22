@@ -30,7 +30,7 @@ public class DisciplinaView {
     public void pesquisar () {
         System.out.println("PESQUISA DE DISCIPLINAS\nEntre com o nome da disciplina: ");
             String nome = scanner.nextLine();
-            if(DisciplinaDaoImpl.getInstancia().indice(nome) !=-1)
+            if(DisciplinaDaoImpl.getInstancia().indice(nome) >= 0)
                 System.out.println(DisciplinaDaoImpl.getInstancia().obter(nome).toString());
             //if (this.disciplinaDao.indice(nome) != -1)
             //    System.out.println(this.disciplinaDao.obter(nome).toString());
@@ -55,15 +55,14 @@ public class DisciplinaView {
         }
     }
     
-    public Boolean quantidadeTurmas(){
+    public void quantidadeTurmas(){
         System.out.println("Informe o nome da disciplina: ");
         Disciplina disciplina=(Disciplina)DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
-        if(disciplina != null){
+        if(disciplina != null)
             System.out.println("A quantidade de turmas da disciplina " + disciplina.getNome() +
-                    " já oferecidas é "+disciplina.getTurma().size() + ".");
-            return true;
-        }
-        return false;
+                    " já oferecidas é " + disciplina.getTurma().size() + ".");
+        else
+            System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
     }
    
 }

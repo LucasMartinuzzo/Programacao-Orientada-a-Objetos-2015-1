@@ -54,7 +54,7 @@ public class NotaView {
    public void pesquisar () {
        System.out.println("PESQUISA DE NOTAS \nEntre com o ID da Nota: ");
         String id = scanner.nextLine();
-        if(NotaDaoImpl.getInstancia().indice(id) != -1)
+        if(NotaDaoImpl.getInstancia().indice(id) >= 0)
             System.out.println(NotaDaoImpl.getInstancia().obter(id).toString());
         //if (this.notaDao.indice(id) != -1)
         //    System.out.println(this.notaDao.obter(id).toString());

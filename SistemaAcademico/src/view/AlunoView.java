@@ -31,10 +31,10 @@ public class AlunoView {
     
     
     public Boolean matricularAluno(){
-        System.out.println("MATRICULA DE ALUNOS\nMatricule um aluno:\n");
-        System.out.println("Informe o cpf do aluno: ");
+        System.out.println("MATRÍCULA DE ALUNOS\nMatricule um aluno:\n");
+        System.out.println("Informe o CPF do aluno: ");
         String cpf = scanner.nextLine();
-        System.out.println("Informe a turma a ser efetuada a matrícula: ");
+        System.out.println("Informe a turma na qual será efetuada a matrícula: ");
         String nome = scanner.nextLine();
         if(TurmaDaoImpl.getInstancia().obter(nome)!=null && AlunoDaoImpl.getInstancia().obter(cpf)!=null){
             //ADICIONAR ALUNO NA LISTA DE ALUNOS DA TURMA 
