@@ -34,6 +34,7 @@ public class Main {
     private FaltaView faltaView = new FaltaView();
     private NotaView notaView = new NotaView();
     private DisciplinaView disciplinaView = new DisciplinaView();
+    private AulaView aulaView = new AulaView();
     //private AulaView aulaView;
     //private Dao turmaDao;
     //private Dao alunoDao;
@@ -43,6 +44,7 @@ public class Main {
     //private Dao notaDao;
     //private Dao disciplinaDao;
     //private Dao aulaDao;
+    
     
     private void carregarArquivo() throws IOException{
         DisciplinaDaoImpl.getInstancia().carregar();
@@ -75,6 +77,7 @@ public class Main {
             System.out.println("5 - CADASTRAR FALTA");
             System.out.println("6 - CADASTRAR NOTA");
             System.out.println("7 - CADASTRAR DISCIPLINA");
+            System.out.println("8 - CADASTRAR AULA");
             System.out.println("OUTRO - VOLTAR");
 
             System.out.println("\nOpção: ");
@@ -110,7 +113,7 @@ public class Main {
                 }
                 case 6:{
                     cadastroEfetuado = this.notaView.cadastrar();
-                   NotaDaoImpl.getInstancia().imprimir();
+                    NotaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 case 7:{
@@ -118,9 +121,14 @@ public class Main {
                     DisciplinaDaoImpl.getInstancia().imprimir();
                     break;
                 }
+                case 8:{
+                    cadastroEfetuado = this.aulaView.cadastrar();
+                    AulaDaoImpl.getInstancia().imprimir();
+                    break;
+                }
                 default:{}
             }
-            if (opcao < 1 || opcao > 7)
+            if (opcao < 1 || opcao > 8)
                 break;
             if (cadastroEfetuado)
                 System.out.println("\nCADASTRO EFETUADO COM SUCESSO!\n");
@@ -133,6 +141,7 @@ public class Main {
         while(true){
             System.out.println("1 - MATRICULAR ALUNO");
             System.out.println("2 - ATRIBUIR PROFESSOR À DISCIPLINA");
+            System.out.println("3 - ATRIBUIR AULA À TURMA");
             System.out.println("OUTRO - VOLTAR");
 
             System.out.println("\nOpção: ");
@@ -149,9 +158,13 @@ public class Main {
                     relacionamentoEfetuado = this.disciplinaView.atribuirProfessor();
                     break;
                 }
+                case 3:{
+                    relacionamentoEfetuado = this.turmaView.atribuirAula();
+                    break;
+                }
                 default:{}
             }
-            if (opcao < 1 || opcao > 2)
+            if (opcao < 1 || opcao > 3)
                 break;
             if (!relacionamentoEfetuado)
                 System.out.println("\nINFORMAÇÕES INVÁLIDAS!\n");
@@ -251,9 +264,14 @@ public class Main {
                     DisciplinaDaoImpl.getInstancia().imprimir();
                     break;
                 }
+                case 8:{
+                    this.aulaView.cadastrar();
+                    AulaDaoImpl.getInstancia().imprimir();
+                    break;
+                }
                 default:{}
             }
-            if (opcao < 1 || opcao > 7)
+            if (opcao < 1 || opcao > 8)
                 break;
         }
     }     
