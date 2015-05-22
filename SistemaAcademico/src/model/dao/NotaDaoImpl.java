@@ -91,7 +91,7 @@ public class NotaDaoImpl implements Dao {
     
   @Override
     public void carregar () throws IOException{
-        File file = new File ("Professor.txt");
+        File file = new File ("Nota.txt");
         FileReader fr = new FileReader (file);
         BufferedReader br = new BufferedReader (fr);
         while (br.ready()){
