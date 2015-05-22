@@ -60,6 +60,7 @@ public class Disciplina implements Comparable<Disciplina>{
     public Boolean removerTurma (Turma turma) {
         return this.getTurma().remove(turma);
     }
+    
     @Override
     public int compareTo(Disciplina disciplina) {
         return this.nome.compareTo(disciplina.getNome());
@@ -69,5 +70,17 @@ public class Disciplina implements Comparable<Disciplina>{
     public String toString () {
         return ("Nome: " + this.nome + "\nEmenta: " + this.ementa + 
                 "\nCarga Horária: " + this.cargaHoraria);
+    }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaProfessores () {
+        for (Professor professor: this.professor)
+            System.out.println(professor.toString() + "\n");
+    }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaTurmas () {
+        for (Turma turma: this.turma)
+            System.out.println(turma.toString());
     }
 }

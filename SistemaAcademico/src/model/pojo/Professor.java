@@ -71,4 +71,10 @@ public class Professor implements Comparable<Professor>{
     public String toString () {
         return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nDepartamento: " + this.departamento);
     }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaDisciplinas () {
+        for (Disciplina disciplina: this.disciplina)
+            System.out.println(disciplina.toString());
+    }
 }

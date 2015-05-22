@@ -156,4 +156,22 @@ public class Turma implements Comparable<Turma> {
                 "Disciplina: " + this.disciplina.getNome() +
                 "Professor: " + this.professor.getNome());
     }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaAulas () {
+        for (Aula aula: this.aula)
+            System.out.println(aula.toString() + "\n");
+    }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaAlunos () {
+        for (Aluno aluno: this.aluno)
+            System.out.println(aluno.toString() + "\n");
+    }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaAtividades () {
+        for (Atividade atividade: this.atividade)
+            System.out.println(atividade.toString() + "\n");
+    }
 }

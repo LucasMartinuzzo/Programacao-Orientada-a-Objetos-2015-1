@@ -102,4 +102,22 @@ public class Aluno implements Comparable<Aluno>, Comparator<Falta> {
     public String toString () {
         return ("Nome: " + this.nome + "\nCPF: " + this.cpf);
     }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaTurmas () {
+        for (Turma turma: this.turma)
+            System.out.println(turma.toString() + "\n");
+    }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaFaltas () {
+        for (Falta falta: this.falta)
+            System.out.println(falta.toString() + "\n");
+    }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaAlunos () {
+        for (Nota nota: this.nota)
+            System.out.println(nota.toString() + "\n");
+    }
 }
