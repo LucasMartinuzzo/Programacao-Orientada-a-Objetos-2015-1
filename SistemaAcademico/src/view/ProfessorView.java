@@ -64,14 +64,15 @@ public class ProfessorView {
                 System.out.println(professor.toString() + "\n");    
     }
 
-    public void quantidadeDisciplina(){
+    public Boolean quantidadeDisciplina(){
         System.out.println("Informe o CPF do professor: ");
         Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(scanner.nextLine());
-        if(professor != null)
+        if(professor != null){
             System.out.println("A quantidade de disciplinas já lecionadas pelo(a) professsor(a) " + professor.getNome()
-                    + " é " + professor.getDisciplina().size() + ".");
-        else
-            System.out.println("PROFESSOR NÃO ENCONTRADO!\n");
+                       + " é " + professor.getDisciplina().size() + ".");
+            return true;
+        }
+        return true;
     }    
     
     public void atribuirDisciplina () {

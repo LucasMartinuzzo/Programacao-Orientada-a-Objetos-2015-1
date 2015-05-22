@@ -143,11 +143,11 @@ public class Main {
                     break;
                 }
                 case 3:{
-                    relacionamentoEfetuado = this.disciplinaView.quantidadeTurmas();
+                    
                     break;
                 }
                 case 4:{
-                    relacionamentoEfetuado = this.professorView.quantidadeDisciplina();
+                    
                     break;
                 }
             }
