@@ -5,6 +5,7 @@ import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
 import model.dao.Dao;
 import model.dao.DisciplinaDaoImpl;
+import model.dao.TurmaDaoImpl;
 import model.pojo.Aluno;
 import model.pojo.Disciplina;
 import model.pojo.Falta;
@@ -27,9 +28,26 @@ public class AlunoView {
        
         //return this.alunoDao.inserir(aluno);
     }
+    
+    
+    public Boolean matricularAluno(){
+        System.out.println("MATRICULA DE ALUNOS\nMatricule um aluno:\n");
+        System.out.println("Informe o cpf do aluno: ");
+        String cpf = scanner.nextLine();
+        System.out.println("Informe a turma a ser efetuada a matrícula: ");
+        String nome = scanner.nextLine();
+        if(TurmaDaoImpl.getInstancia().obter(nome)!=null && AlunoDaoImpl.getInstancia().obter(cpf)!=null){
+            //ADICIONAR ALUNO NA LISTA DE ALUNOS DA TURMA 
+            ((Turma) TurmaDaoImpl.getInstancia().obter(nome)).getAluno().add((Aluno) AlunoDaoImpl.getInstancia().obter(cpf));
+            //ADICIONAR TURMA NA LISTA DE TURMA DO ALUNO
+            ((Aluno) AlunoDaoImpl.getInstancia().obter(cpf)).adicionarTurma((Turma) TurmaDaoImpl.getInstancia().obter(nome));
+            return true;
+        }
+        return false;
+    }
 
     public void pesquisar () {
-       System.out.println("PESQUISA DE ALUNOS\nEntre com o CPF do aluno: ");
+        System.out.println("PESQUISA DE ALUNOS\nEntre com o CPF do aluno: ");
         String cpf = scanner.nextLine();
         if(AlunoDaoImpl.getInstancia().indice(cpf) != -1)
             System.out.println(AlunoDaoImpl.getInstancia().obter(cpf).toString());
