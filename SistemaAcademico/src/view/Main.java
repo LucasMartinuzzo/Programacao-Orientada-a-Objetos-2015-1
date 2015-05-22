@@ -124,9 +124,7 @@ public class Main {
     private void imprimirMenuRelacionamentos(){
         while(true){
             System.out.println("1 - MATRICULAR ALUNO");
-            System.out.println("2 - CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA");
-            System.out.println("3 - CONSULTAR A QUANTIDADE DE TURMAS OFERECIDAS DE UMA DISCIPLINA");
-            System.out.println("4 - CONSULTAR O NÚMERO DE DISCIPLINAS JÁ LECIONADAS POR UM PROFESSOR");
+            System.out.println("2 - ATRIBUIR PROFESSOR À DISCIPLINA");
             System.out.println("OUTRO - VOLTAR");
 
             System.out.println("\nOpção: ");
@@ -139,19 +137,12 @@ public class Main {
                     break;
                 }
                 case 2:{
-                    relacionamentoEfetuado = this.alunoView.consultarSituacaoAluno();
+                    relacionamentoEfetuado = this.disciplinaView.atribuirProfessor();
                     break;
                 }
-                case 3:{
-                    
-                    break;
-                }
-                case 4:{
-                    
-                    break;
-                }
+                default:{}
             }
-            if (opcao < 1 || opcao > 4)
+            if (opcao < 1 || opcao > 2)
                 break;
             if (!relacionamentoEfetuado)
                 System.out.println("\nINFORMAÇÕES INVÁLIDAS!\n");
@@ -188,6 +179,7 @@ public class Main {
                     consultaEfetuada = this.professorView.quantidadeDisciplina();
                     break;
                 }
+                default:{}
             }
             if (opcao < 1 || opcao > 4)
                 break;

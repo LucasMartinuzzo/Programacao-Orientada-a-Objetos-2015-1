@@ -68,7 +68,7 @@ public class DisciplinaView {
         return false;
     }
     
-    public void atribuirProfessor () {
+    public Boolean atribuirProfessor () {
         System.out.println("Informe o nome da disciplina: ");
         Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
         if(disciplina != null) {
@@ -80,9 +80,8 @@ public class DisciplinaView {
                 System.out.println("PROFESSOR ATRIBUÍDO!\n");
             }
             else
-                System.out.println("PROFESSOR NÃO ENCONTRADO!\n");
+                return false;
         }
-        else
-            System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
+        return false;
     }
 }
