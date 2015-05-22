@@ -117,7 +117,7 @@ public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
     public String toString () {
         return ("ID: " + this.id + "\nNome: " + this.nome +
                 "\nTipo: " + this.tipo + "\nValor: " + this.valor +
-                "\nDisciplina: " + this.turma.getDisciplina() + "\n");
+                "\nDisciplina: " + this.turma.getDisciplina().getNome() + "\n");
     }
     
     //LEMBRAR DE APAGAR
