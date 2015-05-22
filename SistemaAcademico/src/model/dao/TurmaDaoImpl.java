@@ -111,13 +111,17 @@ public class TurmaDaoImpl implements Dao {
             Integer numeroDeVagas = Integer.parseInt(br.readLine());
             String disciplina = br.readLine();
             Turma turma = new Turma (id, ano, periodo, numeroDeVagas, null, null, null);
-            turma.setDisciplina(DisciplinaDaoImpl.getInstancia().obter(disciplina));
-            turma.getDisciplina().adicionarTurma(turma);
+            if (DisciplinaDaoImpl.getInstancia().obter(disciplina) != null){
+                turma.setDisciplina(DisciplinaDaoImpl.getInstancia().obter(disciplina));
+                turma.getDisciplina().adicionarTurma(turma);
+            }
             String professor = br.readLine();
-            turma.setProfessor(ProfessorDaoImpl.getInstancia().obter(professor));
+            if (ProfessorDaoImpl.getInstancia().obter(professor) != null)
+                turma.setProfessor(ProfessorDaoImpl.getInstancia().obter(professor));
             String[] aula = br.readLine().split(",");
             for (String a: aula)
-                turma.adicionarAula(AulaDaoImpl.getInstancia().obter(a));
+                if (AulaDaoImpl.getInstancia().obter(a) != null)
+                    turma.adicionarAula(AulaDaoImpl.getInstancia().obter(a));
             this.inserir(turma);
         }
         br.close();

@@ -101,10 +101,14 @@ public class NotaDaoImpl implements Dao {
             String atividade = br.readLine();
             Nota nota = new Nota(id, valor, null, null);
             this.inserir(nota);
-            nota.setAluno(AlunoDaoImpl.getInstancia().obter(aluno));
-            nota.getAluno().adicionarNota(nota);
-            nota.setAtividade(AtividadeDaoImpl.getInstancia().obter(atividade));
-            nota.getAtividade().adicionarNota(nota);
+            if (AlunoDaoImpl.getInstancia().obter(aluno) != null){
+                nota.setAluno(AlunoDaoImpl.getInstancia().obter(aluno));
+                nota.getAluno().adicionarNota(nota);
+            }
+            if (AtividadeDaoImpl.getInstancia().obter(atividade) != null){
+                nota.setAtividade(AtividadeDaoImpl.getInstancia().obter(atividade));
+                nota.getAtividade().adicionarNota(nota);
+            }
         }
         br.close();
         fr.close();

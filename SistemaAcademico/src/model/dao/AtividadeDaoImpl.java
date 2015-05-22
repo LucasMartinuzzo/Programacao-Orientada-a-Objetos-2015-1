@@ -113,8 +113,10 @@ public class AtividadeDaoImpl implements Dao {
             Atividade atividade = new Atividade (id, nome, tipo, data, valor, null);
             atividade.setNotasLancadas(notasLancadas);
             this.inserir(atividade);
-            atividade.setTurma(TurmaDaoImpl.getInstancia().obter(turma));
-            atividade.getTurma().adicionarAtividade(atividade);
+            if (TurmaDaoImpl.getInstancia().obter(turma) != null){
+                atividade.setTurma(TurmaDaoImpl.getInstancia().obter(turma));
+                atividade.getTurma().adicionarAtividade(atividade);
+            }
         }
         br.close();
         fr.close();
