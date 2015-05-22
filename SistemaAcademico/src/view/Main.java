@@ -253,6 +253,82 @@ public class Main {
         }
     }     
 
+    //APAGAR
+    public void imprimirLista () {
+        while(true){
+            
+            System.out.println("1 - IMPRIMIR LISTA DE TURMAS DE UM ALUNO");
+            System.out.println("2 - IMPRIMIR LISTA DE FALTAS DE UM ALUNO");
+            System.out.println("3 - IMPRIMIR LISTA DE NOTAS DE UM ALUNO");
+            System.out.println("4 - IMPRIMIR LISTA DE NOTAS DE UMA ATIVIDADE");
+            System.out.println("5 - IMPRIMIR LISTA DE PROFESSORES DE UMA DISCIPLINA");
+            System.out.println("6 - IMPRIMIR LISTA DE TURMAS DE UMA DISCIPLINA");
+            System.out.println("7 - IMPRIMIR LISTA DE DISCIPLINAS DE UM PROFESSOR");
+            System.out.println("8 - IMPRIMIR LISTA DE AULAS DE UMA TURMA");
+            System.out.println("9 - IMPRIMIR LISTA DE ALUNOS DE UMA TURMA");
+            System.out.println("10 - IMPRIMIR LISTA DE ATIVIDADES DE UMA TURMA");
+            System.out.println("OUTRO - VOLTAR");
+
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            switch(opcao){
+                case 1:{
+                    Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(entrada.nextLine());
+                    aluno.imprimirListaTurmas();
+                    break;
+                }
+                case 2:{
+                    Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(entrada.nextLine());
+                    aluno.imprimirListaFaltas();
+                    break;
+                }
+                case 3:{
+                    Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(entrada.nextLine());
+                    aluno.imprimirListaAlunos(); //NOME ERRADO: IMPRIME NOTAS
+                    break;
+                }
+                case 4:{
+                    Atividade atividade = (Atividade) AtividadeDaoImpl.getInstancia().obter(entrada.nextLine());
+                    atividade.imprimirListaNotas();
+                    break;
+                }
+                case 5:{
+                    Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(entrada.nextLine());
+                    disciplina.imprimirListaProfessores();
+                    break;
+                }
+                case 6:{
+                    Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(entrada.nextLine());
+                    disciplina.imprimirListaTurmas();
+                    break;
+                }
+                case 7:{
+                    Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(entrada.nextLine());
+                    professor.imprimirListaDisciplinas();
+                    break;
+                }
+                case 8:{
+                    Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(entrada.nextLine());
+                    turma.imprimirListaAulas();
+                    break;
+                }
+                case 9:{
+                    Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(entrada.nextLine());
+                    turma.imprimirListaAlunos();
+                    break;
+                }
+                case 10:{
+                    Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(entrada.nextLine());
+                    turma.imprimirListaAtividades();
+                    break;
+                }
+                default:{}
+            }
+            if (opcao < 1 || opcao > 10)
+                break;
+        }
+    }
+    
     public static void main(String[] args) throws IOException{
         Integer i;
         Main main = new Main();    
@@ -264,6 +340,7 @@ public class Main {
             System.out.println("3 - REMOÇÕES");
             System.out.println("4 - RELACIONAMENTOS");
             System.out.println("5 - SAIR");
+            System.out.println("6 - IMPRIMIR"); //APAGAR!
             
             System.out.println("\nOpção:");
             i = entrada.nextInt();
@@ -286,6 +363,9 @@ public class Main {
                     }
                     case 5:{
                     //Opção "sair" com main.salvarArquivo()    
+                    }
+                    case 6:{ //APAGAR!
+                        main.imprimirLista();
                     }
                     
             }

@@ -37,7 +37,7 @@ public class NotaDaoImpl implements Dao {
     @Override
     public Boolean inserir (Object objeto) {
         Nota nota = (Nota) objeto;
-        if (this.indice(nota.getId()) >= 0) {
+        if (this.indice(nota.getId()) <= -1) {
             listaNota.add(nota);
             Collections.sort(listaNota);
             return true;
@@ -58,7 +58,7 @@ public class NotaDaoImpl implements Dao {
     
     @Override
     public Object obter (String id) {
-        if (this.indice(id) != -1)
+        if (this.indice(id) >= 0)
             return listaNota.get(this.indice(id));
         return null;
     }
@@ -91,7 +91,7 @@ public class NotaDaoImpl implements Dao {
     
   @Override
     public void carregar () throws IOException{
-        File file = new File ("Professor.txt");
+        File file = new File ("Nota.txt");
         FileReader fr = new FileReader (file);
         BufferedReader br = new BufferedReader (fr);
         while (br.ready()){
@@ -100,6 +100,7 @@ public class NotaDaoImpl implements Dao {
             String aluno = br.readLine();
             String atividade = br.readLine();
             Nota nota = new Nota(id, valor, null, null);
+            this.inserir(nota);
             nota.setAluno(AlunoDaoImpl.getInstancia().obter(aluno));
             nota.getAluno().adicionarNota(nota);
             nota.setAtividade(AtividadeDaoImpl.getInstancia().obter(atividade));

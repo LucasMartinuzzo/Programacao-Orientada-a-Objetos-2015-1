@@ -119,4 +119,10 @@ public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
                 "\nTipo: " + this.tipo + "\nValor: " + this.valor +
                 "\nDisciplina: " + this.turma.getDisciplina() + "\n");
     }
+    
+    //LEMBRAR DE APAGAR
+    public void imprimirListaNotas () {
+        for (Nota nota: this.nota)
+            System.out.println(nota.toString() + "\n");
+    }
 }
