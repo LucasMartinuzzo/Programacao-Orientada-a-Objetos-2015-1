@@ -139,14 +139,14 @@ public class TurmaView {
                 for (Atividade atividade: turma.getAtividade()) {
                     Collections.sort(atividade.getNota(), new Nota());
                     Integer indiceNota = Collections.binarySearch(atividade.getNota(),
-                            new Nota (null, null, aluno, null));
+                            new Nota (null, null, aluno, null), new Nota());
                     System.out.println(" *" + atividade.getNome() + ": " + 
                             atividade.getNota().get(indiceNota).getNota());
                     System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
                 }
                 Collections.sort(aluno.getFalta(), new Falta());
                 Integer indiceFalta = Collections.binarySearch(aluno.getFalta(),
-                            new Falta (null, null, turma));
+                            new Falta (null, null, turma), new Falta());
                 System.out.println("Faltas: " + aluno.getFalta().get(indiceFalta));
                 return true;
             }

@@ -77,10 +77,10 @@ public class DisciplinaView {
             if (professor != null) //{
                 return professor.adicionarDisciplina(disciplina);
                 //professor.imprimirListaDisciplinas();
-            if (professor != null) {
+            /*if (professor != null) {
                 if(!(professor.adicionarDisciplina(disciplina)))
                         System.out.println("PROFESSOR JÁ FOI ATRIBUÍDO!\n");
-                professor.imprimirListaDisciplinas();
+                professor.imprimirListaDisciplinas();*/
 //                disciplina.getProfessor().add(professor);
 //                professor.getDisciplina().add(disciplina);
                     //System.out.println("PROFESSOR ATRIBUÍDO!");
