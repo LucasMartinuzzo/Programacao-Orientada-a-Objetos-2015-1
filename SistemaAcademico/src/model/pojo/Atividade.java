@@ -95,6 +95,14 @@ public class Atividade implements Comparable<Atividade> {
         return this.getNota().add(nota);
     }
     
+    public Boolean adicionarNotaArquivo(Nota nota){//Deve carregar as notas do arquivo mesmo se notasLançadas for true
+        for (Nota notaConsultada: this.getNota()) {
+            if (notaConsultada.getAluno().equals(nota.getAluno()))
+                return false;
+        }
+        return this.getNota().add(nota);
+    }
+    
     public Nota retornaNota (Aluno aluno) {
         return this.getNota().get(this.getNota().indexOf(nota));
     }

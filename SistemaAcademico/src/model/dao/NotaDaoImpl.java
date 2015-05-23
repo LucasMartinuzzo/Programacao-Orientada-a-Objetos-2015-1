@@ -107,7 +107,7 @@ public class NotaDaoImpl implements Dao {
             }
             if (AtividadeDaoImpl.getInstancia().obter(atividade) != null){
                 nota.setAtividade(AtividadeDaoImpl.getInstancia().obter(atividade));
-                nota.getAtividade().adicionarNota(nota);
+                nota.getAtividade().adicionarNotaArquivo(nota);
             }
         }
         br.close();
