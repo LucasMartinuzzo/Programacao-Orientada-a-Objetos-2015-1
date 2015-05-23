@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 import model.dao.AtividadeDaoImpl;
 import model.dao.Dao;
+import model.dao.TurmaDaoImpl;
 import model.pojo.Atividade;
 import model.pojo.Turma;
 
@@ -31,7 +32,7 @@ public class AtividadeView {
         Double valor = scanner.nextDouble();
         scanner.nextLine();
         System.out.println("Turma:");
-        Turma turma = (Turma) this.obterCadastrado(AtividadeDaoImpl.getInstancia());
+        Turma turma = (Turma) this.obterCadastrado(TurmaDaoImpl.getInstancia());
         if(turma == null)
             return false;
         Atividade atividade = new Atividade (id, nome, tipo, data, valor, turma);
