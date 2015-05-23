@@ -66,7 +66,7 @@ public class AlunoView {
 
     public void listar () {
         System.out.println("LISTA DE ALUNOS DISPONÍVEIS\n");
-        List<Aluno> listaAluno = (List<Aluno>) (Aluno) AlunoDaoImpl.getInstancia().obterTodos();
+        List<Aluno> listaAluno = (List<Aluno>) AlunoDaoImpl.getInstancia().obterTodos();
         //List<Aluno> listaAluno = (List<Aluno>) (Aluno) alunoDao.obterTodos();
         for (Aluno aluno: listaAluno) {
             System.out.println(aluno.toString() + "\n");

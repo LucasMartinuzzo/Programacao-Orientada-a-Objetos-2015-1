@@ -66,8 +66,8 @@ public class AtividadeDaoImpl implements Dao {
     }
     
     @Override
-    public List<Object> obterTodos () {
-        return (List<Object>) (Object) listaAtividade;
+    public List<? extends Object> obterTodos () {
+        return listaAtividade;
     }
     
     @Override

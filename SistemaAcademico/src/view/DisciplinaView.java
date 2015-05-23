@@ -38,7 +38,8 @@ public class DisciplinaView {
             //    System.out.println(this.disciplinaDao.obter(nome).toString());
             else
                 System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
-        }
+    }
+    
     public void remover(){
         System.out.println("REMOÇÃO DE DISCIPLINAS\nEntre com o nome da Disciplina: ");
         String nome = scanner.nextLine();
@@ -48,12 +49,13 @@ public class DisciplinaView {
         else
             System.out.println("DISCIPLINA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
     }
+    
     public void listar () {
         System.out.println("LISTA DE DISCIPLINAS DISPONÍVEIS\n");
-        List<Disciplina> listaDisciplina = (List<Disciplina>) (Disciplina) DisciplinaDaoImpl.getInstancia().obterTodos();
+        List<Disciplina> listaDisciplina = (List<Disciplina>) DisciplinaDaoImpl.getInstancia().obterTodos();
         //List<Disciplina> listaDisciplina = (List<Disciplina>) (Disciplina) disciplinaDao.obterTodos();
-        for(Disciplina disc: listaDisciplina) {
-            System.out.println(disc.toString() + "\n");
+        for(Disciplina disciplina: listaDisciplina) {
+            System.out.println(disciplina.toString() + "\n");
         }
     }
     

@@ -2,7 +2,6 @@ package view;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
@@ -108,7 +107,7 @@ public class TurmaView {
     
     public void listar () {
         System.out.println("LISTA DE TURMAS DISPONÍVEIS\n");
-        List<Turma> listaTurma = (List<Turma>) (Turma) TurmaDaoImpl.getInstancia().obterTodos();
+        List<Turma> listaTurma = (List<Turma>) TurmaDaoImpl.getInstancia().obterTodos();
         //List<Turma> listaTurma = (List<Turma>) (Turma) turmaDao.obterTodos();
         for (Turma turma: listaTurma) {
             System.out.println(turma.toString() + "\n");
@@ -126,8 +125,8 @@ public class TurmaView {
         System.out.println("* Período: ");
         Integer periodo = scanner.nextInt();
         scanner.nextLine();
-        for (Object objeto: TurmaDaoImpl.getInstancia().obterTodos()) {
-            Turma turmaConsultada = (Turma) objeto;
+        List<Turma> listaTurma = (List<Turma>) TurmaDaoImpl.getInstancia().obterTodos();
+        for (Turma turmaConsultada: listaTurma) {
             if (turmaConsultada.getDisciplina().getNome().equals(disciplina))
                 if (turmaConsultada.getAno().equals(ano))
                     if (turmaConsultada.getPeriodo().equals(periodo))

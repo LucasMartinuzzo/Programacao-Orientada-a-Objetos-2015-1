@@ -74,7 +74,7 @@ public class NotaView {
 
     public void listar () {
         System.out.println("LISTA DE NOTAS DISPONÍVEIS\n");
-        List<Nota> listaAluno = (List<Nota>) (Nota) NotaDaoImpl.getInstancia().obterTodos();
+        List<Nota> listaAluno = (List<Nota>) NotaDaoImpl.getInstancia().obterTodos();
         //List<Nota> listaAluno = (List<Nota>) (Nota) notaDao.obterTodos();
         for (Nota nota: listaAluno) {
             System.out.println(nota.toString() + "\n");

@@ -52,7 +52,7 @@ public class AulaView {
     
     public void listar () {
         System.out.println("LISTA DE AULAS DISPONÍVEIS\n");
-        List<Aula> listaAula = (List<Aula>) (Aula) AulaDaoImpl.getInstancia().obterTodos();
+        List<Aula> listaAula = (List<Aula>) AulaDaoImpl.getInstancia().obterTodos();
         //List<Aula> listaAula = (List<Aula>) (Aula) aulaDao.obterTodos();
         for (Aula aula: listaAula) {
             System.out.println(aula.toString() + "\n");

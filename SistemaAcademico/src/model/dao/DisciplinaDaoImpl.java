@@ -64,8 +64,8 @@ public class DisciplinaDaoImpl implements Dao {
     }
     
     @Override
-    public List<Object> obterTodos () {
-        return (List<Object>) (Object) listaDisciplina;
+    public List<? extends Object> obterTodos () {
+        return listaDisciplina;
     }
     
     @Override

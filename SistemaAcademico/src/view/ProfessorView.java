@@ -58,7 +58,7 @@ public class ProfessorView {
     
     public void listar () {
             System.out.println("LISTA DE PROFESSORES DISPONÍVEIS\n");
-            List<Professor> listaProfessor = (List<Professor>) (Professor) ProfessorDaoImpl.getInstancia().obterTodos();
+            List<Professor> listaProfessor = (List<Professor>) ProfessorDaoImpl.getInstancia().obterTodos();
             //List<Professor> listaProfessor = (List<Professor>) (Professor) professorDao.obterTodos();
             for (Professor professor: listaProfessor)
                 System.out.println(professor.toString() + "\n");    

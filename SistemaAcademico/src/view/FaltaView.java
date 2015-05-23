@@ -72,7 +72,7 @@ public class FaltaView {
 
     public void listar () {
         System.out.println("LISTA DE FALTAS DISPONÍVEIS\n");
-        List<Falta> listaFalta = (List<Falta>) (Falta) FaltaDaoImpl.getInstancia().obterTodos();
+        List<Falta> listaFalta = (List<Falta>) FaltaDaoImpl.getInstancia().obterTodos();
         //List<Falta> listaFalta = (List<Falta>) (Falta) faltaDao.obterTodos();
         for (Falta falta: listaFalta) {
             System.out.println(falta.toString() + "\n");

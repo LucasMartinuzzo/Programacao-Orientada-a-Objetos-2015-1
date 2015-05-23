@@ -65,8 +65,8 @@ public class TurmaDaoImpl implements Dao {
     }
     
     @Override
-    public List<Object> obterTodos () {
-        return (List<Object>) (Object) listaTurma;
+    public List<? extends Object> obterTodos () {
+        return listaTurma;
     }
     
     @Override

@@ -65,7 +65,7 @@ public class AtividadeView {
 
     public void listar () {
         System.out.println("LISTA DE ATIVIDADES DISPONÍVEIS\n");
-        List<Atividade> listaAtividade = (List<Atividade>) (Atividade) AtividadeDaoImpl.getInstancia().obterTodos();
+        List<Atividade> listaAtividade = (List<Atividade>) AtividadeDaoImpl.getInstancia().obterTodos();
         //List<Atividade> listaAtividade = (List<Atividade>) (Atividade) atividadeDao.obterTodos();
         for (Atividade atividade: listaAtividade) {
             System.out.println(atividade.toString() + "\n");

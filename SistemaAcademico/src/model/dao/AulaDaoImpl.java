@@ -65,8 +65,8 @@ public class AulaDaoImpl implements Dao {
     }
 
     @Override
-    public List<Object> obterTodos() {
-        return (List<Object>) (Object) listaAula;
+    public List<? extends Object> obterTodos() {
+        return listaAula;
     }
     
     @Override

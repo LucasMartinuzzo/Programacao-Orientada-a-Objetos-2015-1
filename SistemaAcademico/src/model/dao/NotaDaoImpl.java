@@ -64,8 +64,8 @@ public class NotaDaoImpl implements Dao {
     }
     
     @Override
-    public List<Object> obterTodos () {
-        return (List<Object>) (Object) listaNota;
+    public List<? extends Object> obterTodos () {
+        return listaNota;
     }
     
     @Override

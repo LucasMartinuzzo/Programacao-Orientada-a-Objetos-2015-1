@@ -64,8 +64,8 @@ public class FaltaDaoImpl implements Dao {
     }
     
     @Override
-    public List<Object> obterTodos () {
-        return (List<Object>) (Object) listaFalta;
+    public List<? extends Object> obterTodos () {
+        return listaFalta;
     }
     
     @Override
