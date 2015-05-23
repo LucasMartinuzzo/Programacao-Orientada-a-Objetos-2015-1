@@ -72,6 +72,7 @@ public class ProfessorView {
                        + " é " + professor.getDisciplina().size() + ".");
             return true;
         }
-        return true;
+        System.out.println("Não existe professor cadastrado com esse cpf.");
+        return false;
     }    
 }

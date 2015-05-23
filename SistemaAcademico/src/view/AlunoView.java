@@ -90,7 +90,7 @@ public class AlunoView {
                                 System.out.println("Falta: " + faltaConsultada.getFalta());
                                 System.out.println("Nota: " + aluno.NotaFinal(turma));
                                 if(((faltaConsultada.getFalta()/disciplina.getCargaHoraria())<=0.25)
-                                        && (aluno.NotaFinal(turma)<6))
+                                        && (aluno.NotaFinal(turma)>6))
                                     System.out.println("Aluno aprovado!");
                                 else
                                     System.out.println("Aluno não aprovado!");
