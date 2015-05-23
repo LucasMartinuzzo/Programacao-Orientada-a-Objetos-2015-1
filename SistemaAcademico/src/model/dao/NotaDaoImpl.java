@@ -82,8 +82,10 @@ public class NotaDaoImpl implements Dao {
             bw.newLine ();
             bw.write (nota.getAluno().getCpf());
             bw.newLine ();
-            bw.write (nota.getAtividade().getId());
-            bw.newLine ();
+            if (nota.getAtividade() != null){
+                bw.write (nota.getAtividade().getId());
+                bw.newLine ();
+            }
         }
         bw.close();
         fw.close();
