@@ -12,7 +12,7 @@ public interface Dao {
     Boolean remover (Object objeto);
     int indice (String id);
     Object obter (String id);
-    List<Object> obterTodos ();
+    List<? extends Object> obterTodos ();
     void salvar () throws IOException;
     void carregar () throws IOException;
     void imprimir ();

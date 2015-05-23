@@ -411,7 +411,6 @@ public class Main {
                     case 5:{ //APAGAR!
                         main.imprimirLista();
                     }
-                    
             }
         }    
     }

@@ -62,23 +62,24 @@ public class TurmaView {
         
         System.out.println("***** PARA CONTINUAR, DETERMINE AS AULAS A SEREM ADICIONADAS *****");
         //List<Aula> listaAula = this.montarListaDeAulas();
-        List<Aula> listaAula = (List<Aula>) (Aula) this.montarListaDeCadastrados(AulaDaoImpl.getInstancia());
+        List<Aula> listaAula = (List<Aula>) this.montarListaDeCadastrados(AulaDaoImpl.getInstancia());
         System.out.println("******************************************************************\n");
         
         System.out.println("***** DESEJA ADICIONAR UMA LISTA DE ALUNOS AGORA? (ID: CPF) *****");
         System.out.println("Digite ''sim'' para adicionar ou qualquer outro para não: ");
         if (scanner.nextLine().equals("sim")) {
             System.out.println("\n");
-            List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(AlunoDaoImpl.getInstancia());
+            List<Aluno> listaAluno = (List<Aluno>) this.montarListaDeCadastrados(AlunoDaoImpl.getInstancia());
             //List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(this.alunoDao);
             turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor,
-                    listaAula, listaAluno);
+                    null/*listaAula*/, listaAluno);
             System.out.println("******************************************************************");
         }
         else
             turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula);
         disciplina.getTurma().add(turma);
         //disciplina.adicionarTurma(turma);
+        System.out.println(turma.toString()); //APAGAR
         return TurmaDaoImpl.getInstancia().inserir(turma);
         //return this.turmaDao.inserir(turma);
     }
@@ -173,7 +174,7 @@ public class TurmaView {
         
     }*/
     
-    public List<Object> montarListaDeCadastrados (Dao dao) {
+    public List<? extends Object> montarListaDeCadastrados (Dao dao) {
         List<Object> listaObjeto = new ArrayList<>();
         while (true) {
             System.out.println("Continuar? ");

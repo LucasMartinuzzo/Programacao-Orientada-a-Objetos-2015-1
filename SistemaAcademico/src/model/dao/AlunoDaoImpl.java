@@ -66,11 +66,10 @@ public class AlunoDaoImpl implements Dao {
     }
     
     @Override
-    public List<Object> obterTodos () {
-        return (List<Object>) (Object) listaAluno;
+    public List<? extends Object> obterTodos () {
+        return listaAluno;
     }
-    
-    
+        
     @Override
     public void salvar () throws IOException{
         File file = new File("Aluno.txt");
