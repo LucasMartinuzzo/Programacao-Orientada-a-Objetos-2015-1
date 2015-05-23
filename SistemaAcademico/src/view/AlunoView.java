@@ -34,12 +34,11 @@ public class AlunoView {
         System.out.println("MATRÍCULA DE ALUNOS\nMatricule um aluno:\n");
         System.out.println("Informe o CPF do aluno: ");
         Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
-        System.out.println("Informe a turma na qual será efetuada a matrícula: ");
-        Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
-        if(turma!=null && aluno!=null){ 
-            turma.getAluno().add(aluno);
-            aluno.getTurma().add(turma);
-            return true;
+        if (aluno != null) {
+            System.out.println("Informe a turma na qual será efetuada a matrícula: ");
+            Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
+            if(turma != null)
+                return turma.adicionarAluno(aluno);
         }
         return false;
     }

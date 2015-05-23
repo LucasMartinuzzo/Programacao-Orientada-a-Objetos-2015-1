@@ -140,8 +140,8 @@ public class Main {
     private void imprimirMenuRelacionamentos(){
         while(true){
             System.out.println("1 - MATRICULAR ALUNO");
-            System.out.println("2 - ATRIBUIR PROFESSOR À DISCIPLINA");
-            System.out.println("3 - ATRIBUIR AULA À TURMA");
+            System.out.println("2 - ATRIBUIR PROFESSOR A DISCIPLINA");
+            System.out.println("3 - ATRIBUIR AULA A TURMA");
             System.out.println("OUTRO - VOLTAR");
 
             System.out.println("\nOpção: ");
@@ -159,16 +159,24 @@ public class Main {
                     break;
                 }
                 case 3:{
-                    //relacionamentoEfetuado = this.turmaView.atribuirAula();
+                    relacionamentoEfetuado = this.turmaView.atribuirAula();
                     break;
                 }
                 default:{}
             }
             if (opcao < 1 || opcao > 3)
                 break;
-            if (!relacionamentoEfetuado)
-                System.out.println("\nINFORMAÇÕES INVÁLIDAS!\n");
-        
+            if (relacionamentoEfetuado)
+                System.out.println("\nCONCLUÍDO COM ÊXITO!\n");
+            else {
+                System.out.println("\nIMPOSSÍVEL CONCLUIR!");
+                System.out.println("Possíveis causas:");
+                System.out.println("- A informação digitada não corresponde a um item cadastrado;");
+                System.out.println("- A operação já foi realizada anteriormente;");
+                System.out.println("- Em caso de matrícula de aluno, a turma solicitada não possui"
+                        + "vagas remanescentes.");
+            }
+            
         }
     }
     
@@ -212,7 +220,7 @@ public class Main {
         }
     }
     
-    private void imprimirMenuRemover(){
+    /*private void imprimirMenuRemover(){
         while(true){
             
             System.out.println("1 - REMOVER ALUNOS");
@@ -274,7 +282,7 @@ public class Main {
             if (opcao < 1 || opcao > 8)
                 break;
         }
-    }     
+    }*/     
 
     //APAGAR
     public void imprimirLista () {
@@ -297,53 +305,62 @@ public class Main {
             entrada.nextLine();
             switch(opcao){
                 case 1:{
-                    System.out.println("");
+                    System.out.println("CPF:");
                     Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(entrada.nextLine());
                     aluno.imprimirListaTurmas();
                     break;
                 }
                 case 2:{
+                    System.out.println("CPF:");
                     Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(entrada.nextLine());
                     aluno.imprimirListaFaltas();
                     break;
                 }
                 case 3:{
+                    System.out.println("CPF:");
                     Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(entrada.nextLine());
                     aluno.imprimirListaAlunos(); //NOME ERRADO: IMPRIME NOTAS
                     break;
                 }
                 case 4:{
+                    System.out.println("ID:");
                     Atividade atividade = (Atividade) AtividadeDaoImpl.getInstancia().obter(entrada.nextLine());
                     atividade.imprimirListaNotas();
                     break;
                 }
                 case 5:{
+                    System.out.println("NOME:");
                     Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(entrada.nextLine());
                     disciplina.imprimirListaProfessores();
                     break;
                 }
                 case 6:{
+                    System.out.println("NOME:");
                     Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(entrada.nextLine());
                     disciplina.imprimirListaTurmas();
                     break;
                 }
                 case 7:{
+                    System.out.println("CPF:");
                     Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(entrada.nextLine());
                     professor.imprimirListaDisciplinas();
                     
                     break;
                 }
                 case 8:{
+                    System.out.println("ID:");
                     Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(entrada.nextLine());
                     turma.imprimirListaAulas();
                     break;
                 }
                 case 9:{
+                    System.out.println("ID:");
                     Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(entrada.nextLine());
                     turma.imprimirListaAlunos();
                     break;
                 }
                 case 10:{
+                    System.out.println("ID:");
                     Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(entrada.nextLine());
                     turma.imprimirListaAtividades();
                     break;
@@ -356,22 +373,22 @@ public class Main {
     }
     
     public static void main(String[] args) throws IOException{
-        Integer i;
+        Integer opcao;
         Main main = new Main();    
         Scanner entrada = new Scanner(System.in);
         //// main.carregarArquivo();
         while(true){
             System.out.println("1 - CADASTROS");
             System.out.println("2 - CONSULTAS");
-            System.out.println("3 - REMOÇÕES");
-            System.out.println("4 - RELACIONAMENTOS");
-            System.out.println("5 - SAIR");
-            System.out.println("6 - IMPRIMIR"); //APAGAR!
+            //System.out.println("3 - REMOÇÕES");
+            System.out.println("3 - RELACIONAMENTOS");
+            System.out.println("4 - SAIR");
+            System.out.println("5 - IMPRIMIR (TEMPORÁRIO)"); //APAGAR!
             
             System.out.println("\nOpção:");
-            i = entrada.nextInt();
+            opcao = entrada.nextInt();
             entrada.nextLine();
-            switch(i){
+            switch(opcao){
                     case 1: {
                         main.imprimirMenuCadastro();
                         break;
@@ -380,18 +397,18 @@ public class Main {
                         main.imprimirMenuConsultar();
                         break;
                     }
-                    case 3: {
+                    /*case 3: {
                         main.imprimirMenuRemover();
                         break;
-                    }
-                    case 4:{
+                    }*/
+                    case 3:{
                         main.imprimirMenuRelacionamentos();
                         break;
                     }
-                    case 5:{
+                    case 4:{
                     //Opção "sair" com main.salvarArquivo()    
                     }
-                    case 6:{ //APAGAR!
+                    case 5:{ //APAGAR!
                         main.imprimirLista();
                     }
                     

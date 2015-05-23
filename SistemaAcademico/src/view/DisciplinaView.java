@@ -74,14 +74,14 @@ public class DisciplinaView {
         if(disciplina != null) {
             System.out.println("Informe o CPF do(a) professor(a) a ser atribuído à disciplina: ");
             Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(scanner.nextLine());
-            if (professor != null) {
-                professor.adicionarDisciplina(disciplina);
-                professor.imprimirListaDisciplinas();
+            if (professor != null) //{
+                return professor.adicionarDisciplina(disciplina);
+                //professor.imprimirListaDisciplinas();
 //                disciplina.getProfessor().add(professor);
 //                professor.getDisciplina().add(disciplina);
-                System.out.println("PROFESSOR ATRIBUÍDO!\n");
-                return true;
-            }
+                    //System.out.println("PROFESSOR ATRIBUÍDO!");
+                    //return true;
+                //}
         }
         return false;
     }

@@ -125,7 +125,8 @@ public class TurmaView {
         System.out.println("* Período: ");
         Integer periodo = scanner.nextInt();
         scanner.nextLine();
-        for (Turma turmaConsultada: (List<Turma>) (Turma) TurmaDaoImpl.getInstancia().obterTodos()) {
+        for (Object objeto: TurmaDaoImpl.getInstancia().obterTodos()) {
+            Turma turmaConsultada = (Turma) objeto;
             if (turmaConsultada.getDisciplina().getNome().equals(disciplina))
                 if (turmaConsultada.getAno().equals(ano))
                     if (turmaConsultada.getPeriodo().equals(periodo))
@@ -186,5 +187,22 @@ public class TurmaView {
                 break;
         }
         return listaObjeto;
+    }
+    
+    public Boolean atribuirAula () {
+        System.out.println("Informe o ID da turma: ");
+        Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
+        if(turma != null) {
+            System.out.println("Informe o ID da aula a ser atribuída à turma: ");
+            Aula aula = (Aula) AulaDaoImpl.getInstancia().obter(scanner.nextLine());
+            if (aula != null)
+                return turma.adicionarAula(aula);
+                //turma.imprimirListaAulas();
+//                disciplina.getProfessor().add(professor);
+//                professor.getDisciplina().add(disciplina);
+                //System.out.println("AULA ATRIBUÍDA!");
+                //return true;
+        }
+        return false;
     }
 }
