@@ -19,10 +19,6 @@ public class Aluno implements Comparable<Aluno> {
         this.nome = nome;
         this.cpf = cpf;
     }
-
-    public Aluno() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public String getNome() {
         return nome;

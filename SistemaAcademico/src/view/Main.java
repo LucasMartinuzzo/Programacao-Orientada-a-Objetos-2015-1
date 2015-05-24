@@ -173,8 +173,8 @@ public class Main {
                 System.out.println("Possíveis causas:");
                 System.out.println("- A informação digitada não corresponde a um item cadastrado;");
                 System.out.println("- A operação já foi realizada anteriormente;");
-                System.out.println("- Em caso de matrícula de aluno, a turma solicitada não possui"
-                        + "vagas remanescentes.");
+                System.out.println("- Em caso de matrícula de aluno, a turma solicitada não possui "
+                        + "vagas remanescentes.\n");
             }
             
         }

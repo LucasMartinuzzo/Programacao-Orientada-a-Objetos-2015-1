@@ -19,22 +19,14 @@ public class Turma implements Comparable<Turma> {
     private List<Atividade> atividade = new ArrayList<>();
     
     public Turma (String id, Integer ano, Integer periodo, Integer numeroDeVagas,
-            Disciplina disciplina, Professor professor, List<Aula> aula) {
+            Disciplina disciplina, Professor professor, List<Aula> aula, List<Aluno> aluno) {
         this.id = id;
         this.ano = ano;
         this.periodo = periodo;
         this.numeroDeVagas = numeroDeVagas;
         this.disciplina = disciplina;
         this.professor = professor;
-        if (aula == null)
-            aula = new ArrayList<>();
         this.aula = aula;
-    }
-    
-    public Turma (String id, Integer ano, Integer periodo, Integer numeroDeVagas,
-            Disciplina disciplina, Professor professor, List<Aula> aula,
-            List<Aluno> aluno) {
-        this(id, ano, periodo, numeroDeVagas, disciplina, professor, aula);
         this.aluno = aluno;
     }
     

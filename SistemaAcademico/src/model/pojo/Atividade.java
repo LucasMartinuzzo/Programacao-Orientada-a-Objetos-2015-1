@@ -16,7 +16,6 @@ public class Atividade implements Comparable<Atividade> {
     private Boolean notasLancadas;
     private Turma turma;
     private List<Nota> nota = new ArrayList<>();
-    
   
     public Atividade(String id, String nome, String tipo, String data, Double valor, Turma turma){
         this.id = id;

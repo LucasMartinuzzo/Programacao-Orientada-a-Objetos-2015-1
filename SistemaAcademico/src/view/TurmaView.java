@@ -33,7 +33,6 @@ public class TurmaView {
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
-        Turma turma;
         System.out.println("CADASTRO DE TURMAS\nCadastre uma nova turma:\n");
         System.out.println("ID: ");
         String id = scanner.nextLine();
@@ -47,7 +46,7 @@ public class TurmaView {
         Integer numeroDeVagas = scanner.nextInt();
         scanner.nextLine();
         System.out.println("\nPara as próximas etapas do cadastro, "
-                + "entre com o código identificador (ID) do item procurado.");
+                + "entre com o código identificador (ID) do item procurado.\n");
         
         System.out.println("Disciplina (ID: nome):");
         Disciplina disciplina = (Disciplina) this.obterCadastrado(DisciplinaDaoImpl.getInstancia());
@@ -55,30 +54,26 @@ public class TurmaView {
         if (disciplina == null)
             return false;
         System.out.println("Professor (ID: CPF):");
-        Professor professor = (Professor) this.obterCadastrado(ProfessorDaoImpl.getInstancia());
+        Professor professor = this.obterCadastrado(disciplina);
         if (professor == null)
             return false;
         
-        System.out.println("***** PARA CONTINUAR, DETERMINE AS AULAS A SEREM ADICIONADAS *****");
+        System.out.println("\nDetermine as aulas a serem adicionadas.");
+        System.out.println("(Novas aulas podem ser adicionadas a qualquer momento a partir da opção"
+                + " \"RELACIONAMENTOS\" no menu principal)\n");
         //List<Aula> listaAula = this.montarListaDeAulas();
         List<Aula> listaAula = (List<Aula>) this.montarListaDeCadastrados(AulaDaoImpl.getInstancia());
-        System.out.println("******************************************************************\n");
         
-        System.out.println("***** DESEJA ADICIONAR UMA LISTA DE ALUNOS AGORA? (ID: CPF) *****");
-        System.out.println("Digite ''sim'' para adicionar ou qualquer outro para não: ");
-        if (scanner.nextLine().equals("sim")) {
-            System.out.println("\n");
-            List<Aluno> listaAluno = (List<Aluno>) this.montarListaDeCadastrados(AlunoDaoImpl.getInstancia());
-            //List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(this.alunoDao);
-            turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor,
-                    null/*listaAula*/, listaAluno);
-            System.out.println("******************************************************************");
-        }
-        else
-            turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula);
-        disciplina.getTurma().add(turma);
+        System.out.println("\nDetermine as alunos (ID: CPF) a serem matriculados.");
+        System.out.println("(Novos alunos podem ser matriculados a qualquer momento a partir da opção"
+                + " \"RELACIONAMENTOS\" no menu principal)\n");
+        List<Aluno> listaAluno = (List<Aluno>) this.montarListaDeCadastrados(AlunoDaoImpl.getInstancia());
+        //List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(this.alunoDao);
+        Turma turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula,
+                listaAluno);
+        
+        disciplina.getTurma().add(turma); //SÓ SE A TURMA PUDER MESMO SER CADASTRADA (ID NÃO REPETIDO)!
         //disciplina.adicionarTurma(turma);
-        System.out.println(turma.toString()); //APAGAR
         return TurmaDaoImpl.getInstancia().inserir(turma);
         //return this.turmaDao.inserir(turma);
     }
@@ -169,9 +164,17 @@ public class TurmaView {
         return null;
     }
     
-    /*public List<Aula> montarListaDeAulas () {
-        
-    }*/
+    public Professor obterCadastrado (Disciplina disciplina) {
+        Professor professor = null;
+        while ((professor = (Professor) this.obterCadastrado(ProfessorDaoImpl.getInstancia())) != null) {
+            if (professor.getDisciplina().contains(disciplina))
+                break;
+            else
+                System.out.println("ESTE PROFESSOR NÃO ESTÁ VINCULADO A ESTA DISCIPLINA! "
+                        + "TENTE NOVAMENTE!\n");
+        }
+        return professor;
+    }
     
     public List<? extends Object> montarListaDeCadastrados (Dao dao) {
         List<Object> listaObjeto = new ArrayList<>();

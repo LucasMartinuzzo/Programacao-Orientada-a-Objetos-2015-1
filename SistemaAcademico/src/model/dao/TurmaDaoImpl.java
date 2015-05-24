@@ -54,7 +54,7 @@ public class TurmaDaoImpl implements Dao {
     @Override
     public int indice (String id) {
         return Collections.binarySearch(listaTurma, new Turma (id, null, 
-                null, null, null, null, null));
+                null, null, null, null, null, null));
     }
     
     @Override
@@ -110,7 +110,7 @@ public class TurmaDaoImpl implements Dao {
             Integer periodo = Integer.parseInt(br.readLine());
             Integer numeroDeVagas = Integer.parseInt(br.readLine());
             String disciplina = br.readLine();
-            Turma turma = new Turma (id, ano, periodo, numeroDeVagas, null, null, null);
+            Turma turma = new Turma (id, ano, periodo, numeroDeVagas, null, null, null, null);
             if (DisciplinaDaoImpl.getInstancia().obter(disciplina) != null){
                 turma.setDisciplina(DisciplinaDaoImpl.getInstancia().obter(disciplina));
                 turma.getDisciplina().adicionarTurma(turma);
