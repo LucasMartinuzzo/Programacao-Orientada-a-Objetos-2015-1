@@ -20,8 +20,9 @@ public class AtividadeView {
 
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE ATIVIDADES\nCadastre uma nova atividade:\n");
-        System.out.println("ID: ");
-        String id = scanner.nextLine();
+        String id = this.validarId();
+        if (id == null)
+            return false;
         System.out.println("Nome: ");
         String nome = scanner.nextLine();
         System.out.println("Tipo: ");
@@ -70,6 +71,20 @@ public class AtividadeView {
         for (Atividade atividade: listaAtividade) {
             System.out.println(atividade.toString() + "\n");
         }
+    }
+    
+    public String validarId () {
+        while (true) {
+            System.out.println("ID (''cancelar'' para cancelar): ");
+            String id = scanner.nextLine();
+            if (id.equals("cancelar"))
+                break;
+            if (AtividadeDaoImpl.getInstancia().indice(id) <= -1)
+                return id;
+            else
+                System.out.println("\nUMA ATIVIDADE COM ESTE ID JÁ ESTÁ CADASTRADA! TENTE NOVAMENTE!\n");
+        }
+        return null;
     }
     
     public Object obterCadastrado (Dao dao) {

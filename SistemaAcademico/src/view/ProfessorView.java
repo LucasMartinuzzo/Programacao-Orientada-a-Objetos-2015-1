@@ -26,8 +26,9 @@ public class ProfessorView {
         System.out.println("CADASTRO DE PROFESSORES\nCadastre um novo professor:\n");
         System.out.println("Nome: ");
         String nome = scanner.nextLine();
-        System.out.println("CPF: ");
-        String cpf = scanner.nextLine();
+        String cpf = this.validarId();
+        if (cpf == null)
+            return false;
         System.out.println("Departamento: ");
         String departamento = scanner.nextLine();
         Professor professor = new Professor (nome, cpf, departamento);
@@ -63,6 +64,21 @@ public class ProfessorView {
             for (Professor professor: listaProfessor)
                 System.out.println(professor.toString() + "\n");    
     }
+    
+    public String validarId () {
+        while (true) {
+            System.out.println("CPF (''cancelar'' para cancelar): ");
+            String id = scanner.nextLine();
+            if (id.equals("cancelar"))
+                break;
+            if (ProfessorDaoImpl.getInstancia().indice(id) <= -1)
+                return id;
+            else
+                System.out.println("\nUM(A) PROFESSOR(A) COM ESTE CPF JÁ ESTÁ CADASTRADO(A)!"
+                        + " TENTE NOVAMENTE!\n");
+        }
+        return null;
+    }
 
     public Boolean quantidadeDisciplina(){
         System.out.println("Informe o CPF do professor: ");
@@ -72,7 +88,7 @@ public class ProfessorView {
                        + " é " + professor.getDisciplina().size() + ".");
             return true;
         }
-        System.out.println("Não existe professor cadastrado com esse cpf.");
+        System.out.println("\nNÃO EXISTE PROFESSOR(A) CADASTRADO(A) COM ESTE CPF!\n");
         return false;
     }    
 }

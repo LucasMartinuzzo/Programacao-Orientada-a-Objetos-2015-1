@@ -16,8 +16,9 @@ public class AulaView {
 
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE AULAS\nCadastre uma nova aula:\n");
-        System.out.println("ID: ");
-        String id = scanner.nextLine();
+        String id = this.validarId();
+        if (id == null)
+            return false;
         System.out.println("Dia da semana: ");
         String diaDaSemana = scanner.nextLine();
         System.out.println("Hora: ");
@@ -57,5 +58,19 @@ public class AulaView {
         for (Aula aula: listaAula) {
             System.out.println(aula.toString() + "\n");
         }
+    }
+    
+    public String validarId () {
+        while (true) {
+            System.out.println("ID (''cancelar'' para cancelar): ");
+            String id = scanner.nextLine();
+            if (id.equals("cancelar"))
+                break;
+            if (AulaDaoImpl.getInstancia().indice(id) <= -1)
+                return id;
+            else
+                System.out.println("\nUMA AULA COM ESTE ID JÁ ESTÁ CADASTRADA! TENTE NOVAMENTE!\n");
+        }
+        return null;
     }
 }

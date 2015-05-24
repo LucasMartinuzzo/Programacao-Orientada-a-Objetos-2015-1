@@ -33,8 +33,9 @@ public class FaltaView {
                 return false;
             if (turma.getAluno().contains(aluno)) {
                 System.out.println("\nAtualize o registro de faltas do aluno:\n");
-                System.out.println("ID: ");
-                String id = scanner.nextLine();
+                String id = this.validarId();
+                if (id == null)
+                    return false;
                 System.out.println("Número de faltas: ");
                 Integer numeroDeFalta = scanner.nextInt();
                 scanner.nextLine();
@@ -77,6 +78,21 @@ public class FaltaView {
         for (Falta falta: listaFalta) {
             System.out.println(falta.toString() + "\n");
         }
+    }
+    
+    public String validarId () {
+        while (true) {
+            System.out.println("ID (''cancelar'' para cancelar): ");
+            String id = scanner.nextLine();
+            if (id.equals("cancelar"))
+                break;
+            if (FaltaDaoImpl.getInstancia().indice(id) <= -1)
+                return id;
+            else
+                System.out.println("\nUM REGISTRO DE FALTAS COM ESTE ID JÁ ESTÁ CADASTRADO!"
+                        + " TENTE NOVAMENTE!\n");
+        }
+        return null;
     }
     
     public Object obterCadastrado (Dao dao) {    

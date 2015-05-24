@@ -21,14 +21,14 @@ public class AlunoView {
         System.out.println("CADASTRO DE ALUNOS\nCadastre um novo aluno:\n");
         System.out.println("Nome: ");
         String nome = scanner.nextLine();
-        System.out.println("CPF: ");
-        String cpf = scanner.nextLine();
+        String cpf = this.validarId();
+        if (cpf == null)
+            return false;
         Aluno aluno = new Aluno (nome, cpf);
         return AlunoDaoImpl.getInstancia().inserir(aluno);
        
         //return this.alunoDao.inserir(aluno);
     }
-    
     
     public Boolean matricularAluno(){
         System.out.println("MATRÍCULA DE ALUNOS\nMatricule um aluno:\n");
@@ -38,8 +38,18 @@ public class AlunoView {
             System.out.println("Informe a turma na qual será efetuada a matrícula: ");
             Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
             if(turma != null)
-                return turma.adicionarAluno(aluno);
+                if (turma.adicionarAluno(aluno))
+                    return true;
+                else
+                    if (turma.getNumeroDeVagas() > turma.getAluno().size())
+                        System.out.println("\nESTE(A) ALUNO(A) JÁ ESTÁ MATRICULADO(A) NESTA TURMA!");
+                    else
+                        System.out.println("\nNÃO HÁ VAGAS DISPONÍVEIS NESTA TURMA!");
+            else
+                System.out.println("\nTURMA NÃO ENCONTRADA!");
         }
+        else
+            System.out.println("\nALUNO NÃO ENCONTRADO!");
         return false;
     }
 
@@ -73,8 +83,23 @@ public class AlunoView {
         }
     }
     
+    public String validarId () {
+        while (true) {
+            System.out.println("CPF (''cancelar'' para cancelar): ");
+            String id = scanner.nextLine();
+            if (id.equals("cancelar"))
+                break;
+            if (AlunoDaoImpl.getInstancia().indice(id) <= -1)
+                return id;
+            else
+                System.out.println("\nUM(A) ALUNO(A) COM ESTE CPF JÁ ESTÁ CADASTRADO(A)!"
+                        + " TENTE NOVAMENTE!\n");
+        }
+        return null;
+    }
+    
     public Boolean consultarSituacaoAluno(){
-        System.out.println("Informe o cpf do aluno: ");
+        System.out.println("Informe o CPF do aluno: ");
         Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
         System.out.println("Informe o nome da disciplina: ");
         Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
@@ -104,5 +129,3 @@ public class AlunoView {
     }
 
 }
-
-

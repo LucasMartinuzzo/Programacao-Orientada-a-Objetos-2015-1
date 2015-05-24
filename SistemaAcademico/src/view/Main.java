@@ -168,14 +168,8 @@ public class Main {
                 break;
             if (relacionamentoEfetuado)
                 System.out.println("\nCONCLUÍDO COM ÊXITO!\n");
-            else {
-                System.out.println("\nIMPOSSÍVEL CONCLUIR!");
-                System.out.println("Possíveis causas:");
-                System.out.println("- A informação digitada não corresponde a um item cadastrado;");
-                System.out.println("- A operação já foi realizada anteriormente;");
-                System.out.println("- Em caso de matrícula de aluno, a turma solicitada não possui "
-                        + "vagas remanescentes.\n");
-            }
+            else
+                System.out.println("NÃO CONCLUÍDO!\n");
             
         }
     }
@@ -215,7 +209,7 @@ public class Main {
             if (opcao < 1 || opcao > 4)
                 break;
             if (!consultaEfetuada)
-                System.out.println("\nINFORMAÇÕES INVÁLIDAS PARA CONSULTA!\n");
+                System.out.println("\nNÃO FORAM ENCONTRADOS RESULTADOS PARA ESTA CONSULTA!\n");
         
         }
     }

@@ -28,8 +28,9 @@ public class NotaView {
             
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE NOTAS\nCadastre uma nova nota:\n");
-        System.out.println("ID: ");
-        String id = scanner.nextLine();
+        String id = this.validarId();
+        if (id == null)
+            return false;
         System.out.println("Nota: ");
         Double valorDaNota = scanner.nextDouble();
         scanner.nextLine();
@@ -79,6 +80,20 @@ public class NotaView {
         for (Nota nota: listaAluno) {
             System.out.println(nota.toString() + "\n");
         }
+    }
+    
+    public String validarId () {
+        while (true) {
+            System.out.println("ID (''cancelar'' para cancelar): ");
+            String id = scanner.nextLine();
+            if (id.equals("cancelar"))
+                break;
+            if (NotaDaoImpl.getInstancia().indice(id) <= -1)
+                return id;
+            else
+                System.out.println("\nUMA NOTA COM ESTE ID JÁ ESTÁ CADASTRADA! TENTE NOVAMENTE!\n");
+        }
+        return null;
     }
     
     public Object obterCadastrado (Dao dao) {    

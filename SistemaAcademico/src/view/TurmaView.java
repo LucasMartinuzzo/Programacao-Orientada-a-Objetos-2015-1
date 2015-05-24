@@ -34,8 +34,9 @@ public class TurmaView {
     
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE TURMAS\nCadastre uma nova turma:\n");
-        System.out.println("ID: ");
-        String id = scanner.nextLine();
+        String id = this.validarId();
+        if (id == null)
+            return false;
         System.out.println("Ano: ");
         Integer ano = scanner.nextInt();
         scanner.nextLine();
@@ -109,6 +110,20 @@ public class TurmaView {
         }
     }
     
+    public String validarId () {
+        while (true) {
+            System.out.println("ID (''cancelar'' para cancelar): ");
+            String id = scanner.nextLine();
+            if (id.equals("cancelar"))
+                break;
+            if (TurmaDaoImpl.getInstancia().indice(id) <= -1)
+                return id;
+            else
+                System.out.println("\nUMA TURMA COM ESTE ID JÁ ESTÁ CADASTRADA! TENTE NOVAMENTE!\n");
+        }
+        return null;
+    }
+    
     public Boolean listarAlunos () {
         Turma turma = null;
         System.out.println("\nIdentifique a turma procurada: ");
@@ -148,7 +163,7 @@ public class TurmaView {
         }
         return false;
     }
-
+    
     public Object obterCadastrado (Dao dao) {    
         while (true) {
             System.out.println("ID (''cancelar'' para cancelar): ");
@@ -199,13 +214,20 @@ public class TurmaView {
             System.out.println("Informe o ID da aula a ser atribuída à turma: ");
             Aula aula = (Aula) AulaDaoImpl.getInstancia().obter(scanner.nextLine());
             if (aula != null)
-                return turma.adicionarAula(aula);
+                if (turma.adicionarAula(aula))
+                    return true;
+                else
+                    System.out.println("\nESTA AULA JÁ FOI ATRIBUÍDA A ESTA TURMA ANTERIORMENTE!");
                 //turma.imprimirListaAulas();
 //                disciplina.getProfessor().add(professor);
 //                professor.getDisciplina().add(disciplina);
                 //System.out.println("AULA ATRIBUÍDA!");
                 //return true;
+            else
+                System.out.println("\nREGISTRO DE AULA NÃO ENCONTRADO!");
         }
+        else
+            System.out.println("\nTURMA NÃO ENCONTRADA!");
         return false;
     }
 }
