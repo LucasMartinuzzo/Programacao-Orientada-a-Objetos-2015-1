@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
@@ -22,32 +24,34 @@ public class FaltaView {
     
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE FALTAS");
-        while (true) {
-            System.out.println("Aluno:");
-            Aluno aluno = (Aluno) this.obterCadastrado(AlunoDaoImpl.getInstancia());
-            if (aluno == null)
-                return false;
-            System.out.println("Turma:");
-            Turma turma = (Turma) this.obterCadastrado(TurmaDaoImpl.getInstancia());
-            if (turma == null)
-                return false;
-            if (turma.getAluno().contains(aluno)) {
-                System.out.println("\nAtualize o registro de faltas do aluno:\n");
+        System.out.println("Turma (ID):");
+        Turma turma = (Turma) this.obterCadastrado(TurmaDaoImpl.getInstancia());
+        if (turma == null)
+            return false;
+        
+        for (Aluno aluno: turma.getAluno()) {
+            Collections.sort(aluno.getFalta(), new Falta());
+            if (Collections.binarySearch(aluno.getFalta(), new Falta (null, null, turma),
+                    new Falta()) <= -1) {
+                System.out.println("\nAtualize o registro de faltas do aluno abaixo:\n");
+                System.out.println(aluno.toString() + "\n");
                 String id = this.validarId();
-                if (id == null)
-                    return false;
+                if (id == null) {
+                    System.out.println("\nO registro de faltas ainda não foi concluído para todos os"
+                            + " alunos da turma. Você pode retomar a operação a qualquer momento.");
+                    return true;
+                }
                 System.out.println("Número de faltas: ");
                 Integer numeroDeFalta = scanner.nextInt();
                 scanner.nextLine();
-                Falta falta = new Falta (id, numeroDeFalta,turma);
+                Falta falta = new Falta (id, numeroDeFalta, turma);
                 aluno.getFalta().add(falta);
                 //aluno.adicionarFalta(falta);
-                return FaltaDaoImpl.getInstancia().inserir(falta);
-                //return this.faltaDao.inserir(falta);
+                FaltaDaoImpl.getInstancia().inserir(falta);
+                //this.faltaDao.inserir(falta);
             }
-            else
-                System.out.println("ESTE ALUNO NÃO ESTÁ MATRICULADO NA TURMA INFORMADA! TENTE NOVAMENTE\n");
         }
+        return true;
     }
 
     public void pesquisar () {
@@ -82,7 +86,8 @@ public class FaltaView {
     
     public String validarId () {
         while (true) {
-            System.out.println("ID (''cancelar'' para cancelar): ");
+            System.out.println("ID (''cancelar'' para cancelar o lançamento de faltas para todos os"
+                    + " alunos desta turma): ");
             String id = scanner.nextLine();
             if (id.equals("cancelar"))
                 break;

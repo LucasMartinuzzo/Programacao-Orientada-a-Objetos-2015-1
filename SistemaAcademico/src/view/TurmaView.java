@@ -33,7 +33,18 @@ public class TurmaView {
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
-        System.out.println("CADASTRO DE TURMAS\nCadastre uma nova turma:\n");
+        System.out.println("CADASTRO DE TURMAS");
+        System.out.println("Disciplina (ID: nome):");
+        Disciplina disciplina = (Disciplina) this.obterCadastrado(DisciplinaDaoImpl.getInstancia());
+        //Disciplina disciplina = (Disciplina) this.obterCadastrado(this.disciplinaDao);
+        if (disciplina == null)
+            return false;
+        System.out.println("Professor (ID: CPF):");
+        Professor professor = this.obterCadastrado(disciplina);
+        if (professor == null)
+            return false;
+        
+        System.out.println("\nCadastre uma nova turma:\n");
         String id = this.validarId();
         if (id == null)
             return false;
@@ -49,26 +60,18 @@ public class TurmaView {
         System.out.println("\nPara as próximas etapas do cadastro, "
                 + "entre com o código identificador (ID) do item procurado.\n");
         
-        System.out.println("Disciplina (ID: nome):");
-        Disciplina disciplina = (Disciplina) this.obterCadastrado(DisciplinaDaoImpl.getInstancia());
-        //Disciplina disciplina = (Disciplina) this.obterCadastrado(this.disciplinaDao);
-        if (disciplina == null)
-            return false;
-        System.out.println("Professor (ID: CPF):");
-        Professor professor = this.obterCadastrado(disciplina);
-        if (professor == null)
-            return false;
-        
         System.out.println("\nDetermine as aulas a serem adicionadas.");
         System.out.println("(Novas aulas podem ser adicionadas a qualquer momento a partir da opção"
                 + " \"RELACIONAMENTOS\" no menu principal)\n");
         //List<Aula> listaAula = this.montarListaDeAulas();
-        List<Aula> listaAula = (List<Aula>) this.montarListaDeCadastrados(AulaDaoImpl.getInstancia());
+        List<Aula> listaAula = (List<Aula>) this.montarListaDeCadastrados(disciplina,
+                AulaDaoImpl.getInstancia());
         
         System.out.println("\nDetermine as alunos (ID: CPF) a serem matriculados.");
         System.out.println("(Novos alunos podem ser matriculados a qualquer momento a partir da opção"
                 + " \"RELACIONAMENTOS\" no menu principal)\n");
-        List<Aluno> listaAluno = (List<Aluno>) this.montarListaDeCadastrados(AlunoDaoImpl.getInstancia());
+        List<Aluno> listaAluno = (List<Aluno>) this.montarListaDeCadastrados(disciplina,
+                AlunoDaoImpl.getInstancia());
         //List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(this.alunoDao);
         Turma turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula,
                 listaAluno);
@@ -191,14 +194,27 @@ public class TurmaView {
         return professor;
     }
     
-    public List<? extends Object> montarListaDeCadastrados (Dao dao) {
+    public List<? extends Object> montarListaDeCadastrados (Disciplina disciplina, Dao dao) {
         List<Object> listaObjeto = new ArrayList<>();
+        Boolean possivelAdicionar = true;
         while (true) {
             System.out.println("Continuar? ");
             System.out.println("Digite ''sim'' para continuar ou qualquer outro para não: ");
             if (scanner.nextLine().equals("sim")) {
                 Object objeto = this.obterCadastrado(dao);
-                if (objeto != null)
+                if (objeto != null) {
+                    if (dao instanceof AlunoDaoImpl) {
+                        Aluno aluno = (Aluno) objeto;
+                        if (disciplina.matriculado(aluno)) {
+                            System.out.println("ESTE ALUNO JÁ ESTÁ MATRICULADO EM UMA TURMA"
+                                    + " DESTA DISCIPLINA!\n");
+                            possivelAdicionar = false;
+                        }
+                    }
+                }
+                else
+                    possivelAdicionar = false;
+                if (possivelAdicionar)
                     listaObjeto.add(objeto);
             }
             else

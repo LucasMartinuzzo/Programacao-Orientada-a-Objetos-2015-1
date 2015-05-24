@@ -42,7 +42,8 @@ public class AlunoView {
                     return true;
                 else
                     if (turma.getNumeroDeVagas() > turma.getAluno().size())
-                        System.out.println("\nESTE(A) ALUNO(A) JÁ ESTÁ MATRICULADO(A) NESTA TURMA!");
+                        System.out.println("\nESTE(A) ALUNO(A) JÁ ESTÁ MATRICULADO(A) EM UMA TURMA"
+                                + " DESTA DISCIPLINA!");
                     else
                         System.out.println("\nNÃO HÁ VAGAS DISPONÍVEIS NESTA TURMA!");
             else

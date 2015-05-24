@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
@@ -27,29 +23,45 @@ public class NotaView {
     private static Scanner scanner = new Scanner (System.in);
             
     public Boolean cadastrar () {
-        System.out.println("CADASTRO DE NOTAS\nCadastre uma nova nota:\n");
-        String id = this.validarId();
-        if (id == null)
-            return false;
-        System.out.println("Nota: ");
-        Double valorDaNota = scanner.nextDouble();
-        scanner.nextLine();
-        System.out.println("Aluno (ID: CPF):");
-        Aluno aluno = (Aluno) this.obterCadastrado(AlunoDaoImpl.getInstancia());
-        if (aluno == null)
-            return false;
-        System.out.println("Atividade:");
+        System.out.println("CADASTRO DE NOTAS");
+        System.out.println("Atividade (ID):");
         Atividade atividade = (Atividade) this.obterCadastrado(AtividadeDaoImpl.getInstancia());
         if (atividade == null)
             return false;
-
-        Nota nota = new Nota (id, valorDaNota, aluno, atividade );
-        aluno.getNota().add(nota);
-        //aluno.adicionarNota(nota);
-        atividade.getNota().add(nota);
-        //atividade.adicionarNota(nota);
-        return NotaDaoImpl.getInstancia().inserir(nota);
-        //return this.notaDao.inserir(nota);
+        if (!atividade.notasLancadas()) {
+            for (Aluno aluno: atividade.getTurma().getAluno()) {
+                Collections.sort(aluno.getNota(), new Atividade());
+                if (Collections.binarySearch(aluno.getNota(), new Nota (null, null, null, atividade),
+                        new Atividade()) <= -1) {
+                    System.out.println("\nAtualize a nota do aluno abaixo nessa atividade:\n");
+                    System.out.println(aluno.toString() + "\n");
+                    String id = this.validarId();
+                    if (id == null) {
+                        System.out.println("\nO registro de notas da atividade ainda não foi concluído"
+                                + " para todos os alunos. Você pode retomar a operação a qualquer momento.");
+                        return true;
+                    }
+                    System.out.println("Nota:");
+                    Double valorDaNota = scanner.nextDouble();
+                    scanner.nextLine();
+                    Nota nota = new Nota (id, valorDaNota, aluno, atividade);
+                    aluno.getNota().add(nota);
+                    //aluno.adicionarNota(nota);
+                    atividade.getNota().add(nota);
+                    //atividade.adicionarNota(nota);
+                    NotaDaoImpl.getInstancia().inserir(nota);
+                    //this.notaDao.inserir(nota);
+                }
+            }
+            atividade.setNotasLancadas(true);
+            return true;
+        }
+        else {
+            System.out.println("\nAS NOTAS CORRESPONDENTES À ESTA ATIVIDADE JÁ FORAM LANÇADAS!");
+            System.out.println("Você pode alterar as notas lançadas a qualquer momento através do"
+                    + " menu ???????????"); //MUDAR DEPOIS
+            return false;
+        }
     }
 
    public void pesquisar () {
