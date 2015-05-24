@@ -19,7 +19,12 @@ public class AtividadeView {
     private static Scanner scanner = new Scanner (System.in);
 
     public Boolean cadastrar () {
-        System.out.println("CADASTRO DE ATIVIDADES\nCadastre uma nova atividade:\n");
+        System.out.println("CADASTRO DE ATIVIDADES");
+        System.out.println("Turma:");
+        Turma turma = (Turma) this.obterCadastrado(TurmaDaoImpl.getInstancia());
+        if(turma == null)
+            return false;
+        System.out.println("\nCadastre uma nova atividade:\n");
         String id = this.validarId();
         if (id == null)
             return false;
@@ -32,10 +37,6 @@ public class AtividadeView {
         System.out.println("Valor: ");
         Double valor = scanner.nextDouble();
         scanner.nextLine();
-        System.out.println("Turma:");
-        Turma turma = (Turma) this.obterCadastrado(TurmaDaoImpl.getInstancia());
-        if(turma == null)
-            return false;
         Atividade atividade = new Atividade (id, nome, tipo, data, valor, turma);
         turma.getAtividade().add(atividade);
         //turma.adicionarAtividade(atividade);

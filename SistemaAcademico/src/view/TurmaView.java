@@ -33,7 +33,18 @@ public class TurmaView {
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar () {
-        System.out.println("CADASTRO DE TURMAS\nCadastre uma nova turma:\n");
+        System.out.println("CADASTRO DE TURMAS");
+        System.out.println("Disciplina (ID: nome):");
+        Disciplina disciplina = (Disciplina) this.obterCadastrado(DisciplinaDaoImpl.getInstancia());
+        //Disciplina disciplina = (Disciplina) this.obterCadastrado(this.disciplinaDao);
+        if (disciplina == null)
+            return false;
+        System.out.println("Professor (ID: CPF):");
+        Professor professor = this.obterCadastrado(disciplina);
+        if (professor == null)
+            return false;
+        
+        System.out.println("\nCadastre uma nova turma:\n");
         String id = this.validarId();
         if (id == null)
             return false;
@@ -48,16 +59,6 @@ public class TurmaView {
         scanner.nextLine();
         System.out.println("\nPara as próximas etapas do cadastro, "
                 + "entre com o código identificador (ID) do item procurado.\n");
-        
-        System.out.println("Disciplina (ID: nome):");
-        Disciplina disciplina = (Disciplina) this.obterCadastrado(DisciplinaDaoImpl.getInstancia());
-        //Disciplina disciplina = (Disciplina) this.obterCadastrado(this.disciplinaDao);
-        if (disciplina == null)
-            return false;
-        System.out.println("Professor (ID: CPF):");
-        Professor professor = this.obterCadastrado(disciplina);
-        if (professor == null)
-            return false;
         
         System.out.println("\nDetermine as aulas a serem adicionadas.");
         System.out.println("(Novas aulas podem ser adicionadas a qualquer momento a partir da opção"
