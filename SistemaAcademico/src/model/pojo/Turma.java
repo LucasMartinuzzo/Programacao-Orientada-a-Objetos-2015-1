@@ -110,8 +110,8 @@ public class Turma implements Comparable<Turma> {
     }*/
     
     public Boolean adicionarAluno (Aluno aluno) {
-        if (!this.getAluno().contains(aluno) || 
-                this.getAluno().size() < this.getNumeroDeVagas()) {
+        if (this.getAluno().size() < this.getNumeroDeVagas() ||
+                !this.disciplina.matriculado(aluno)) {
             aluno.getTurma().add(this);
             return this.getAluno().add(aluno);
         }

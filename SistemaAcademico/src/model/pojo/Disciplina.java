@@ -1,6 +1,7 @@
 package model.pojo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 /**
  *
@@ -51,6 +52,15 @@ public class Disciplina implements Comparable<Disciplina>{
         return turma;
     }
 
+    public Boolean matriculado (Aluno aluno) {
+        for (Turma turma: this.getTurma()) {
+            Collections.sort(turma.getAluno());
+            if (Collections.binarySearch(turma.getAluno(), aluno) >= 0)
+                return true;
+        }
+        return false;
+    }
+    
     public Boolean adicionarTurma (Turma turma) {
         if (!this.getTurma().contains(turma))
             return this.getTurma().add(turma);
