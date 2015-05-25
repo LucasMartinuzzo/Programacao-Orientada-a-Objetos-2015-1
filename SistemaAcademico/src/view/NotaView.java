@@ -7,9 +7,11 @@ import model.dao.AlunoDaoImpl;
 import model.dao.AtividadeDaoImpl;
 import model.dao.Dao;
 import model.dao.NotaDaoImpl;
+import model.dao.TurmaDaoImpl;
 import model.pojo.Aluno;
 import model.pojo.Atividade;
 import model.pojo.Nota;
+import model.pojo.Turma;
 
 /**
  *
@@ -121,5 +123,43 @@ public class NotaView {
                 System.out.println("ITEM NÃO CADASTRADO! TENTE NOVAMENTE.\n");
         }
         return null;
+    }
+    
+    public Boolean alterarNotasLancadas () {
+        System.out.println("Informe o CPF do aluno:");
+        Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
+        if (aluno != null) {
+            System.out.println("Informe a ID da turma:");
+            Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
+            if (turma != null) {
+                System.out.println("Informe a ID da atividade:");
+                Atividade atividade = (Atividade) AtividadeDaoImpl.getInstancia().obter(scanner.nextLine());
+                if (atividade != null) {
+                    if (atividade.getTurma().equals(turma)) {
+                        if (atividade.notasLancadas()) {
+                            Collections.sort(atividade.getNota(), new Nota());
+                            Nota nota = atividade.getNota().get(Collections.binarySearch(atividade.getNota(),
+                                    new Nota (null, null, aluno, null), new Nota()));
+                            System.out.println("\nNota:");
+                            Double novaNota = scanner.nextDouble();
+                            scanner.nextLine();
+                            nota.setNota(novaNota);
+                            return true;
+                        }
+                        else
+                            System.out.println("\nAS NOTAS PARA ESTA ATIVIDADE AINDA NÃO FORAM LANÇADAS");
+                    }
+                    else
+                        System.out.println("\nATIVIDADE NÃO APLICADA A ESTA TURMA!");
+                }
+                else
+                    System.out.println("\nATIVIDADE NÃO ENCONTRADA!");
+            }
+            else
+                System.out.println("\nTURMA NÃO ENCONTRADA!");
+        }
+        else
+            System.out.println("\nALUNO NÃO ENCONTRADO!");
+        return false;
     }
 }

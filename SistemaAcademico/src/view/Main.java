@@ -74,10 +74,10 @@ public class Main {
             System.out.println("2 - CADASTRAR TURMA");
             System.out.println("3 - CADASTRAR PROFESSOR");
             System.out.println("4 - CADASTRAR ATIVIDADE");
-            System.out.println("5 - CADASTRAR FALTA");
-            System.out.println("6 - CADASTRAR NOTA");
-            System.out.println("7 - CADASTRAR DISCIPLINA");
-            System.out.println("8 - CADASTRAR AULA");
+            System.out.println("5 - CADASTRAR DISCIPLINA");
+            System.out.println("6 - CADASTRAR AULA");
+            System.out.println("7 - LANÇAR NOTAS");
+            System.out.println("8 - LANÇAR FALTAS");
             System.out.println("OUTRO - VOLTAR");
 
             System.out.println("\nOpção: ");
@@ -107,23 +107,23 @@ public class Main {
                     break;
                 }
                 case 5:{
-                    cadastroEfetuado = this.faltaView.cadastrar();
-                    FaltaDaoImpl.getInstancia().imprimir();
-                    break;
-                }
-                case 6:{
-                    cadastroEfetuado = this.notaView.cadastrar();
-                    NotaDaoImpl.getInstancia().imprimir();
-                    break;
-                }
-                case 7:{
                     cadastroEfetuado = this.disciplinaView.cadastrar();
                     DisciplinaDaoImpl.getInstancia().imprimir();
                     break;
                 }
-                case 8:{
+                case 6:{
                     cadastroEfetuado = this.aulaView.cadastrar();
                     AulaDaoImpl.getInstancia().imprimir();
+                    break;
+                }
+                case 7:{
+                    cadastroEfetuado = this.notaView.cadastrar();
+                    NotaDaoImpl.getInstancia().imprimir();
+                    break;
+                }
+                case 8:{
+                    cadastroEfetuado = this.faltaView.cadastrar();
+                    FaltaDaoImpl.getInstancia().imprimir();
                     break;
                 }
                 default:{}
@@ -137,36 +137,41 @@ public class Main {
         }
     }
     
-    private void imprimirMenuRelacionamentos(){
+    private void imprimirMenuGerenciamento(){
         while(true){
             System.out.println("1 - MATRICULAR ALUNO");
             System.out.println("2 - ATRIBUIR PROFESSOR A DISCIPLINA");
             System.out.println("3 - ATRIBUIR AULA A TURMA");
+            System.out.println("4 - ALTERAR NOTAS LANÇADAS");
             System.out.println("OUTRO - VOLTAR");
 
             System.out.println("\nOpção: ");
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             entrada.nextLine();
-            Boolean relacionamentoEfetuado = false;
+            Boolean operacaoEfetuada = false;
             switch(opcao){
                 case 1:{
-                    relacionamentoEfetuado = this.turmaView.matricularAluno();
+                    operacaoEfetuada = this.turmaView.matricularAluno();
                     break;
                 }
                 case 2:{
-                    relacionamentoEfetuado = this.disciplinaView.atribuirProfessor();
+                    operacaoEfetuada = this.disciplinaView.atribuirProfessor();
                     break;
                 }
                 case 3:{
-                    relacionamentoEfetuado = this.turmaView.atribuirAula();
+                    operacaoEfetuada = this.turmaView.atribuirAula();
+                    break;
+                }
+                case 4:{
+                    operacaoEfetuada = this.notaView.alterarNotasLancadas();
                     break;
                 }
                 default:{}
             }
-            if (opcao < 1 || opcao > 3)
+            if (opcao < 1 || opcao > 4)
                 break;
-            if (relacionamentoEfetuado)
+            if (operacaoEfetuada)
                 System.out.println("\nCONCLUÍDO COM ÊXITO!\n");
             else
                 System.out.println("NÃO CONCLUÍDO!\n");
@@ -368,16 +373,15 @@ public class Main {
     
     public static void main(String[] args) throws IOException{
         Integer opcao;
-        Main main = new Main();    
+        Main main = new Main();
         Scanner entrada = new Scanner(System.in);
-        //// main.carregarArquivo();
+        main.carregarArquivo();
         while(true){
-            System.out.println("1 - CADASTROS");
-            System.out.println("2 - CONSULTAS");
-            //System.out.println("3 - REMOÇÕES");
-            System.out.println("3 - RELACIONAMENTOS");
+            System.out.println("1 - CADASTRAR/LANÇAR");
+            System.out.println("2 - CONSULTAR");
+            System.out.println("3 - GERENCIAR TURMAS E DISCIPLINAS");
             System.out.println("4 - SAIR");
-            System.out.println("5 - IMPRIMIR (TEMPORÁRIO)"); //APAGAR!
+            System.out.println("10 - IMPRIMIR (TEMPORÁRIO)"); //APAGAR!
             
             System.out.println("\nOpção:");
             opcao = entrada.nextInt();
@@ -396,14 +400,16 @@ public class Main {
                         break;
                     }*/
                     case 3:{
-                        main.imprimirMenuRelacionamentos();
+                        main.imprimirMenuGerenciamento();
                         break;
                     }
                     case 4:{
-                    //Opção "sair" com main.salvarArquivo()    
+                        main.salvarArquivo();
+                        System.exit(0);
                     }
-                    case 5:{ //APAGAR!
+                    case 5:{
                         main.imprimirLista();
+                        break;
                     }
             }
         }    
