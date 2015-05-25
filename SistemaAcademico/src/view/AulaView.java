@@ -25,7 +25,7 @@ public class AulaView {
     
     public String validarId () {
         while (true) {
-            System.out.println("ID (''cancelar'' para cancelar): ");
+            System.out.println("ID (\"cancelar\" para cancelar): ");
             String id = scanner.nextLine();
             if (id.equals("cancelar"))
                 break;

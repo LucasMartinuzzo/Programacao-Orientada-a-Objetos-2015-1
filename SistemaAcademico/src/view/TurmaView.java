@@ -70,7 +70,7 @@ public class TurmaView {
     
     public String validarId () {
         while (true) {
-            System.out.println("ID (''cancelar'' para cancelar): ");
+            System.out.println("ID (\"cancelar\" para cancelar): ");
             String id = scanner.nextLine();
             if (id.equals("cancelar"))
                 break;
@@ -186,7 +186,7 @@ public class TurmaView {
     
     public Object obterCadastrado (Dao dao) {    
         while (true) {
-            System.out.println("ID (''cancelar'' para cancelar): ");
+            System.out.println("ID (\"cancelar\" para cancelar): ");
             String entrada = scanner.nextLine();
             if (entrada.equals("cancelar"))
                 break;
@@ -205,8 +205,8 @@ public class TurmaView {
             if (professor.getDisciplina().contains(disciplina))
                 break;
             else
-                System.out.println("ESTE PROFESSOR NÃO ESTÁ VINCULADO A ESTA DISCIPLINA! "
-                        + "TENTE NOVAMENTE!\n");
+                System.out.println("\nESTE PROFESSOR NÃO ESTÁ VINCULADO A ESTA DISCIPLINA! "
+                        + "TENTE NOVAMENTE!");
         }
         return professor;
     }
@@ -216,15 +216,15 @@ public class TurmaView {
         Boolean possivelAdicionar = true;
         while (true) {
             System.out.println("\nContinuar? ");
-            System.out.println("Digite ''sim'' para continuar ou qualquer outro para não: ");
+            System.out.println("Digite \"sim\" para continuar ou qualquer outro para não: ");
             if (scanner.nextLine().equals("sim")) {
                 Object objeto = this.obterCadastrado(dao);
                 if (objeto != null) {
                     if (dao instanceof AlunoDaoImpl) {
                         Aluno aluno = (Aluno) objeto;
                         if (disciplina.turmaQueContem(aluno) != null) {
-                            System.out.println("ESTE ALUNO JÁ ESTÁ MATRICULADO EM UMA TURMA"
-                                    + " DESTA DISCIPLINA!\n");
+                            System.out.println("\nESTE ALUNO JÁ ESTÁ MATRICULADO EM UMA TURMA"
+                                    + " DESTA DISCIPLINA!");
                             possivelAdicionar = false;
                         }
                     }

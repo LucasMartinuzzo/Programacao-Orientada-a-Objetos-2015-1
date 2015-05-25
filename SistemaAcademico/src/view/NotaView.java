@@ -59,7 +59,7 @@ public class NotaView {
     
     public String validarId () {
         while (true) {
-            System.out.println("ID (''cancelar'' para cancelar): ");
+            System.out.println("ID (\"cancelar\" para cancelar): ");
             String id = scanner.nextLine();
             if (id.equals("cancelar"))
                 break;
@@ -73,7 +73,7 @@ public class NotaView {
     
     public Object obterCadastrado (Dao dao) {    
         while (true) {
-            System.out.println("ID (''cancelar'' para cancelar): ");
+            System.out.println("ID (\"cancelar\" para cancelar): ");
             String entrada = scanner.nextLine();            
             if (entrada.equals("cancelar"))
                 break;
@@ -91,11 +91,11 @@ public class NotaView {
         System.out.println("Informe o CPF do aluno:");
         Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
         if (aluno != null) {
-            System.out.println("Informe a ID da turma:");
+            System.out.println("Informe o ID da turma:");
             Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
             if (turma != null) {
                 if (turma.getAluno().contains(aluno)) {
-                    System.out.println("Informe a ID da atividade:");
+                    System.out.println("Informe o ID da atividade:");
                     Atividade atividade = (Atividade) AtividadeDaoImpl.getInstancia().obter(scanner.nextLine());
                     if (atividade != null) {
                         if (atividade.getTurma().equals(turma)) {

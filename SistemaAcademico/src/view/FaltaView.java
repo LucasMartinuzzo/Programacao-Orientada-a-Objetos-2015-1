@@ -50,8 +50,7 @@ public class FaltaView {
     
     public String validarId () {
         while (true) {
-            System.out.println("ID (''cancelar'' para cancelar o lançamento de faltas para todos os"
-                    + " alunos desta turma): ");
+            System.out.println("ID (\"cancelar\" para cancelar): ");
             String id = scanner.nextLine();
             if (id.equals("cancelar"))
                 break;
@@ -66,7 +65,7 @@ public class FaltaView {
     
     public Object obterCadastrado (Dao dao) {    
         while (true) {
-            System.out.println("ID (''cancelar'' para cancelar): ");
+            System.out.println("ID (\"cancelar\" para cancelar): ");
             String entrada = scanner.nextLine();
             if (entrada.equals("cancelar"))
                 break;

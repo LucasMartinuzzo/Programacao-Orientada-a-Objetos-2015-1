@@ -26,7 +26,7 @@ public class DisciplinaView {
     
     public String validarId () {
         while (true) {
-            System.out.println("Nome (''cancelar'' para cancelar): ");
+            System.out.println("Nome (\"cancelar\" para cancelar): ");
             String id = scanner.nextLine();
             if (id.equals("cancelar"))
                 break;
@@ -63,7 +63,7 @@ public class DisciplinaView {
                     System.out.println("\nESTE PROFESSOR JÁ FOI ATRIBUÍDO A ESTA DISCIPLINA"
                             + " ANTERIORMENTE!");
             else
-                System.out.println("\nPROFESSOR NÃO ECONTRADO!");
+                System.out.println("\nPROFESSOR NÃO ENCONTRADO!");
         }
         else
             System.out.println("\nDISCIPLINA NÃO ENCONTRADA!");

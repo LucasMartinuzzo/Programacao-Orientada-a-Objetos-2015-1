@@ -21,7 +21,7 @@ public class AlunoView {
     
     public String validarId () {
         while (true) {
-            System.out.println("CPF (''cancelar'' para cancelar): ");
+            System.out.println("CPF (\"cancelar\" para cancelar): ");
             String id = scanner.nextLine();
             if (id.equals("cancelar"))
                 break;

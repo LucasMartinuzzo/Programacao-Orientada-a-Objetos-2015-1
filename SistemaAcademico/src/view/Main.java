@@ -60,6 +60,7 @@ public class Main {
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             Boolean cadastroEfetuado = false;
             switch(opcao) {
                 case 1:{
@@ -99,9 +100,9 @@ public class Main {
             if (opcao < 1 || opcao > 8)
                 break;
             if (cadastroEfetuado)
-                System.out.println("\nCADASTRO EFETUADO COM SUCESSO!\n");
+                System.out.println("\nCADASTRO/LANÇAMENTO EFETUADO COM SUCESSO!\n");
             else
-                System.out.println("\nCADASTRO NÃO EFETUADO!\n");
+                System.out.println("\nCADASTRO/LANÇAMENTO NÃO EFETUADO!\n");
         }
     }
     
@@ -117,6 +118,7 @@ public class Main {
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             Boolean operacaoEfetuada = false;
             switch(opcao){
                 case 1:{
@@ -142,7 +144,7 @@ public class Main {
             if (operacaoEfetuada)
                 System.out.println("\nCONCLUÍDO COM ÊXITO!\n");
             else
-                System.out.println("NÃO CONCLUÍDO!\n");
+                System.out.println("\nNÃO CONCLUÍDO!\n");
             
         }
     }
@@ -159,6 +161,7 @@ public class Main {
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             Boolean consultaEfetuada = false;
             switch(opcao){
                 case 1:{
@@ -196,11 +199,13 @@ public class Main {
             System.out.println("1 - CADASTRAR/LANÇAR");
             System.out.println("2 - CONSULTAR");
             System.out.println("3 - GERENCIAR TURMAS E DISCIPLINAS");
-            System.out.println("4 - SAIR");
+            System.out.println("4 - SALVAR");
+            System.out.println("5 - SALVAR E SAIR");
             
             System.out.println("\nOpção:");
             opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             switch(opcao){
                     case 1: {
                         main.imprimirMenuCadastro();
@@ -216,6 +221,12 @@ public class Main {
                     }
                     case 4:{
                         main.salvarArquivo();
+                        System.out.println("\nINFORMAÇÕES SALVAS!\n");
+                        break;
+                    }
+                    case 5:{
+                        main.salvarArquivo();
+                        System.out.println("\nINFORMAÇÕES SALVAS!\nENCERRANDO PROGRAMA.\n");
                         System.exit(0);
                     }
                     default:{
