@@ -1,7 +1,7 @@
 package view;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import model.dao.AlunoDaoImpl;
 import model.dao.AtividadeDaoImpl;
@@ -18,8 +18,9 @@ public class NotaView {
     private static Scanner scanner = new Scanner (System.in);
             
     public Boolean cadastrar () {
+        scanner.useLocale(Locale.US);
         System.out.println("CADASTRO DE NOTAS");
-        System.out.println("Atividade (ID):");
+        System.out.println("Atividade:");
         Atividade atividade = (Atividade) this.obterCadastrado(AtividadeDaoImpl.getInstancia());
         if (atividade == null)
             return false;
@@ -29,23 +30,20 @@ public class NotaView {
                 if (Collections.binarySearch(aluno.getNota(), new Nota (null, null, null, atividade),
                         new Atividade()) <= -1) {
                     System.out.println("\nAtualize a nota do aluno abaixo nessa atividade:\n");
-                    System.out.println(aluno.toString() + "\n");
+                    System.out.println(aluno.toString());
                     String id = this.validarId();
                     if (id == null) {
                         System.out.println("\nO registro de notas da atividade ainda não foi concluído"
                                 + " para todos os alunos. Você pode retomar a operação a qualquer momento.");
                         return true;
                     }
-                    System.out.println("Nota:");
+                    System.out.println("Nota (XX.XX):");
                     Double valorDaNota = scanner.nextDouble();
                     scanner.nextLine();
                     Nota nota = new Nota (id, valorDaNota, aluno, atividade);
                     aluno.getNota().add(nota);
-                    //aluno.adicionarNota(nota);
                     atividade.getNota().add(nota);
-                    //atividade.adicionarNota(nota);
                     NotaDaoImpl.getInstancia().inserir(nota);
-                    //this.notaDao.inserir(nota);
                 }
             }
             atividade.setNotasLancadas(true);
@@ -89,34 +87,39 @@ public class NotaView {
     }
     
     public Boolean alterarNotasLancadas () {
+        scanner.useLocale(Locale.US);
         System.out.println("Informe o CPF do aluno:");
         Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
         if (aluno != null) {
             System.out.println("Informe a ID da turma:");
             Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
             if (turma != null) {
-                System.out.println("Informe a ID da atividade:");
-                Atividade atividade = (Atividade) AtividadeDaoImpl.getInstancia().obter(scanner.nextLine());
-                if (atividade != null) {
-                    if (atividade.getTurma().equals(turma)) {
-                        if (atividade.notasLancadas()) {
-                            Collections.sort(atividade.getNota(), new Nota());
-                            Nota nota = atividade.getNota().get(Collections.binarySearch(atividade.getNota(),
-                                    new Nota (null, null, aluno, null), new Nota()));
-                            System.out.println("\nNota:");
-                            Double novaNota = scanner.nextDouble();
-                            scanner.nextLine();
-                            nota.setNota(novaNota);
-                            return true;
+                if (turma.getAluno().contains(aluno)) {
+                    System.out.println("Informe a ID da atividade:");
+                    Atividade atividade = (Atividade) AtividadeDaoImpl.getInstancia().obter(scanner.nextLine());
+                    if (atividade != null) {
+                        if (atividade.getTurma().equals(turma)) {
+                            if (atividade.notasLancadas()) {
+                                Collections.sort(atividade.getNota(), new Nota());
+                                Nota nota = atividade.getNota().get(Collections.binarySearch(atividade.getNota(),
+                                        new Nota (null, null, aluno, null), new Nota()));
+                                System.out.println("\nNota (XX.XX):");
+                                Double novaNota = scanner.nextDouble();
+                                scanner.nextLine();
+                                nota.setNota(novaNota);
+                                return true;
+                            }
+                            else
+                                System.out.println("\nAS NOTAS PARA ESTA ATIVIDADE AINDA NÃO FORAM LANÇADAS");
                         }
                         else
-                            System.out.println("\nAS NOTAS PARA ESTA ATIVIDADE AINDA NÃO FORAM LANÇADAS");
+                            System.out.println("\nATIVIDADE NÃO APLICADA A ESTA TURMA!");
                     }
                     else
-                        System.out.println("\nATIVIDADE NÃO APLICADA A ESTA TURMA!");
+                        System.out.println("\nATIVIDADE NÃO ENCONTRADA!");
                 }
                 else
-                    System.out.println("\nATIVIDADE NÃO ENCONTRADA!");
+                    System.out.println("\nO(A) ALUNO(A) NÃO ESTÁ MATRICULADO(A) NESTA TURMA!");
             }
             else
                 System.out.println("\nTURMA NÃO ENCONTRADA!");

@@ -83,10 +83,13 @@ public class Turma implements Comparable<Turma> {
     }
     
     public Boolean faltasLancadas () {
-        Aluno ultimoMatriculado = this.aluno.get(this.aluno.size() - 1);
-        Collections.sort(ultimoMatriculado.getFalta(), new Falta());
-        return (Collections.binarySearch(ultimoMatriculado.getFalta(), new Falta(null, null, this), 
-                new Falta()) >= 0);
+        if (this.aluno.size() > 0) {
+            Aluno ultimoMatriculado = this.aluno.get(this.aluno.size() - 1);
+            Collections.sort(ultimoMatriculado.getFalta(), new Falta());
+            return (Collections.binarySearch(ultimoMatriculado.getFalta(), new Falta(null, null, this), 
+                    new Falta()) >= 0);
+        }
+        return false;
     }
     
     public Boolean todasAsNotasLancadas () {

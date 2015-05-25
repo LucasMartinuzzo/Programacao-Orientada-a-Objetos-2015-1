@@ -15,7 +15,7 @@ public class FaltaView {
     
     public Boolean cadastrar () {
         System.out.println("CADASTRO DE FALTAS");
-        System.out.println("Turma (ID):");
+        System.out.println("Turma:");
         Turma turma = (Turma) this.obterCadastrado(TurmaDaoImpl.getInstancia());
         if (turma == null)
             return false;

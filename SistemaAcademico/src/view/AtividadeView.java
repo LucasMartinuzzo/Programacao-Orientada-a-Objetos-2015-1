@@ -1,6 +1,6 @@
 package view;
 
-import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import model.dao.AtividadeDaoImpl;
 import model.dao.Dao;
@@ -13,6 +13,7 @@ public class AtividadeView {
     private static Scanner scanner = new Scanner (System.in);
 
     public Boolean cadastrar () {
+        scanner.useLocale(Locale.US);
         System.out.println("CADASTRO DE ATIVIDADES");
         System.out.println("Turma:");
         Turma turma = (Turma) this.obterCadastrado(TurmaDaoImpl.getInstancia());
@@ -26,9 +27,9 @@ public class AtividadeView {
         String nome = scanner.nextLine();
         System.out.println("Tipo: ");
         String tipo = scanner.nextLine();
-        System.out.println("Data(DD/MM/AAAA): ");
+        System.out.println("Data (DD/MM/AAAA): ");
         String data = scanner.nextLine();
-        System.out.println("Valor: ");
+        System.out.println("Valor (XX.XX): ");
         Double valor = scanner.nextDouble();
         scanner.nextLine();
         Atividade atividade = new Atividade (id, nome, tipo, data, valor, turma);

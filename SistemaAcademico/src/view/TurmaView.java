@@ -48,17 +48,17 @@ public class TurmaView {
         Integer numeroDeVagas = scanner.nextInt();
         scanner.nextLine();
         System.out.println("\nPara as próximas etapas do cadastro, "
-                + "entre com o código identificador (ID) do item procurado.\n");
+                + "entre com o código identificador (ID) do item procurado.");
         
         System.out.println("\nDetermine as aulas a serem adicionadas.");
         System.out.println("(Novas aulas podem ser adicionadas a qualquer momento a partir da opção"
-                + " \"GERENCIAR TURMAS E DISCIPLINAS\" no menu principal)\n");
+                + " \"GERENCIAR TURMAS E DISCIPLINAS\" no menu principal)");
         List<Aula> listaAula = (List<Aula>) this.montarListaDeCadastrados(disciplina,
                 AulaDaoImpl.getInstancia());
         
         System.out.println("\nDetermine as alunos (ID: CPF) a serem matriculados.");
         System.out.println("(Novos alunos podem ser matriculados a qualquer momento a partir da opção"
-                + " \"GERENCIAR TURMAS E DISCIPLINAS\" no menu principal)\n");
+                + " \"GERENCIAR TURMAS E DISCIPLINAS\" no menu principal)");
         List<Aluno> listaAluno = (List<Aluno>) this.montarListaDeCadastrados(disciplina,
                 AlunoDaoImpl.getInstancia());
         Turma turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula,
@@ -107,7 +107,7 @@ public class TurmaView {
     }
     
     public Boolean listarAlunos () {
-        Turma turma = null;
+        Boolean sucesso = false;
         System.out.println("\nIdentifique a turma procurada: ");
         System.out.println("* Disciplina: ");
         String disciplina = scanner.nextLine();
@@ -118,22 +118,22 @@ public class TurmaView {
         Integer periodo = scanner.nextInt();
         scanner.nextLine();
         List<Turma> listaTurma = (List<Turma>) TurmaDaoImpl.getInstancia().obterTodos();
-        for (Turma turmaConsultada: listaTurma) {
-            if (turmaConsultada.getDisciplina().getNome().equals(disciplina))
-                if (turmaConsultada.getAno().equals(ano))
-                    if (turmaConsultada.getPeriodo().equals(periodo))
-                        turma = turmaConsultada;
-        }
-        if (turma != null) {
-            if (turma.todasAsNotasLancadas() && turma.faltasLancadas()) {
-                for (Aluno aluno: turma.getAluno())
-                    this.imprimirSituacaoAluno(aluno, turma);
-                return true;
+        if (listaTurma.size() > 0)
+            for (Turma turma: listaTurma) {
+                if (turma.getDisciplina().getNome().equals(disciplina))
+                    if (turma.getAno().equals(ano))
+                        if (turma.getPeriodo().equals(periodo)) {
+                            System.out.println("\nTURMA " + turma.getId() + ":");
+                            if (turma.todasAsNotasLancadas() && turma.faltasLancadas())
+                                for (Aluno aluno: turma.getAluno())
+                                    this.imprimirSituacaoAluno(aluno, turma);
+                            else
+                                System.out.println("AS NOTAS/FALTAS CORRESPONDENTES À TURMA NÃO"
+                                        + " FORAM LANÇADAS PARA TODAS AS ATIVIDADES/ALUNOS!\n");
+                            sucesso = true;
+                        }
             }
-            else
-                System.out.println("\nAS NOTAS/FALTAS CORRESPONDENTES À TURMA NÃO FORAM LANÇADAS!");
-        }
-        return false;
+        return sucesso;
     }
     
     public Boolean consultarSituacaoAluno(){
@@ -157,7 +157,9 @@ public class TurmaView {
                             System.out.println("\nALUNO REPROVADO!\n");
                     }
                     else
-                        System.out.println("\nAS NOTAS/FALTAS CORRESPONDENTES AO ALUNO NÃO FORAM LANÇADAS!");
+                        System.out.println("\nO ALUNO SOLICITADO NÃO TEVE SEU REGISTRO DE FALTAS"
+                                + " ATUALIZADO OU SUAS NOTAS LANÇADAS EM TODAS AS ATIVIDADES"
+                                + " PARA ESTA DISCIPLINA.\n");
                     return true;
                 }
             }
@@ -165,7 +167,7 @@ public class TurmaView {
         return false;
     }
     
-    public void imprimirSituacaoAluno(Aluno aluno, Turma turma) {
+    public void imprimirSituacaoAluno (Aluno aluno, Turma turma) {
         System.out.println("\nAluno: " + aluno.getNome());
         System.out.println("Notas:");
         for (Atividade atividade: turma.getAtividade()) {
@@ -174,8 +176,8 @@ public class TurmaView {
                     new Nota (null, null, aluno, null), new Nota());
             System.out.println(" *" + atividade.getNome() + ": " + 
                     atividade.getNota().get(indiceNota).getNota());
-            System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
         }
+        System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
         Collections.sort(aluno.getFalta(), new Falta());
         Integer indiceFalta = Collections.binarySearch(aluno.getFalta(),
                     new Falta (null, null, turma), new Falta());
@@ -213,7 +215,7 @@ public class TurmaView {
         List<Object> listaObjeto = new ArrayList<>();
         Boolean possivelAdicionar = true;
         while (true) {
-            System.out.println("Continuar? ");
+            System.out.println("\nContinuar? ");
             System.out.println("Digite ''sim'' para continuar ou qualquer outro para não: ");
             if (scanner.nextLine().equals("sim")) {
                 Object objeto = this.obterCadastrado(dao);
