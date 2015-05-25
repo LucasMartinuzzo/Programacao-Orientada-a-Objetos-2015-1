@@ -1,24 +1,44 @@
+Rodolfo
+123.934.098-89
+DCE
+Arquitetura,
+Leonardo
+143.675.867-98
+DCE
+POO,
 Caio Rafael Gomes
 251.498.262-60
 DETEC
-Fenomenos de Transporte
+Fenomenos de Transporte,
 Heitor Schneider dos Santos
 263.042.712-98
 DMA
-Algebra Linear,Calculo I
-Francisco Pereira
-811.343.365-19
+Algebra Linear,Calculo I,
+Luisa Martins
+305.857.815-67
+DFP
+Antropologia,
+Andre
+457.987.239
 DMA
-Calculo I
+Calculo 3,
 Igor Calmon Rego
 574.856.472-61
 DMA
 NULL
+Francisco Pereira
+811.343.365-19
+DMA
+Calculo I,
 Maria Betina dos Santos
 973.888.577-96
 DFP
-Antropologia,Introducao a Filosofia
-Luisa Martins
-305.857.815-67
-DFP
-Antropologia,Psicopatologia
+Antropologia,Introducao a Filosofia,
+Daniel
+983.123.657-12
+DCE
+Basica,
+Michel
+998.012.845-34
+DMA
+Algebra Linear,

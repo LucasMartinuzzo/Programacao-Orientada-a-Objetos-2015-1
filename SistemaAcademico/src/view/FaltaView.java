@@ -73,7 +73,7 @@ public class FaltaView {
             if (objeto != null)
                 return objeto;
             else
-                System.out.println("ITEM NÃO CADASTRADO! TENTE NOVAMENTE.\n");
+                System.out.println("\nITEM NÃO CADASTRADO! TENTE NOVAMENTE.\n");
         }
         return null;
     }

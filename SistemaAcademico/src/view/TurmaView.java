@@ -194,7 +194,7 @@ public class TurmaView {
             if (objeto != null)
                 return objeto;
             else
-                System.out.println("ITEM NÃO CADASTRADO! TENTE NOVAMENTE.\n");
+                System.out.println("\nITEM NÃO CADASTRADO! TENTE NOVAMENTE.\n");
         }
         return null;
     }
@@ -205,7 +205,7 @@ public class TurmaView {
             if (professor.getDisciplina().contains(disciplina))
                 break;
             else
-                System.out.println("\nESTE PROFESSOR NÃO ESTÁ VINCULADO A ESTA DISCIPLINA! "
+                System.out.println("\nESTE PROFESSOR NÃO ESTÁ VINCULADO À ESTA DISCIPLINA! "
                         + "TENTE NOVAMENTE!");
         }
         return professor;
@@ -250,7 +250,7 @@ public class TurmaView {
                 if (turma.adicionarAula(aula))
                     return true;
                 else
-                    System.out.println("\nESTA AULA JÁ FOI ATRIBUÍDA A ESTA TURMA ANTERIORMENTE!");
+                    System.out.println("\nESTA AULA JÁ FOI ATRIBUÍDA À ESTA TURMA ANTERIORMENTE!");
             else
                 System.out.println("\nREGISTRO DE AULA NÃO ENCONTRADO!");
         }
