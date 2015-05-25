@@ -8,7 +8,6 @@ package model.dao;
 import java.util.ArrayList;
 import java.util.List;
 import model.pojo.Aluno;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,50 +17,32 @@ import static org.junit.Assert.*;
  */
 public class AlunoDaoImplTest {
 
-    
-    /**
-     * Test of getInstancia method, of class AlunoDaoImpl.
-     */
     @Test
-    public void testGetInstancia() {
-        
-    }
-
-    /**
-     * Test of inserir method, of class AlunoDaoImpl.
-     */
-    @Test
-    public void testInserir() {
-    }
-
-    
-    /**
-     * Test of indice method, of class AlunoDaoImpl.
-     */
-    @Test
-    public void testIndice() {
-        AlunoDaoImpl alunoDao = AlunoDaoImpl.getInstancia();
-        Aluno aluno = new Aluno("1","1");
-        alunoDao.inserir(aluno);
-        assertEquals(0,alunoDao.indice("1"));
-    }
-
-    /**
-     * Test of obter method, of class AlunoDaoImpl.
-     */
-    @Test
-    public void testObter() {
+    public void insereAuloNaListaAluno(){
         AlunoDaoImpl alunoDao = AlunoDaoImpl.getInstancia();
         Aluno aluno = new Aluno("1","1");
         alunoDao.inserir(aluno);
         assertEquals(aluno,alunoDao.obter("1"));
     }
     
-    /**
-    * Test of obterTodos method, of class AlunoDaoImpl.
-    */
     @Test
-    public void testObterTodos() {
+    public void retornaIndice0SeAluno1TiverNaPosição0() {
+        AlunoDaoImpl alunoDao = AlunoDaoImpl.getInstancia();
+        Aluno aluno = new Aluno("1","1");
+        alunoDao.inserir(aluno);
+        assertEquals(0,alunoDao.indice("1"));
+    }
+    
+    @Test
+    public void retornaAula1SeObterCpf1() {
+        AlunoDaoImpl alunoDao = AlunoDaoImpl.getInstancia();
+        Aluno aluno = new Aluno("1","1");
+        alunoDao.inserir(aluno);
+        assertEquals(aluno,alunoDao.obter("1"));
+    }
+  
+    @Test
+    public void retornaListaDeAlunos() {
         List<Aluno> lista = new ArrayList<>();
         AlunoDaoImpl alunoDao = AlunoDaoImpl.getInstancia();
         Aluno aluno1 = new Aluno("1","1");
@@ -76,19 +57,4 @@ public class AlunoDaoImplTest {
         }
         assertEquals(lista,listaAluno);
     }
-
-    /**
-     * Test of salvar method, of class AlunoDaoImpl.
-     */
-    @Test
-    public void testSalvar() throws Exception {
-    }
-
-    /**
-     * Test of carregar method, of class AlunoDaoImpl.
-     */
-    @Test
-    public void testCarregar() throws Exception {
-    }
-    
-}
+ }

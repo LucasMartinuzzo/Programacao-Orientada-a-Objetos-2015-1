@@ -1,0 +1,18 @@
+Calculo I
+Limites e continuidade; Derivacao; Aplicacoes de derivacao; Integrais
+60
+Introducao a Filosofia
+Fundamentos filosoficos; Correntes filosoficas; A ciencia, a politica, a moral e a etica
+40
+Psicopatologia
+Conceitos basicos sobre sanidade e patologia; Funcoes psicoquimicas; Disturbios e sindromes
+60
+Algebra Linear
+Matrizes e sistemas lineares; Espacos e subespacos vetoriais; Transformacoes lineares; Autovetores e autovalores
+60
+Fenomenos de Transporte
+Leis basicas; Transporte e quantidade de movimento; Equacoes de balanco; Escoamento laminar e turbulento; Teoria da condutividade em gases
+60
+Antropologia
+Alteridade e etnocentrismo; Universalismo e particularismo; Diversidade cultural
+40

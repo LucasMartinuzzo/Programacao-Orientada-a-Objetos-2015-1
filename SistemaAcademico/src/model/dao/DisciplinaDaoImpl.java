@@ -16,7 +16,7 @@ import model.pojo.Disciplina;
  * @author Lucas
  */
 public class DisciplinaDaoImpl implements Dao {
-    private static List<Disciplina> listaDisciplina = new ArrayList<Disciplina>();
+    private static List<Disciplina> listaDisciplina = new ArrayList<>();
     private static DisciplinaDaoImpl instancia = null;
     
     public static DisciplinaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO

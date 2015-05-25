@@ -1,0 +1,52 @@
+1
+Segunda-feira
+10:40 - 12:20
+Sala 10
+2
+Quinta-feira
+13:00 - 14:40
+Sala 4
+3
+Quarta-feira
+7:00 - 8:40
+Sala 8
+4
+Sexta-feira
+9:50 - 11:30
+Sala 4
+5
+Quarta-feira
+7:00 - 8:40
+Sala 2
+6
+Terça-feira
+14:40 - 16:20
+Sala 3
+7
+Sexta-feira
+16:40 - 18:20
+Sala 5
+8
+Terça-feira
+16:40 - 18:20
+Sala 10
+9
+Quarta-feira
+13:00 - 14:40
+Sala 7
+10
+Quinta-feira
+8:40 - 10:20
+Sala 2
+11
+Sexta-feira
+14:40 - 16:20
+Sala 7
+12
+Segunda-feira
+8:40 - 10:20
+Sala 1
+13
+Quarta-feira
+8:40 - 12:20
+Sala 9
