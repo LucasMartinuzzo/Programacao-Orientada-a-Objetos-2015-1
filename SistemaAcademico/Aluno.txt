@@ -1,0 +1,44 @@
+Angela Aparecida Eger
+375.929.981-49
+1,7,5
+1,2,3
+Charles da Silva
+610.627.311-15
+1,5,6
+4,5,6
+Cristiana Nogueira
+714.078.801-44
+3,4,8
+8,10,9
+Daniel Ribeiro Porto
+239.592.901-87
+NULL
+NULL
+Dogivania Galdino Lima
+305.306.871-00
+7,6,3,4,1
+11,12,13,14,15
+Elias Rodrigues
+098.411.991-49
+2,7,5,6,4
+16,17,18,19,20
+Esmeraldo Ricardo do Santos
+271.127.051-34
+2
+NULL
+Flavia Alves da Costa
+806.326.451-72
+8,4
+21,22
+Heliane de Souza Lima
+398.962.341-91
+7,4,3
+23,24,25
+Joao Elias
+723.010.668-00
+NULL
+NULL
+Eber Bomfim Araujo
+492.783.711-49
+1,5,6
+7,16,27
