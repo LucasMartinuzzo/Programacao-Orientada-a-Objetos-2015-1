@@ -19,13 +19,7 @@ import static org.junit.Assert.*;
 //String id, String diaDaSemana, String hora, String local
 public class AulaDaoImplTest {
     
-    public AulaDaoImplTest() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
+     
     @Test
     public void insereAulaNaListaAula() {
         AulaDaoImpl aulaDao = AulaDaoImpl.getInstancia();
