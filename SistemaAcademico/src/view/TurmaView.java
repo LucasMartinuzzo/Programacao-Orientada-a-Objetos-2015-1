@@ -76,7 +76,7 @@ public class TurmaView {
         Turma turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula,
                 listaAluno);
         
-        disciplina.getTurma().add(turma); //SÓ SE A TURMA PUDER MESMO SER CADASTRADA (ID NÃO REPETIDO)!
+        disciplina.getTurma().add(turma);
         //disciplina.adicionarTurma(turma);
         return TurmaDaoImpl.getInstancia().inserir(turma);
         //return this.turmaDao.inserir(turma);
@@ -91,8 +91,7 @@ public class TurmaView {
         //    System.out.println(this.turmaDao.obter(id).toString());
         else
             System.out.println("TURMA NÃO ENCONTRADA!\n");
-    }
-    
+    }  
     
     public void remover(){
         System.out.println("REMOÇÃO DE TURMAS\nEntre com o ID da turma: ");
@@ -127,6 +126,30 @@ public class TurmaView {
         return null;
     }
     
+    public Boolean matricularAluno(){
+        System.out.println("MATRÍCULA DE ALUNOS\nMatricule um aluno:\n");
+        System.out.println("Informe o CPF do aluno: ");
+        Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
+        if (aluno != null) {
+            System.out.println("Informe a turma na qual será efetuada a matrícula: ");
+            Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
+            if(turma != null)
+                if (turma.adicionarAluno(aluno))
+                    return true;
+                else
+                    if (turma.getNumeroDeVagas() > turma.getAluno().size())
+                        System.out.println("\nESTE(A) ALUNO(A) JÁ ESTÁ MATRICULADO(A) EM UMA TURMA"
+                                + " DESTA DISCIPLINA!");
+                    else
+                        System.out.println("\nNÃO HÁ VAGAS DISPONÍVEIS NESTA TURMA!");
+            else
+                System.out.println("\nTURMA NÃO ENCONTRADA!");
+        }
+        else
+            System.out.println("\nALUNO NÃO ENCONTRADO!");
+        return false;
+    }
+    
     public Boolean listarAlunos () {
         Turma turma = null;
         System.out.println("\nIdentifique a turma procurada: ");
@@ -146,25 +169,62 @@ public class TurmaView {
                         turma = turmaConsultada;
         }
         if (turma != null) {
-            for (Aluno aluno: turma.getAluno()) {
-                System.out.println("\nAluno: " + aluno.getNome());
-                System.out.println("Notas:");
-                for (Atividade atividade: turma.getAtividade()) {
-                    Collections.sort(atividade.getNota(), new Nota());
-                    Integer indiceNota = Collections.binarySearch(atividade.getNota(),
-                            new Nota (null, null, aluno, null), new Nota());
-                    System.out.println(" *" + atividade.getNome() + ": " + 
-                            atividade.getNota().get(indiceNota).getNota());
-                    System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
-                }
-                Collections.sort(aluno.getFalta(), new Falta());
-                Integer indiceFalta = Collections.binarySearch(aluno.getFalta(),
-                            new Falta (null, null, turma), new Falta());
-                System.out.println("Faltas: " + aluno.getFalta().get(indiceFalta));
+            if (turma.todasAsNotasLancadas() && turma.faltasLancadas()) {
+                for (Aluno aluno: turma.getAluno())
+                    this.imprimirSituacaoAluno(aluno, turma);
                 return true;
+            }
+            else
+                System.out.println("\nAS NOTAS/FALTAS CORRESPONDENTES À TURMA NÃO FORAM LANÇADAS!");
+        }
+        return false;
+    }
+    
+    public Boolean consultarSituacaoAluno(){
+        System.out.println("Informe o CPF do aluno: ");
+        Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
+        if (aluno != null) {
+            System.out.println("Informe o nome da disciplina: ");
+            Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
+            //Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(scanner.nextLine());
+            if(disciplina != null){
+                Turma turma = disciplina.turmaQueContem(aluno);
+                if (turma != null) {
+                    if (turma.todasAsNotasLancadas() && turma.faltasLancadas()) {
+                        this.imprimirSituacaoAluno(aluno, turma);
+                        Collections.sort(aluno.getFalta(), new Falta());
+                        Falta faltaConsultada = aluno.getFalta().get(Collections.binarySearch(aluno.getFalta(),
+                                new Falta (null, null, turma), new Falta()));
+                        if(((faltaConsultada.getFalta()/disciplina.getCargaHoraria())<=0.25)
+                                && (aluno.NotaFinal(turma)>=6))
+                            System.out.println("\nALUNO APROVADO!\n");
+                        else
+                            System.out.println("\nALUNO REPROVADO!\n");
+                    }
+                    else
+                        System.out.println("\nAS NOTAS/FALTAS CORRESPONDENTES AO ALUNO NÃO FORAM LANÇADAS!");
+                    return true;
+                }
             }
         }
         return false;
+    }
+    
+    public void imprimirSituacaoAluno(Aluno aluno, Turma turma) {
+        System.out.println("\nAluno: " + aluno.getNome());
+        System.out.println("Notas:");
+        for (Atividade atividade: turma.getAtividade()) {
+            Collections.sort(atividade.getNota(), new Nota());
+            Integer indiceNota = Collections.binarySearch(atividade.getNota(),
+                    new Nota (null, null, aluno, null), new Nota());
+            System.out.println(" *" + atividade.getNome() + ": " + 
+                    atividade.getNota().get(indiceNota).getNota());
+            System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
+        }
+        Collections.sort(aluno.getFalta(), new Falta());
+        Integer indiceFalta = Collections.binarySearch(aluno.getFalta(),
+                    new Falta (null, null, turma), new Falta());
+        System.out.println("Faltas: " + aluno.getFalta().get(indiceFalta).getFalta());
     }
     
     public Object obterCadastrado (Dao dao) {    
@@ -205,7 +265,7 @@ public class TurmaView {
                 if (objeto != null) {
                     if (dao instanceof AlunoDaoImpl) {
                         Aluno aluno = (Aluno) objeto;
-                        if (disciplina.matriculado(aluno)) {
+                        if (disciplina.turmaQueContem(aluno) != null) {
                             System.out.println("ESTE ALUNO JÁ ESTÁ MATRICULADO EM UMA TURMA"
                                     + " DESTA DISCIPLINA!\n");
                             possivelAdicionar = false;

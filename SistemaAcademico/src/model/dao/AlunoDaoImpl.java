@@ -114,9 +114,13 @@ public class AlunoDaoImpl implements Dao {
             Aluno aluno = new Aluno(nome, cpf);
             this.inserir(aluno);
             String[] turma = br.readLine().split(",");
-            for(String t: turma)
-                if((!(t.equals("NULL"))) && (TurmaDaoImpl.getInstancia().obter(t) != null))
-                    aluno.adicionarTurma(TurmaDaoImpl.getInstancia().obter(t));
+            for(String t: turma) {
+                Turma turmaConsultada = (Turma) TurmaDaoImpl.getInstancia().obter(t);
+                /*if((!(t.equals("NULL"))) && (TurmaDaoImpl.getInstancia().obter(t) != null))
+                    aluno.adicionarTurma(TurmaDaoImpl.getInstancia().obter(t));*/
+                if((!(t.equals("NULL"))) && (turmaConsultada != null))
+                    turmaConsultada.adicionarAluno(aluno);
+            }
             String[] falta = br.readLine().split(",");
             for(String f: falta)
                 if((!(f.equals("NULL"))) && (FaltaDaoImpl.getInstancia().obter(f) != null))

@@ -54,7 +54,7 @@ public class Aluno implements Comparable<Aluno> {
         return nota;
     }
     
-    public Boolean adicionarTurma (Object objeto) {
+    /*public Boolean adicionarTurma (Object objeto) {
         Turma turma = (Turma) objeto;
         if (!this.getTurma().contains(turma) || 
                 turma.getAluno().size() < turma.getNumeroDeVagas()) {
@@ -62,7 +62,8 @@ public class Aluno implements Comparable<Aluno> {
             return this.getTurma().add(turma);
         }
         return false;
-    }
+    }*/
+    
     public Boolean adicionarNota(Nota nota){
         if(!this.getNota().contains(nota))
             return this.getNota().add(nota);
@@ -77,10 +78,13 @@ public class Aluno implements Comparable<Aluno> {
 //    }
 
     public Double NotaFinal(Turma turma){
-        Double somaNotas = 0.0;
-        for(Nota notaConsultada: this.getNota())
-            if(notaConsultada.getAtividade().getTurma().equals(turma))
-                somaNotas += notaConsultada.getNota();
+        Double somaNotas = -1.0;
+        if (turma.todasAsNotasLancadas()) {
+            somaNotas = 0.0;
+            for(Nota notaConsultada: this.getNota())
+                if(notaConsultada.getAtividade().getTurma().equals(turma))
+                    somaNotas += notaConsultada.getNota();
+        }
         return somaNotas;
     }
     

@@ -52,13 +52,13 @@ public class Disciplina implements Comparable<Disciplina>{
         return turma;
     }
 
-    public Boolean matriculado (Aluno aluno) {
+    public Turma turmaQueContem (Aluno aluno) {
         for (Turma turma: this.getTurma()) {
             Collections.sort(turma.getAluno());
             if (Collections.binarySearch(turma.getAluno(), aluno) >= 0)
-                return true;
+                return turma;
         }
-        return false;
+        return null;
     }
     
     public Boolean adicionarTurma (Turma turma) {

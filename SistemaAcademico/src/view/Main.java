@@ -151,7 +151,7 @@ public class Main {
             Boolean relacionamentoEfetuado = false;
             switch(opcao){
                 case 1:{
-                    relacionamentoEfetuado = this.alunoView.matricularAluno();
+                    relacionamentoEfetuado = this.turmaView.matricularAluno();
                     break;
                 }
                 case 2:{
@@ -193,7 +193,7 @@ public class Main {
                     break;
                 }
                 case 2:{
-                    consultaEfetuada = this.alunoView.consultarSituacaoAluno();
+                    consultaEfetuada = this.turmaView.consultarSituacaoAluno();
                     break;
                 }
                 case 3:{

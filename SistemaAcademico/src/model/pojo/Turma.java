@@ -1,6 +1,7 @@
 package model.pojo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -109,9 +110,24 @@ public class Turma implements Comparable<Turma> {
             return null;
     }*/
     
+    public Boolean faltasLancadas () {
+        Aluno ultimoMatriculado = this.aluno.get(this.aluno.size() - 1);
+        Collections.sort(ultimoMatriculado.getFalta(), new Falta());
+        return (Collections.binarySearch(ultimoMatriculado.getFalta(), new Falta(null, null, this), 
+                new Falta()) >= 0);
+    }
+    
+    public Boolean todasAsNotasLancadas () {
+        for (Atividade atividade: this.getAtividade()) {
+            if (!atividade.notasLancadas())
+                return false;
+        }
+        return true;
+    }
+    
     public Boolean adicionarAluno (Aluno aluno) {
         if (this.getAluno().size() < this.getNumeroDeVagas() ||
-                !this.disciplina.matriculado(aluno)) {
+                this.getDisciplina().turmaQueContem(aluno) == null) {
             aluno.getTurma().add(this);
             return this.getAluno().add(aluno);
         }

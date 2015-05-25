@@ -29,30 +29,6 @@ public class AlunoView {
        
         //return this.alunoDao.inserir(aluno);
     }
-    
-    public Boolean matricularAluno(){
-        System.out.println("MATRÍCULA DE ALUNOS\nMatricule um aluno:\n");
-        System.out.println("Informe o CPF do aluno: ");
-        Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
-        if (aluno != null) {
-            System.out.println("Informe a turma na qual será efetuada a matrícula: ");
-            Turma turma = (Turma) TurmaDaoImpl.getInstancia().obter(scanner.nextLine());
-            if(turma != null)
-                if (turma.adicionarAluno(aluno))
-                    return true;
-                else
-                    if (turma.getNumeroDeVagas() > turma.getAluno().size())
-                        System.out.println("\nESTE(A) ALUNO(A) JÁ ESTÁ MATRICULADO(A) EM UMA TURMA"
-                                + " DESTA DISCIPLINA!");
-                    else
-                        System.out.println("\nNÃO HÁ VAGAS DISPONÍVEIS NESTA TURMA!");
-            else
-                System.out.println("\nTURMA NÃO ENCONTRADA!");
-        }
-        else
-            System.out.println("\nALUNO NÃO ENCONTRADO!");
-        return false;
-    }
 
     public void pesquisar () {
         System.out.println("PESQUISA DE ALUNOS\nEntre com o CPF do aluno: ");
@@ -98,35 +74,4 @@ public class AlunoView {
         }
         return null;
     }
-    
-    public Boolean consultarSituacaoAluno(){
-        System.out.println("Informe o CPF do aluno: ");
-        Aluno aluno = (Aluno) AlunoDaoImpl.getInstancia().obter(scanner.nextLine());
-        System.out.println("Informe o nome da disciplina: ");
-        Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
-        //Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(scanner.nextLine());
-        if(disciplina != null && aluno != null){
-            for(Turma turma : disciplina.getTurma()){
-                for(Aluno alunoConsultado : turma.getAluno()){
-                    if(alunoConsultado.equals(aluno)){
-                        aluno.toString();
-                        for(Falta faltaConsultada : aluno.getFalta()){
-                            if(faltaConsultada.getTurma().equals(turma)){
-                                System.out.println("Falta: " + faltaConsultada.getFalta());
-                                System.out.println("Nota: " + aluno.NotaFinal(turma));
-                                if(((faltaConsultada.getFalta()/disciplina.getCargaHoraria())<=0.25)
-                                        && (aluno.NotaFinal(turma)>6))
-                                    System.out.println("Aluno aprovado!");
-                                else
-                                    System.out.println("Aluno não aprovado!");
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
 }
