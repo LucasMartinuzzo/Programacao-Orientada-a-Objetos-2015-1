@@ -20,7 +20,6 @@ public class DisciplinaDaoImplTest {
     
     @Test
     public void insereDisciplinaNaListaDisciplina() {
-        
         DisciplinaDaoImpl disciplinaDao = DisciplinaDaoImpl.getInstancia();
         Disciplina disciplina = new Disciplina("1","1",1);
         disciplinaDao.inserir(disciplina);
@@ -30,17 +29,15 @@ public class DisciplinaDaoImplTest {
     
     @Test
     public void retornaIndice0SeDisciplina1TiverNaPosição0() {
-        
         DisciplinaDaoImpl disciplinaDao = DisciplinaDaoImpl.getInstancia();
         Disciplina disciplina = new Disciplina("1","1",1);
         disciplinaDao.inserir(disciplina);
-        assertEquals(disciplina,disciplinaDao.indice("1"));
+        assertEquals(0,disciplinaDao.indice("1"));
     }
 
     
     @Test
     public void retornaDisciplina1SeObterNome1() {
-        
         DisciplinaDaoImpl disciplinaDao = DisciplinaDaoImpl.getInstancia();
         Disciplina disciplina = new Disciplina("1","1",1);
         disciplinaDao.inserir(disciplina);
@@ -60,8 +57,8 @@ public class DisciplinaDaoImplTest {
         Disciplina disciplina3 = new Disciplina("3","3",3);
         disciplinaDao.inserir(disciplina3);
         List<Disciplina> listaDisciplina = (List<Disciplina>) DisciplinaDaoImpl.getInstancia().obterTodos();
-        for(Disciplina aluno5 : listaDisciplina){
-            lista.add(aluno5); 
+        for(Disciplina disciplina5 : listaDisciplina){
+            lista.add(disciplina5); 
         }
         assertEquals(lista,listaDisciplina);
     }

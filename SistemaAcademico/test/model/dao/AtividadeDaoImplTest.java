@@ -46,15 +46,15 @@ public class AtividadeDaoImplTest {
     }
   
     @Test
-    public void retornaListaDeAlunos() {
+    public void retornaListaDeAtividade() {
         List<Atividade> lista = new ArrayList<>();
-        AlunoDaoImpl alunoDao = AlunoDaoImpl.getInstancia();
+        AtividadeDaoImpl atividadeDao = AtividadeDaoImpl.getInstancia();
         Atividade atividade1 = new Atividade("1","1","1","1",1.0, new Turma("1",1,1,1,new Disciplina("1","1",1),new Professor("1","1","1"),null,null));
-        alunoDao.inserir(atividade1);
+        atividadeDao.inserir(atividade1);
         Atividade atividade2 = new Atividade("2","2","2","2",2.0, new Turma("2",2,2,2,new Disciplina("2","2",2),new Professor("2","2","2"),null,null));
-        alunoDao.inserir(atividade2);
+        atividadeDao.inserir(atividade2);
         Atividade atividade3 = new Atividade("3","3","3","3",3.0, new Turma("3",3,3,3,new Disciplina("3","3",3),new Professor("3","3","3"),null,null));
-        alunoDao.inserir(atividade3);
+        atividadeDao.inserir(atividade3);
         List<Atividade> listaAtividade = (List<Atividade>) AtividadeDaoImpl.getInstancia().obterTodos();
         for(Atividade atividade5 : listaAtividade){
             lista.add(atividade5); 

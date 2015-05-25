@@ -34,7 +34,7 @@ public class FaltaDaoImplTest {
         FaltaDaoImpl faltaDao = FaltaDaoImpl.getInstancia();
         Falta falta = new Falta("1",1,new Turma("1",1,1,1,new Disciplina("1","1",1),new Professor("1","1","1"),null,null));
         faltaDao.inserir(falta);
-        assertEquals(falta,faltaDao.indice("1"));
+        assertEquals(0,faltaDao.indice("1"));
     }
 
     @Test

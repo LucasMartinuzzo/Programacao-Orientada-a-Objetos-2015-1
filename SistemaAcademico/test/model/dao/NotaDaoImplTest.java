@@ -36,7 +36,7 @@ public class NotaDaoImplTest {
         NotaDaoImpl notaDao = NotaDaoImpl.getInstancia();
         Nota nota = new Nota("1",1.0,new Aluno("1","1"),new Atividade("1","1","1","1",1.0, new Turma("1",1,1,1,new Disciplina("1","1",1),new Professor("1","1","1"),null,null)));
         notaDao.inserir(nota);
-        assertEquals(nota,notaDao.indice("1"));
+        assertEquals(0,notaDao.indice("1"));
     }
 
     
