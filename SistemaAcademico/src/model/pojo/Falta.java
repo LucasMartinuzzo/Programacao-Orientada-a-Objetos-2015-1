@@ -2,10 +2,6 @@ package model.pojo;
 
 import java.util.Comparator;
 
-/**
- *
- * @author Filipe
- */
 public class Falta implements Comparable<Falta>, Comparator<Falta> {
     private String id;
     private Integer falta;
@@ -26,10 +22,6 @@ public class Falta implements Comparable<Falta>, Comparator<Falta> {
     
     public Integer getFalta(){
         return falta;
-    }
-    
-    public void setFalta(Integer falta){
-        this.falta = falta;
     }
     
     public Turma getTurma(){

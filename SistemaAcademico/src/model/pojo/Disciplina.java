@@ -3,10 +3,7 @@ package model.pojo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-/**
- *
- * @author Lucas
- */
+
 public class Disciplina implements Comparable<Disciplina>{
     private String nome;
     private String ementa;
@@ -24,24 +21,12 @@ public class Disciplina implements Comparable<Disciplina>{
         return nome;
     }
     
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    
     public String getEmenta(){
         return ementa;
     }
     
-    public void setEmenta(String ementa){
-        this.ementa = ementa;
-    }
-    
     public Integer getCargaHoraria(){
         return cargaHoraria;
-    }
-    
-    public void setCargaHoraria(Integer cargaHoraria){
-        this.cargaHoraria = cargaHoraria;
     }
     
     public List<Professor> getProfessor(){
@@ -66,10 +51,6 @@ public class Disciplina implements Comparable<Disciplina>{
             return this.getTurma().add(turma);
         return false;
     }
-
-    public Boolean removerTurma (Turma turma) {
-        return this.getTurma().remove(turma);
-    }
     
     @Override
     public int compareTo(Disciplina disciplina) {
@@ -80,17 +61,5 @@ public class Disciplina implements Comparable<Disciplina>{
     public String toString () {
         return ("Nome: " + this.nome + "\nEmenta: " + this.ementa + 
                 "\nCarga Horária: " + this.cargaHoraria + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaProfessores () {
-        for (Professor professor: this.professor)
-            System.out.println(professor.toString() + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaTurmas () {
-        for (Turma turma: this.turma)
-            System.out.println(turma.toString());
     }
 }

@@ -1,13 +1,8 @@
 package model.pojo;
-//CONSULTAR A SITUAÇÃO DO ALUNO EM DETERMINADA DISCIPLINA
 
 import java.util.ArrayList;
 import java.util.List;     
 
-/**
- *
- * @author Filipe
- */
 public class Aluno implements Comparable<Aluno> {
     private String nome;
     private String cpf;
@@ -23,22 +18,15 @@ public class Aluno implements Comparable<Aluno> {
     public String getNome() {
         return nome;
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    
     public String getCpf() {
         return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public List<Turma> getTurma() {
         return turma;
     }
+    
     public Boolean adicionarFalta(Object objeto){
         Falta falta = (Falta) objeto;
         if(!this.getFalta().contains(falta))
@@ -54,28 +42,11 @@ public class Aluno implements Comparable<Aluno> {
         return nota;
     }
     
-    /*public Boolean adicionarTurma (Object objeto) {
-        Turma turma = (Turma) objeto;
-        if (!this.getTurma().contains(turma) || 
-                turma.getAluno().size() < turma.getNumeroDeVagas()) {
-            turma.getAluno().add(this);
-            return this.getTurma().add(turma);
-        }
-        return false;
-    }*/
-    
     public Boolean adicionarNota(Nota nota){
         if(!this.getNota().contains(nota))
             return this.getNota().add(nota);
         return false;
     }
-    
-//    public Nota retornaNota (Nota nota) {
-//       if(this.getNota().contains(nota))
-//            return this.getNota().get(this.getNota().indexOf(nota)); 
-//       else
-//            return null; 
-//    }
 
     public Double NotaFinal(Turma turma){
         Double somaNotas = -1.0;
@@ -96,23 +67,5 @@ public class Aluno implements Comparable<Aluno> {
     @Override
     public String toString () {
         return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaTurmas () {
-        for (Turma turma: this.turma)
-            System.out.println(turma.toString() + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaFaltas () {
-        for (Falta falta: this.falta)
-            System.out.println(falta.toString() + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaAlunos () {
-        for (Nota nota: this.nota)
-            System.out.println(nota.toString() + "\n");
     }
 }

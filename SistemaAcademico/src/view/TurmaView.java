@@ -19,16 +19,7 @@ import model.pojo.Nota;
 import model.pojo.Professor;
 import model.pojo.Turma;
 
-/**
- *
- * @author JeanPablo
- */
 public class TurmaView {    
-    //private Dao turmaDao;
-    //private Dao disciplinaDao;
-    //private Dao professorDao;
-    //private Dao aulaDao;
-    //private Dao alunoDao;
     
     private static Scanner scanner = new Scanner (System.in);
     
@@ -36,7 +27,6 @@ public class TurmaView {
         System.out.println("CADASTRO DE TURMAS");
         System.out.println("Disciplina (ID: nome):");
         Disciplina disciplina = (Disciplina) this.obterCadastrado(DisciplinaDaoImpl.getInstancia());
-        //Disciplina disciplina = (Disciplina) this.obterCadastrado(this.disciplinaDao);
         if (disciplina == null)
             return false;
         System.out.println("Professor (ID: CPF):");
@@ -62,54 +52,20 @@ public class TurmaView {
         
         System.out.println("\nDetermine as aulas a serem adicionadas.");
         System.out.println("(Novas aulas podem ser adicionadas a qualquer momento a partir da opção"
-                + " \"RELACIONAMENTOS\" no menu principal)\n");
-        //List<Aula> listaAula = this.montarListaDeAulas();
+                + " \"GERENCIAR TURMAS E DISCIPLINAS\" no menu principal)\n");
         List<Aula> listaAula = (List<Aula>) this.montarListaDeCadastrados(disciplina,
                 AulaDaoImpl.getInstancia());
         
         System.out.println("\nDetermine as alunos (ID: CPF) a serem matriculados.");
         System.out.println("(Novos alunos podem ser matriculados a qualquer momento a partir da opção"
-                + " \"RELACIONAMENTOS\" no menu principal)\n");
+                + " \"GERENCIAR TURMAS E DISCIPLINAS\" no menu principal)\n");
         List<Aluno> listaAluno = (List<Aluno>) this.montarListaDeCadastrados(disciplina,
                 AlunoDaoImpl.getInstancia());
-        //List<Aluno> listaAluno = (List<Aluno>) (Aluno) this.montarListaDeCadastrados(this.alunoDao);
         Turma turma = new Turma (id, ano, periodo, numeroDeVagas, disciplina, professor, listaAula,
                 listaAluno);
         
         disciplina.getTurma().add(turma);
-        //disciplina.adicionarTurma(turma);
         return TurmaDaoImpl.getInstancia().inserir(turma);
-        //return this.turmaDao.inserir(turma);
-    }
-    
-    public void pesquisar () {
-        System.out.println("PESQUISA DE TURMAS\nEntre com o ID da turma: ");
-        String id = scanner.nextLine();
-        if(TurmaDaoImpl.getInstancia().indice(id) >= 0)
-            System.out.println(TurmaDaoImpl.getInstancia().obter(id).toString());
-        //if (this.turmaDao.indice(id) != -1)
-        //    System.out.println(this.turmaDao.obter(id).toString());
-        else
-            System.out.println("TURMA NÃO ENCONTRADA!\n");
-    }  
-    
-    public void remover(){
-        System.out.println("REMOÇÃO DE TURMAS\nEntre com o ID da turma: ");
-        String cpf = scanner.nextLine();
-        if(ProfessorDaoImpl.getInstancia().remover(ProfessorDaoImpl.getInstancia().obter(cpf)))
-        //if (professorDao.remover(professorDao.obter(cpf)))
-            System.out.println("TURMA REMOVIDA COM SUCESSO!");                
-        else
-            System.out.println("TURMA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
-    }
-    
-    public void listar () {
-        System.out.println("LISTA DE TURMAS DISPONÍVEIS\n");
-        List<Turma> listaTurma = (List<Turma>) TurmaDaoImpl.getInstancia().obterTodos();
-        //List<Turma> listaTurma = (List<Turma>) (Turma) turmaDao.obterTodos();
-        for (Turma turma: listaTurma) {
-            System.out.println(turma.toString() + "\n");
-        }
     }
     
     public String validarId () {
@@ -186,7 +142,6 @@ public class TurmaView {
         if (aluno != null) {
             System.out.println("Informe o nome da disciplina: ");
             Disciplina disciplina = (Disciplina) DisciplinaDaoImpl.getInstancia().obter(scanner.nextLine());
-            //Disciplina disciplina = (Disciplina) this.disciplinaDao.obter(scanner.nextLine());
             if(disciplina != null){
                 Turma turma = disciplina.turmaQueContem(aluno);
                 if (turma != null) {
@@ -294,11 +249,6 @@ public class TurmaView {
                     return true;
                 else
                     System.out.println("\nESTA AULA JÁ FOI ATRIBUÍDA A ESTA TURMA ANTERIORMENTE!");
-                //turma.imprimirListaAulas();
-//                disciplina.getProfessor().add(professor);
-//                professor.getDisciplina().add(disciplina);
-                //System.out.println("AULA ATRIBUÍDA!");
-                //return true;
             else
                 System.out.println("\nREGISTRO DE AULA NÃO ENCONTRADO!");
         }

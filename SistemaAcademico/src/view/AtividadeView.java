@@ -8,14 +8,8 @@ import model.dao.TurmaDaoImpl;
 import model.pojo.Atividade;
 import model.pojo.Turma;
 
-
-/**
- *
- * @author Mônicka
- */
 public class AtividadeView {
-    //private Dao atividadeDao;
-    //private Dao turmaDao;
+    
     private static Scanner scanner = new Scanner (System.in);
 
     public Boolean cadastrar () {
@@ -39,39 +33,7 @@ public class AtividadeView {
         scanner.nextLine();
         Atividade atividade = new Atividade (id, nome, tipo, data, valor, turma);
         turma.getAtividade().add(atividade);
-        //turma.adicionarAtividade(atividade);
         return AtividadeDaoImpl.getInstancia().inserir(atividade);
-        //return this.atividadeDao.inserir(atividade);
-    }
-
-    public void pesquisar () {
-        System.out.println("PESQUISA DE ATIVIDADES\nEntre com o ID da atividade: ");
-        String id = scanner.nextLine();
-        if(AtividadeDaoImpl.getInstancia().indice(id) != -1)
-            System.out.println(AtividadeDaoImpl.getInstancia().obter(id).toString());
-        //if (this.atividadeDao.indice(id) != -1)
-        //    System.out.println(this.atividadeDao.obter(id).toString());
-        else
-            System.out.println("ATIVIDADE NÃO ENCONTRADA!\n");
-    }
-
-    public void remover(){
-        System.out.println("REMOÇÃO DE ATIVIDADES\nEntre com o ID da atividade: ");
-        String id = scanner.nextLine();
-        if(AtividadeDaoImpl.getInstancia().remover(AtividadeDaoImpl.getInstancia().obter(id)))
-        //if (atividadeDao.remover(atividadeDao.obter(id)))
-            System.out.println("ATIVIDADE REMOVIDA COM SUCESSO!");                
-        else
-            System.out.println("ATIVIDADE NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
-    }
-
-    public void listar () {
-        System.out.println("LISTA DE ATIVIDADES DISPONÍVEIS\n");
-        List<Atividade> listaAtividade = (List<Atividade>) AtividadeDaoImpl.getInstancia().obterTodos();
-        //List<Atividade> listaAtividade = (List<Atividade>) (Atividade) atividadeDao.obterTodos();
-        for (Atividade atividade: listaAtividade) {
-            System.out.println(atividade.toString() + "\n");
-        }
     }
     
     public String validarId () {

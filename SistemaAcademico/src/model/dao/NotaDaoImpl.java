@@ -11,27 +11,14 @@ import java.util.Collections;
 import java.util.List;
 import model.pojo.Nota;
 
-/**
- *
- * @author Pedro
- */
 public class NotaDaoImpl implements Dao {
     private static List<Nota> listaNota = new ArrayList<>();
     private static NotaDaoImpl instancia = null;
     
-    public static NotaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+    public static NotaDaoImpl getInstancia(){
         if(NotaDaoImpl.instancia == null)
             instancia = new NotaDaoImpl();
         return instancia;
-    }
-    
-    @Override
-    public void imprimir (){
-        Nota nota;
-        for(Object a: this.obterTodos()){
-            nota = (Nota) a;
-            System.out.println(nota.toString());
-        }
     }
     
     @Override
@@ -43,12 +30,6 @@ public class NotaDaoImpl implements Dao {
             return true;
         }
         return false;
-    }
-    
-    @Override
-    public Boolean remover (Object objeto) {
-        Nota nota = (Nota) objeto;
-        return listaNota.remove(nota);
     }
     
     @Override

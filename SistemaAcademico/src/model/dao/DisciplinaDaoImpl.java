@@ -11,27 +11,14 @@ import java.util.Collections;
 import java.util.List;
 import model.pojo.Disciplina;
 
-/**
- *
- * @author Lucas
- */
 public class DisciplinaDaoImpl implements Dao {
     private static List<Disciplina> listaDisciplina = new ArrayList<>();
     private static DisciplinaDaoImpl instancia = null;
     
-    public static DisciplinaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+    public static DisciplinaDaoImpl getInstancia(){
         if(DisciplinaDaoImpl.instancia == null)
             instancia = new DisciplinaDaoImpl();
         return instancia;
-    }
-    
-    @Override
-    public void imprimir (){
-        Disciplina disciplina;
-        for(Object a: this.obterTodos()){
-            disciplina = (Disciplina) a;
-            System.out.println(disciplina.toString());
-        }
     }
     
     @Override
@@ -43,12 +30,6 @@ public class DisciplinaDaoImpl implements Dao {
             return true;
         }
         return false;
-    }
-    
-    @Override
-    public Boolean remover (Object objeto) {
-        Disciplina disciplina = (Disciplina) objeto;
-        return listaDisciplina.remove(disciplina);
     }
     
     @Override

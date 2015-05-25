@@ -11,27 +11,14 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-/**
- *
- * @author Pedro
- */
 public class ProfessorDaoImpl implements Dao {
     private static List<Professor> listaProfessor = new ArrayList<>();
     private static ProfessorDaoImpl instancia = null;
     
-    public static ProfessorDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+    public static ProfessorDaoImpl getInstancia(){
         if(ProfessorDaoImpl.instancia == null)
             instancia = new ProfessorDaoImpl();
         return instancia;
-    }
-    
-    @Override
-    public void imprimir (){
-        Professor professor;
-        for(Object a: this.obterTodos()){
-            professor = (Professor) a;
-            System.out.println(professor.toString());
-        }
     }
     
     @Override
@@ -43,12 +30,6 @@ public class ProfessorDaoImpl implements Dao {
             return true;
         }
         return false;
-    }
-    
-    @Override
-    public Boolean remover (Object objeto) {
-        Professor professor = (Professor) objeto;
-        return listaProfessor.remove(professor);
     }
     
     @Override

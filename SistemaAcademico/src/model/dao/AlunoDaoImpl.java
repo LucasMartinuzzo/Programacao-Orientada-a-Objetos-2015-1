@@ -12,28 +12,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import model.pojo.Turma;
 
-/**
- *
- * @author Filipe
- */
 public class AlunoDaoImpl implements Dao {
     
     private static List<Aluno> listaAluno = new ArrayList<>();
     private static AlunoDaoImpl instancia = null;
     
-    public static AlunoDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+    public static AlunoDaoImpl getInstancia(){
         if(AlunoDaoImpl.instancia == null)
             instancia = new AlunoDaoImpl();
         return instancia;
-    }
-    
-    @Override
-    public void imprimir (){
-        Aluno aluno;
-        for(Object a: this.obterTodos()){
-            aluno = (Aluno) a;
-            System.out.println(aluno.toString());
-        }
     }
     
     @Override
@@ -45,12 +32,6 @@ public class AlunoDaoImpl implements Dao {
             return true;
         }
         return false;
-    }
-    
-    @Override
-    public Boolean remover (Object objeto) {
-        Aluno aluno = (Aluno) objeto;
-        return listaAluno.remove(aluno);
     }
     
     @Override
@@ -116,8 +97,6 @@ public class AlunoDaoImpl implements Dao {
             String[] turma = br.readLine().split(",");
             for(String t: turma) {
                 Turma turmaConsultada = (Turma) TurmaDaoImpl.getInstancia().obter(t);
-                /*if((!(t.equals("NULL"))) && (TurmaDaoImpl.getInstancia().obter(t) != null))
-                    aluno.adicionarTurma(TurmaDaoImpl.getInstancia().obter(t));*/
                 if((!(t.equals("NULL"))) && (turmaConsultada != null))
                     turmaConsultada.adicionarAluno(aluno);
             }

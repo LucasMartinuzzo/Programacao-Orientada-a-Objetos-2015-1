@@ -11,27 +11,14 @@ import java.util.Collections;
 import java.util.List;
 import model.pojo.Aula;
 
-/**
- *
- * @author JeanPablo
- */
 public class AulaDaoImpl implements Dao {    
     private static List<Aula> listaAula = new ArrayList<Aula>();
     private static AulaDaoImpl instancia = null;
     
-    public static AulaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+    public static AulaDaoImpl getInstancia(){
         if(AulaDaoImpl.instancia == null)
             instancia = new AulaDaoImpl();
         return instancia;
-    }
-    
-    @Override
-    public void imprimir (){
-        Aula aula;
-        for(Object a: this.obterTodos()){
-            aula = (Aula) a;
-            System.out.println(aula.toString());
-        }
     }
     
     @Override
@@ -43,12 +30,6 @@ public class AulaDaoImpl implements Dao {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public Boolean remover(Object objeto) {
-        Aula aula = (Aula) objeto;
-        return listaAula.remove(aula);
     }
 
     @Override

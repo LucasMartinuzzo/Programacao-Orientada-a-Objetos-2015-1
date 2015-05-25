@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- *
- * @author JeanPablo
- */
 public class Turma implements Comparable<Turma> {
     private String id;
     private Integer ano;
@@ -29,7 +25,6 @@ public class Turma implements Comparable<Turma> {
         this.professor = professor;
         if(aula != null)
             this.aula = aula;
-        //this.aula = aula;
         if(aluno !=null)
             this.aluno = aluno;
     }
@@ -42,24 +37,12 @@ public class Turma implements Comparable<Turma> {
         return ano;
     }
     
-    public void setAno (Integer ano) {
-        this.ano = ano;
-    }
-    
     public Integer getPeriodo () {
         return periodo;
     }
     
-    public void setPeriodo (Integer periodo) {
-        this.periodo = periodo;
-    }
-    
     public Integer getNumeroDeVagas () {
         return numeroDeVagas;
-    }
-    
-    public void setNumeroDeVagas (Integer numeroDeVagas) {
-        this.numeroDeVagas = numeroDeVagas;
     }
     
     public Disciplina getDisciplina () {
@@ -99,17 +82,6 @@ public class Turma implements Comparable<Turma> {
         return false;
     }
     
-    public Boolean removerAula (Aula aula) {
-        return this.getAula().remove(aula);
-    }
-    
-    /*public Aula retornaAula (Turma this, Aula aula) {
-        if (this.getAula().contains(aula))
-            //return this.getAula().get(this.getAula().indexOf(aula));
-        else
-            return null;
-    }*/
-    
     public Boolean faltasLancadas () {
         Aluno ultimoMatriculado = this.aluno.get(this.aluno.size() - 1);
         Collections.sort(ultimoMatriculado.getFalta(), new Falta());
@@ -134,28 +106,11 @@ public class Turma implements Comparable<Turma> {
         return false;
     }
     
-    public Boolean removerAluno (Aluno aluno) {
-        if (this.getAluno().remove(aluno))
-            return aluno.getTurma().remove(this);
-        return false;
-    }
-    
     public Boolean adicionarAtividade (Atividade atividade) {
         if (!this.getAtividade().contains(atividade))
             return this.getAtividade().add(atividade);
         return false;
     }
-    
-    public Boolean removerAtividade (Atividade atividade) {
-        return this.getAtividade().remove(atividade);
-    }
-    
-    /*public Atividade retornaAtividade (Turma this, Atividade atividade) {
-        if (this.getAtividade().contains(atividade))
-            return this.getAtividade().get(this.getAtividade().indexOf(atividade));
-        else
-            return null;
-    }*/
     
     @Override
     public int compareTo (Turma turma) {
@@ -168,23 +123,5 @@ public class Turma implements Comparable<Turma> {
                 "\nPeríodo: " + this.periodo + "\nNúmero de vagas: " + this.numeroDeVagas +
                 "\nDisciplina: " + this.disciplina.getNome() +
                 "\nProfessor: " + this.professor.getNome() + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaAulas () {
-        for (Aula aula: this.aula)
-            System.out.println(aula.toString() + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaAlunos () {
-        for (Aluno aluno: this.aluno)
-            System.out.println(aluno.toString() + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaAtividades () {
-        for (Atividade atividade: this.atividade)
-            System.out.println(atividade.toString() + "\n");
     }
 }

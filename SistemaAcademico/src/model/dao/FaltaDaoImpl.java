@@ -11,27 +11,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Filipe
- */
 public class FaltaDaoImpl implements Dao {    
     private static List<Falta> listaFalta = new ArrayList<>();
     private static FaltaDaoImpl instancia = null;
     
-    public static FaltaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+    public static FaltaDaoImpl getInstancia(){
         if(FaltaDaoImpl.instancia == null)
             instancia = new FaltaDaoImpl();
         return instancia;
-    }
-    
-    @Override
-    public void imprimir (){
-        Falta falta;
-        for(Object a: this.obterTodos()){
-            falta = (Falta) a;
-            System.out.println(falta.toString());
-        }
     }
     
     @Override
@@ -43,12 +30,6 @@ public class FaltaDaoImpl implements Dao {
             return true;
         }
         return false;
-    }
-    
-    @Override 
-    public Boolean remover (Object objeto) {
-        Falta falta = (Falta) objeto;
-        return listaFalta.remove(falta);
     }
     
     @Override

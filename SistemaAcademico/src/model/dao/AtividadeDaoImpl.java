@@ -11,28 +11,15 @@ import java.util.Collections;
 import java.util.List;
 import model.pojo.Atividade;
 
-/**
- *
- * @author Mônicka
- */
 public class AtividadeDaoImpl implements Dao {
     
     private static List<Atividade> listaAtividade = new ArrayList<>();
     private static AtividadeDaoImpl instancia = null;
     
-    public static AtividadeDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+    public static AtividadeDaoImpl getInstancia(){
         if(AtividadeDaoImpl.instancia == null)
             instancia = new AtividadeDaoImpl();
         return instancia;
-    }
-    
-    @Override
-    public void imprimir (){
-        Atividade atividade;
-        for(Object a: this.obterTodos()){
-            atividade = (Atividade) a;
-            System.out.println(atividade.toString());
-        }
     }
     
     @Override
@@ -44,12 +31,6 @@ public class AtividadeDaoImpl implements Dao {
             return true;
         }
         return false;
-    }
-    
-    @Override
-    public Boolean remover (Object objeto) {
-        Atividade atividade = (Atividade) objeto;
-        return listaAtividade.remove(atividade);
     }
     
     @Override

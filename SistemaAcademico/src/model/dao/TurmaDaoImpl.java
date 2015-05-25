@@ -11,27 +11,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- *
- * @author JeanPablo
- */
 public class TurmaDaoImpl implements Dao {
     private static List<Turma> listaTurma = new ArrayList<Turma>();
     private static TurmaDaoImpl instancia = null;
     
-    public static TurmaDaoImpl getInstancia(){//TALVEZ ISSO DÊ ERRO
+    public static TurmaDaoImpl getInstancia(){
         if(TurmaDaoImpl.instancia == null)
             instancia = new TurmaDaoImpl();
         return instancia;
-    }
-    
-    @Override
-    public void imprimir (){
-        Turma turma;
-        for(Object a: this.obterTodos()){
-            turma = (Turma) a;
-            System.out.println(turma.toString());
-        }
     }
     
     @Override
@@ -43,12 +30,6 @@ public class TurmaDaoImpl implements Dao {
             return true;
         }
         return false;
-    }
-    
-    @Override
-    public Boolean remover (Object objeto) {
-        Turma turma = (Turma) objeto;
-        return listaTurma.remove(turma);
     }
     
     @Override

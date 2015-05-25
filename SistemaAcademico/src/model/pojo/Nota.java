@@ -2,10 +2,6 @@ package model.pojo;
 
 import java.util.Comparator;
 
-/**
- *
- * @author Filipe
- */
 public class Nota implements Comparable<Nota>, Comparator<Nota> {
     private String id;
     private Double nota;

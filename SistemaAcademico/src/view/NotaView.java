@@ -13,14 +13,7 @@ import model.pojo.Atividade;
 import model.pojo.Nota;
 import model.pojo.Turma;
 
-/**
- *
- * @author Filipe
- */
 public class NotaView {
-    //private Dao notaDao;
-    //private Dao alunoDao;
-    //private Dao atividadeDao;
     
     private static Scanner scanner = new Scanner (System.in);
             
@@ -61,38 +54,8 @@ public class NotaView {
         else {
             System.out.println("\nAS NOTAS CORRESPONDENTES À ESTA ATIVIDADE JÁ FORAM LANÇADAS!");
             System.out.println("Você pode alterar as notas lançadas a qualquer momento através do"
-                    + " menu ???????????"); //MUDAR DEPOIS
+                    + " menu \"GERENCIAR TURMAS E DISCIPLINAS\".");
             return false;
-        }
-    }
-
-   public void pesquisar () {
-       System.out.println("PESQUISA DE NOTAS \nEntre com o ID da Nota: ");
-        String id = scanner.nextLine();
-        if(NotaDaoImpl.getInstancia().indice(id) >= 0)
-            System.out.println(NotaDaoImpl.getInstancia().obter(id).toString());
-        //if (this.notaDao.indice(id) != -1)
-        //    System.out.println(this.notaDao.obter(id).toString());
-        else
-            System.out.println("NOTA NÃO ENCONTRADA!\n"); 
-    }
-
-    public void remover(){
-        System.out.println("REMOÇÃO DE NOTAS\nEntre com o ID da Nota: ");
-        String id = scanner.nextLine();
-        if(NotaDaoImpl.getInstancia().remover(NotaDaoImpl.getInstancia().obter(id)))
-        //if (notaDao.remover(notaDao.obter(id)))
-            System.out.println("NOTA REMOVIDA COM SUCESSO!");                
-        else
-            System.out.println("NOTA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
-    }
-
-    public void listar () {
-        System.out.println("LISTA DE NOTAS DISPONÍVEIS\n");
-        List<Nota> listaAluno = (List<Nota>) NotaDaoImpl.getInstancia().obterTodos();
-        //List<Nota> listaAluno = (List<Nota>) (Nota) notaDao.obterTodos();
-        for (Nota nota: listaAluno) {
-            System.out.println(nota.toString() + "\n");
         }
     }
     

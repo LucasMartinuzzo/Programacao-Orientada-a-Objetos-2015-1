@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- *
- * @author Mônicka
- */
 public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
     private String id;
     private String nome;
@@ -33,22 +29,6 @@ public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
     
     public String getId () {
         return id;
-    }
-    
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    
-    public void setTipo(String tipo){
-        this.tipo = tipo;
-    }
-    
-    public void setData(String data){
-        this.data = data;
-    }
-    
-    public void setValor(Double valor){
-        this.valor = valor;
     }
     
     public void setNotasLancadas(Boolean notasLancadas){
@@ -98,7 +78,7 @@ public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
         return this.getNota().add(nota);
     }
     
-    public Boolean adicionarNotaArquivo(Nota nota){//Deve carregar as notas do arquivo mesmo se notasLançadas for true
+    public Boolean adicionarNotaArquivo(Nota nota){ //Deve carregar as notas do arquivo mesmo se notasLançadas for true
         for (Nota notaConsultada: this.getNota()) {
             if (notaConsultada.getAluno().equals(nota.getAluno()))
                 return false;
@@ -125,11 +105,5 @@ public class Atividade implements Comparable<Atividade>, Comparator<Nota> {
         return ("ID: " + this.id + "\nNome: " + this.nome +
                 "\nTipo: " + this.tipo + "\nValor: " + this.valor +
                 "\nDisciplina: " + this.turma.getDisciplina().getNome() + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaNotas () {
-        for (Nota nota: this.nota)
-            System.out.println(nota.toString() + "\n");
     }
 }

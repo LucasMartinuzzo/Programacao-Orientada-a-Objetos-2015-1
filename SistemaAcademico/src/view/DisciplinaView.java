@@ -1,19 +1,13 @@
 package view;
 
-import java.util.List;
 import java.util.Scanner;
-import model.dao.Dao;
 import model.dao.DisciplinaDaoImpl;
 import model.dao.ProfessorDaoImpl;
 import model.pojo.Disciplina;
 import model.pojo.Professor;
 
-/**
- *
- * @author Lucas
- */
 public class DisciplinaView {
-    //private Dao disciplinaDao;
+    
     private static Scanner scanner = new Scanner (System.in);
     
     public Boolean cadastrar(){
@@ -28,36 +22,6 @@ public class DisciplinaView {
         scanner.nextLine();
         Disciplina disciplina = new Disciplina(nome, ementa, cargaHoraria);
         return DisciplinaDaoImpl.getInstancia().inserir(disciplina);
-        //return this.disciplinaDao.inserir(disciplina);
-    }
-    public void pesquisar () {
-        System.out.println("PESQUISA DE DISCIPLINAS\nEntre com o nome da disciplina: ");
-            String nome = scanner.nextLine();
-            if(DisciplinaDaoImpl.getInstancia().indice(nome) >= 0)
-                System.out.println(DisciplinaDaoImpl.getInstancia().obter(nome).toString());
-            //if (this.disciplinaDao.indice(nome) != -1)
-            //    System.out.println(this.disciplinaDao.obter(nome).toString());
-            else
-                System.out.println("DISCIPLINA NÃO ENCONTRADA!\n");
-    }
-    
-    public void remover(){
-        System.out.println("REMOÇÃO DE DISCIPLINAS\nEntre com o nome da Disciplina: ");
-        String nome = scanner.nextLine();
-        if(DisciplinaDaoImpl.getInstancia().remover(DisciplinaDaoImpl.getInstancia().obter(nome)))
-        //if (disciplinaDao.remover(disciplinaDao.obter(nome)))
-            System.out.println("DISCIPLINA REMOVIDA COM SUCESSO!");                
-        else
-            System.out.println("DISCIPLINA NÃO ENCONTRADA, REMOÇÃO NÃO EFETUADA!\n");
-    }
-    
-    public void listar () {
-        System.out.println("LISTA DE DISCIPLINAS DISPONÍVEIS\n");
-        List<Disciplina> listaDisciplina = (List<Disciplina>) DisciplinaDaoImpl.getInstancia().obterTodos();
-        //List<Disciplina> listaDisciplina = (List<Disciplina>) (Disciplina) disciplinaDao.obterTodos();
-        for(Disciplina disciplina: listaDisciplina) {
-            System.out.println(disciplina.toString() + "\n");
-        }
     }
     
     public String validarId () {
@@ -92,7 +56,7 @@ public class DisciplinaView {
         if(disciplina != null) {
             System.out.println("Informe o CPF do(a) professor(a) a ser atribuído à disciplina: ");
             Professor professor = (Professor) ProfessorDaoImpl.getInstancia().obter(scanner.nextLine());
-            if (professor != null) //{
+            if (professor != null)
                 if (professor.adicionarDisciplina(disciplina))
                     return true;
                 else
@@ -100,16 +64,6 @@ public class DisciplinaView {
                             + " ANTERIORMENTE!");
             else
                 System.out.println("\nPROFESSOR NÃO ECONTRADO!");
-                //professor.imprimirListaDisciplinas();
-            /*if (professor != null) {
-                if(!(professor.adicionarDisciplina(disciplina)))
-                        System.out.println("PROFESSOR JÁ FOI ATRIBUÍDO!\n");
-                professor.imprimirListaDisciplinas();*/
-//                disciplina.getProfessor().add(professor);
-//                professor.getDisciplina().add(disciplina);
-                    //System.out.println("PROFESSOR ATRIBUÍDO!");
-                    //return true;
-                //}
         }
         else
             System.out.println("\nDISCIPLINA NÃO ENCONTRADA!");

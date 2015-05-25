@@ -3,10 +3,6 @@ package model.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Pedro
- */
 public class Professor implements Comparable<Professor>{
     private String nome;
     private String cpf;
@@ -23,24 +19,12 @@ public class Professor implements Comparable<Professor>{
         return nome;
     }
     
-    public void setNome (String nome){
-        this.nome = nome;
-    }
-    
     public String getCpf (){
         return cpf;
     }
     
-    public void setCpf (String cpf){
-        this.cpf = cpf;
-    }
-    
     public String getDepartamento (){
         return departamento;
-    }
-    
-    public void setDepartamento (String departamento){
-        this.departamento = departamento;
     }
     
     public List<Disciplina> getDisciplina (){
@@ -56,12 +40,6 @@ public class Professor implements Comparable<Professor>{
         return false;
     }
     
-    public Boolean removerDisciplina (Disciplina disciplina){
-        if (this.getDisciplina().remove(disciplina))
-            return disciplina.getProfessor().remove(this);
-        return false;
-    }
-    
     @Override
     public int compareTo (Professor professor){
         return this.cpf.compareTo(professor.cpf);
@@ -70,11 +48,5 @@ public class Professor implements Comparable<Professor>{
     @Override
     public String toString () {
         return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nDepartamento: " + this.departamento + "\n");
-    }
-    
-    //LEMBRAR DE APAGAR
-    public void imprimirListaDisciplinas () {
-        for (Disciplina disciplina: this.disciplina)
-            System.out.println(disciplina.toString());
     }
 }
