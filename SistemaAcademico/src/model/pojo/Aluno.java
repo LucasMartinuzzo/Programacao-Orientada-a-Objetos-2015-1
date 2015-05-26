@@ -48,7 +48,7 @@ public class Aluno implements Comparable<Aluno> {
         return false;
     }
 
-    public Double NotaFinal(Turma turma){
+    public Double notaFinal(Turma turma){
         Double somaNotas = -1.0;
         if (turma.todasAsNotasLancadas()) {
             somaNotas = 0.0;

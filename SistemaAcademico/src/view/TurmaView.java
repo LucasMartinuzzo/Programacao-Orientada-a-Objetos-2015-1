@@ -151,7 +151,7 @@ public class TurmaView {
                         Falta faltaConsultada = aluno.getFalta().get(Collections.binarySearch(aluno.getFalta(),
                                 new Falta (null, null, turma), new Falta()));
                         if(((faltaConsultada.getFalta()/disciplina.getCargaHoraria())<=0.25)
-                                && (aluno.NotaFinal(turma)>=6))
+                                && (aluno.notaFinal(turma)>=6))
                             System.out.println("\nALUNO APROVADO!\n");
                         else
                             System.out.println("\nALUNO REPROVADO!\n");
@@ -177,7 +177,7 @@ public class TurmaView {
             System.out.println(" *" + atividade.getNome() + ": " + 
                     atividade.getNota().get(indiceNota).getNota());
         }
-        System.out.println(" *FINAL: " + aluno.NotaFinal(turma));
+        System.out.println(" *FINAL: " + aluno.notaFinal(turma));
         Collections.sort(aluno.getFalta(), new Falta());
         Integer indiceFalta = Collections.binarySearch(aluno.getFalta(),
                     new Falta (null, null, turma), new Falta());
