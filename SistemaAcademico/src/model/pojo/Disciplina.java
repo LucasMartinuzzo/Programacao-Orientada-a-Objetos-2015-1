@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-//a
+
 @Entity
 public class Disciplina implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -18,8 +20,10 @@ public class Disciplina implements Serializable {
     private String ementa;
     private Integer cargaHoraria;
     @ManyToMany
+    @JoinTable(name="DisciplinaProfessor", inverseJoinColumns={@JoinColumn(name="cpfProfessor")},
+            joinColumns={@JoinColumn(name="nomeDisciplina")})
     private List<Professor> professor = new ArrayList<>();
-    @OneToMany
+    @OneToMany(mappedBy="disciplina")
     private List<Turma> turma = new ArrayList<>();
     
     public String getNome() {

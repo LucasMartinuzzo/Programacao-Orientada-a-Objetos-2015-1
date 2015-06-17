@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Atividade implements Serializable {
@@ -18,8 +20,9 @@ public class Atividade implements Serializable {
     private String tipo;
     private String data;
     private Double valor;
-    private Boolean notasLancadas;
+    @ManyToOne
     private Turma turma;
+    @OneToMany(mappedBy="atividade")
     private List<Nota> nota = new ArrayList<>();
 
     public Integer getId() {
@@ -62,14 +65,6 @@ public class Atividade implements Serializable {
         this.valor = valor;
     }
 
-    public Boolean getNotasLancadas() {
-        return notasLancadas;
-    }
-
-    public void setNotasLancadas(Boolean notasLancadas) {
-        this.notasLancadas = notasLancadas;
-    }
-
     public Turma getTurma() {
         return turma;
     }
@@ -109,7 +104,7 @@ public class Atividade implements Serializable {
     @Override
     public String toString() {
         return ("ID: " + this.id + "\nNome: " + this.nome +
-                "\nTipo: " + this.tipo + "\nValor: " + this.valor +
+                "\nTipo: " + this.tipo + "\n:Data: " + this.data + "\nValor: " + this.valor +
                 "\nDisciplina: " + this.turma.getDisciplina().getNome() + "\n");
     }
     

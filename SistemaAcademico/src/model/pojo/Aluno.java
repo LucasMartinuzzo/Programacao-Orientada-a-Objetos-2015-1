@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aluno implements Serializable {
@@ -14,9 +18,19 @@ public class Aluno implements Serializable {
     @Id
     private String cpf;
     private String nome;
-    private List<Turma> turma = new ArrayList<>();  
+    @ManyToMany
+    @JoinTable(name="AlunoTurma", inverseJoinColumns={@JoinColumn(name="idTurma")},
+            joinColumns={@JoinColumn(name="cpfAluno")})
+    private List<Turma> turma = new ArrayList<>();
+    @OneToMany
     private List<Falta> falta = new ArrayList<>();
+    @OneToMany (mappedBy="aluno")
     private List<Nota> nota = new ArrayList<>();
+    
+    public Aluno (String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
 
     public String getCpf() {
         return cpf;
@@ -36,10 +50,6 @@ public class Aluno implements Serializable {
 
     public List<Turma> getTurma() {
         return turma;
-    }
-
-    public void setTurma(List<Turma> turma) {
-        this.turma = turma;
     }
 
     public List<Falta> getFalta() {
