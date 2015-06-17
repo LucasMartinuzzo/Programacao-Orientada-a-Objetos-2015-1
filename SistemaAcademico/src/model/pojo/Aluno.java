@@ -27,7 +27,7 @@ public class Aluno implements Serializable {
     @OneToMany (mappedBy="aluno")
     private List<Nota> nota = new ArrayList<>();
     
-    public Aluno (String nome, String cpf) {
+    public Aluno (String cpf, String nome) {
         this.nome = nome;
         this.cpf = cpf;
     }
