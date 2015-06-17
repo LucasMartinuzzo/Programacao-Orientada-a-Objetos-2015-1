@@ -1,39 +1,63 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.pojo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
-/**
- *
- * @author Pedro
- */
 @Entity
 public class Disciplina implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
-
-    public String getId() {
-        return id;
+    private String nome;
+    private String ementa;
+    private Integer cargaHoraria;
+    @ManyToMany
+    private List<Professor> professor = new ArrayList<>();
+    @OneToMany
+    private List<Turma> turma = new ArrayList<>();
+    
+    public String getNome() {
+        return nome;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmenta() {
+        return ementa;
+    }
+
+    public void setEmenta(String ementa) {
+        this.ementa = ementa;
+    }
+
+    public Integer getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(Integer cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public List<Professor> getProfessor() {
+        return professor;
+    }
+
+    public List<Turma> getTurma() {
+        return turma;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (nome != null ? nome.hashCode() : 0);
         return hash;
     }
 
@@ -44,7 +68,7 @@ public class Disciplina implements Serializable {
             return false;
         }
         Disciplina other = (Disciplina) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.nome == null && other.nome != null) || (this.nome != null && !this.nome.equals(other.nome))) {
             return false;
         }
         return true;
@@ -52,7 +76,8 @@ public class Disciplina implements Serializable {
 
     @Override
     public String toString() {
-        return "model.pojo.Disciplina[ id=" + id + " ]";
+        return ("Nome: " + this.nome + "\nEmenta: " + this.ementa + 
+                "\nCarga Horária: " + this.cargaHoraria + "\n");
     }
     
 }
