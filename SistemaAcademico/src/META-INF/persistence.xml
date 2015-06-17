@@ -7,6 +7,8 @@
     <class>model.pojo.Nota</class>
     <class>model.pojo.Professor</class>
     <class>model.pojo.Turma</class>
+    <class>model.pojo.Aluno</class>
+    <class>model.pojo.Atividade</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sistemaacademico?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
