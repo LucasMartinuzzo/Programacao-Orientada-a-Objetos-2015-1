@@ -14,6 +14,8 @@ public class Falta implements Serializable {
     private Integer id;
     private Integer falta;
     private Turma turma;
+    
+    //oi
 
     public Integer getId() {
         return id;
