@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.pojo;
 
 import java.io.Serializable;
@@ -11,23 +6,37 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author Pedro
- */
 @Entity
-public class Disciplina implements Serializable {
+public class Falta implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Integer id;
+    private Integer falta;
+    private Turma turma;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getFalta() {
+        return falta;
+    }
+
+    public void setFalta(Integer falta) {
+        this.falta = falta;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
     }
 
     @Override
@@ -40,10 +49,10 @@ public class Disciplina implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Disciplina)) {
+        if (!(object instanceof Falta)) {
             return false;
         }
-        Disciplina other = (Disciplina) object;
+        Falta other = (Falta) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -51,8 +60,8 @@ public class Disciplina implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "model.pojo.Disciplina[ id=" + id + " ]";
+    public String toString () {
+        return ("ID: " + this.id + "\nFaltas: " + this.falta + "\nDisciplina: " 
+                + this.turma.getDisciplina().getNome() + "\n");
     }
-    
 }

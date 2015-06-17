@@ -3,6 +3,10 @@
   <persistence-unit name="SistemaAcademicoPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>model.pojo.Disciplina</class>
+    <class>model.pojo.Falta</class>
+    <class>model.pojo.Nota</class>
+    <class>model.pojo.Professor</class>
+    <class>model.pojo.Turma</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sistemaacademico?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
