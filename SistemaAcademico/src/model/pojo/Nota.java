@@ -19,6 +19,12 @@ public class Nota implements Serializable {
     @ManyToOne
     private Atividade atividade;
 
+    public Nota(Double nota, Aluno aluno, Atividade atividade) {
+        this.nota = nota;
+        this.aluno = aluno;
+        this.atividade = atividade;
+    }
+
     public Integer getId() {
         return id;
     }

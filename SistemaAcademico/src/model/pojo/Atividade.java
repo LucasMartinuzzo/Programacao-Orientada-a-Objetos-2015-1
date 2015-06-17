@@ -25,6 +25,14 @@ public class Atividade implements Serializable {
     @OneToMany(mappedBy="atividade")
     private List<Nota> nota = new ArrayList<>();
 
+    public Atividade(String nome, String tipo, String data, Double valor, Turma turma) {
+        this.nome = nome;
+        this.tipo = tipo;
+        this.data = data;
+        this.valor = valor;
+        this.turma = turma;
+    }
+
     public Integer getId() {
         return id;
     }

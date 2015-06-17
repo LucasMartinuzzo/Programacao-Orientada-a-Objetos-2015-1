@@ -25,6 +25,12 @@ public class Disciplina implements Serializable {
     private List<Professor> professor = new ArrayList<>();
     @OneToMany(mappedBy="disciplina")
     private List<Turma> turma = new ArrayList<>();
+
+    public Disciplina(String nome, String ementa, Integer cargaHoraria) {
+        this.nome = nome;
+        this.ementa = ementa;
+        this.cargaHoraria = cargaHoraria;
+    }
     
     public String getNome() {
         return nome;

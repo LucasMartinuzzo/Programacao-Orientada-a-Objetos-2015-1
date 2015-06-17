@@ -36,6 +36,16 @@ public class Turma implements Serializable {
     @OneToMany(mappedBy="turma")
     private List<Atividade> atividade = new ArrayList<>();
 
+    public Turma(Integer ano, Integer periodo, String local, String horario, Integer numeroDeVagas, Disciplina disciplina, Professor professor) {
+        this.ano = ano;
+        this.periodo = periodo;
+        this.local = local;
+        this.horario = horario;
+        this.numeroDeVagas = numeroDeVagas;
+        this.disciplina = disciplina;
+        this.professor = professor;
+    }
+
     public Integer getId() {
         return id;
     }

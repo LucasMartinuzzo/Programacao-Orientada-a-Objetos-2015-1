@@ -17,6 +17,11 @@ public class Falta implements Serializable {
     @OneToOne
     private Turma turma;
 
+    public Falta(Integer falta, Turma turma) {
+        this.falta = falta;
+        this.turma = turma;
+    }
+
     public Integer getId() {
         return id;
     }
