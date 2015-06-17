@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Professor implements Serializable {
@@ -16,6 +19,9 @@ public class Professor implements Serializable {
     private String cpf;
     private String nome;
     private String departamento;
+    @ManyToMany
+    @JoinTable(name="DisciplinaProfessor", inverseJoinColumns={@JoinColumn(name="nomeDisciplina")},
+            joinColumns={@JoinColumn(name="cpfProfessor")})
     private List<Disciplina> disciplina = new ArrayList();
 
     public String getCpf() {
@@ -49,7 +55,7 @@ public class Professor implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (cpf != null ? cpf.hashCode() : 0);
         return hash;
     }
 
@@ -60,7 +66,7 @@ public class Professor implements Serializable {
             return false;
         }
         Professor other = (Professor) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.cpf == null && other.cpf != null) || (this.cpf != null && !this.cpf.equals(other.cpf))) {
             return false;
         }
         return true;

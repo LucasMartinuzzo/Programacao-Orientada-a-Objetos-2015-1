@@ -7,6 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Turma implements Serializable {
@@ -19,9 +25,15 @@ public class Turma implements Serializable {
     private String local;
     private String horario;
     private Integer numeroDeVagas;
+    @ManyToOne
     private Disciplina disciplina;
+    @OneToOne
     private Professor professor;
+    @ManyToMany
+    @JoinTable(name="AlunoTurma", inverseJoinColumns={@JoinColumn(name="cpfAluno")},
+            joinColumns={@JoinColumn(name="idTurma")})
     private List<Aluno> aluno = new ArrayList<>();
+    @OneToMany(mappedBy="turma")
     private List<Atividade> atividade = new ArrayList<>();
 
     public Integer getId() {
@@ -120,7 +132,7 @@ public class Turma implements Serializable {
     public String toString () {
         return ("ID: " + this.id + "\nAno: " + this.ano +
                 "\nPeríodo: " + this.periodo + "\nLocal: " + this.local + 
-                "\n Horário: " + this.horario + "\nNúmero de vagas: " + 
+                "\n Horário: " + this.horario + "\nNúmero de Vagas: " + 
                 this.numeroDeVagas + "\nDisciplina: " + this.disciplina.getNome() +
                 "\nProfessor: " + this.professor.getNome() + "\n");
     }

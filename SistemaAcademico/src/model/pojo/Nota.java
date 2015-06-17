@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Nota implements Serializable {
@@ -13,7 +14,9 @@ public class Nota implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Double nota;
+    @ManyToOne
     private Aluno aluno;
+    @ManyToOne
     private Atividade atividade;
 
     public Integer getId() {

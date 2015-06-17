@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Falta implements Serializable {
@@ -13,9 +14,8 @@ public class Falta implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer falta;
+    @OneToOne
     private Turma turma;
-    
-    //oi
 
     public Integer getId() {
         return id;
