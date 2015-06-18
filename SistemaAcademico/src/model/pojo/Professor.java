@@ -81,4 +81,12 @@ public class Professor implements Serializable {
     public String toString () {
         return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nDepartamento: " + this.departamento + "\n");
     }
+    
+    public Boolean adicionarDisciplina (Disciplina disciplina){
+        if (!(this.getDisciplina().contains(disciplina))) {
+            disciplina.getProfessor().add(this);
+            return this.getDisciplina().add(disciplina);
+        }
+        return false;
+    }
 }

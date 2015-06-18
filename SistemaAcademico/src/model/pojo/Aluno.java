@@ -86,4 +86,23 @@ public class Aluno implements Serializable {
         return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\n");
     }
     
+    public Boolean adicionarFalta(Falta falta){
+        if(!this.getFalta().contains(falta))
+            return this.getFalta().add(falta);
+        return false;
+    }
+    
+    public Boolean adicionarNota(Nota nota){
+        if(!this.getNota().contains(nota))
+            return this.getNota().add(nota);
+        return false;
+    }
+    
+    public Double notaFinal (Turma turma){
+        Double somaNotas = 0.0;
+        for(Nota notaConsultada: this.getNota())
+            if(notaConsultada.getAtividade().getTurma().equals(turma))
+                somaNotas += notaConsultada.getNota();
+        return somaNotas;
+    }
 }

@@ -118,4 +118,11 @@ public class Atividade implements Serializable {
                 "\nDisciplina: " + this.turma.getDisciplina().getNome() + "\n");
     }
     
+    public Boolean adicionarNota(Nota nota){
+        for (Nota notaConsultada: this.getNota()) {
+            if (notaConsultada.getAluno().equals(nota.getAluno()))
+                return false;
+        }
+        return this.getNota().add(nota);
+    }
 }

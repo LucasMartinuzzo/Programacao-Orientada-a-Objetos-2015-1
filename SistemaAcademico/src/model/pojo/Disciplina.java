@@ -90,4 +90,9 @@ public class Disciplina implements Serializable {
                 "\nCarga Horária: " + this.cargaHoraria + "\n");
     }
     
+    public Boolean adicionarTurma (Turma turma) {
+        if (!this.getTurma().contains(turma))
+            return this.getTurma().add(turma);
+        return false;
+    }
 }

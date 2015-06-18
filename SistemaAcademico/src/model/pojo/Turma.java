@@ -149,4 +149,18 @@ public class Turma implements Serializable {
                 this.numeroDeVagas + "\nDisciplina: " + this.disciplina.getNome() +
                 "\nProfessor: " + this.professor.getNome() + "\n");
     }
+    
+    public Boolean adicionarAluno (Aluno aluno){
+        if (this.getAluno().size() < this.getNumeroDeVagas() || !(this.getAluno().contains(aluno))){
+            aluno.getTurma().add(this);
+            return this.getAluno().add(aluno);
+        }
+        return false;
+    }
+
+    public Boolean adicionarAtividade (Atividade atividade) {
+        if (!this.getAtividade().contains(atividade))
+            return this.getAtividade().add(atividade);
+        return false;
+    }
 }
