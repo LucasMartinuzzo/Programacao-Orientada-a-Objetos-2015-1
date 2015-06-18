@@ -23,6 +23,7 @@ public class Aluno implements Serializable {
             joinColumns={@JoinColumn(name="cpfAluno")})
     private List<Turma> turma = new ArrayList<>();
     @OneToMany
+    @JoinColumn(name = "cpfAluno")
     private List<Falta> falta = new ArrayList<>();
     @OneToMany (mappedBy="aluno")
     private List<Nota> nota = new ArrayList<>();
