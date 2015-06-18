@@ -1,7 +1,9 @@
 package model.dao;
 
+import javax.persistence.EntityManager;
+
 public interface Dao<T>{
-    void salvar (T t);
-    T buscar (Object objeto);
-    void alterar (T t);
+    void salvar (EntityManager em, T t);
+    T buscar (EntityManager em, Object objeto);
+    void alterar (EntityManager em, T t);
 }
