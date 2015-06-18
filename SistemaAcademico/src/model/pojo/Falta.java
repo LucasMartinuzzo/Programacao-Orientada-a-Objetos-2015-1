@@ -1,6 +1,7 @@
 package model.pojo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Falta implements Serializable {
     private Integer id;
     private Integer falta;
     @OneToOne
+    @Column(name="idTurma")
     private Turma turma;
 
     public Falta(Integer falta, Turma turma) {
