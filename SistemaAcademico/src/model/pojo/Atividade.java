@@ -3,11 +3,11 @@ package model.pojo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -22,11 +22,13 @@ public class Atividade implements Serializable {
     private String data;
     private Double valor;
     @ManyToOne
-    @Column(name="idTurma")
+    @JoinColumn(name="idTurma")
     private Turma turma;
     @OneToMany(mappedBy="atividade")
     private List<Nota> nota = new ArrayList<>();
 
+    public Atividade() {}
+    
     public Atividade(String nome, String tipo, String data, Double valor, Turma turma) {
         this.nome = nome;
         this.tipo = tipo;

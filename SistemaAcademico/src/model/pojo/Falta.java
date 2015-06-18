@@ -1,11 +1,11 @@
 package model.pojo;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,9 +16,11 @@ public class Falta implements Serializable {
     private Integer id;
     private Integer falta;
     @OneToOne
-    @Column(name="idTurma")
+    @JoinColumn(name="idTurma")
     private Turma turma;
-
+    
+    public Falta(){}
+    
     public Falta(Integer falta, Turma turma) {
         this.falta = falta;
         this.turma = turma;

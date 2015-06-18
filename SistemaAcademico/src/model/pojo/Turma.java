@@ -3,7 +3,6 @@ package model.pojo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,10 +26,10 @@ public class Turma implements Serializable {
     private String horario;
     private Integer numeroDeVagas;
     @ManyToOne
-    @Column(name="nomeDisciplina")
+    @JoinColumn(name="nomeDisciplina")
     private Disciplina disciplina;
     @OneToOne
-    @Column(name="cpfProfessor")
+    @JoinColumn(name="cpfProfessor")
     private Professor professor;
     @ManyToMany
     @JoinTable(name="AlunoTurma", inverseJoinColumns={@JoinColumn(name="cpfAluno")},
@@ -38,6 +37,8 @@ public class Turma implements Serializable {
     private List<Aluno> aluno = new ArrayList<>();
     @OneToMany(mappedBy="turma")
     private List<Atividade> atividade = new ArrayList<>();
+    
+    public Turma(){}
 
     public Turma(Integer ano, Integer periodo, String local, String horario, Integer numeroDeVagas, Disciplina disciplina, Professor professor) {
         this.ano = ano;

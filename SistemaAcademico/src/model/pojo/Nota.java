@@ -1,11 +1,11 @@
 package model.pojo;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,11 +16,13 @@ public class Nota implements Serializable {
     private Integer id;
     private Double nota;
     @ManyToOne
-    @Column(name="cpfAluno")
+    @JoinColumn(name="cpfAluno")
     private Aluno aluno;
     @ManyToOne
-    @Column(name="idAtividade")
+    @JoinColumn(name="idAtividade")
     private Atividade atividade;
+    
+    public Nota(){}
 
     public Nota(Double nota, Aluno aluno, Atividade atividade) {
         this.nota = nota;

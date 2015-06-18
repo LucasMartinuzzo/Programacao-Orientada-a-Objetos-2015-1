@@ -23,12 +23,14 @@ public class Professor implements Serializable {
             joinColumns={@JoinColumn(name="cpfProfessor")})
     private List<Disciplina> disciplina = new ArrayList();
 
+    public Professor() {}
+    
     public Professor(String cpf, String nome, String departamento) {
         this.cpf = cpf;
         this.nome = nome;
         this.departamento = departamento;
     }
-
+    
     public String getCpf() {
         return cpf;
     }
