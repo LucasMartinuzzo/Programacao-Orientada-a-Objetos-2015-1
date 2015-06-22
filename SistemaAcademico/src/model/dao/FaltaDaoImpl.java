@@ -1,6 +1,8 @@
 package model.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import model.pojo.Falta;
 
 public class FaltaDaoImpl implements Dao<Falta>{
@@ -49,6 +51,12 @@ public class FaltaDaoImpl implements Dao<Falta>{
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+    }
+    
+    @Override
+    public List<Falta> obterTodos (EntityManager em){
+        Query query = em.createQuery("SELECT e FROM Falta e");
+        return (List<Falta>) query.getResultList();
     }
 }
 

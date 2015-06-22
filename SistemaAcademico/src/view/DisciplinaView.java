@@ -4,6 +4,7 @@ import java.util.Scanner;
 import javax.persistence.EntityManager;
 import model.dao.DisciplinaDaoImpl;
 import model.pojo.Disciplina;
+import model.pojo.Turma;
 
 public class DisciplinaView {
 
@@ -25,5 +26,17 @@ public class DisciplinaView {
             System.out.println("Cadastro efetuado com sucesso.");
         }else
             System.out.println("ERRO: Nome de disciplina já cadastrado.");
+    }
+    
+    public void quantidadeTurmas (EntityManager em){
+        System.out.println("Informe o nome da disciplina: ");
+        Disciplina disciplina = daoDisciplina.buscar(em, scanner.nextLine());
+        if (disciplina != null){
+            System.out.println("Lista de turmas da disciplina " + disciplina.getNome() + ":");
+            for (Turma turma : disciplina.getTurma())
+                System.out.println(turma);
+            System.out.println("Total de turmas: " + disciplina.getTurma().size());
+        }else
+            System.out.println("Disciplina inválida.");
     }
 }

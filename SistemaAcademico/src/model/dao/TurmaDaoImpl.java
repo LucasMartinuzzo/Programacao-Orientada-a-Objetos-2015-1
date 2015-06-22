@@ -5,7 +5,9 @@
  */
 package model.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import model.pojo.Turma;
 
 /**
@@ -58,5 +60,11 @@ public class TurmaDaoImpl implements Dao<Turma> {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+    }
+    
+    @Override
+    public List<Turma> obterTodos (EntityManager em){
+        Query query = em.createQuery("SELECT e FROM Turma e");
+        return (List<Turma>) query.getResultList();
     }
 }

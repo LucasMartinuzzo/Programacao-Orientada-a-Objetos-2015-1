@@ -1,6 +1,8 @@
 package model.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import model.pojo.Aluno;
 
 public class AlunoDaoImpl implements Dao<Aluno>{
@@ -49,5 +51,11 @@ public class AlunoDaoImpl implements Dao<Aluno>{
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+    }
+    
+    @Override
+    public List<Aluno> obterTodos (EntityManager em){
+        Query query = em.createQuery("SELECT e FROM Aluno e");
+        return (List<Aluno>) query.getResultList();
     }
 }

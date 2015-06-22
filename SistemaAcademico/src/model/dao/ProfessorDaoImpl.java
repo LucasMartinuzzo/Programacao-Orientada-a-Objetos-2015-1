@@ -5,7 +5,9 @@
  */
 package model.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import model.pojo.Professor;
 
 /**
@@ -58,5 +60,11 @@ public class ProfessorDaoImpl implements Dao<Professor> {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+    }
+    
+    @Override
+    public List<Professor> obterTodos (EntityManager em){
+        Query query = em.createQuery("SELECT e FROM Professor e");
+        return (List<Professor>) query.getResultList();
     }
 }

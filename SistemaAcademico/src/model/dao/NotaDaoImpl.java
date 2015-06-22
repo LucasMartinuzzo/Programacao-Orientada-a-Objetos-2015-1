@@ -1,6 +1,8 @@
 package model.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import model.pojo.Nota;
 
 public class NotaDaoImpl implements Dao<Nota> {    
@@ -51,4 +53,9 @@ public class NotaDaoImpl implements Dao<Nota> {
         }
     }
     
+    @Override
+    public List<Nota> obterTodos (EntityManager em){
+        Query query = em.createQuery("SELECT e FROM Nota e");
+        return (List<Nota>) query.getResultList();
+    }
 }
