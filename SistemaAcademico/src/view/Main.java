@@ -5,9 +5,11 @@
  */
 package view;
 
+import java.util.List;
 import java.util.logging.Level;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import model.dao.AlunoDaoImpl;
 import model.dao.DisciplinaDaoImpl;
 import model.dao.ProfessorDaoImpl;
@@ -28,19 +30,30 @@ public class Main {
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
         Professor professor = new Professor("123","Helcio","Computacao");
         Disciplina disciplina = new Disciplina("Arquitetura","Coisas",12);
+        Disciplina disciplina2 = new Disciplina("Ed1","Mais coisas", 12);
         Aluno aluno = new Aluno("12","Calouro");
         Turma turma = new Turma(2022,1,"Sala","13:00",10,disciplina,professor);
-        professor.adicionarDisciplina(disciplina);
-        ProfessorDaoImpl.getInstancia().alterar(em, professor);
-        DisciplinaDaoImpl.getInstancia().alterar(em, disciplina);
-        //System.out.println("Professor-Disciplina: " + professor.getDisciplina().get(0) + 
-        //        "\n Disciplina-Professor: " + disciplina.getProfessor().get(0));
-        //turma.adicionarAluno(aluno);
         //ProfessorDaoImpl.getInstancia().salvar(em, professor);
-        //DisciplinaDaoImpl.getInstancia().salvar(em, disciplina);
+        //DisciplinaDaoImpl.getInstancia().salvar(em,disciplina);
+        //DisciplinaDaoImpl.getInstancia().salvar(em, disciplina2);
+        //professor.adicionarDisciplina(disciplina2);
+        //professor.adicionarDisciplina(disciplina);
+        //ProfessorDaoImpl.getInstancia().alterar(em, professor);
         //AlunoDaoImpl.getInstancia().salvar(em, aluno);
         //TurmaDaoImpl.getInstancia().salvar(em, turma);
+        //turma.adicionarAluno(aluno);
+        imprimir(lista(em));
         em.close();
         emf.close();
     }
+    
+    public static List<Disciplina> lista (EntityManager em){
+        Query query = em.createQuery("SELECT e FROM Disciplina e");
+        return (List<Disciplina>) query.getResultList();
+    }
+    public static void imprimir (List<Disciplina> list){
+        for(Disciplina disc: list)
+            System.out.println(disc);
+    } 
+    
 }

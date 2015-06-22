@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import model.dao.AlunoDaoImpl;
@@ -7,6 +8,7 @@ import model.dao.Dao;
 import model.dao.FaltaDaoImpl;
 import model.dao.TurmaDaoImpl;
 import model.pojo.Aluno;
+import model.pojo.Disciplina;
 import model.pojo.Falta;
 import model.pojo.Turma;
 
@@ -62,6 +64,11 @@ public class FaltaView {
         if (id == 1)
             return false;
         return true;
+    }
+    
+    public void imprimir (List<Falta> list){
+        for(Falta falta: list)
+            System.out.println(falta);
     }
 }
 

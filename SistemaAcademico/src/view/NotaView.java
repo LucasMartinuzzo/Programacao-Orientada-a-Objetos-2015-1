@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import model.dao.AlunoDaoImpl;
@@ -64,6 +65,11 @@ public class NotaView {
         if (id == 1)
             return false;
         return true;
+    }
+    
+    public void imprimir (List<Nota> list){
+        for(Nota nota: list)
+            System.out.println(nota);
     }
 }
 

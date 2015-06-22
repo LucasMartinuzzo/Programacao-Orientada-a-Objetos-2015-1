@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import model.dao.DisciplinaDaoImpl;
@@ -38,5 +39,10 @@ public class DisciplinaView {
             System.out.println("Total de turmas: " + disciplina.getTurma().size());
         }else
             System.out.println("Disciplina inválida.");
+    }
+    
+    public void imprimir (List<Disciplina> list){
+        for(Disciplina disciplina: list)
+            System.out.println(disciplina);
     }
 }

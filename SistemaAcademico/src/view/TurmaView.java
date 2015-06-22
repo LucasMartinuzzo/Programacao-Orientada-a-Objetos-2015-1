@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import model.dao.DisciplinaDaoImpl;
@@ -48,5 +49,10 @@ public class TurmaView {
                 System.out.println ("ERRO: Professor não cadastrado (CPF inválido).");
         }else
             System.out.println("ERRO: Disciplina não cadastrada (nome inválido).");
+    }
+    
+    public void imprimir (List<Turma> list){
+        for(Turma turma: list)
+            System.out.println(turma);
     }
 }

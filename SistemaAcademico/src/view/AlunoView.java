@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import model.dao.AlunoDaoImpl;
@@ -24,5 +25,10 @@ public class AlunoView {
             System.out.println("Cadastro efetuado com sucesso.");
         }else
             System.out.println("ERRO: CPF já cadastrado.");
+    }
+    
+    public void imprimir (List<Aluno> list){
+        for(Aluno aluno: list)
+            System.out.println(aluno);
     }
 }

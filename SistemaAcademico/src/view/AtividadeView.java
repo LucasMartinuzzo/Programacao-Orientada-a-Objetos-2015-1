@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import javax.persistence.EntityManager;
 import model.dao.AtividadeDaoImpl;
@@ -51,6 +52,11 @@ public class AtividadeView {
         if (id == 1)
             return false;
         return true;
+    }
+    
+    public void imprimir (List<Atividade> list){
+        for(Atividade atividade: list)
+            System.out.println(atividade);
     }
 }
 
