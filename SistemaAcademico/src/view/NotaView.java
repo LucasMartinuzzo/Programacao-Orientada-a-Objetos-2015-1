@@ -20,11 +20,12 @@ public class NotaView {
     
     public void cadastrar (EntityManager em){
         System.out.println("CADASTRO DE NOTAS");
-        System.out.println("Lista de atividades cadastradas: ");
-        if (this.imprimirCadastrados(em, daoAtividade) == false){
-            System.out.println("ERRO: Não existem atividades cadastradas.");
+        if (daoAtividade.obterTodos(em).isEmpty()){
+            System.out.println("Não existem atividades cadastradas.");
             return;
         }
+        System.out.println("Lista de atividades cadastradas: ");
+        this.imprimir(daoAtividade.obterTodos(em));
         System.out.println("Atividade (ID): ");
         Integer id = scanner.nextInt();
         scanner.nextLine();
@@ -55,21 +56,12 @@ public class NotaView {
             }              
             System.out.println ("Cadastros efetuados com sucesso.");
         }else
-            System.out.println("ERRO: Atividade não cadastrada (ID inválido).");
+            System.out.println("Atividade não cadastrada (ID inválido).");
     }
     
-    public Boolean imprimirCadastrados (EntityManager em, Dao dao){
-        Integer id = 1;
-        for ( ; dao.buscar(em, id) != null; id++)
-            System.out.println(dao.buscar(em,id));
-        if (id == 1)
-            return false;
-        return true;
-    }
-    
-    public void imprimir (List<Nota> list){
-        for(Nota nota: list)
-            System.out.println(nota);
+    public void imprimir (List<?> lista){
+        for(Object objeto: lista)
+            System.out.println(objeto);
     }
 }
 

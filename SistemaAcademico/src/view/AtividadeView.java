@@ -9,7 +9,7 @@ import model.dao.Dao;
 import model.pojo.Atividade;
 import model.pojo.Turma;
 
-public class AtividadeView<T> {
+public class AtividadeView {
 
     private static Scanner scanner = new Scanner (System.in);
     private AtividadeDaoImpl daoAtividade = AtividadeDaoImpl.getInstancia();
@@ -17,12 +17,12 @@ public class AtividadeView<T> {
     
     public void cadastrar (EntityManager em){
         System.out.println("CADASTRO DE ATIVIDADE");
-        System.out.println("Lista de turmas cadastradas: ");
         if (daoTurma.obterTodos(em).isEmpty()){
-            System.out.println("ERRO: Não existem turmas cadastradas.");
+            System.out.println("Não existem turmas cadastradas.");
             return;
         }
-        this.imprimir((List<T>) daoTurma.obterTodos(em));
+        System.out.println("Lista de turmas cadastradas: ");
+        this.imprimir(daoTurma.obterTodos(em));
         System.out.println("Turma (ID): ");
         Integer id = scanner.nextInt();
         scanner.nextLine();
@@ -43,12 +43,12 @@ public class AtividadeView<T> {
             daoTurma.alterar(em, turma);
             System.out.println ("Cadastro efetuado com sucesso.");
         }else
-            System.out.println("ERRO: Turma não cadastrada (ID inválido).");
+            System.out.println("Turma não cadastrada (ID inválido).");
     }
     
-    public void imprimir (List<T> lista){
-        for(T t: lista)
-            System.out.println(t);
+    public void imprimir (List<?> lista){
+        for(Object objeto: lista)
+            System.out.println(objeto);
     }
 }
 

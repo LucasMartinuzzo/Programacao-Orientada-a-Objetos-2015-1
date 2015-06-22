@@ -14,7 +14,6 @@ public class AlunoView {
     
     public void cadastrar (EntityManager em){
         System.out.println("CADASTRO DE ALUNO");
-        System.out.println ("Lista de alunos cadastrados: ");
         System.out.println("CPF: ");
         String cpf = scanner.nextLine();
         if (daoAluno.buscar(em,cpf) == null){
@@ -24,11 +23,12 @@ public class AlunoView {
             daoAluno.salvar(em, aluno);
             System.out.println("Cadastro efetuado com sucesso.");
         }else
-            System.out.println("ERRO: CPF já cadastrado.");
+            System.out.println("CPF já cadastrado.");
     }
     
-    public void imprimir (List<Aluno> list){
-        for(Aluno aluno: list)
-            System.out.println(aluno);
+    //EXCLUIR
+    public void imprimir (List<?> lista){
+        for(Object objeto: lista)
+            System.out.println(objeto);
     }
 }

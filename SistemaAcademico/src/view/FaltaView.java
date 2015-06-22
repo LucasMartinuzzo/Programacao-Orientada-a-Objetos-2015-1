@@ -21,11 +21,12 @@ public class FaltaView {
     
     public void cadastrar (EntityManager em){
         System.out.println("CADASTRO DE FALTAS");
-        System.out.println("Lista de turmas cadastradas: ");
-        if (this.imprimirCadastrados(em, daoTurma) == false){
-            System.out.println("ERRO: Não existem turmas cadastradas.");
+        if (daoTurma.obterTodos(em).isEmpty()){
+            System.out.println("Não existem turmas cadastradas.");
             return;
         }
+        System.out.println("Lista de turmas cadastradas: ");
+        this.imprimir(daoTurma.obterTodos(em));
         System.out.println("Turma (ID): ");
         Integer id = scanner.nextInt();
         scanner.nextLine();
@@ -54,21 +55,12 @@ public class FaltaView {
             }              
             System.out.println ("Cadastros efetuados com sucesso.");
         }else
-            System.out.println("ERRO: Turma não cadastrada (ID inválido).");
+            System.out.println("Turma não cadastrada (ID inválido).");
     }
     
-    public Boolean imprimirCadastrados (EntityManager em, Dao dao){
-        Integer id = 1;
-        for ( ; dao.buscar(em, id) != null; id++)
-            System.out.println(dao.buscar(em,id));
-        if (id == 1)
-            return false;
-        return true;
-    }
-    
-    public void imprimir (List<Falta> list){
-        for(Falta falta: list)
-            System.out.println(falta);
+    public void imprimir (List<?> lista){
+        for(Object objeto: lista)
+            System.out.println(objeto);
     }
 }
 
