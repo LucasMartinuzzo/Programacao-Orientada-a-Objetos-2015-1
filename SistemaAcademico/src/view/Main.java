@@ -28,6 +28,7 @@ public class Main{
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             switch(opcao) {
                 case 1:{
                     this.alunoView.cadastrar(em);
@@ -66,55 +67,56 @@ public class Main{
     
     private void imprimirMenuGerenciamento(EntityManager em){
         while (true){
-            System.out.println("1 - Matricular aluno");
-            System.out.println("2 - Atribuir professor à disciplina");
-            System.out.println("3 - Alterar aluno");
-            System.out.println("4 - Alterar atividade");
-            System.out.println("5 - Alterar disciplina");
-            System.out.println("6 - Alterar falta");
-            System.out.println("7 - Alterar nota");
-            System.out.println("8 - Alterar professor");
-            System.out.println("9 - Alterar turma");
+            System.out.println("1 - Alterar aluno");
+            System.out.println("2 - Alterar atividade");
+            System.out.println("3 - Alterar disciplina");
+            System.out.println("4 - Alterar falta");
+            System.out.println("5 - Alterar nota");
+            System.out.println("6 - Alterar professor");
+            System.out.println("7 - Alterar turma");
+            System.out.println("8 - Atribuir professor à disciplina");
+            System.out.println("9 - Matricular aluno");
             System.out.println("Outro - Finalizar");
             System.out.println("\nOpção: ");
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             switch(opcao) {
                 case 1:{
-                    this.turmaView.matricularAluno(em);
-                    break;
-                }
-                case 2:{
-                    this.disciplinaView.atribuirProfessor(em);
-                    break;
-                }
-                case 3:{
                     this.alunoView.alterar(em);
                     break;
                 }
-                case 4:{
+                case 2:{
                     this.atividadeView.alterar(em);
                     break;
                 }
-                case 5:{
+                case 3:{
                     this.disciplinaView.alterar(em);
                     break;
                 }
-                case 6:{
+                case 4:{
                     this.faltaView.alterar(em);
                     break;
                 }
-                case 7:{
+                case 5:{
                     this.notaView.alterar(em);
                     break;
                 }
-                case 8:{
+                case 6:{
                     this.professorView.alterar(em);
                     break;
                 }
-                case 9:{
+                case 7:{
                     this.turmaView.alterar(em);
+                    break;
+                }
+                case 8:{
+                    this.disciplinaView.atribuirProfessor(em);
+                    break;
+                }
+                case 9:{
+                    this.turmaView.matricularAluno(em);
                     break;
                 }
                 default:{}
@@ -138,6 +140,7 @@ public class Main{
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             switch(opcao) {
                 case 1:{
                     this.alunoView.listar(em);
@@ -185,6 +188,7 @@ public class Main{
             Scanner entrada = new Scanner(System.in);
             Integer opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             switch(opcao){
                 case 1:{
                     this.turmaView.consultarTurma(em);
@@ -225,6 +229,7 @@ public class Main{
             System.out.println("Opção: ");
             opcao = entrada.nextInt();
             entrada.nextLine();
+            System.out.println("");
             switch(opcao){
                 case 1:{
                     main.imprimirMenuCadastro(em);
