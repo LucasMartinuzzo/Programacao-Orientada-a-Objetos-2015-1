@@ -35,12 +35,12 @@ public class ProfessorView {
         String cpf = scanner.nextLine();
         Professor professor = daoProfessor.buscar(em, cpf);
         if(professor != null){
-            System.out.println("Atualize os dados da professor.");
-            System.out.println("1 - Alterar nome");
-            System.out.println("2 - Alterar departamento");
-            System.out.println("Outro - Finalizar");
             Integer opcao = 1; 
             while(opcao >= 1 && opcao <= 2){
+                System.out.println("Atualize os dados da professor.");
+                System.out.println("1 - Alterar nome");
+                System.out.println("2 - Alterar departamento");
+                System.out.println("Outro - Finalizar");
                 opcao = scanner.nextInt();
                 scanner.nextLine();
                 switch(opcao) {

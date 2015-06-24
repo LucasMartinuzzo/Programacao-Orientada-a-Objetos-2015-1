@@ -65,15 +65,15 @@ public class TurmaView {
         scanner.nextLine();
         Turma turma = daoTurma.buscar(em, id);
         if(turma != null){
-            System.out.println("Atualize os dados da turma.");
-            System.out.println("1 - Alterar ano");
-            System.out.println("2 - Alterar período");
-            System.out.println("3 - Alterar local");
-            System.out.println("4 - Alterar horário");
-            System.out.println("5 - Número de vagas");
-            System.out.println("Outro - Finalizar");
             Integer opcao = 1; 
             while(opcao >= 1 && opcao <= 5){
+                System.out.println("Atualize os dados da turma.");
+                System.out.println("1 - Alterar ano");
+                System.out.println("2 - Alterar período");
+                System.out.println("3 - Alterar local");
+                System.out.println("4 - Alterar horário");
+                System.out.println("5 - Número de vagas");
+                System.out.println("Outro - Finalizar");
                 opcao = scanner.nextInt();
                 scanner.nextLine();
                 switch(opcao) {
