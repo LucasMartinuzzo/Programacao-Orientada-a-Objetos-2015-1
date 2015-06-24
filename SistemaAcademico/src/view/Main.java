@@ -1,70 +1,256 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import model.dao.AlunoDaoImpl;
-import model.dao.DisciplinaDaoImpl;
-import model.dao.ProfessorDaoImpl;
-import model.dao.TurmaDaoImpl;
-import model.pojo.Aluno;
-import model.pojo.Disciplina;
-import model.pojo.Professor;
-import model.pojo.Turma;
 
-/**
- *
- * @author Lucas
- */
-public class Main {
-    public static void main(String[] args) {
+public class Main{
+    private AlunoView alunoView = new AlunoView();
+    private AtividadeView atividadeView = new AtividadeView();
+    private DisciplinaView disciplinaView = new DisciplinaView();
+    private FaltaView faltaView = new FaltaView();
+    private NotaView notaView = new NotaView();
+    private ProfessorView professorView = new ProfessorView();
+    private TurmaView turmaView = new TurmaView();
+    
+    private void imprimirMenuCadastro(EntityManager em){
+        while (true) {
+            System.out.println("1 - Cadastrar aluno");
+            System.out.println("2 - Cadastrar atividade");
+            System.out.println("3 - Cadastrar disciplina");
+            System.out.println("4 - Cadastrar falta");
+            System.out.println("5 - Cadastrar nota");
+            System.out.println("6 - Cadastrar professor");
+            System.out.println("7 - Cadastrar turma");
+            System.out.println("Outro - Finalizar");
+            System.out.println("\nOpção: ");
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            entrada.nextLine();
+            switch(opcao) {
+                case 1:{
+                    this.alunoView.cadastrar(em);
+                    break;
+                }
+                case 2:{
+                    this.atividadeView.cadastrar(em);
+                    break;
+                }
+                case 3:{
+                    this.disciplinaView.cadastrar(em);
+                    break;
+                }
+                case 4:{
+                    this.faltaView.cadastrar(em);
+                    break;
+                }
+                case 5:{
+                    this.notaView.cadastrar(em);
+                    break;
+                }
+                case 6:{
+                    this.professorView.cadastrar(em);
+                    break;
+                }
+                case 7:{
+                    this.turmaView.cadastrar(em);
+                    break;
+                }
+                default:{}
+            }
+            if (opcao < 1 || opcao > 7)
+                break;
+        }
+    }
+    
+    private void imprimirMenuGerenciamento(EntityManager em){
+        while (true){
+            System.out.println("1 - Matricular aluno");
+            System.out.println("2 - Atribuir professor à disciplina");
+            System.out.println("3 - Alterar aluno");
+            System.out.println("4 - Alterar atividade");
+            System.out.println("5 - Alterar disciplina");
+            System.out.println("6 - Alterar falta");
+            System.out.println("7 - Alterar nota");
+            System.out.println("8 - Alterar professor");
+            System.out.println("9 - Alterar turma");
+            System.out.println("Outro - Finalizar");
+            System.out.println("\nOpção: ");
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            entrada.nextLine();
+            switch(opcao) {
+                case 1:{
+                    this.turmaView.matricularAluno(em);
+                    break;
+                }
+                case 2:{
+                    this.disciplinaView.atribuirProfessor(em);
+                    break;
+                }
+                case 3:{
+                    this.alunoView.alterar(em);
+                    break;
+                }
+                case 4:{
+                    this.atividadeView.alterar(em);
+                    break;
+                }
+                case 5:{
+                    this.disciplinaView.alterar(em);
+                    break;
+                }
+                case 6:{
+                    this.faltaView.alterar(em);
+                    break;
+                }
+                case 7:{
+                    this.notaView.alterar(em);
+                    break;
+                }
+                case 8:{
+                    this.professorView.alterar(em);
+                    break;
+                }
+                case 9:{
+                    this.turmaView.alterar(em);
+                    break;
+                }
+                default:{}
+            }
+            if (opcao < 1 || opcao > 9)
+                break;
+        }
+    }
+
+    private void imprimirMenuListagem(EntityManager em){
+        while (true) {
+            System.out.println("1 - Listar alunos");
+            System.out.println("2 - Listar atividades");
+            System.out.println("3 - Listar disciplinas");
+            System.out.println("4 - Listar faltas");
+            System.out.println("5 - Listar notas");
+            System.out.println("6 - Listar professores");
+            System.out.println("7 - Listar turmas");
+            System.out.println("Outro - Finalizar");
+            System.out.println("\nOpção: ");
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            entrada.nextLine();
+            switch(opcao) {
+                case 1:{
+                    this.alunoView.listar(em);
+                    break;
+                }
+                case 2:{
+                    this.atividadeView.listar(em);
+                    break;
+                }
+                case 3:{
+                    this.disciplinaView.listar(em);
+                    break;
+                }
+                case 4:{
+                    this.faltaView.listar(em);
+                    break;
+                }
+                case 5:{
+                    this.notaView.listar(em);
+                    break;
+                }
+                case 6:{
+                    this.professorView.listar(em);
+                    break;
+                }
+                case 7:{
+                    this.turmaView.listar(em);
+                    break;
+                }
+                default:{}
+            }
+            if (opcao < 1 || opcao > 7)
+                break;
+        }
+    }    
+
+    private void imprimirMenuConsulta(EntityManager em){
+        while(true){
+            System.out.println("1 - Consultar alunos de uma turma a partir de seu ano e período");
+            System.out.println("2 - Consultar a situação do aluno em determinada disciplina");
+            System.out.println("3 - Consultar a quantidade de turmas já oferecidas de uma disciplina");
+            System.out.println("4 - Consultar o número de disciplinas já lecionadas por um professor");
+            System.out.println("Outro - Finalizar");
+            System.out.println("\nOpção: ");
+            Scanner entrada = new Scanner(System.in);
+            Integer opcao = entrada.nextInt();
+            entrada.nextLine();
+            switch(opcao){
+                case 1:{
+                    this.turmaView.consultarTurma(em);
+                    break;
+                }
+                case 2:{
+                    this.turmaView.consultarSituacaoAluno(em);
+                    break;
+                }
+                case 3:{
+                    this.disciplinaView.quantidadeTurmas(em);
+                    break;
+                }
+                case 4:{
+                    this.professorView.quantidadeDisciplinasLecionadas(em);
+                    break;
+                }
+                default:{}
+            }
+            if (opcao < 1 || opcao > 4)
+                break;
+        }
+    }
+    
+    public static void main (String[] args){
+        Integer opcao;
         Main main = new Main();
-        //AtividadeView atividadeView = new AtividadeView();
-        
+        Scanner entrada = new Scanner(System.in);
         EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("SistemaAcademicoPU");
         EntityManager em = emf.createEntityManager();
-        
-        java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
-        
-        Professor professor = new Professor("123","Helcio","Computacao");
-//        Disciplina disciplina = new Disciplina("Arquitetura","Coisas",12);
-//        Disciplina disciplina2 = new Disciplina("Ed1","Mais coisas", 12);
-//        Aluno aluno = new Aluno("12","Calouro");
-//        Turma turma = new Turma(2022,1,"Sala","13:00",10,disciplina,professor);
-//        ProfessorDaoImpl.getInstancia().salvar(em, professor);
-        Professor prof = ProfessorDaoImpl.getInstancia().buscar(em, "123");
-        prof.setCpf("456");
-        ProfessorDaoImpl.getInstancia().alterar(em, prof);
-//        DisciplinaDaoImpl.getInstancia().salvar(em,disciplina);
-//        DisciplinaDaoImpl.getInstancia().salvar(em, disciplina2);
-//        AlunoDaoImpl.getInstancia().salvar(em, aluno);
-//        TurmaDaoImpl.getInstancia().salvar(em, turma);
-//        professor.adicionarDisciplina(disciplina2);
-//        professor.adicionarDisciplina(disciplina);
-//        ProfessorDaoImpl.getInstancia().alterar(em, professor);
-//        turma.adicionarAluno(aluno);
-//        main.imprimir(em, atividadeView);
-//        TurmaDaoImpl.getInstancia().alterar(em, turma);
-//        AlunoDaoImpl.getInstancia().alterar(em, aluno);
-        em.close();
-        emf.close();
+        java.util.logging.Logger.getLogger("log.hibernate").setLevel(Level.OFF);
+        while(true){
+            System.out.println("1 - Cadastrar");
+            System.out.println("2 - Alterar / Gerenciar");
+            System.out.println("3 - Listar");
+            System.out.println("4 - Consultar");
+            System.out.println("5 - Sair");
+            System.out.println("Opção: ");
+            opcao = entrada.nextInt();
+            entrada.nextLine();
+            switch(opcao){
+                case 1:{
+                    main.imprimirMenuCadastro(em);
+                    break;
+                }
+                case 2:{
+                    main.imprimirMenuGerenciamento(em);
+                    break;
+                }
+                case 3:{
+                    main.imprimirMenuListagem(em);
+                    break;
+                }
+                case 4:{
+                    main.imprimirMenuConsulta(em);
+                    break;
+                }
+                case 5:{
+                    System.out.println("Encerrando o programa...");
+                    System.exit(0);
+                }
+                default:{
+                    System.out.println("Digite uma opção válida.");
+                }
+            }
+        }
     }
-    
-    public static List<Disciplina> lista (EntityManager em){
-        Query query = em.createQuery("SELECT e FROM Disciplina e");
-        return (List<Disciplina>) query.getResultList();
-    }
-    
-    public void imprimir (EntityManager em, AtividadeView atividadeView){
-        atividadeView.cadastrar(em);
-    }
-    
-    
 }
+
