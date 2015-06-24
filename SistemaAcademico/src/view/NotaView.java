@@ -59,6 +59,30 @@ public class NotaView {
             System.out.println("Atividade não cadastrada (ID inválido).");
     }
     
+    public void alterar (EntityManager em){
+        System.out.println("ALTERAÇÃO DE NOTA");
+        if(daoNota.obterTodos(em).isEmpty()){
+            System.out.println("Não existem notas cadastradas.");
+            return;
+        }
+        System.out.println("Lista de notas cadastradas: ");
+        this.imprimir(daoNota.obterTodos(em));
+        System.out.println("Nota (ID): ");
+        Integer id = scanner.nextInt();
+        scanner.nextLine();
+        Nota nota = daoNota.buscar(em, id);
+        if(nota != null){
+            System.out.println("Atualize o valor da nota.");
+            System.out.println("Valor: ");
+            Double valor = scanner.nextDouble();
+            scanner.nextLine();
+            nota.setNota(valor);
+            daoNota.alterar(em, nota);
+            System.out.println("Alteração efetuada com sucesso.");
+        }else
+            System.out.println("Nota não cadastrada (ID inválido).");
+    }
+    
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);

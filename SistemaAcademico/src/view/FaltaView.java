@@ -58,6 +58,30 @@ public class FaltaView {
             System.out.println("Turma não cadastrada (ID inválido).");
     }
     
+    public void alterar (EntityManager em){
+        System.out.println("ALTERAÇÃO DE FALTA");
+        if(daoFalta.obterTodos(em).isEmpty()){
+            System.out.println("Não existem faltas cadastradas.");
+            return;
+        }
+        System.out.println("Lista de faltas cadastradas: ");
+        this.imprimir(daoFalta.obterTodos(em));
+        System.out.println("Falta (ID): ");
+        Integer id = scanner.nextInt();
+        scanner.nextLine();
+        Falta falta = daoFalta.buscar(em, id);
+        if(falta != null){
+            System.out.println("Atualize a quantidade de faltas.");
+            System.out.println("Quantidade de faltas: ");
+            Integer valor = scanner.nextInt();
+            scanner.nextLine();
+            falta.setFalta(valor);
+            daoFalta.alterar(em, falta);
+            System.out.println("Alteração efetuada com sucesso.");
+        }else
+            System.out.println("Falta não cadastrada (ID inválido).");
+    }
+    
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);

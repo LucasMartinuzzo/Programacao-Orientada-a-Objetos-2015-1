@@ -28,6 +28,49 @@ public class ProfessorView {
             System.out.println("CPF já cadastrado.");
     }
     
+    public void alterar (EntityManager em){
+        System.out.println("ALTERAÇÃO DE PROFESSOR");
+        if(daoProfessor.obterTodos(em).isEmpty()){
+            System.out.println("Não existem professores cadastrados.");
+            return;
+        }
+        System.out.println("Lista de professores cadastrados: ");
+        this.imprimir(daoProfessor.obterTodos(em));
+        System.out.println("Professor (CPF): ");
+        String cpf = scanner.nextLine();
+        Professor professor = daoProfessor.buscar(em, cpf);
+        if(professor != null){
+            System.out.println("Atualize os dados da professor.");
+            System.out.println("1 - Alterar nome");
+            System.out.println("2 - Alterar departamento");
+            System.out.println("Outro - Finalizar");
+            Integer opcao = 1; 
+            while(opcao >= 1 && opcao <= 2){
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                switch(opcao) {
+                    case 1:{
+                        System.out.println("Nome: ");
+                        String nome = scanner.nextLine();
+                        professor.setNome(nome);
+                        break;
+                    }
+                    case 2:{
+                        System.out.println("Departamento: ");
+                        String departamento = scanner.nextLine();
+                        professor.setDepartamento(departamento);
+                        break;
+                    }
+                    default:{
+                    }
+                }
+            }
+            daoProfessor.alterar(em, professor);
+            System.out.println("Alteração efetuada com sucesso.");
+        }else
+            System.out.println("Professor não cadastrado (CPF inválido).");
+    }
+    
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);

@@ -57,6 +57,74 @@ public class TurmaView {
             System.out.println("Disciplina não cadastrada (nome inválido).");
     }
     
+    public void alterar (EntityManager em){
+        System.out.println("ALTERAÇÃO DE TURMA");
+        if(daoTurma.obterTodos(em).isEmpty()){
+            System.out.println("Não existem turmas cadastradas.");
+            return;
+        }
+        System.out.println("Lista de turmas cadastradas: ");
+        this.imprimir(daoTurma.obterTodos(em));
+        System.out.println("Turma (ID): ");
+        Integer id = scanner.nextInt();
+        scanner.nextLine();
+        Turma turma = daoTurma.buscar(em, id);
+        if(turma != null){
+            System.out.println("Atualize os dados da turma.");
+            System.out.println("1 - Alterar ano");
+            System.out.println("2 - Alterar período");
+            System.out.println("3 - Alterar local");
+            System.out.println("4 - Alterar horário");
+            System.out.println("5 - Número de vagas");
+            System.out.println("Outro - Finalizar");
+            Integer opcao = 1; 
+            while(opcao >= 1 && opcao <= 5){
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                switch(opcao) {
+                    case 1:{
+                        System.out.println("Ano: ");
+                        Integer ano = scanner.nextInt();
+                        scanner.nextLine();
+                        turma.setAno(ano);
+                        break;
+                    }
+                    case 2:{
+                        System.out.println("Período: ");
+                        Integer periodo = scanner.nextInt();
+                        scanner.nextLine();
+                        turma.setPeriodo(periodo);
+                        break;
+                    }
+                    case 3:{
+                        System.out.println("Local: ");
+                        String local = scanner.nextLine();
+                        turma.setLocal(local);
+                        break;
+                    }
+                    case 4:{
+                        System.out.println("Horário: ");
+                        String horario = scanner.nextLine();
+                        turma.setHorario(horario);
+                        break;
+                    }
+                    case 5:{
+                        System.out.println("Número de vagas: ");
+                        Integer numVagas = scanner.nextInt();
+                        scanner.nextLine();
+                        turma.setNumeroDeVagas(numVagas);
+                        break;
+                    }
+                    default:{
+                    }
+                }
+            }
+            daoTurma.alterar(em, turma);
+            System.out.println("Alteração efetuada com sucesso.");
+        }else
+            System.out.println("Turma não cadastrada (ID inválido).");
+    }
+    
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);

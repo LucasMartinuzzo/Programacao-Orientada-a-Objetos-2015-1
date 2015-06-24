@@ -26,7 +26,28 @@ public class AlunoView {
             System.out.println("CPF já cadastrado.");
     }
     
-    //EXCLUIR
+    public void alterar (EntityManager em){
+        System.out.println("ALTERAÇÃO DE ALUNO");
+        if(daoAluno.obterTodos(em).isEmpty()){
+            System.out.println("Não existem alunos cadastrados.");
+            return;
+        }
+        System.out.println("Lista de alunos cadastrados: ");
+        this.imprimir(daoAluno.obterTodos(em));
+        System.out.println("Aluno (CPF): ");
+        String cpf = scanner.nextLine();
+        Aluno aluno = daoAluno.buscar(em, cpf);
+        if(aluno != null){
+            System.out.println("Atualize o nome do aluno.");
+            System.out.println("Nome: ");
+            String nome = scanner.nextLine();
+            aluno.setNome(nome);
+            daoAluno.alterar(em, aluno);
+            System.out.println("Alteração efetuada com sucesso.");
+        }else
+            System.out.println("Aluno não cadastrado (CPF inválido).");
+    }
+    
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);

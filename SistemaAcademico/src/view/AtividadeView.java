@@ -46,6 +46,65 @@ public class AtividadeView {
             System.out.println("Turma não cadastrada (ID inválido).");
     }
     
+    public void alterar (EntityManager em){
+        System.out.println("ALTERAÇÃO DE ATIVIDADE");
+        if(daoAtividade.obterTodos(em).isEmpty()){
+            System.out.println("Não existem atividades cadastradas.");
+            return;
+        }
+        System.out.println("Lista de atividades cadastradas: ");
+        this.imprimir(daoAtividade.obterTodos(em));
+        System.out.println("Atividade (ID): ");
+        Integer id = scanner.nextInt();
+        scanner.nextLine();
+        Atividade atividade = daoAtividade.buscar(em, id);
+        if(atividade != null){
+            System.out.println("Atualize os dados da atividade.");
+            System.out.println("1 - Alterar nome");
+            System.out.println("2 - Alterar tipo");
+            System.out.println("3 - Alterar data");
+            System.out.println("4 - Alterar valor");
+            System.out.println("Outro - Finalizar");
+            Integer opcao = 1; 
+            while(opcao >= 1 && opcao <= 4){
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                switch(opcao) {
+                    case 1:{
+                        System.out.println("Nome: ");
+                        String nome = scanner.nextLine();
+                        atividade.setNome(nome);
+                        break;
+                    }
+                    case 2:{
+                        System.out.println("Tipo: ");
+                        String tipo = scanner.nextLine();
+                        atividade.setTipo(tipo);
+                        break;
+                    }
+                    case 3:{
+                        System.out.println("Data: ");
+                        String data = scanner.nextLine();
+                        atividade.setData(data);
+                        break;
+                    }
+                    case 4:{
+                        System.out.println("Valor: ");
+                        Double valor = scanner.nextDouble();
+                        scanner.nextLine();
+                        atividade.setValor(valor);
+                        break;
+                    }
+                    default:{
+                    }
+                }
+            }
+            daoAtividade.alterar(em, atividade);
+            System.out.println("Alteração efetuada com sucesso.");
+        }else
+            System.out.println("Atividade não cadastrada (ID inválido).");
+    }
+    
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);

@@ -31,6 +31,50 @@ public class DisciplinaView {
             System.out.println("Nome de disciplina já cadastrado.");
     }
     
+    public void alterar (EntityManager em){
+        System.out.println("ALTERAÇÃO DE DISCIPLINA");
+        if(daoDisciplina.obterTodos(em).isEmpty()){
+            System.out.println("Não existem disciplinas cadastradas.");
+            return;
+        }
+        System.out.println("Lista de disciplinas cadastradas: ");
+        this.imprimir(daoDisciplina.obterTodos(em));
+        System.out.println("Disciplina (Nome): ");
+        String nome = scanner.nextLine();
+        Disciplina disciplina = daoDisciplina.buscar(em, nome);
+        if(disciplina != null){
+            System.out.println("Atualize os dados da disciplina.");
+            System.out.println("1 - Alterar ementa");
+            System.out.println("2 - Alterar carga horária");
+            System.out.println("Outro - Finalizar");
+            Integer opcao = 1; 
+            while(opcao >= 1 && opcao <= 2){
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                switch(opcao) {
+                    case 1:{
+                        System.out.println("Ementa: ");
+                        String ementa = scanner.nextLine();
+                        disciplina.setEmenta(ementa);
+                        break;
+                    }
+                    case 2:{
+                        System.out.println("Carga horária: ");
+                        Integer cargaHoraria = scanner.nextInt();
+                        scanner.nextLine();
+                        disciplina.setCargaHoraria(cargaHoraria);
+                        break;
+                    }
+                    default:{
+                    }
+                }
+            }
+            daoDisciplina.alterar(em, disciplina);
+            System.out.println("Alteração efetuada com sucesso.");
+        }else
+            System.out.println("Disciplina não cadastrada (Nome inválido).");
+    }
+    
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);
