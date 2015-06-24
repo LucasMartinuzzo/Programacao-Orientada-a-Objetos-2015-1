@@ -30,12 +30,7 @@ public class ProfessorView {
     
     public void alterar (EntityManager em){
         System.out.println("ALTERAÇÃO DE PROFESSOR");
-        if(daoProfessor.obterTodos(em).isEmpty()){
-            System.out.println("Não existem professores cadastrados.");
-            return;
-        }
-        System.out.println("Lista de professores cadastrados: ");
-        this.imprimir(daoProfessor.obterTodos(em));
+        this.listar(em);
         System.out.println("Professor (CPF): ");
         String cpf = scanner.nextLine();
         Professor professor = daoProfessor.buscar(em, cpf);
@@ -74,6 +69,15 @@ public class ProfessorView {
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);
+    }
+    
+    public void listar(EntityManager em) {
+        if(daoProfessor.obterTodos(em).isEmpty()){
+            System.out.println("Não existem professores cadastrados.");
+            return;
+        }
+        System.out.println("Lista de professores cadastrados: ");
+        this.imprimir(daoProfessor.obterTodos(em));
     }
     
     public void quantidadeDisciplinasLecionadas (EntityManager em){

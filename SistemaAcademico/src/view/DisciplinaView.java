@@ -33,12 +33,7 @@ public class DisciplinaView {
     
     public void alterar (EntityManager em){
         System.out.println("ALTERAÇÃO DE DISCIPLINA");
-        if(daoDisciplina.obterTodos(em).isEmpty()){
-            System.out.println("Não existem disciplinas cadastradas.");
-            return;
-        }
-        System.out.println("Lista de disciplinas cadastradas: ");
-        this.imprimir(daoDisciplina.obterTodos(em));
+        this.listar(em);
         System.out.println("Disciplina (Nome): ");
         String nome = scanner.nextLine();
         Disciplina disciplina = daoDisciplina.buscar(em, nome);
@@ -78,6 +73,15 @@ public class DisciplinaView {
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);
+    }
+    
+    public void listar(EntityManager em) {
+        if(daoDisciplina.obterTodos(em).isEmpty()){
+            System.out.println("Não existem disciplinas cadastradas.");
+            return;
+        }
+        System.out.println("Lista de disciplinas cadastradas: ");
+        this.imprimir(daoDisciplina.obterTodos(em));
     }
 
     public void atribuirProfessor (EntityManager em){

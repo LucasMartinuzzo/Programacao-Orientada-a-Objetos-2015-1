@@ -28,12 +28,7 @@ public class AlunoView {
     
     public void alterar (EntityManager em){
         System.out.println("ALTERAÇÃO DE ALUNO");
-        if(daoAluno.obterTodos(em).isEmpty()){
-            System.out.println("Não existem alunos cadastrados.");
-            return;
-        }
-        System.out.println("Lista de alunos cadastrados: ");
-        this.imprimir(daoAluno.obterTodos(em));
+        this.listar(em);
         System.out.println("Aluno (CPF): ");
         String cpf = scanner.nextLine();
         Aluno aluno = daoAluno.buscar(em, cpf);
@@ -51,5 +46,14 @@ public class AlunoView {
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);
+    }
+    
+    public void listar(EntityManager em) {
+        if(daoAluno.obterTodos(em).isEmpty()){
+            System.out.println("Não existem alunos cadastrados.");
+            return;
+        }
+        System.out.println("Lista de alunos cadastrados: ");
+        this.imprimir(daoAluno.obterTodos(em));
     }
 }

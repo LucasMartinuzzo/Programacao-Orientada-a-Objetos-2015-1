@@ -59,12 +59,7 @@ public class TurmaView {
     
     public void alterar (EntityManager em){
         System.out.println("ALTERAÇÃO DE TURMA");
-        if(daoTurma.obterTodos(em).isEmpty()){
-            System.out.println("Não existem turmas cadastradas.");
-            return;
-        }
-        System.out.println("Lista de turmas cadastradas: ");
-        this.imprimir(daoTurma.obterTodos(em));
+        this.listar(em);
         System.out.println("Turma (ID): ");
         Integer id = scanner.nextInt();
         scanner.nextLine();
@@ -128,6 +123,15 @@ public class TurmaView {
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);
+    }
+    
+    public void listar(EntityManager em) {
+        if(daoTurma.obterTodos(em).isEmpty()){
+            System.out.println("Não existem turmas cadastradas.");
+            return;
+        }
+        System.out.println("Lista de turmas cadastradas: ");
+        this.imprimir(daoTurma.obterTodos(em));
     }
     
     public void matricularAluno (EntityManager em){

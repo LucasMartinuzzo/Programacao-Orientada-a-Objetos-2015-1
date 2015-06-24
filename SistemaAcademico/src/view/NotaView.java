@@ -61,12 +61,7 @@ public class NotaView {
     
     public void alterar (EntityManager em){
         System.out.println("ALTERAÇÃO DE NOTA");
-        if(daoNota.obterTodos(em).isEmpty()){
-            System.out.println("Não existem notas cadastradas.");
-            return;
-        }
-        System.out.println("Lista de notas cadastradas: ");
-        this.imprimir(daoNota.obterTodos(em));
+        this.listar(em);
         System.out.println("Nota (ID): ");
         Integer id = scanner.nextInt();
         scanner.nextLine();
@@ -86,6 +81,15 @@ public class NotaView {
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);
+    }
+    
+    public void listar(EntityManager em) {
+        if(daoNota.obterTodos(em).isEmpty()){
+            System.out.println("Não existem notas cadastradas.");
+            return;
+        }
+        System.out.println("Lista de notas cadastradas: ");
+        this.imprimir(daoNota.obterTodos(em));
     }
 }
 

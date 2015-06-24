@@ -48,12 +48,7 @@ public class AtividadeView {
     
     public void alterar (EntityManager em){
         System.out.println("ALTERAÇÃO DE ATIVIDADE");
-        if(daoAtividade.obterTodos(em).isEmpty()){
-            System.out.println("Não existem atividades cadastradas.");
-            return;
-        }
-        System.out.println("Lista de atividades cadastradas: ");
-        this.imprimir(daoAtividade.obterTodos(em));
+        this.listar(em);
         System.out.println("Atividade (ID): ");
         Integer id = scanner.nextInt();
         scanner.nextLine();
@@ -108,6 +103,15 @@ public class AtividadeView {
     public void imprimir (List<?> lista){
         for(Object objeto: lista)
             System.out.println(objeto);
+    }
+    
+    public void listar(EntityManager em) {
+        if(daoAtividade.obterTodos(em).isEmpty()){
+            System.out.println("Não existem atividades cadastradas.");
+            return;
+        }
+        System.out.println("Lista de atividades cadastradas: ");
+        this.imprimir(daoAtividade.obterTodos(em));
     }
 }
 
