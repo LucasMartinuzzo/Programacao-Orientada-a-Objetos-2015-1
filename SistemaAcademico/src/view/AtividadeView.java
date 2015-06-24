@@ -54,14 +54,14 @@ public class AtividadeView {
         scanner.nextLine();
         Atividade atividade = daoAtividade.buscar(em, id);
         if(atividade != null){
-            System.out.println("Atualize os dados da atividade.");
-            System.out.println("1 - Alterar nome");
-            System.out.println("2 - Alterar tipo");
-            System.out.println("3 - Alterar data");
-            System.out.println("4 - Alterar valor");
-            System.out.println("Outro - Finalizar");
             Integer opcao = 1; 
             while(opcao >= 1 && opcao <= 4){
+                System.out.println("Atualize os dados da atividade.");
+                System.out.println("1 - Alterar nome");
+                System.out.println("2 - Alterar tipo");
+                System.out.println("3 - Alterar data");
+                System.out.println("4 - Alterar valor");
+                System.out.println("Outro - Finalizar");
                 opcao = scanner.nextInt();
                 scanner.nextLine();
                 switch(opcao) {

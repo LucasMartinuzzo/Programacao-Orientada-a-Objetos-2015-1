@@ -38,12 +38,12 @@ public class DisciplinaView {
         String nome = scanner.nextLine();
         Disciplina disciplina = daoDisciplina.buscar(em, nome);
         if(disciplina != null){
-            System.out.println("Atualize os dados da disciplina.");
-            System.out.println("1 - Alterar ementa");
-            System.out.println("2 - Alterar carga horária");
-            System.out.println("Outro - Finalizar");
             Integer opcao = 1; 
             while(opcao >= 1 && opcao <= 2){
+                System.out.println("Atualize os dados da disciplina.");
+                System.out.println("1 - Alterar ementa");
+                System.out.println("2 - Alterar carga horária");
+                System.out.println("Outro - Finalizar");
                 opcao = scanner.nextInt();
                 scanner.nextLine();
                 switch(opcao) {
