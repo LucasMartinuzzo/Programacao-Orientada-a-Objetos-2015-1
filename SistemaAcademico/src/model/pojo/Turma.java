@@ -152,7 +152,7 @@ public class Turma implements Serializable {
     }
     
     public Boolean adicionarAluno (Aluno aluno){
-        if (this.getAluno().size() < this.getNumeroDeVagas() || !(this.getAluno().contains(aluno))){
+        if (this.getAluno().size() < this.getNumeroDeVagas() && !(this.getAluno().contains(aluno))){
             return this.getAluno().add(aluno);
         }
         return false;

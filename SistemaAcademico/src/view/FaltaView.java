@@ -78,8 +78,14 @@ public class FaltaView {
     }
     
     public void imprimir (List<?> lista){
-        for(Object objeto: lista)
-            System.out.println(objeto);
+        for(Object objeto: lista){
+            if(objeto instanceof Falta){
+                System.out.println(objeto);
+                System.out.println("Aluno: " + procurarAluno((Falta) objeto).getNome());
+            }
+            else
+                System.out.println(objeto);
+        }
     }
     
     public void listar(EntityManager em) {
@@ -89,6 +95,14 @@ public class FaltaView {
         }
         System.out.println("Lista de faltas cadastradas: ");
         this.imprimir(daoFalta.obterTodos(em));
+    }
+    
+    public Aluno procurarAluno (Falta falta){
+        for(Aluno aluno: falta.getTurma().getAluno())
+            for(Falta faltaConsultada: aluno.getFalta())
+                if(falta.equals(faltaConsultada))
+                    return aluno;
+        return null;
     }
 }
 

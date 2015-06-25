@@ -86,6 +86,7 @@ public class Nota implements Serializable {
     public String toString () {
         return ("ID: " + this.id + "\nNotas: " + this.nota + "\nAluno: " 
                 + this.aluno.getNome() + "\nAtividade: " + atividade.getNome() 
-                + "("+atividade.getTipo()+")" + "\n");
+                + "("+atividade.getTipo()+")" + "\nDisciplina: " + this.atividade.getTurma().getDisciplina().getNome()
+                + "\nTurma(ID): " + this.atividade.getTurma().getId() + "\n");
     }   
 }

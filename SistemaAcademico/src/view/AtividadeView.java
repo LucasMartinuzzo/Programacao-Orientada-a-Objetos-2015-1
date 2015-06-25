@@ -32,7 +32,7 @@ public class AtividadeView {
             String nome = scanner.nextLine();
             System.out.println("Tipo: ");
             String tipo = scanner.nextLine();
-            System.out.println("Data (DD/MM/AAAA): ");
+            System.out.println("Data (DD/MM): ");
             String data = scanner.nextLine();
             System.out.println("Valor: ");
             Double valor = scanner.nextDouble();

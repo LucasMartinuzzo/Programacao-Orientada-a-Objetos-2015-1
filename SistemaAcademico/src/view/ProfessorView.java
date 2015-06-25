@@ -89,7 +89,7 @@ public class ProfessorView {
                 System.out.println("Lista de disciplinas lecionadas pelo professor " + professor.getNome() + ":");
                 for (Disciplina disciplina : professor.getDisciplina())
                     if (!disciplina.getTurma().isEmpty()){
-                        this.imprimir(professor.getDisciplina());
+                        System.out.println(disciplina);
                         cont++;
                     }
                 System.out.println("Total de disciplinas lecionadas: " + cont);

@@ -163,12 +163,12 @@ public class TurmaView {
     }
     
     public void imprimirSituacaoAluno (Aluno aluno, Turma turma){
-        System.out.println("Aluno: " + aluno.getNome() + aluno.getCpf());
+        System.out.println("\nAluno: " + aluno.getNome() +" (" + aluno.getCpf() + ")");
         System.out.println("Notas: ");
         for (Atividade atividade : turma.getAtividade()){
             for (Nota nota: atividade.getNota())
                 if (nota.getAluno().equals(aluno)){
-                    System.out.println("Atividade " + atividade.getNome() + ":" + nota.getNota());
+                    System.out.println("\tAtividade " + atividade.getNome() + ":" + nota.getNota());
                     break;
                 }
         }
@@ -191,14 +191,18 @@ public class TurmaView {
             System.out.println("Período:");
             Integer periodo = scanner.nextInt();
             scanner.nextLine();
+            Boolean aux = false;
             for (Turma turma : listaTurma)
                 if (turma.getDisciplina().getNome().equals(disciplina) && turma.getAno().equals(ano) &&
                         turma.getPeriodo().equals(periodo)){
-                    System.out.println("Turma " + turma.getId() + ":");
+                    aux = true;
+                    System.out.println("Turma (" + turma.getId() + "):");
                     for (Aluno aluno : turma.getAluno())
                         this.imprimirSituacaoAluno(aluno, turma);
-                }else
-                    System.out.println("Não há turmas com essas especificações.");
+                    break;
+                }
+            if(!aux)
+                System.out.println("Não há turmas com essas especificações.");
         }else
             System.out.println("Não há turmas cadastradas.");
     }
