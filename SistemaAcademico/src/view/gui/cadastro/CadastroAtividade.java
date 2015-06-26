@@ -228,6 +228,7 @@ public class CadastroAtividade extends javax.swing.JFrame {
                 fieldNome.setText(null);
                 fieldTipo.setText(null);
                 fieldData.setText(null);
+                fieldValor.setText(null);
             }else
                 JOptionPane.showMessageDialog(this,"Turma não cadastrada (ID inválido).","Erro",JOptionPane.ERROR_MESSAGE);
         }else
