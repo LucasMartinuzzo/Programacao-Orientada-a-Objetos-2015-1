@@ -144,11 +144,11 @@ public class Turma implements Serializable {
 
     @Override
     public String toString () {
-        return ("ID: " + this.id + "\nAno: " + this.ano +
-                "\nPeríodo: " + this.periodo + "\nLocal: " + this.local + 
-                "\n Horário: " + this.horario + "\nNúmero de Vagas: " + 
-                this.numeroDeVagas + "\nDisciplina: " + this.disciplina.getNome() +
-                "\nProfessor: " + this.professor.getNome() + "\n");
+        return ("ID:\t" + this.id + "\nAno:\t" + this.ano +
+                "\nPeríodo:\t" + this.periodo + "\nLocal:\t" + this.local + 
+                "\nHorário:\t" + this.horario + "\nNúmero de Vagas:\t" + 
+                this.numeroDeVagas + "\nDisciplina:\t" + this.disciplina.getNome() +
+                "\nProfessor:\t" + this.professor.getNome() + "\n");
     }
     
     public Boolean adicionarAluno (Aluno aluno){

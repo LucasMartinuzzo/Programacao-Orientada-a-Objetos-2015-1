@@ -16,14 +16,17 @@ public class AlunoView {
         System.out.println("CADASTRO DE ALUNO");
         System.out.println("CPF: ");
         String cpf = scanner.nextLine();
-        if (daoAluno.buscar(em,cpf) == null){
-            System.out.println("Nome: ");
-            String nome = scanner.nextLine();
-            Aluno aluno = new Aluno (cpf, nome);
-            daoAluno.salvar(em, aluno);
-            System.out.println("Cadastro efetuado com sucesso.");
-        }else
-            System.out.println("CPF já cadastrado.");
+        if(!cpf.trim().isEmpty())
+            if (daoAluno.buscar(em,cpf) == null){
+                System.out.println("Nome: ");
+                String nome = scanner.nextLine();
+                Aluno aluno = new Aluno (cpf, nome);
+                daoAluno.salvar(em, aluno);
+                System.out.println("Cadastro efetuado com sucesso.");
+            }else
+                System.out.println("CPF já cadastrado.");
+        else
+            System.out.println("O campo CPF deve ser preenchido.");
     }
     
     public void alterar (EntityManager em){

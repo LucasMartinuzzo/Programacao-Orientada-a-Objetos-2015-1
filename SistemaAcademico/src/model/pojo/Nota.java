@@ -84,9 +84,9 @@ public class Nota implements Serializable {
 
     @Override
     public String toString () {
-        return ("ID: " + this.id + "\nNotas: " + this.nota + "\nAluno: " 
-                + this.aluno.getNome() + "\nAtividade: " + atividade.getNome() 
-                + "("+atividade.getTipo()+")" + "\nDisciplina: " + this.atividade.getTurma().getDisciplina().getNome()
-                + "\nTurma(ID): " + this.atividade.getTurma().getId() + "\n");
+        return ("ID:\t" + this.id + "\nNotas:\t" + this.nota + "\nAluno:\t" 
+                + this.aluno.getNome() + "\nAtividade:\t" + atividade.getNome() 
+                + "("+atividade.getTipo()+")" + "\nDisciplina:\t" + this.atividade.getTurma().getDisciplina().getNome()
+                + "\nTurma(ID):\t" + this.atividade.getTurma().getId() + "\n");
     }   
 }

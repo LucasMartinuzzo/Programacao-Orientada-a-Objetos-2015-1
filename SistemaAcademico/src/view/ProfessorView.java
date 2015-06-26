@@ -16,16 +16,19 @@ public class ProfessorView {
         System.out.println("CADASTRO DE PROFESSOR");
         System.out.println("CPF: ");
         String cpf = scanner.nextLine();
-        if (daoProfessor.buscar(em,cpf) == null){
-            System.out.println("Nome ");
-            String nome = scanner.nextLine();
-            System.out.println("Departamento: ");
-            String departamento = scanner.nextLine();
-            Professor professor = new Professor (cpf, nome, departamento);
-            daoProfessor.salvar(em, professor);
-            System.out.println("Cadastro efetuado com sucesso.");
-        }else
-            System.out.println("CPF já cadastrado.");
+        if(!cpf.trim().isEmpty())
+            if (daoProfessor.buscar(em,cpf) == null){
+                System.out.println("Nome ");
+                String nome = scanner.nextLine();
+                System.out.println("Departamento: ");
+                String departamento = scanner.nextLine();
+                Professor professor = new Professor (cpf, nome, departamento);
+                daoProfessor.salvar(em, professor);
+                System.out.println("Cadastro efetuado com sucesso.");
+            }else
+                System.out.println("CPF já cadastrado.");
+        else
+            System.out.println("O campo CPF deve ser preenchido.");
     }
     
     public void alterar (EntityManager em){

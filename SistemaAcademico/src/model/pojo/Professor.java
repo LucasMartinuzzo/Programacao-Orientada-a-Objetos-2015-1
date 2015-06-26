@@ -83,7 +83,7 @@ public class Professor implements Serializable {
     public String toString () {
         for(Disciplina disc: this.getDisciplina())
             System.out.println(disc.getNome());
-        return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\nDepartamento: " + this.departamento + "\n");
+        return ("Nome:\t" + this.nome + "\nCPF:\t" + this.cpf + "\nDepartamento:\t" + this.departamento + "\n");
     }
     
     public Boolean adicionarDisciplina (Disciplina disciplina){

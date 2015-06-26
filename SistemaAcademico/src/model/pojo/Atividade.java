@@ -115,9 +115,9 @@ public class Atividade implements Serializable {
 
     @Override
     public String toString() {
-        return ("ID: " + this.id + "\nNome: " + this.nome +
-                "\nTipo: " + this.tipo + "\nData: " + this.data + "\nValor: " + this.valor +
-                "\nDisciplina: " + this.turma.getDisciplina().getNome() + "\nTurma(ID): " + this.turma.getId() + "\n");
+        return ("ID:\t" + this.id + "\nNome:\t" + this.nome +
+                "\nTipo:\t" + this.tipo + "\nData:\t" + this.data + "\nValor:\t" + this.valor +
+                "\nDisciplina:\t" + this.turma.getDisciplina().getNome() + "\nTurma(ID):\t" + this.turma.getId() + "\n");
     }
     
     public Boolean adicionarNota(Nota nota){

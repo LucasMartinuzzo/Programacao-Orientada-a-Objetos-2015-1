@@ -72,7 +72,7 @@ public class Falta implements Serializable {
 
     @Override
     public String toString () {
-        return ("\nID: " + this.id + "\nFaltas: " + this.falta + "\nDisciplina: " 
+        return ("\nID:\t" + this.id + "\nFaltas:\t" + this.falta + "\nDisciplina:\t" 
                 + this.turma.getDisciplina().getNome());
     }
 }

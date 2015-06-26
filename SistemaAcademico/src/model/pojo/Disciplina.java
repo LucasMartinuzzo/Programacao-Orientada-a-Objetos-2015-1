@@ -88,8 +88,8 @@ public class Disciplina implements Serializable {
 
     @Override
     public String toString() {
-        return ("Nome: " + this.nome + "\nEmenta: " + this.ementa + 
-                "\nCarga Horária: " + this.cargaHoraria + "\n");
+        return ("Nome:\t" + this.nome + "\nEmenta:\t" + this.ementa + 
+                "\nCarga Horária:\t" + this.cargaHoraria + "\n");
     }
     
     public Boolean adicionarTurma (Turma turma) {

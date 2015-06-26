@@ -18,17 +18,20 @@ public class DisciplinaView {
         System.out.println("CADASTRO DE DISCIPLINA");
         System.out.println("Nome: ");
         String nome = scanner.nextLine();
-        if (daoDisciplina.buscar(em,nome) == null){
-            System.out.println("Ementa: ");
-            String ementa = scanner.nextLine();
-            System.out.println("Carga Horária: ");
-            Integer cargaHoraria = scanner.nextInt();
-            scanner.nextLine();
-            Disciplina disciplina = new Disciplina (nome, ementa, cargaHoraria);
-            daoDisciplina.salvar(em, disciplina);
-            System.out.println("Cadastro efetuado com sucesso.");
-        }else
-            System.out.println("Nome de disciplina já cadastrado.");
+        if(!nome.trim().isEmpty())
+            if (daoDisciplina.buscar(em,nome) == null){
+                System.out.println("Ementa: ");
+                String ementa = scanner.nextLine();
+                System.out.println("Carga Horária: ");
+                Integer cargaHoraria = scanner.nextInt();
+                scanner.nextLine();
+                Disciplina disciplina = new Disciplina (nome, ementa, cargaHoraria);
+                daoDisciplina.salvar(em, disciplina);
+                System.out.println("Cadastro efetuado com sucesso.");
+            }else
+                System.out.println("Nome de disciplina já cadastrado.");
+        else
+            System.out.println("O campo Nome deve ser preenchido.");
     }
     
     public void alterar (EntityManager em){

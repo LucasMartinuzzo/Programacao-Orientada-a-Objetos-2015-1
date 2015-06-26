@@ -85,7 +85,7 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return ("Nome: " + this.nome + "\nCPF: " + this.cpf + "\n");
+        return ("Nome:\t" + this.nome + "\nCPF:\t" + this.cpf + "\n");
     }
     
     public Boolean adicionarFalta(Falta falta){
