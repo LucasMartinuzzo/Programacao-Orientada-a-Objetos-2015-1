@@ -229,13 +229,19 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuConsultarTurma">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Alunos de Turma"/>
+                <Property name="text" type="java.lang.String" value="Turmas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuConsultarTurmaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuConsultarSituacaoAluno">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o Aluno"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuConsultarSituacaoAlunoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuConsultarQuantidadeTurmas">
               <Properties>

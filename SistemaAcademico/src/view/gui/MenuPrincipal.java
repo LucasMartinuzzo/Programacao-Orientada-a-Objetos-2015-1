@@ -30,7 +30,9 @@ import view.gui.cadastro.CadastroDisciplina;
 import view.gui.cadastro.CadastroFalta;
 import view.gui.cadastro.CadastroProfessor;
 import view.gui.cadastro.CadastroTurma;
+import view.gui.consulta.ConsultaTurma;
 import view.gui.consulta.DisciplinasLecionadas;
+import view.gui.consulta.SituacaoAluno;
 import view.gui.consulta.TurmasOferecidas;
 import view.gui.listagem.ListagemAluno;
 import view.gui.listagem.ListagemAtividade;
@@ -328,10 +330,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuConsultar.setText("Consultar");
 
-        menuConsultarTurma.setText("Alunos de Turma");
+        menuConsultarTurma.setText("Turmas");
+        menuConsultarTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultarTurmaActionPerformed(evt);
+            }
+        });
         menuConsultar.add(menuConsultarTurma);
 
         menuConsultarSituacaoAluno.setText("Situação Aluno");
+        menuConsultarSituacaoAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultarSituacaoAlunoActionPerformed(evt);
+            }
+        });
         menuConsultar.add(menuConsultarSituacaoAluno);
 
         menuConsultarQuantidadeTurmas.setText("Turmas Oferecidas");
@@ -603,6 +615,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
             new TurmasOferecidas(this, em).setVisible(true);
         }
     }//GEN-LAST:event_menuConsultarQuantidadeTurmasActionPerformed
+
+    private void menuConsultarSituacaoAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarSituacaoAlunoActionPerformed
+        if (daoAluno.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem alunos cadastrados.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else if(daoDisciplina.obterTodos(em).isEmpty())
+                JOptionPane.showMessageDialog(this,"Não existem disciplinas cadastradas.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else {
+            this.setEnabled(false);
+            new SituacaoAluno(this, em).setVisible(true);
+        }
+    }//GEN-LAST:event_menuConsultarSituacaoAlunoActionPerformed
+
+    private void menuConsultarTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarTurmaActionPerformed
+        if (daoTurma.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem turmas cadastradas.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new ConsultaTurma(this, em).setVisible(true);
+        }
+    }//GEN-LAST:event_menuConsultarTurmaActionPerformed
 
     /**
      * @param args the command line arguments
