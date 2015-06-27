@@ -23,7 +23,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel7" alignment="0" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -43,6 +46,7 @@
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="this.setTitle(&quot;Sistema Acad&#xea;mico&quot;);"/>
         <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="addWindowListener(new java.awt.event.WindowAdapter() {&#xa;            public void windowClosed(java.awt.event.WindowEvent evt) {&#xa;                formWindowClosed(evt);&#xa;            }&#xa;        });"/>
       </AuxValues>
 
@@ -57,7 +61,7 @@
                       <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="labelDisciplina7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="95" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="botaoVerificar" min="-2" max="-2" attributes="0"/>
@@ -69,7 +73,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="labelDisciplina6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="58" max="32767" attributes="0"/>
                           <Component id="fieldProfessor" min="-2" pref="147" max="-2" attributes="0"/>
                       </Group>
                   </Group>

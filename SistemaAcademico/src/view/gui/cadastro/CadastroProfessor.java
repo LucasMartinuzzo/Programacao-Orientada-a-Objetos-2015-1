@@ -35,6 +35,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setTitle("Sistema Acadêmico");
         jPanel1 = new javax.swing.JPanel();
         labelCPF = new javax.swing.JLabel();
         labelNome = new javax.swing.JLabel();

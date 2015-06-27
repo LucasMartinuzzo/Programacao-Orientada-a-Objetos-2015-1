@@ -33,6 +33,7 @@ public class ListagemFalta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setTitle("Sistema Acadêmico");
         jPanel1 = new javax.swing.JPanel();
         botaoVoltar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();

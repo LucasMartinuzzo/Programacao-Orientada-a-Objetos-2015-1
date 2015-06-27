@@ -41,6 +41,7 @@ public class AlteracaoAluno extends javax.swing.JFrame {
         botaoAlterar = new javax.swing.JButton();
         botaoVoltar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        this.setTitle("Sistema Acadêmico");
         titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaAlunos = new javax.swing.JTextArea();

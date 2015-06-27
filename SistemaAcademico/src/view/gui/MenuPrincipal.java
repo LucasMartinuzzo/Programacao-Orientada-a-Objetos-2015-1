@@ -79,6 +79,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
         botaoSair = new javax.swing.JButton();
+        this.setTitle("Sistema Acadêmico");
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastrar = new javax.swing.JMenu();
         menuCadastrarAluno = new javax.swing.JMenuItem();

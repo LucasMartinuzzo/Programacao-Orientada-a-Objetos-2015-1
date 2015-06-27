@@ -43,6 +43,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         botaoCadastrar = new javax.swing.JButton();
         botaoVoltar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        this.setTitle("Sistema Acadêmico");
         titulo = new javax.swing.JLabel();
         labelCargaHoraria = new javax.swing.JLabel();
         fieldCargaHoraria = new javax.swing.JTextField();
