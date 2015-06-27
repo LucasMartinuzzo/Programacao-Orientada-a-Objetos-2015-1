@@ -30,6 +30,8 @@ import view.gui.cadastro.CadastroDisciplina;
 import view.gui.cadastro.CadastroFalta;
 import view.gui.cadastro.CadastroProfessor;
 import view.gui.cadastro.CadastroTurma;
+import view.gui.consulta.DisciplinasLecionadas;
+import view.gui.consulta.TurmasOferecidas;
 import view.gui.listagem.ListagemAluno;
 import view.gui.listagem.ListagemAtividade;
 import view.gui.listagem.ListagemDisciplina;
@@ -333,6 +335,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuConsultar.add(menuConsultarSituacaoAluno);
 
         menuConsultarQuantidadeTurmas.setText("Turmas Oferecidas");
+        menuConsultarQuantidadeTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultarQuantidadeTurmasActionPerformed(evt);
+            }
+        });
         menuConsultar.add(menuConsultarQuantidadeTurmas);
 
         menuConsultarDisciplinasLecionadas.setText("Disciplinas Lecionadas");
@@ -421,7 +428,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuListarFaltaActionPerformed
 
     private void menuConsultarDisciplinasLecionadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarDisciplinasLecionadasActionPerformed
-        // TODO add your handling code here:
+        if (daoProfessor.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem professores cadastrados.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new DisciplinasLecionadas(this, em).setVisible(true);
+        }
     }//GEN-LAST:event_menuConsultarDisciplinasLecionadasActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
@@ -582,6 +594,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             new AlteracaoAtividade(this, em).setVisible(true);
         }
     }//GEN-LAST:event_menuAlterarAtividadeActionPerformed
+
+    private void menuConsultarQuantidadeTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarQuantidadeTurmasActionPerformed
+        if (daoDisciplina.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem disciplinas cadastradas.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new TurmasOferecidas(this, em).setVisible(true);
+        }
+    }//GEN-LAST:event_menuConsultarQuantidadeTurmasActionPerformed
 
     /**
      * @param args the command line arguments
