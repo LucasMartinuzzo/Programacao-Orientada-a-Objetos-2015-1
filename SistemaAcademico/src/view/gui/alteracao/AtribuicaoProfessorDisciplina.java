@@ -1,4 +1,4 @@
-package view.alteracao;
+package view.gui.alteracao;
 
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
