@@ -28,6 +28,7 @@ import view.gui.alteracao.MatriculaAluno;
 import view.gui.cadastro.CadastroAtividade;
 import view.gui.cadastro.CadastroDisciplina;
 import view.gui.cadastro.CadastroFalta;
+import view.gui.cadastro.CadastroNota;
 import view.gui.cadastro.CadastroProfessor;
 import view.gui.cadastro.CadastroTurma;
 import view.gui.consulta.ConsultaTurma;
@@ -488,7 +489,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Não existem atividades cadastradas.","Alerta",JOptionPane.WARNING_MESSAGE);
         else{
             this.setEnabled(false);
-            new CadastroFalta(this, em).setVisible(true);
+            new CadastroNota(this, em).setVisible(true);
         }
     }//GEN-LAST:event_menuCadastrarNotaActionPerformed
 
