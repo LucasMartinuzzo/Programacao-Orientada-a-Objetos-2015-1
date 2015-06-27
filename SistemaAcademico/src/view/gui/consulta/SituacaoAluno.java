@@ -105,7 +105,7 @@ public class SituacaoAluno extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(botaoVerificar)
@@ -113,7 +113,7 @@ public class SituacaoAluno extends javax.swing.JFrame {
                         .addComponent(botaoVoltar))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(labelDisciplina6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(fieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(labelDisciplina8)
@@ -155,13 +155,15 @@ public class SituacaoAluno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,8 +174,8 @@ public class SituacaoAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldCpfActionPerformed
 
     private void botaoVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVerificarActionPerformed
-        String cpf = fieldCpf.getText();
         textAreaSituacao.setText(null);
+        String cpf = fieldCpf.getText();
         if(!cpf.trim().isEmpty()){
             Aluno aluno = daoAluno.buscar(em, cpf);
             if (aluno != null){
@@ -188,18 +190,22 @@ public class SituacaoAluno extends javax.swing.JFrame {
                                 if (turma.getAluno().contains(aluno)){
                                     imprimir(aluno,turma);
                                     for (Falta falta: aluno.getFalta())
-                                        if (falta.getTurma().equals(turma) && 
-                                           (falta.getFalta()/disciplina.getCargaHoraria()) > 0.25){
-                                            aprovado = false;
-                                            break;
+                                        if (falta.getTurma().equals(turma)){
+                                            Double result = (Double.parseDouble(falta.getFalta().toString()))/disciplina.getCargaHoraria();
+                                            if(result > 0.25){
+                                                aprovado = false;
+                                                break;
+                                            }
                                         }
                                     if (aluno.notaFinal(turma) < 6.0)
                                         aprovado = false;
                                     if (aprovado)
-                                        textAreaSituacao.append("\nAprovado.");
+                                        textAreaSituacao.append("\nAprovado.\n");
                                     else
-                                        textAreaSituacao.append("\nReprovado.");
-                                    aux = true;
+                                        textAreaSituacao.append("\nReprovado.\n");
+                                    aux = true;     
+                                    fieldDisciplina.setText(null);
+                                    fieldCpf.setText(null);
                                     break;
                                 }
                             }
@@ -227,7 +233,7 @@ public class SituacaoAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldDisciplinaActionPerformed
 
     public void imprimir (Aluno aluno, Turma turma){
-        textAreaSituacao.append("\n\nAluno: " + aluno.getNome() +" (" + aluno.getCpf() + ")");
+        textAreaSituacao.append("Aluno: " + aluno.getNome() +" (" + aluno.getCpf() + ")");
         textAreaSituacao.append("\nNotas: ");
         for (Atividade atividade : turma.getAtividade()){
             for (Nota nota: atividade.getNota())

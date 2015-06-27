@@ -221,10 +221,12 @@ public class TurmaView {
                         if (turma.getAluno().contains(aluno)){
                             this.imprimirSituacaoAluno(aluno, turma);
                             for(Falta falta : aluno.getFalta())
-                                if (falta.getTurma().equals(turma) && 
-                                    (falta.getFalta()/disciplina.getCargaHoraria()) > 0.25){
+                                if (falta.getTurma().equals(turma)){
+                                    Double result = (Double.parseDouble(falta.getFalta().toString()))/disciplina.getCargaHoraria();
+                                    if(result > 0.25){
                                     aprovado = false;
                                     break;
+                                    }
                                 }
                             if (aluno.notaFinal(turma) < 6)
                                 aprovado = false;
