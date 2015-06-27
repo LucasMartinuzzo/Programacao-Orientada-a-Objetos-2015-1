@@ -37,6 +37,7 @@ public class CadastroTurma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setTitle("Sistema Acadêmico");
         jPanel1 = new javax.swing.JPanel();
         labelDisciplina = new javax.swing.JLabel();
         label2 = new javax.swing.JLabel();

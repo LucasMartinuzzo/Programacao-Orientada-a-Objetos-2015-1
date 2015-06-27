@@ -35,6 +35,7 @@ public class TurmasOferecidas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setTitle("Sistema Acadêmico");
         jPanel5 = new javax.swing.JPanel();
         labelDisciplina4 = new javax.swing.JLabel();
         fieldDisciplina = new javax.swing.JTextField();
@@ -175,13 +176,13 @@ public class TurmasOferecidas extends javax.swing.JFrame {
             Disciplina disciplina = daoDisciplina.buscar(em, nome);
             if(disciplina != null){
                 if (!disciplina.getTurma().isEmpty()){
-                    textAreaTurmas.append(null);
+                    textAreaTurmas.setText(null);
                     imprimir(disciplina);
                     fieldTotal.setText(null);
                     Integer total = disciplina.getTurma().size();
                     fieldTotal.setText(total.toString());
                 }else{
-                    textAreaTurmas.append(null);
+                    textAreaTurmas.setText(null);
                     textAreaTurmas.append("Não há turmas dessa disciplina cadastradas.");
                     fieldTotal.setText("0");
                 }

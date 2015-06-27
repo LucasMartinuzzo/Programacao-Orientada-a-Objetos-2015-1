@@ -37,6 +37,7 @@ public class AtribuicaoProfessorDisciplina extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setTitle("Sistema Acadêmico");
         jPanel3 = new javax.swing.JPanel();
         labelCpf2 = new javax.swing.JLabel();
         labelNome2 = new javax.swing.JLabel();

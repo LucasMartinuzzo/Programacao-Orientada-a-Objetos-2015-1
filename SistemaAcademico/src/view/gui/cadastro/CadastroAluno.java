@@ -47,6 +47,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        this.setTitle("Sistema Acadêmico");
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
 
         labelCpf.setText("CPF:");

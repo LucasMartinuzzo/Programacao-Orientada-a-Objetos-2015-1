@@ -37,6 +37,7 @@ public class MatriculaAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setTitle("Sistema Acadêmico");
         jPanel5 = new javax.swing.JPanel();
         labelDisciplina4 = new javax.swing.JLabel();
         fieldAluno = new javax.swing.JTextField();
