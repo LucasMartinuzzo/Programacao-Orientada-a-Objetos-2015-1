@@ -126,6 +126,7 @@ public class ListagemAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
+        textAreaAlunos.append(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 

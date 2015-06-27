@@ -125,6 +125,7 @@ public class ListagemProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
+        textAreaProfessores.append(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 
