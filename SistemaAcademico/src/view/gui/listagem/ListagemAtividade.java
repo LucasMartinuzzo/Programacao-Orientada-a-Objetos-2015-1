@@ -126,7 +126,7 @@ public class ListagemAtividade extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
-        textAreaAtividades.append(null);
+        textAreaAtividades.setText(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 

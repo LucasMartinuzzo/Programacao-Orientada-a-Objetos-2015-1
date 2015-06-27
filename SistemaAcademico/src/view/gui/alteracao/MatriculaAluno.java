@@ -212,7 +212,7 @@ public class MatriculaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListar1ActionPerformed
-        textAreaTurmas.append(null);
+        textAreaTurmas.setText(null);
         imprimir();
     }//GEN-LAST:event_BotaoListar1ActionPerformed
 

@@ -125,7 +125,7 @@ public class ListagemDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
-        textAreaDisciplinas.append(null);
+        textAreaDisciplinas.setText(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 

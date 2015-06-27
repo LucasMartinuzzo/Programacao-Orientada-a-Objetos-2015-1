@@ -126,7 +126,7 @@ public class ListagemFalta extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
-        textAreaFaltas.append(null);
+        textAreaFaltas.setText(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 

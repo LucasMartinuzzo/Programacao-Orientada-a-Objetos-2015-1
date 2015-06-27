@@ -273,7 +273,7 @@ public class CadastroFalta extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldTurmaActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
-        textAreaTurmas.append(null);
+        textAreaTurmas.setText(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 
