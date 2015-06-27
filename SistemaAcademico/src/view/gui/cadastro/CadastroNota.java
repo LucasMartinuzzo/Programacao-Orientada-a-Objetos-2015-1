@@ -56,7 +56,7 @@ public class CadastroNota extends javax.swing.JFrame {
         label3 = new javax.swing.JLabel();
         fieldNota = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        textAreaTurmas = new javax.swing.JTextArea();
+        textAreaAtividades = new javax.swing.JTextArea();
         BotaoListar = new javax.swing.JButton();
         BotaoAtualizar = new javax.swing.JButton();
 
@@ -100,10 +100,10 @@ public class CadastroNota extends javax.swing.JFrame {
 
         label3.setText("Nota:");
 
-        textAreaTurmas.setColumns(20);
-        textAreaTurmas.setRows(5);
-        jScrollPane1.setViewportView(textAreaTurmas);
-        textAreaTurmas.setEditable(false);
+        textAreaAtividades.setColumns(20);
+        textAreaAtividades.setRows(5);
+        jScrollPane1.setViewportView(textAreaAtividades);
+        textAreaAtividades.setEditable(false);
 
         BotaoListar.setText("Listar");
         BotaoListar.addActionListener(new java.awt.event.ActionListener() {
@@ -267,6 +267,7 @@ public class CadastroNota extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
+        textAreaAtividades.append(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 
@@ -315,7 +316,7 @@ public class CadastroNota extends javax.swing.JFrame {
     
     public void imprimir (){
         for(Atividade atividade: daoAtividade.obterTodos(em))
-            textAreaTurmas.append(atividade.toString() + "\n");
+            textAreaAtividades.append(atividade.toString() + "\n");
     }
     
     /**
@@ -367,7 +368,7 @@ public class CadastroNota extends javax.swing.JFrame {
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel labelDisciplina;
-    private javax.swing.JTextArea textAreaTurmas;
+    private javax.swing.JTextArea textAreaAtividades;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,6 +17,12 @@ import model.dao.NotaDaoImpl;
 import model.dao.ProfessorDaoImpl;
 import model.dao.TurmaDaoImpl;
 import view.gui.alteracao.AlteracaoAluno;
+import view.gui.alteracao.AlteracaoAtividade;
+import view.gui.alteracao.AlteracaoDisciplina;
+import view.gui.alteracao.AlteracaoFalta;
+import view.gui.alteracao.AlteracaoNota;
+import view.gui.alteracao.AlteracaoProfessor;
+import view.gui.alteracao.AlteracaoTurma;
 import view.gui.alteracao.AtribuicaoProfessorDisciplina;
 import view.gui.alteracao.MatriculaAluno;
 import view.gui.cadastro.CadastroAtividade;
@@ -178,6 +184,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(menuCadastrar);
 
         menuAlterar.setText("Alterar / Gerenciar");
+        menuAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarActionPerformed(evt);
+            }
+        });
 
         menuAtribuir.setText("Atribuir Professor à Disciplina");
         menuAtribuir.addActionListener(new java.awt.event.ActionListener() {
@@ -204,6 +215,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuAlterar.add(menuAlterarAluno);
 
         menuAlterarAtividade.setText("Atividade");
+        menuAlterarAtividade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarAtividadeActionPerformed(evt);
+            }
+        });
         menuAlterar.add(menuAlterarAtividade);
 
         menuAlterarDisciplina.setText("Disciplina");
@@ -223,12 +239,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuAlterar.add(menuAlterarFalta);
 
         menuAlterarNota.setText("Nota");
+        menuAlterarNota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarNotaActionPerformed(evt);
+            }
+        });
         menuAlterar.add(menuAlterarNota);
 
         menuAlterarProfessor.setText("Professor");
+        menuAlterarProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarProfessorActionPerformed(evt);
+            }
+        });
         menuAlterar.add(menuAlterarProfessor);
 
         menuAlterarTurma.setText("Turma");
+        menuAlterarTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarTurmaActionPerformed(evt);
+            }
+        });
         menuAlterar.add(menuAlterarTurma);
 
         jMenuBar1.add(menuAlterar);
@@ -321,7 +352,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(271, Short.MAX_VALUE)
+                .addContainerGap(331, Short.MAX_VALUE)
                 .addComponent(botaoSair)
                 .addContainerGap())
             .addComponent(jSeparator1)
@@ -329,7 +360,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoSair)
@@ -354,11 +385,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCadastrarFaltaActionPerformed
 
     private void menuAlterarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarDisciplinaActionPerformed
-        // TODO add your handling code here:
+        if (daoDisciplina.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem disciplinas cadastrados.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new AlteracaoDisciplina(this, em).setVisible(true);
+        }
     }//GEN-LAST:event_menuAlterarDisciplinaActionPerformed
 
     private void menuAlterarFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarFaltaActionPerformed
-        // TODO add your handling code here:
+        if (daoFalta.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem faltas cadastrados.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new AlteracaoFalta(this, em).setVisible(true);
+        }
     }//GEN-LAST:event_menuAlterarFaltaActionPerformed
 
     private void menuListarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListarDisciplinaActionPerformed
@@ -501,6 +542,46 @@ public class MenuPrincipal extends javax.swing.JFrame {
             new AlteracaoAluno(this, em).setVisible(true);
         }
     }//GEN-LAST:event_menuAlterarAlunoActionPerformed
+
+    private void menuAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuAlterarActionPerformed
+
+    private void menuAlterarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarNotaActionPerformed
+        if (daoNota.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem notas cadastradas.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new AlteracaoNota(this, em).setVisible(true);
+        }
+    }//GEN-LAST:event_menuAlterarNotaActionPerformed
+
+    private void menuAlterarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarProfessorActionPerformed
+        if (daoProfessor.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem professores cadastrados.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new AlteracaoProfessor(this, em).setVisible(true);
+        }
+    }//GEN-LAST:event_menuAlterarProfessorActionPerformed
+
+    private void menuAlterarTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarTurmaActionPerformed
+        if (daoTurma.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem turmas cadastrados.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new AlteracaoTurma(this, em).setVisible(true);
+        }
+    }//GEN-LAST:event_menuAlterarTurmaActionPerformed
+
+    private void menuAlterarAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarAtividadeActionPerformed
+        if (daoAtividade.obterTodos(em).isEmpty())
+            JOptionPane.showMessageDialog(this,"Não existem atividades cadastrados.","Alerta",JOptionPane.WARNING_MESSAGE);
+        else{
+            this.setEnabled(false);
+            new AlteracaoAtividade(this, em).setVisible(true);
+        }
+    }//GEN-LAST:event_menuAlterarAtividadeActionPerformed
 
     /**
      * @param args the command line arguments

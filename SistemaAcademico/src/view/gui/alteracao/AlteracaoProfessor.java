@@ -2,29 +2,28 @@ package view.gui.alteracao;
 
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
-import model.dao.DisciplinaDaoImpl;
-import model.pojo.Disciplina;
+import model.dao.ProfessorDaoImpl;
+import model.pojo.Professor;
 import view.gui.MenuPrincipal;
 
-public class AlteracaoDisciplina extends javax.swing.JFrame {
+public class AlteracaoProfessor extends javax.swing.JFrame {
 
     private MenuPrincipal menuPrincipal;
     private EntityManager em;
-    private DisciplinaDaoImpl daoDisciplina = DisciplinaDaoImpl.getInstancia();
-    
+    private ProfessorDaoImpl daoProfessor = ProfessorDaoImpl.getInstancia();
     /**
-     * Creates new form AlteracaoDisciplina
+     * Creates new form AlteracaoProfessor
      */
-    public AlteracaoDisciplina() {
+    public AlteracaoProfessor() {
         initComponents();
     }
     
-    public AlteracaoDisciplina(MenuPrincipal menuPrincipal, EntityManager em){
+    public AlteracaoProfessor(MenuPrincipal menuPrincipal, EntityManager em){
         this();
         this.menuPrincipal = menuPrincipal;
         this.em = em;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,29 +35,29 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
 
         jPanel5 = new javax.swing.JPanel();
         labelDisciplina4 = new javax.swing.JLabel();
-        fieldNome = new javax.swing.JTextField();
+        fieldCpf = new javax.swing.JTextField();
         botaoAlterar = new javax.swing.JButton();
         botaoVoltar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        textAreaDisciplinas = new javax.swing.JTextArea();
+        textAreaProfessores = new javax.swing.JTextArea();
         BotaoListar = new javax.swing.JButton();
         labelDisciplina5 = new javax.swing.JLabel();
-        fieldEmenta = new javax.swing.JTextField();
+        fieldNome = new javax.swing.JTextField();
         botaoAtualizar = new javax.swing.JButton();
+        fieldDepartamento = new javax.swing.JTextField();
         labelDisciplina6 = new javax.swing.JLabel();
-        fieldCargaHoraria = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel5.setMaximumSize(new java.awt.Dimension(800, 600));
 
-        labelDisciplina4.setText("Nome:");
+        labelDisciplina4.setText("CPF:");
 
-        fieldNome.addActionListener(new java.awt.event.ActionListener() {
+        fieldCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldNomeActionPerformed(evt);
+                fieldCpfActionPerformed(evt);
             }
         });
 
@@ -77,12 +76,12 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
         });
 
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("Alteração de Disciplinas");
+        titulo.setText("Alteração de Professores");
 
-        textAreaDisciplinas.setColumns(20);
-        textAreaDisciplinas.setRows(5);
-        jScrollPane1.setViewportView(textAreaDisciplinas);
-        textAreaDisciplinas.setEditable(false);
+        textAreaProfessores.setColumns(20);
+        textAreaProfessores.setRows(5);
+        jScrollPane1.setViewportView(textAreaProfessores);
+        textAreaProfessores.setEditable(false);
 
         BotaoListar.setText("Listar");
         BotaoListar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,11 +90,11 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
             }
         });
 
-        labelDisciplina5.setText("Ementa:");
+        labelDisciplina5.setText("Nome:");
 
-        fieldEmenta.addActionListener(new java.awt.event.ActionListener() {
+        fieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldEmentaActionPerformed(evt);
+                fieldNomeActionPerformed(evt);
             }
         });
 
@@ -106,13 +105,13 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
             }
         });
 
-        labelDisciplina6.setText("Carga Horária:");
-
-        fieldCargaHoraria.addActionListener(new java.awt.event.ActionListener() {
+        fieldDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldCargaHorariaActionPerformed(evt);
+                fieldDepartamentoActionPerformed(evt);
             }
         });
+
+        labelDisciplina6.setText("Departamento:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -137,14 +136,14 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
                                 .addComponent(botaoAlterar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botaoVoltar))
-                            .addComponent(fieldEmenta, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(labelDisciplina4)
                         .addGap(18, 18, 18)
                         .addComponent(BotaoListar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(fieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -157,7 +156,7 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDisciplina4)
-                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoListar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
@@ -166,11 +165,11 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDisciplina5)
-                    .addComponent(fieldEmenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDisciplina6)
-                    .addComponent(fieldCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAlterar)
@@ -198,28 +197,28 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
+    private void fieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldNomeActionPerformed
+    }//GEN-LAST:event_fieldCpfActionPerformed
 
     private void botaoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarActionPerformed
-        String nome = fieldNome.getText();
-        if (!nome.trim().isEmpty()){
-            Disciplina disciplina = daoDisciplina.buscar(em, nome);
-            if(disciplina != null){
-                String ementa = fieldEmenta.getText();
-                Integer cargaHoraria = Integer.parseInt(fieldCargaHoraria.getText());
-                disciplina.setEmenta(ementa);
-                disciplina.setCargaHoraria(cargaHoraria);
-                daoDisciplina.alterar(em, disciplina);
+        String cpf = fieldCpf.getText();
+        if (!cpf.trim().isEmpty()){
+            Professor professor = daoProfessor.buscar(em, cpf);
+            if(professor != null){
+                String nome = fieldNome.getText();
+                professor.setNome(nome);
+                String departamento = fieldDepartamento.getText();
+                professor.setDepartamento(departamento);
+                daoProfessor.alterar(em, professor);
                 JOptionPane.showMessageDialog(this,"Alteração efetuada com sucesso.","Mensagem",JOptionPane.PLAIN_MESSAGE);
+                fieldCpf.setText(null);
                 fieldNome.setText(null);
-                fieldEmenta.setText(null);
-                fieldCargaHoraria.setText(null);
+                fieldDepartamento.setText(null);
             }else
-                JOptionPane.showMessageDialog(this,"Disciplina não cadastrada (nome inválido).","Erro",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Professor não cadastrado (CPF inválido).","Erro",JOptionPane.ERROR_MESSAGE);
         }else
-            JOptionPane.showMessageDialog(this,"O campo Nome deve ser preenchido.","Erro",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo CPF deve ser preenchido.","Erro",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_botaoAlterarActionPerformed
 
     private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
@@ -227,39 +226,35 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
-        textAreaDisciplinas.append(null);
+        textAreaProfessores.append(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 
-    private void fieldEmentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldEmentaActionPerformed
+    private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldEmentaActionPerformed
+    }//GEN-LAST:event_fieldNomeActionPerformed
 
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-        String nome = fieldNome.getText();
-        if (!nome.trim().isEmpty()){
-            Disciplina disciplina = daoDisciplina.buscar(em, nome);
-            if(disciplina != null){
-                fieldEmenta.setText(disciplina.getEmenta());
-                fieldCargaHoraria.setText(disciplina.getCargaHoraria().toString());
+        String cpf = fieldCpf.getText();
+        if (!cpf.trim().isEmpty()){
+            Professor professor = daoProfessor.buscar(em, cpf);
+            if(professor != null){
+                fieldNome.setText(professor.getNome());
+                fieldDepartamento.setText(professor.getDepartamento());
             }else
-                JOptionPane.showMessageDialog(this,"Disciplina não cadastrada (nome inválido).","Erro",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Professor não cadastrado (CPF inválido).","Erro",JOptionPane.ERROR_MESSAGE);
         }else
-            JOptionPane.showMessageDialog(this,"O campo Nome deve ser preenchido.","Erro",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo CPF deve ser preenchido.","Erro",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
-    private void fieldCargaHorariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCargaHorariaActionPerformed
+    private void fieldDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldDepartamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldCargaHorariaActionPerformed
-
-    public void imprimir (){
-        for(Disciplina disciplina: daoDisciplina.obterTodos(em))
-            textAreaDisciplinas.append(disciplina.toString() + "\n");
-    }
+    }//GEN-LAST:event_fieldDepartamentoActionPerformed
     
-    /**
-     * @param args the command line arguments
-     */
+    public void imprimir (){
+        for(Professor professor: daoProfessor.obterTodos(em))
+            textAreaProfessores.append(professor.toString() + "\n");
+    }
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {                                  
         //Metodo para quando clicar em fechar, a tela anterior fique habilitada para uso
@@ -281,20 +276,20 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlteracaoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlteracaoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlteracaoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlteracaoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlteracaoDisciplina().setVisible(true);
+                new AlteracaoProfessor().setVisible(true);
             }
         });
     }
@@ -304,8 +299,8 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
     private javax.swing.JButton botaoAlterar;
     private javax.swing.JButton botaoAtualizar;
     private javax.swing.JButton botaoVoltar;
-    private javax.swing.JTextField fieldCargaHoraria;
-    private javax.swing.JTextField fieldEmenta;
+    private javax.swing.JTextField fieldCpf;
+    private javax.swing.JTextField fieldDepartamento;
     private javax.swing.JTextField fieldNome;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
@@ -313,7 +308,7 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
     private javax.swing.JLabel labelDisciplina4;
     private javax.swing.JLabel labelDisciplina5;
     private javax.swing.JLabel labelDisciplina6;
-    private javax.swing.JTextArea textAreaDisciplinas;
+    private javax.swing.JTextArea textAreaProfessores;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

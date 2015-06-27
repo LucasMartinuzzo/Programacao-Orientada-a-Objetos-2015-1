@@ -2,29 +2,26 @@ package view.gui.alteracao;
 
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
-import model.dao.DisciplinaDaoImpl;
-import model.pojo.Disciplina;
+import model.dao.TurmaDaoImpl;
+import model.pojo.Turma;
 import view.gui.MenuPrincipal;
 
-public class AlteracaoDisciplina extends javax.swing.JFrame {
+public class AlteracaoTurma extends javax.swing.JFrame {
 
     private MenuPrincipal menuPrincipal;
     private EntityManager em;
-    private DisciplinaDaoImpl daoDisciplina = DisciplinaDaoImpl.getInstancia();
+    private TurmaDaoImpl daoTurma = TurmaDaoImpl.getInstancia();
     
-    /**
-     * Creates new form AlteracaoDisciplina
-     */
-    public AlteracaoDisciplina() {
+    public AlteracaoTurma() {
         initComponents();
     }
     
-    public AlteracaoDisciplina(MenuPrincipal menuPrincipal, EntityManager em){
+    public AlteracaoTurma(MenuPrincipal menuPrincipal, EntityManager em){
         this();
         this.menuPrincipal = menuPrincipal;
         this.em = em;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,29 +33,35 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
 
         jPanel5 = new javax.swing.JPanel();
         labelDisciplina4 = new javax.swing.JLabel();
-        fieldNome = new javax.swing.JTextField();
+        fieldId = new javax.swing.JTextField();
         botaoAlterar = new javax.swing.JButton();
         botaoVoltar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        textAreaDisciplinas = new javax.swing.JTextArea();
+        textAreaTurmas = new javax.swing.JTextArea();
         BotaoListar = new javax.swing.JButton();
         labelDisciplina5 = new javax.swing.JLabel();
-        fieldEmenta = new javax.swing.JTextField();
+        fieldAno = new javax.swing.JTextField();
         botaoAtualizar = new javax.swing.JButton();
+        fieldPeriodo = new javax.swing.JTextField();
         labelDisciplina6 = new javax.swing.JLabel();
-        fieldCargaHoraria = new javax.swing.JTextField();
+        fieldLocal = new javax.swing.JTextField();
+        labelDisciplina7 = new javax.swing.JLabel();
+        fieldHorario = new javax.swing.JTextField();
+        labelDisciplina8 = new javax.swing.JLabel();
+        fieldNVagas = new javax.swing.JTextField();
+        labelDisciplina9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel5.setMaximumSize(new java.awt.Dimension(800, 600));
 
-        labelDisciplina4.setText("Nome:");
+        labelDisciplina4.setText("ID:");
 
-        fieldNome.addActionListener(new java.awt.event.ActionListener() {
+        fieldId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldNomeActionPerformed(evt);
+                fieldIdActionPerformed(evt);
             }
         });
 
@@ -77,12 +80,12 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
         });
 
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("Alteração de Disciplinas");
+        titulo.setText("Alteração de Turmas");
 
-        textAreaDisciplinas.setColumns(20);
-        textAreaDisciplinas.setRows(5);
-        jScrollPane1.setViewportView(textAreaDisciplinas);
-        textAreaDisciplinas.setEditable(false);
+        textAreaTurmas.setColumns(20);
+        textAreaTurmas.setRows(5);
+        jScrollPane1.setViewportView(textAreaTurmas);
+        textAreaTurmas.setEditable(false);
 
         BotaoListar.setText("Listar");
         BotaoListar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,11 +94,11 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
             }
         });
 
-        labelDisciplina5.setText("Ementa:");
+        labelDisciplina5.setText("Ano:");
 
-        fieldEmenta.addActionListener(new java.awt.event.ActionListener() {
+        fieldAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldEmentaActionPerformed(evt);
+                fieldAnoActionPerformed(evt);
             }
         });
 
@@ -106,13 +109,37 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
             }
         });
 
-        labelDisciplina6.setText("Carga Horária:");
-
-        fieldCargaHoraria.addActionListener(new java.awt.event.ActionListener() {
+        fieldPeriodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldCargaHorariaActionPerformed(evt);
+                fieldPeriodoActionPerformed(evt);
             }
         });
+
+        labelDisciplina6.setText("Período:");
+
+        fieldLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldLocalActionPerformed(evt);
+            }
+        });
+
+        labelDisciplina7.setText("Local:");
+
+        fieldHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldHorarioActionPerformed(evt);
+            }
+        });
+
+        labelDisciplina8.setText("Horário:");
+
+        fieldNVagas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNVagasActionPerformed(evt);
+            }
+        });
+
+        labelDisciplina9.setText("Número de Vagas:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -130,21 +157,27 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelDisciplina5)
-                            .addComponent(labelDisciplina6))
+                            .addComponent(labelDisciplina6)
+                            .addComponent(labelDisciplina7)
+                            .addComponent(labelDisciplina8)
+                            .addComponent(labelDisciplina9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(botaoAlterar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botaoVoltar))
-                            .addComponent(fieldEmenta, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldNVagas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(labelDisciplina4)
                         .addGap(18, 18, 18)
                         .addComponent(BotaoListar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -157,7 +190,7 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDisciplina4)
-                    .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoListar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
@@ -166,11 +199,23 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDisciplina5)
-                    .addComponent(fieldEmenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDisciplina6)
-                    .addComponent(fieldCargaHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDisciplina7)
+                    .addComponent(fieldLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDisciplina8)
+                    .addComponent(fieldHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDisciplina9)
+                    .addComponent(fieldNVagas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoAlterar)
@@ -198,28 +243,37 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNomeActionPerformed
+    private void fieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldNomeActionPerformed
+    }//GEN-LAST:event_fieldIdActionPerformed
 
     private void botaoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarActionPerformed
-        String nome = fieldNome.getText();
-        if (!nome.trim().isEmpty()){
-            Disciplina disciplina = daoDisciplina.buscar(em, nome);
-            if(disciplina != null){
-                String ementa = fieldEmenta.getText();
-                Integer cargaHoraria = Integer.parseInt(fieldCargaHoraria.getText());
-                disciplina.setEmenta(ementa);
-                disciplina.setCargaHoraria(cargaHoraria);
-                daoDisciplina.alterar(em, disciplina);
+        String id = fieldId.getText();
+        if (!id.trim().isEmpty()){
+            Turma turma = daoTurma.buscar(em, Integer.parseInt(id));
+            if(turma != null){
+                Integer ano = Integer.parseInt(fieldAno.getText());
+                turma.setAno(ano);
+                Integer periodo = Integer.parseInt(fieldPeriodo.getText());
+                turma.setPeriodo(periodo);
+                String local = fieldLocal.getText();
+                turma.setLocal(local);
+                String horario = fieldHorario.getText();
+                turma.setHorario(horario);
+                Integer nVagas = Integer.parseInt(fieldNVagas.getText());
+                turma.setNumeroDeVagas(nVagas);
+                daoTurma.alterar(em, turma);
                 JOptionPane.showMessageDialog(this,"Alteração efetuada com sucesso.","Mensagem",JOptionPane.PLAIN_MESSAGE);
-                fieldNome.setText(null);
-                fieldEmenta.setText(null);
-                fieldCargaHoraria.setText(null);
+                fieldId.setText(null);
+                fieldAno.setText(null);
+                fieldPeriodo.setText(null);
+                fieldLocal.setText(null);
+                fieldHorario.setText(null);
+                fieldNVagas.setText(null);
             }else
-                JOptionPane.showMessageDialog(this,"Disciplina não cadastrada (nome inválido).","Erro",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Turma não cadastrado (ID inválido).","Erro",JOptionPane.ERROR_MESSAGE);
         }else
-            JOptionPane.showMessageDialog(this,"O campo Nome deve ser preenchido.","Erro",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this,"O campo ID deve ser preenchido.","Erro",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_botaoAlterarActionPerformed
 
     private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
@@ -227,39 +281,50 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
-        textAreaDisciplinas.append(null);
+        textAreaTurmas.append(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 
-    private void fieldEmentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldEmentaActionPerformed
+    private void fieldAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldEmentaActionPerformed
+    }//GEN-LAST:event_fieldAnoActionPerformed
 
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-        String nome = fieldNome.getText();
-        if (!nome.trim().isEmpty()){
-            Disciplina disciplina = daoDisciplina.buscar(em, nome);
-            if(disciplina != null){
-                fieldEmenta.setText(disciplina.getEmenta());
-                fieldCargaHoraria.setText(disciplina.getCargaHoraria().toString());
+        String id = fieldId.getText();
+        if (!id.trim().isEmpty()){
+            Turma turma = daoTurma.buscar(em, Integer.parseInt(id));
+            if(turma != null){
+                fieldAno.setText(turma.getAno().toString());
+                fieldPeriodo.setText(turma.getPeriodo().toString());
+                fieldLocal.setText(turma.getLocal());
+                fieldHorario.setText(turma.getHorario());
+                fieldNVagas.setText(turma.getNumeroDeVagas().toString());
             }else
-                JOptionPane.showMessageDialog(this,"Disciplina não cadastrada (nome inválido).","Erro",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Turma não cadastrado (ID inválido).","Erro",JOptionPane.ERROR_MESSAGE);
         }else
-            JOptionPane.showMessageDialog(this,"O campo Nome deve ser preenchido.","Erro",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this,"O campo ID deve ser preenchido.","Erro",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
-    private void fieldCargaHorariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCargaHorariaActionPerformed
+    private void fieldPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPeriodoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldCargaHorariaActionPerformed
+    }//GEN-LAST:event_fieldPeriodoActionPerformed
+
+    private void fieldLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldLocalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldLocalActionPerformed
+
+    private void fieldHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldHorarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldHorarioActionPerformed
+
+    private void fieldNVagasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNVagasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNVagasActionPerformed
 
     public void imprimir (){
-        for(Disciplina disciplina: daoDisciplina.obterTodos(em))
-            textAreaDisciplinas.append(disciplina.toString() + "\n");
+        for(Turma turma: daoTurma.obterTodos(em))
+            textAreaTurmas.append(turma.toString() + "\n");
     }
-    
-    /**
-     * @param args the command line arguments
-     */
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {                                  
         //Metodo para quando clicar em fechar, a tela anterior fique habilitada para uso
@@ -281,20 +346,20 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlteracaoTurma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlteracaoTurma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlteracaoTurma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoDisciplina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlteracaoTurma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlteracaoDisciplina().setVisible(true);
+                new AlteracaoTurma().setVisible(true);
             }
         });
     }
@@ -304,16 +369,22 @@ public class AlteracaoDisciplina extends javax.swing.JFrame {
     private javax.swing.JButton botaoAlterar;
     private javax.swing.JButton botaoAtualizar;
     private javax.swing.JButton botaoVoltar;
-    private javax.swing.JTextField fieldCargaHoraria;
-    private javax.swing.JTextField fieldEmenta;
-    private javax.swing.JTextField fieldNome;
+    private javax.swing.JTextField fieldAno;
+    private javax.swing.JTextField fieldHorario;
+    private javax.swing.JTextField fieldId;
+    private javax.swing.JTextField fieldLocal;
+    private javax.swing.JTextField fieldNVagas;
+    private javax.swing.JTextField fieldPeriodo;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelDisciplina4;
     private javax.swing.JLabel labelDisciplina5;
     private javax.swing.JLabel labelDisciplina6;
-    private javax.swing.JTextArea textAreaDisciplinas;
+    private javax.swing.JLabel labelDisciplina7;
+    private javax.swing.JLabel labelDisciplina8;
+    private javax.swing.JLabel labelDisciplina9;
+    private javax.swing.JTextArea textAreaTurmas;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

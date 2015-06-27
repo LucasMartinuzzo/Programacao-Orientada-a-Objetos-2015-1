@@ -245,6 +245,7 @@ public class CadastroAtividade extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldNomeActionPerformed
 
     private void BotaoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoListarActionPerformed
+        textAreaTurmas.append(null);
         imprimir();
     }//GEN-LAST:event_BotaoListarActionPerformed
 
